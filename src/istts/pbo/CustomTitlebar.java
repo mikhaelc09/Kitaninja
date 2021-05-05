@@ -14,6 +14,10 @@ public class CustomTitlebar extends JPanel {
     private Color c = new Color(200,200,200);
 
     public CustomTitlebar() {
+        init();
+    }
+
+    private void init(){
         setBackground(new Color(96,101,95));
         setLayout(null);
         ImageIcon icon = new ImageIcon("src/istts/pbo/res/Icon.png");

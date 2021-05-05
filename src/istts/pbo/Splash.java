@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class Splash extends JFrame {
     private JPanel p;
-    private Timer t = new Timer(250, null);
+    private Timer t = new Timer(10, null);
     private int ctr = 0;
 
     public Splash() {
@@ -18,7 +18,7 @@ public class Splash extends JFrame {
 
         JLabel lbIcon = new JLabel();
         lbIcon.setIcon(logo);
-        lbIcon.setBounds(150,50, 300,300);
+        lbIcon.setBounds(140,50, 300,300);
 
         JLabel lbLoad = new JLabel("Loading");
         lbLoad.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 25));

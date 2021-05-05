@@ -20,6 +20,35 @@ public class MenuPanel extends JPanel {
     JLabel lbAboutText;
 
     public MenuPanel() {
+        init();
+
+        lbAbout.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                lbAboutText.setVisible(true);
+            }
+        });
+
+        lbAboutText.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                lbAboutText.setVisible(false);
+            }
+        });
+
+        lbExit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                CustomExitConfirm c = new CustomExitConfirm();
+
+            }
+        });
+    }
+
+    private void init(){
         setBackground(Color.BLACK);
         setLayout(null);
 
@@ -59,22 +88,6 @@ public class MenuPanel extends JPanel {
         add(lbLoadGame);
         add(lbAbout);
         add(lbExit);
-
-        lbAbout.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                lbAboutText.setVisible(true);
-            }
-        });
-
-        lbAboutText.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                lbAboutText.setVisible(false);
-            }
-        });
     }
 
     protected void paintComponent(Graphics g) {
