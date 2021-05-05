@@ -10,10 +10,33 @@ import static istts.pbo.Main.*;
 
 public class StartPage extends JFrame {
     MenuPanel menu;
+    CreationPanel create;
     CustomTitlebar title;
     private int cx, cy;
 
     public StartPage() {
+       init();
+
+       menu.lbNewGame.addMouseListener(new MouseAdapter() {
+           @Override
+           public void mouseClicked(MouseEvent e) {
+               super.mouseClicked(e);
+               menu.setVisible(false);
+               create.setVisible(true);
+           }
+       });
+
+       create.back.addMouseListener(new MouseAdapter() {
+           @Override
+           public void mouseClicked(MouseEvent e) {
+               super.mouseClicked(e);
+               menu.setVisible(true);
+               create.setVisible(false);
+           }
+       });
+    }
+
+    private void init(){
         ImageIcon logo = new ImageIcon("src/istts/pbo/res/Icon.png");
         setIconImage(logo.getImage());
         setSize(new Dimension(SWIDTH,SHEIGHT));
@@ -36,9 +59,14 @@ public class StartPage extends JFrame {
         menu = new MenuPanel();
         menu.setBounds(0,40,this.getWidth(),this.getHeight());
 
+        create = new CreationPanel();
+        create.setBounds(0,40,this.getWidth(),this.getHeight());
+        create.setVisible(false);
+
         title = new CustomTitlebar();
         title.setBounds(0,0,getWidth(),40);
 
+        parent.add(create);
         parent.add(menu);
         parent.add(title);
 
@@ -65,7 +93,6 @@ public class StartPage extends JFrame {
 
         add(parent);
         this.pack();
-
     }
 
     private void exit(){
