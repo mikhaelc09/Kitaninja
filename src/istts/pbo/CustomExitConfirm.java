@@ -20,7 +20,7 @@ public class CustomExitConfirm extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setUndecorated(true);
-        setVisible(true);
+        setVisible(false);
 
         p = new JPanel();
         p.setBounds(0,0,400,300);
@@ -37,12 +37,14 @@ public class CustomExitConfirm extends JFrame {
 
         lbYes = new JLabel("Yes");
         lbYes.setBackground(new Color(160,150,30));
+        lbYes.setCursor(new Cursor(Cursor.HAND_CURSOR));
         lbYes.setOpaque(true);
         lbYes.setBounds(80,200,80,50);
         lbYes.setFont(f);
 
         lbNo = new JLabel(" No");
         lbNo.setBackground(new Color(160,150,30));
+        lbNo.setCursor(new Cursor(Cursor.HAND_CURSOR));
         lbNo.setOpaque(true);
         lbNo.setBounds(250,200,80,50);
         lbNo.setFont(f);
@@ -51,5 +53,29 @@ public class CustomExitConfirm extends JFrame {
         p.add(lbYes);
         p.add(lbNo);
         add(p);
+    }
+
+    public JPanel getP() {
+        return p;
+    }
+
+    public void setP(JPanel p) {
+        this.p = p;
+    }
+
+    public JLabel getLbYes() {
+        return lbYes;
+    }
+
+    public void setLbYes(JLabel lbYes) {
+        this.lbYes = lbYes;
+    }
+
+    public JLabel getLbNo() {
+        return lbNo;
+    }
+
+    public void setLbNo(JLabel lbNo) {
+        this.lbNo = lbNo;
     }
 }

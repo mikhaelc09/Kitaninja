@@ -12,10 +12,12 @@ public class StartPage extends JFrame {
     MenuPanel menu;
     CreationPanel create;
     CustomTitlebar title;
+    CustomExitConfirm exitConfirm;
     private int cx, cy;
 
     public StartPage() {
        init();
+        exitConfirm = new CustomExitConfirm();
 
        menu.lbNewGame.addMouseListener(new MouseAdapter() {
            @Override
@@ -34,6 +36,29 @@ public class StartPage extends JFrame {
                create.setVisible(false);
            }
        });
+
+       menu.lbExit.addMouseListener(new MouseAdapter() {
+           @Override
+           public void mouseClicked(MouseEvent e) {
+               super.mouseClicked(e);
+               exitConfirm.setVisible(true);
+           }
+       });
+
+       exitConfirm.getLbYes().addMouseListener(new MouseAdapter() {
+           @Override
+           public void mouseClicked(MouseEvent e) {
+               exit();
+           }
+       });
+
+       exitConfirm.getLbNo().addMouseListener(new MouseAdapter() {
+           @Override
+           public void mouseClicked(MouseEvent e) {
+               exitConfirm.setVisible(false);
+           }
+       });
+
     }
 
     private void init(){
@@ -107,4 +132,9 @@ public class StartPage extends JFrame {
     private void topMouseDragged(MouseEvent e){
         this.setLocation(e.getXOnScreen()-cx, e.getYOnScreen()-cy);
     }
+
+    private void cancelExit(CustomExitConfirm c){
+        c.dispose();
+    }
+
 }
