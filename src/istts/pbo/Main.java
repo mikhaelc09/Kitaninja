@@ -5,6 +5,6 @@ public class Main {
     static final int SHEIGHT = 760;
 
     public static void main(String[] args) {
-        StartPage s = new StartPage();
+        Splash s = new Splash();
     }
 }
