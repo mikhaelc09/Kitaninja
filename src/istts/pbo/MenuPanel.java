@@ -29,23 +29,23 @@ public class MenuPanel extends JPanel {
         lbSetting.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         lbNewGame = new JLabel();
-        lbNewGame.setBounds((SWIDTH-270)/2, 250, 300,120);
-        lbNewGame.setIcon(new ImageIcon("src/istts/pbo/res/newGame.png"));
+        lbNewGame.setBounds((SWIDTH-195)/2, 250, 225,90);
+        lbNewGame.setIcon(new ImageIcon("src/istts/pbo/res/scrollNew.png"));
         lbNewGame.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         lbLoadGame = new JLabel();
-        lbLoadGame.setBounds((SWIDTH-270)/2, 350, 300,120);
-        lbLoadGame.setIcon(new ImageIcon("src/istts/pbo/res/newGame.png"));
+        lbLoadGame.setBounds((SWIDTH-195)/2, 345, 225,90);
+        lbLoadGame.setIcon(new ImageIcon("src/istts/pbo/res/scrollLoad.png"));
         lbLoadGame.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         lbAbout = new JLabel();
-        lbAbout.setBounds((SWIDTH-270)/2, 450, 300,120);
-        lbAbout.setIcon(new ImageIcon("src/istts/pbo/res/newGame.png"));
+        lbAbout.setBounds((SWIDTH-195)/2, 440, 225,90);
+        lbAbout.setIcon(new ImageIcon("src/istts/pbo/res/scrollAbout.png"));
         lbAbout.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         lbExit = new JLabel();
-        lbExit.setBounds((SWIDTH-270)/2, 550, 300,120);
-        lbExit.setIcon(new ImageIcon("src/istts/pbo/res/newGame.png"));
+        lbExit.setBounds((SWIDTH-195)/2, 535, 225,90);
+        lbExit.setIcon(new ImageIcon("src/istts/pbo/res/scrollExit.png"));
         lbExit.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         lbAboutText = new JLabel();
