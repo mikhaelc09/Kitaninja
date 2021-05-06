@@ -3,6 +3,8 @@ package istts.pbo.LandingPage;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -11,6 +13,7 @@ public class CreationPanel extends JPanel {
     JLabel back;
     JLabel tombolok;
     JLabel tombolreset;
+    JTextField nama;
     public CreationPanel(){
         init();
 
@@ -43,13 +46,26 @@ public class CreationPanel extends JPanel {
         add(profile);
 
         //bagian atas
-        JLabel nama = new JLabel("Tempet nama");
-        ImageIcon scrollnama = new ImageIcon("src/istts/pbo/res/buttons/scrollNew.png");
-        nama.setIcon(scrollnama);
-        nama.setPreferredSize(new Dimension(200,130));
-        nama.setVerticalAlignment(SwingConstants.BOTTOM);
+        JPanel top = new JPanel();
+        top.setPreferredSize(new Dimension(600,130));
+        top.setOpaque(false);
+        top.setLayout(null);
+
+        JLabel lb1 = new JLabel("Name : ");
+        lb1.setFont(new Font("Arial", Font.BOLD, 35));
+        FontMetrics fm = getFontMetrics(lb1.getFont());
+        lb1.setBounds(50,80,fm.stringWidth(lb1.getText()), 40);
+
+        nama = new JTextField();
+        nama.setFont(new Font("Arial", Font.BOLD, 35));
+        nama.setPreferredSize(new Dimension(190,50));
         nama.setHorizontalAlignment(SwingConstants.CENTER);
-        profile.add(nama,BorderLayout.NORTH);
+        nama.setBounds(250,75,300,45);
+
+        top.add(lb1);
+        top.add(nama);
+
+        profile.add(top,BorderLayout.NORTH);
 
         //bagian tengah
 
@@ -68,6 +84,7 @@ public class CreationPanel extends JPanel {
         tombolclass1.setVerticalAlignment(SwingConstants.CENTER);
         tombolclass1.setHorizontalAlignment(SwingConstants.CENTER);
         tombolclass1.setIcon(gambarclass1);
+        tombolclass1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         tengah.add(tombolclass1);
 
         //class2
@@ -78,6 +95,7 @@ public class CreationPanel extends JPanel {
         tombolclass2.setVerticalAlignment(SwingConstants.CENTER);
         tombolclass2.setHorizontalAlignment(SwingConstants.CENTER);
         tombolclass2.setIcon(gambarclass2);
+        tombolclass2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         tengah.add(tombolclass2);
 
         //class3
@@ -88,6 +106,7 @@ public class CreationPanel extends JPanel {
         tombolclass3.setVerticalAlignment(SwingConstants.CENTER);
         tombolclass3.setHorizontalAlignment(SwingConstants.CENTER);
         tombolclass3.setIcon(gambarclass3);
+        tombolclass3.setCursor(new Cursor(Cursor.HAND_CURSOR));
         tengah.add(tombolclass3);
         //bagian bawah
 
@@ -106,6 +125,7 @@ public class CreationPanel extends JPanel {
         tombolreset.setPreferredSize(new Dimension(120,60));
         tombolreset.setVerticalAlignment(SwingConstants.TOP);
         tombolreset.setHorizontalAlignment(SwingConstants.CENTER);
+        tombolreset.setCursor(new Cursor(Cursor.HAND_CURSOR));
         tombolreset.setIcon(gambarreset);
         bawah.add(tombolreset);
 
@@ -125,6 +145,14 @@ public class CreationPanel extends JPanel {
         player.setBackground(new Color(160,160,200));
         player.setOpaque(true);
         add(player);
+
+        tombolreset.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                nama.setText("");
+            }
+        });
+
     }
 
     class Profile extends JPanel{

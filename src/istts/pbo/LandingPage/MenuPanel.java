@@ -20,7 +20,6 @@ public class MenuPanel extends JPanel {
     JLabel lbAbout;
     JLabel lbExit;
     JLabel lbAboutText;
-    CreationPanel create;
 
     public MenuPanel() {
         init();
