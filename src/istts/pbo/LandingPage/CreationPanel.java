@@ -140,11 +140,24 @@ public class CreationPanel extends JPanel {
         tombolok.setCursor(new Cursor(Cursor.HAND_CURSOR));
         bawah.add(tombolok);
 
-        JLabel player = new JLabel("Tempet PLayer");
+        JPanel player = new JPanel();
         player.setBounds(50,150,500,450);
+        player.setLayout(new FlowLayout(FlowLayout.CENTER,0,20));
         player.setBackground(new Color(160,160,200));
         player.setOpaque(true);
         add(player);
+
+        JLabel gambarplayer = new JLabel("Tempet gambar");
+        gambarplayer.setPreferredSize(new Dimension(250,200));
+        gambarplayer.setBackground(new Color(255,160,200));
+        gambarplayer.setOpaque(true);
+        player.add(gambarplayer);
+
+        JLabel deskripsi = new JLabel("Deskripsi");
+        deskripsi.setPreferredSize(new Dimension(450,195));
+        deskripsi.setBackground(new Color(100,160,200));
+        deskripsi.setOpaque(true);
+        player.add(deskripsi);
 
         tombolreset.addMouseListener(new MouseAdapter() {
             @Override
