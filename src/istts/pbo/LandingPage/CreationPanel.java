@@ -18,10 +18,11 @@ public class CreationPanel extends JPanel {
         setBackground(Color.YELLOW);
         setLayout(null);
 
-        back = new JLabel("BAAACK");
-        back.setBounds(20,20,50,50);
-        back.setBackground(Color.red);
-        back.setOpaque(true);
+        back = new JLabel();
+        back.setBounds(20,15,100,50);
+        back.setOpaque(false);
+        back.setIcon(new ImageIcon("src/istts/pbo/res/buttons/Back.png"));
+        back.setCursor(new Cursor(Cursor.HAND_CURSOR));
         add(back);
 
 
@@ -58,33 +59,30 @@ public class CreationPanel extends JPanel {
         profile.add(tengah,BorderLayout.CENTER);
 
         //class1
-        JLabel tombolclass1 = new JLabel("Class1");
-        ImageIcon gambarclass1 = new ImageIcon("src/istts/pbo/res/buttons/scrollNew.png");
-        tombolclass1.setBackground(Color.green);
-        tombolclass1.setOpaque(true);
-        tombolclass1.setPreferredSize(new Dimension(100,100));
+        JLabel tombolclass1 = new JLabel();
+        ImageIcon gambarclass1 = new ImageIcon("src/istts/pbo/res/IconSkill/Hadouken.png");
+        tombolclass1.setOpaque(false);
+        tombolclass1.setPreferredSize(new Dimension(120,120));
         tombolclass1.setVerticalAlignment(SwingConstants.CENTER);
         tombolclass1.setHorizontalAlignment(SwingConstants.CENTER);
         tombolclass1.setIcon(gambarclass1);
         tengah.add(tombolclass1);
 
         //class2
-        JLabel tombolclass2 = new JLabel("Class2");
-        ImageIcon gambarclass2 = new ImageIcon("src/istts/pbo/res/buttons/scrollNew.png");
-        tombolclass2.setBackground(Color.green);
-        tombolclass2.setOpaque(true);
-        tombolclass2.setPreferredSize(new Dimension(100,100));
+        JLabel tombolclass2 = new JLabel();
+        ImageIcon gambarclass2 = new ImageIcon("src/istts/pbo/res/IconSkill/FalconPunch.png");
+        tombolclass2.setOpaque(false);
+        tombolclass2.setPreferredSize(new Dimension(120,120));
         tombolclass2.setVerticalAlignment(SwingConstants.CENTER);
         tombolclass2.setHorizontalAlignment(SwingConstants.CENTER);
         tombolclass2.setIcon(gambarclass2);
         tengah.add(tombolclass2);
 
         //class3
-        JLabel tombolclass3 = new JLabel("Class3");
-        ImageIcon gambarclass3 = new ImageIcon("src/istts/pbo/res/buttons/scrollNew.png");
-        tombolclass3.setBackground(Color.green);
-        tombolclass3.setOpaque(true);
-        tombolclass3.setPreferredSize(new Dimension(100,100));
+        JLabel tombolclass3 = new JLabel();
+        ImageIcon gambarclass3 = new ImageIcon("src/istts/pbo/res/IconSkill/ShurikenThrow.png");
+        tombolclass3.setOpaque(false);
+        tombolclass3.setPreferredSize(new Dimension(120,120));
         tombolclass3.setVerticalAlignment(SwingConstants.CENTER);
         tombolclass3.setHorizontalAlignment(SwingConstants.CENTER);
         tombolclass3.setIcon(gambarclass3);
@@ -94,27 +92,26 @@ public class CreationPanel extends JPanel {
         //panel
         JPanel bawah = new JPanel();
         bawah.setLayout(new FlowLayout(FlowLayout.CENTER,50,20));
-        bawah.setPreferredSize(new Dimension(200,125));
+        bawah.setPreferredSize(new Dimension(200,120));
         bawah.setBackground(Color.cyan);
         bawah.setOpaque(false);
         profile.add(bawah,BorderLayout.SOUTH);
-        //set
-        JLabel tombolset = new JLabel("Class3");
-        ImageIcon gambarset = new ImageIcon("src/istts/pbo/res/buttons/scrollNew.png");
-        tombolset.setBackground(Color.cyan);
-        tombolset.setOpaque(true);
-        tombolset.setPreferredSize(new Dimension(100,50));
-        tombolset.setVerticalAlignment(SwingConstants.TOP);
-        tombolset.setHorizontalAlignment(SwingConstants.CENTER);
-        tombolset.setIcon(gambarset);
-        bawah.add(tombolset);
+
+        //reset
+        JLabel tombolreset = new JLabel();
+        ImageIcon gambarreset = new ImageIcon("src/istts/pbo/res/buttons/Reset.png");
+        tombolreset.setOpaque(false);
+        tombolreset.setPreferredSize(new Dimension(120,60));
+        tombolreset.setVerticalAlignment(SwingConstants.TOP);
+        tombolreset.setHorizontalAlignment(SwingConstants.CENTER);
+        tombolreset.setIcon(gambarreset);
+        bawah.add(tombolreset);
 
         //ok
-        JLabel tombolok = new JLabel("Class3");
-        ImageIcon gambarok = new ImageIcon("src/istts/pbo/res/buttons/scrollNew.png");
-        tombolok.setBackground(Color.cyan);
-        tombolok.setOpaque(true);
-        tombolok.setPreferredSize(new Dimension(100,50));
+        JLabel tombolok = new JLabel();
+        ImageIcon gambarok = new ImageIcon("src/istts/pbo/res/buttons/Confirm.png");
+        tombolok.setOpaque(false);
+        tombolok.setPreferredSize(new Dimension(120,60));
         tombolok.setVerticalAlignment(SwingConstants.TOP);
         tombolok.setHorizontalAlignment(SwingConstants.CENTER);
         tombolok.setIcon(gambarok);
@@ -125,7 +122,6 @@ public class CreationPanel extends JPanel {
         player.setBackground(new Color(160,160,200));
         player.setOpaque(true);
         add(player);
-
     }
 
     class Profile extends JPanel{
@@ -148,6 +144,7 @@ public class CreationPanel extends JPanel {
             }
         }
     }
+
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         draw(g);
@@ -162,6 +159,4 @@ public class CreationPanel extends JPanel {
             e.printStackTrace();
         }
     }
-
-
 }
