@@ -11,31 +11,45 @@ import java.io.IOException;
 public class musicPlayer extends JFrame implements LineListener, ChangeListener {
     boolean playCompleted = false;
     JLabel current;
-    JSlider vol;
+    JSlider slider;
     FloatControl aud;
     float range;
+    
     public musicPlayer() {
-        setVisible(true);
-        setSize(500, 300);
+        setLocation(1200,700);
         setLayout(null);
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        setUndecorated(true);
+        setSize(new Dimension(300,200));
+        setVisible(true);
 
-        vol = new JSlider(JSlider.HORIZONTAL, 0, 100, 100);
-        vol.setBounds(50, 50, 350, 100);
-        vol.setPaintTicks(true);
-        vol.setPaintTrack(true);
-        vol.setMinorTickSpacing(5);
-        vol.setMajorTickSpacing(10);
-        vol.setFont(new Font("Arial", Font.PLAIN, 10));
-        vol.addChangeListener(this);
-        add(vol);
+        JPanel p = new JPanel();
+        p.setBounds(0,0,400,400);
+        p.setBackground(new Color(255,222,70));
+        p.setLayout(null);
+
+        JLabel lbTitle = new JLabel("Volume");
+        lbTitle.setFont(new Font("Arial", Font.BOLD,25));
+        lbTitle.setBounds(25,50,200,50);
+
+        slider = new JSlider(JSlider.HORIZONTAL, 0,100,100);
+        slider.setBounds(25,100,200, 50);
+        slider.setBackground(new Color(255,222,70));
+        slider.setPaintTrack(true);
+        slider.setPaintTicks(true);
+        slider.setMinorTickSpacing(10);
+        slider.setMajorTickSpacing(50);
+        slider.setFont(new Font("Arial", Font.BOLD, 25));
+        slider.addChangeListener(this);
 
         current = new JLabel();
-        current.setText(vol.getValue() + "");
-        current.setBounds(10, 10, 100, 100);
-        add(current);
+        current.setText(slider.getValue() + "");
+        current.setFont(new Font("Arial", Font.BOLD, 25));
+        current.setBounds(240, 100, 50, 40);
+
+        p.add(lbTitle);
+        p.add(slider);
+        p.add(current);
+
         File f = new File("src/istts/pbo/res/audio/Soundtrack/MainMenuTheme.wav");
         try{
             AudioInputStream stream = AudioSystem.getAudioInputStream(f);
@@ -46,7 +60,9 @@ public class musicPlayer extends JFrame implements LineListener, ChangeListener 
             clip.open(stream);
             aud = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             range =aud.getMaximum() - aud.getMinimum();
+            aud.setValue(-20);
             clip.loop(2);
+            System.out.println(aud.getMinimum()+" - "+aud.getMaximum());
             clip.start();
             while(!playCompleted){
                 try {
@@ -63,6 +79,9 @@ public class musicPlayer extends JFrame implements LineListener, ChangeListener 
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         }
+
+        add(p);
+        setContentPane(p);
     }
         @Override
         public void update (LineEvent event){
@@ -79,8 +98,8 @@ public class musicPlayer extends JFrame implements LineListener, ChangeListener 
 
         @Override
         public void stateChanged (ChangeEvent e){
-            current.setText(vol.getValue()+"");
-            float gain =(float)(aud.getMinimum() + (vol.getValue()*1.0/100*range));
+            current.setText(slider.getValue()+"");
+            float gain =(float)(aud.getMinimum() + (slider.getValue()*1.0/100*range));
             aud.setValue(gain);
         }
 
