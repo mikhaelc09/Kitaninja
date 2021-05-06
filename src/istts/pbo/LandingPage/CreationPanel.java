@@ -1,4 +1,4 @@
-package istts.pbo;
+package istts.pbo.LandingPage;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -41,7 +41,7 @@ public class CreationPanel extends JPanel {
 
         //bagian atas
         JLabel nama = new JLabel("Tempet nama");
-        ImageIcon scrollnama = new ImageIcon("src/istts/pbo/res/scrollNew.png");
+        ImageIcon scrollnama = new ImageIcon("src/istts/pbo/res/buttons/scrollNew.png");
         nama.setIcon(scrollnama);
         nama.setPreferredSize(new Dimension(200,130));
         nama.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -59,7 +59,7 @@ public class CreationPanel extends JPanel {
 
         //class1
         JLabel tombolclass1 = new JLabel("Class1");
-        ImageIcon gambarclass1 = new ImageIcon("src/istts/pbo/res/scrollNew.png");
+        ImageIcon gambarclass1 = new ImageIcon("src/istts/pbo/res/buttons/scrollNew.png");
         tombolclass1.setBackground(Color.green);
         tombolclass1.setOpaque(true);
         tombolclass1.setPreferredSize(new Dimension(100,100));
@@ -70,7 +70,7 @@ public class CreationPanel extends JPanel {
 
         //class2
         JLabel tombolclass2 = new JLabel("Class2");
-        ImageIcon gambarclass2 = new ImageIcon("src/istts/pbo/res/scrollNew.png");
+        ImageIcon gambarclass2 = new ImageIcon("src/istts/pbo/res/buttons/scrollNew.png");
         tombolclass2.setBackground(Color.green);
         tombolclass2.setOpaque(true);
         tombolclass2.setPreferredSize(new Dimension(100,100));
@@ -81,7 +81,7 @@ public class CreationPanel extends JPanel {
 
         //class3
         JLabel tombolclass3 = new JLabel("Class3");
-        ImageIcon gambarclass3 = new ImageIcon("src/istts/pbo/res/scrollNew.png");
+        ImageIcon gambarclass3 = new ImageIcon("src/istts/pbo/res/buttons/scrollNew.png");
         tombolclass3.setBackground(Color.green);
         tombolclass3.setOpaque(true);
         tombolclass3.setPreferredSize(new Dimension(100,100));
@@ -100,7 +100,7 @@ public class CreationPanel extends JPanel {
         profile.add(bawah,BorderLayout.SOUTH);
         //set
         JLabel tombolset = new JLabel("Class3");
-        ImageIcon gambarset = new ImageIcon("src/istts/pbo/res/scrollNew.png");
+        ImageIcon gambarset = new ImageIcon("src/istts/pbo/res/buttons/scrollNew.png");
         tombolset.setBackground(Color.cyan);
         tombolset.setOpaque(true);
         tombolset.setPreferredSize(new Dimension(100,50));
@@ -111,7 +111,7 @@ public class CreationPanel extends JPanel {
 
         //ok
         JLabel tombolok = new JLabel("Class3");
-        ImageIcon gambarok = new ImageIcon("src/istts/pbo/res/scrollNew.png");
+        ImageIcon gambarok = new ImageIcon("src/istts/pbo/res/buttons/scrollNew.png");
         tombolok.setBackground(Color.cyan);
         tombolok.setOpaque(true);
         tombolok.setPreferredSize(new Dimension(100,50));
@@ -155,7 +155,7 @@ public class CreationPanel extends JPanel {
 
     private void draw(Graphics g){
         try {
-            BufferedImage bg = ImageIO.read(new File("src/istts/pbo/res/BackgroundCreateCharacter.png"));
+            BufferedImage bg = ImageIO.read(new File("src/istts/pbo/res/backgrounds/BackgroundCreateCharacter.png"));
             g.drawImage(bg,0,0,null);
         }
         catch (IOException e){

@@ -1,10 +1,10 @@
-package istts.pbo;
+package istts.pbo.System;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 
-import static istts.pbo.Main.SWIDTH;
+import static istts.pbo.Main.*;
 
 
 public class CustomTitlebar extends JPanel {

@@ -1,4 +1,4 @@
-package istts.pbo;
+package istts.pbo.System;
 
 import javax.swing.*;
 import java.awt.*;
