@@ -1,5 +1,6 @@
 package istts.pbo.LandingPage;
 
+import istts.pbo.GamePage.TownPage;
 import istts.pbo.System.CustomExitConfirm;
 import istts.pbo.System.CustomTitlebar;
 import istts.pbo.musicPlayer;
@@ -40,6 +41,14 @@ public class StartPage extends JFrame {
                super.mouseClicked(e);
                menu.setVisible(true);
                create.setVisible(false);
+           }
+       });
+
+       create.tombolok.addMouseListener(new MouseAdapter() {
+           @Override
+           public void mouseClicked(MouseEvent e) {
+               super.mouseClicked(e);
+               confirmCreate();
            }
        });
 
@@ -87,7 +96,7 @@ public class StartPage extends JFrame {
         setResizable(false);
         setUndecorated(true);
         setVisible(true);
-        setTitle("Kitaninja");
+        setTitle("KitaNinja");
 
         JPanel parent = new JPanel();
         parent.setBounds(0,0,this.getWidth(),this.getHeight());
@@ -152,4 +161,8 @@ public class StartPage extends JFrame {
         c.dispose();
     }
 
+    private void confirmCreate(){
+        this.dispose();
+        new TownPage();
+    }
 }

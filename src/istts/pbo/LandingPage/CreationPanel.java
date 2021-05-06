@@ -9,6 +9,8 @@ import java.io.IOException;
 
 public class CreationPanel extends JPanel {
     JLabel back;
+    JLabel tombolok;
+    JLabel tombolreset;
     public CreationPanel(){
         init();
 
@@ -98,7 +100,7 @@ public class CreationPanel extends JPanel {
         profile.add(bawah,BorderLayout.SOUTH);
 
         //reset
-        JLabel tombolreset = new JLabel();
+        tombolreset = new JLabel();
         ImageIcon gambarreset = new ImageIcon("src/istts/pbo/res/buttons/Reset.png");
         tombolreset.setOpaque(false);
         tombolreset.setPreferredSize(new Dimension(120,60));
@@ -108,13 +110,14 @@ public class CreationPanel extends JPanel {
         bawah.add(tombolreset);
 
         //ok
-        JLabel tombolok = new JLabel();
+        tombolok = new JLabel();
         ImageIcon gambarok = new ImageIcon("src/istts/pbo/res/buttons/Confirm.png");
         tombolok.setOpaque(false);
         tombolok.setPreferredSize(new Dimension(120,60));
         tombolok.setVerticalAlignment(SwingConstants.TOP);
         tombolok.setHorizontalAlignment(SwingConstants.CENTER);
         tombolok.setIcon(gambarok);
+        tombolok.setCursor(new Cursor(Cursor.HAND_CURSOR));
         bawah.add(tombolok);
 
         JLabel player = new JLabel("Tempet PLayer");
