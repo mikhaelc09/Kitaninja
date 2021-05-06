@@ -2,6 +2,7 @@ package istts.pbo.LandingPage;
 
 import istts.pbo.System.CustomExitConfirm;
 import istts.pbo.System.CustomTitlebar;
+import istts.pbo.musicPlayer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,11 +17,13 @@ public class StartPage extends JFrame {
     CreationPanel create;
     CustomTitlebar title;
     CustomExitConfirm exitConfirm;
+    musicPlayer music;
     private int cx, cy;
 
     public StartPage() {
        init();
-        exitConfirm = new CustomExitConfirm();
+       exitConfirm = new CustomExitConfirm();
+       music = new musicPlayer();
 
        menu.lbNewGame.addMouseListener(new MouseAdapter() {
            @Override
@@ -62,6 +65,14 @@ public class StartPage extends JFrame {
                exitConfirm.setVisible(false);
            }
        });
+
+       menu.lbSetting.addMouseListener(new MouseAdapter() {
+           @Override
+           public void mouseClicked(MouseEvent e) {
+               music.setVisible(true);
+           }
+       });
+
 
     }
 

@@ -8,19 +8,19 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-public class musicPlayer extends JFrame implements LineListener, ChangeListener {
+public class musicPlayer extends JFrame implements LineListener, ChangeListener, Runnable {
     boolean playCompleted = false;
     JLabel current;
     JSlider slider;
     FloatControl aud;
+    Clip clip;
     float range;
-    
     public musicPlayer() {
         setLocation(1200,700);
         setLayout(null);
         setUndecorated(true);
         setSize(new Dimension(300,200));
-        setVisible(true);
+        setVisible(false);
 
         JPanel p = new JPanel();
         p.setBounds(0,0,400,400);
@@ -49,29 +49,22 @@ public class musicPlayer extends JFrame implements LineListener, ChangeListener 
         p.add(lbTitle);
         p.add(slider);
         p.add(current);
+        add(p);
+        setContentPane(p);
 
         File f = new File("src/istts/pbo/res/audio/Soundtrack/MainMenuTheme.wav");
         try{
             AudioInputStream stream = AudioSystem.getAudioInputStream(f);
             AudioFormat format =  stream.getFormat();
             DataLine.Info info = new DataLine.Info(Clip.class,format);
-            Clip clip = (Clip) AudioSystem.getLine(info);
+            clip = (Clip) AudioSystem.getLine(info);
             clip.addLineListener(this);
             clip.open(stream);
             aud = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            range =aud.getMaximum() - aud.getMinimum();
-            aud.setValue(-20);
+            range = -5 - aud.getMinimum();
+            aud.setValue(-5);
             clip.loop(2);
-            System.out.println(aud.getMinimum()+" - "+aud.getMaximum());
-            clip.start();
-            while(!playCompleted){
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            clip.close();
+            System.out.println(aud.getMinimum()+" - "+aud.getMaximum()+" -> "+range );
         } catch (LineUnavailableException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -79,9 +72,6 @@ public class musicPlayer extends JFrame implements LineListener, ChangeListener 
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         }
-
-        add(p);
-        setContentPane(p);
     }
         @Override
         public void update (LineEvent event){
@@ -103,4 +93,16 @@ public class musicPlayer extends JFrame implements LineListener, ChangeListener 
             aud.setValue(gain);
         }
 
+    @Override
+    public void run() {
+        clip.start();
+        while(!playCompleted){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        clip.close();
+    }
 }
