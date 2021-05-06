@@ -48,6 +48,7 @@ public class StartPage extends JFrame {
            }
        });
 
+
        exitConfirm.getLbYes().addMouseListener(new MouseAdapter() {
            @Override
            public void mouseClicked(MouseEvent e) {
