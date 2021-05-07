@@ -48,7 +48,10 @@ public class StartPage extends JFrame {
            @Override
            public void mouseClicked(MouseEvent e) {
                super.mouseClicked(e);
-               confirmCreate();
+               if(create.nama.getText().length()>0) {
+                   confirmCreate();
+                   music.getClip().stop();
+               }
            }
        });
 

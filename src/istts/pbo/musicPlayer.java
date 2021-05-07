@@ -62,7 +62,7 @@ public class musicPlayer extends JFrame implements LineListener, ChangeListener,
             clip.open(stream);
             aud = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             range = -5 - aud.getMinimum();
-            aud.setValue(-50);
+            aud.setValue(-5);
             clip.loop(2);
             System.out.println(aud.getMinimum()+" - "+aud.getMaximum()+" -> "+range );
         } catch (LineUnavailableException e) {
@@ -104,5 +104,9 @@ public class musicPlayer extends JFrame implements LineListener, ChangeListener,
             }
         }
         clip.close();
+    }
+
+    public Clip getClip(){
+        return clip;
     }
 }

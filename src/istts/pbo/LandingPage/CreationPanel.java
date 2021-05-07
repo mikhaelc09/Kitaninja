@@ -14,6 +14,13 @@ public class CreationPanel extends JPanel {
     JLabel tombolok;
     JLabel tombolreset;
     JTextField nama;
+    ImageIcon descNin = new ImageIcon("src/istts/pbo/res/DescNinjutsu.png");
+    ImageIcon descQig = new ImageIcon("src/istts/pbo/res/DescQiqong.png");
+    ImageIcon descTai = new ImageIcon("src/istts/pbo/res/DescTaijutsu.png");
+    ImageIcon spriteNin = new ImageIcon("src/istts/pbo/res/sprites/ninjutsu_big.gif");
+    ImageIcon spriteQig = new ImageIcon("src/istts/pbo/res/sprites/qigong_big.gif");
+    ImageIcon spriteTai = new ImageIcon("src/istts/pbo/res/sprites/taijutsu_big.gif");
+    int classPicked = 1;
     public CreationPanel(){
         init();
 
@@ -78,7 +85,7 @@ public class CreationPanel extends JPanel {
 
         //class1
         JLabel tombolclass1 = new JLabel();
-        ImageIcon gambarclass1 = new ImageIcon("src/istts/pbo/res/IconSkill/Hadouken.png");
+        ImageIcon gambarclass1 = new ImageIcon("src/istts/pbo/res/IconSkill/Taijutsu-FalconPunch.png");
         tombolclass1.setOpaque(false);
         tombolclass1.setPreferredSize(new Dimension(120,120));
         tombolclass1.setVerticalAlignment(SwingConstants.CENTER);
@@ -89,7 +96,7 @@ public class CreationPanel extends JPanel {
 
         //class2
         JLabel tombolclass2 = new JLabel();
-        ImageIcon gambarclass2 = new ImageIcon("src/istts/pbo/res/IconSkill/FalconPunch.png");
+        ImageIcon gambarclass2 = new ImageIcon("src/istts/pbo/res/IconSkill/Ninjutsu-ShurikenThrow.png");
         tombolclass2.setOpaque(false);
         tombolclass2.setPreferredSize(new Dimension(120,120));
         tombolclass2.setVerticalAlignment(SwingConstants.CENTER);
@@ -100,7 +107,7 @@ public class CreationPanel extends JPanel {
 
         //class3
         JLabel tombolclass3 = new JLabel();
-        ImageIcon gambarclass3 = new ImageIcon("src/istts/pbo/res/IconSkill/ShurikenThrow.png");
+        ImageIcon gambarclass3 = new ImageIcon("src/istts/pbo/res/IconSkill/Qiqong-Kamehameha.png");
         tombolclass3.setOpaque(false);
         tombolclass3.setPreferredSize(new Dimension(120,120));
         tombolclass3.setVerticalAlignment(SwingConstants.CENTER);
@@ -140,11 +147,28 @@ public class CreationPanel extends JPanel {
         tombolok.setCursor(new Cursor(Cursor.HAND_CURSOR));
         bawah.add(tombolok);
 
-        JLabel player = new JLabel("Tempet PLayer");
+        JPanel player = new JPanel();
         player.setBounds(50,150,500,450);
+        player.setLayout(null);
         player.setBackground(new Color(160,160,200));
         player.setOpaque(true);
         add(player);
+
+        JLabel gambarplayer = new JLabel("");
+        gambarplayer.setPreferredSize(new Dimension(250,200));
+        gambarplayer.setBackground(new Color(255,160,200));
+        gambarplayer.setBounds(175,30,150,170);
+        gambarplayer.setIcon(spriteTai);
+        gambarplayer.setOpaque(false);
+        player.add(gambarplayer);
+
+        JLabel deskripsi = new JLabel("");
+        deskripsi.setPreferredSize(new Dimension(450,195));
+        deskripsi.setBackground(new Color(100,160,200));
+        deskripsi.setBounds(25,220,450,200);
+        deskripsi.setIcon(descTai);
+        deskripsi.setOpaque(false);
+        player.add(deskripsi);
 
         tombolreset.addMouseListener(new MouseAdapter() {
             @Override
@@ -152,6 +176,34 @@ public class CreationPanel extends JPanel {
                 nama.setText("");
             }
         });
+
+        tombolclass1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                deskripsi.setIcon(descTai);
+                gambarplayer.setIcon(spriteTai);
+                classPicked = 1;
+            }
+        });
+
+        tombolclass2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                deskripsi.setIcon(descNin);
+                gambarplayer.setIcon(spriteNin);
+                classPicked = 2;
+            }
+        });
+
+        tombolclass3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                deskripsi.setIcon(descQig);
+                gambarplayer.setIcon(spriteQig);
+                classPicked = 3;
+            }
+        });
+
 
     }
 
