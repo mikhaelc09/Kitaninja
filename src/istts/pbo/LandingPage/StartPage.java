@@ -5,26 +5,44 @@ import istts.pbo.System.CustomExitConfirm;
 import istts.pbo.System.CustomTitlebar;
 import istts.pbo.musicPlayer;
 
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.net.MalformedURLException;
 import static istts.pbo.Main.*;
+import java.applet.Applet;
+import java.applet.AudioClip;
+import java.awt.event.*;
 
 
-public class StartPage extends JFrame {
+
+public class StartPage extends JFrame{
+
     MenuPanel menu;
     CreationPanel create;
     CustomTitlebar title;
     CustomExitConfirm exitConfirm;
     musicPlayer music;
     private int cx, cy;
+    private Clip clipNameClip;
+    private AudioInputStream clipNameAIS;
+
+
+
+    /*URL soundbyte = new File("src/istts/pbo/res/audio/sfx/yooooooooooo (3).wav").toURI().toURL();
+        java.applet.AudioClip clip = java.applet.Applet.newAudioClip(soundbyte);*/
 
     public StartPage() {
-       init();
+        init();
        exitConfirm = new CustomExitConfirm();
        music = new musicPlayer();
+
 
        menu.lbNewGame.addMouseListener(new MouseAdapter() {
            @Override
@@ -32,7 +50,31 @@ public class StartPage extends JFrame {
                super.mouseClicked(e);
                menu.setVisible(false);
                create.setVisible(true);
+               String soundName = "src/istts/pbo/res/audio/sfx/yooooooooooo (3).wav";
+               AudioInputStream audioInputStream = null;
+               try {
+                   audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+               } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                   unsupportedAudioFileException.printStackTrace();
+               } catch (IOException ioException) {
+                   ioException.printStackTrace();
+               }
+               Clip clip = null;
+               try {
+                   clip = AudioSystem.getClip();
+               } catch (LineUnavailableException lineUnavailableException) {
+                   lineUnavailableException.printStackTrace();
+               }
+               try {
+                   clip.open(audioInputStream);
+               } catch (LineUnavailableException lineUnavailableException) {
+                   lineUnavailableException.printStackTrace();
+               } catch (IOException ioException) {
+                   ioException.printStackTrace();
+               }
+               clip.start();
            }
+
        });
 
        create.back.addMouseListener(new MouseAdapter() {
@@ -41,6 +83,7 @@ public class StartPage extends JFrame {
                super.mouseClicked(e);
                menu.setVisible(true);
                create.setVisible(false);
+
            }
        });
 
@@ -60,6 +103,29 @@ public class StartPage extends JFrame {
            public void mouseClicked(MouseEvent e) {
                super.mouseClicked(e);
                exitConfirm.setVisible(true);
+               String soundName = "src/istts/pbo/res/audio/sfx/yooooooooooo (3).wav";
+               AudioInputStream audioInputStream = null;
+               try {
+                   audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+               } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                   unsupportedAudioFileException.printStackTrace();
+               } catch (IOException ioException) {
+                   ioException.printStackTrace();
+               }
+               Clip clip = null;
+               try {
+                   clip = AudioSystem.getClip();
+               } catch (LineUnavailableException lineUnavailableException) {
+                   lineUnavailableException.printStackTrace();
+               }
+               try {
+                   clip.open(audioInputStream);
+               } catch (LineUnavailableException lineUnavailableException) {
+                   lineUnavailableException.printStackTrace();
+               } catch (IOException ioException) {
+                   ioException.printStackTrace();
+               }
+               clip.start();
            }
        });
 
