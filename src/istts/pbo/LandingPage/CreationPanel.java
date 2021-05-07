@@ -14,6 +14,13 @@ public class CreationPanel extends JPanel {
     JLabel tombolok;
     JLabel tombolreset;
     JTextField nama;
+    ImageIcon descNin = new ImageIcon("src/istts/pbo/res/DescNinjutsu.png");
+    ImageIcon descQig = new ImageIcon("src/istts/pbo/res/DescQiqong.png");
+    ImageIcon descTai = new ImageIcon("src/istts/pbo/res/DescTaijutsu.png");
+    ImageIcon spriteNin = new ImageIcon("src/istts/pbo/res/sprites/ninjutsu_big.gif");
+    ImageIcon spriteQig = new ImageIcon("src/istts/pbo/res/sprites/qigong_big.gif");
+    ImageIcon spriteTai = new ImageIcon("src/istts/pbo/res/sprites/taijutsu_big.gif");
+    int classPicked = 1;
     public CreationPanel(){
         init();
 
@@ -142,21 +149,25 @@ public class CreationPanel extends JPanel {
 
         JPanel player = new JPanel();
         player.setBounds(50,150,500,450);
-        player.setLayout(new FlowLayout(FlowLayout.CENTER,0,20));
+        player.setLayout(null);
         player.setBackground(new Color(160,160,200));
         player.setOpaque(true);
         add(player);
 
-        JLabel gambarplayer = new JLabel("Tempet gambar");
+        JLabel gambarplayer = new JLabel("");
         gambarplayer.setPreferredSize(new Dimension(250,200));
         gambarplayer.setBackground(new Color(255,160,200));
-        gambarplayer.setOpaque(true);
+        gambarplayer.setBounds(175,30,150,170);
+        gambarplayer.setIcon(spriteTai);
+        gambarplayer.setOpaque(false);
         player.add(gambarplayer);
 
-        JLabel deskripsi = new JLabel("Deskripsi");
+        JLabel deskripsi = new JLabel("");
         deskripsi.setPreferredSize(new Dimension(450,195));
         deskripsi.setBackground(new Color(100,160,200));
-        deskripsi.setOpaque(true);
+        deskripsi.setBounds(25,220,450,200);
+        deskripsi.setIcon(descTai);
+        deskripsi.setOpaque(false);
         player.add(deskripsi);
 
         tombolreset.addMouseListener(new MouseAdapter() {
@@ -165,6 +176,34 @@ public class CreationPanel extends JPanel {
                 nama.setText("");
             }
         });
+
+        tombolclass1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                deskripsi.setIcon(descTai);
+                gambarplayer.setIcon(spriteTai);
+                classPicked = 1;
+            }
+        });
+
+        tombolclass2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                deskripsi.setIcon(descNin);
+                gambarplayer.setIcon(spriteNin);
+                classPicked = 2;
+            }
+        });
+
+        tombolclass3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                deskripsi.setIcon(descQig);
+                gambarplayer.setIcon(spriteQig);
+                classPicked = 3;
+            }
+        });
+
 
     }
 

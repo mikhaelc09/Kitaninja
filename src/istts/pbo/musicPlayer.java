@@ -105,4 +105,8 @@ public class musicPlayer extends JFrame implements LineListener, ChangeListener,
         }
         clip.close();
     }
+
+    public Clip getClip(){
+        return clip;
+    }
 }
