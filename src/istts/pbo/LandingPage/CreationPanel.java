@@ -78,7 +78,7 @@ public class CreationPanel extends JPanel {
 
         //class1
         JLabel tombolclass1 = new JLabel();
-        ImageIcon gambarclass1 = new ImageIcon("src/istts/pbo/res/IconSkill/Hadouken.png");
+        ImageIcon gambarclass1 = new ImageIcon("src/istts/pbo/res/IconSkill/Taijutsu-FalconPunch.png");
         tombolclass1.setOpaque(false);
         tombolclass1.setPreferredSize(new Dimension(120,120));
         tombolclass1.setVerticalAlignment(SwingConstants.CENTER);
@@ -89,7 +89,7 @@ public class CreationPanel extends JPanel {
 
         //class2
         JLabel tombolclass2 = new JLabel();
-        ImageIcon gambarclass2 = new ImageIcon("src/istts/pbo/res/IconSkill/FalconPunch.png");
+        ImageIcon gambarclass2 = new ImageIcon("src/istts/pbo/res/IconSkill/Ninjutsu-ShurikenThrow.png");
         tombolclass2.setOpaque(false);
         tombolclass2.setPreferredSize(new Dimension(120,120));
         tombolclass2.setVerticalAlignment(SwingConstants.CENTER);
@@ -100,7 +100,7 @@ public class CreationPanel extends JPanel {
 
         //class3
         JLabel tombolclass3 = new JLabel();
-        ImageIcon gambarclass3 = new ImageIcon("src/istts/pbo/res/IconSkill/ShurikenThrow.png");
+        ImageIcon gambarclass3 = new ImageIcon("src/istts/pbo/res/IconSkill/Qiqong-Kamehameha.png");
         tombolclass3.setOpaque(false);
         tombolclass3.setPreferredSize(new Dimension(120,120));
         tombolclass3.setVerticalAlignment(SwingConstants.CENTER);
