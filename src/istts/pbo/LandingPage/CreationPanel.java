@@ -190,27 +190,31 @@ public class CreationPanel extends JPanel {
                 classPicked = 1;
                 String soundName = "src/istts/pbo/res/audio/Characther_Voices/Kenshiro.wav";
                 AudioInputStream audioInputStream = null;
-                try {
-                    audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
-                } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
-                    unsupportedAudioFileException.printStackTrace();
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
-                Clip clip = null;
-                try {
-                    clip = AudioSystem.getClip();
-                } catch (LineUnavailableException lineUnavailableException) {
-                    lineUnavailableException.printStackTrace();
-                }
-                try {
-                    clip.open(audioInputStream);
-                } catch (LineUnavailableException lineUnavailableException) {
-                    lineUnavailableException.printStackTrace();
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
-                clip.start();
+
+
+                    try {
+                        audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+                    } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                        unsupportedAudioFileException.printStackTrace();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                    Clip kenshiro = null;
+                    try {
+                        kenshiro = AudioSystem.getClip();
+                    } catch (LineUnavailableException lineUnavailableException) {
+                        lineUnavailableException.printStackTrace();
+                    }
+                    try {
+                        kenshiro.open(audioInputStream);
+                    } catch (LineUnavailableException lineUnavailableException) {
+                        lineUnavailableException.printStackTrace();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                    kenshiro.start();
+
+
             }
         });
 
@@ -222,27 +226,32 @@ public class CreationPanel extends JPanel {
                 classPicked = 2;
                 String soundName = "src/istts/pbo/res/audio/Characther_Voices/Ussop.wav";
                 AudioInputStream audioInputStream = null;
-                try {
-                    audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
-                } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
-                    unsupportedAudioFileException.printStackTrace();
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
-                Clip clip = null;
-                try {
-                    clip = AudioSystem.getClip();
-                } catch (LineUnavailableException lineUnavailableException) {
-                    lineUnavailableException.printStackTrace();
-                }
-                try {
-                    clip.open(audioInputStream);
-                } catch (LineUnavailableException lineUnavailableException) {
-                    lineUnavailableException.printStackTrace();
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
-                clip.start();
+
+                    try {
+                        audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+                    } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                        unsupportedAudioFileException.printStackTrace();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                    Clip ussop = null;
+                    try {
+                        ussop = AudioSystem.getClip();
+                    } catch (LineUnavailableException lineUnavailableException) {
+                        lineUnavailableException.printStackTrace();
+                    }
+                    try {
+                        ussop.open(audioInputStream);
+                    } catch (LineUnavailableException lineUnavailableException) {
+                        lineUnavailableException.printStackTrace();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                    ussop.start();
+
+
+
+
             }
         });
 
