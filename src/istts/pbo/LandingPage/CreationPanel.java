@@ -1,6 +1,7 @@
 package istts.pbo.LandingPage;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -21,6 +22,10 @@ public class CreationPanel extends JPanel {
     ImageIcon spriteQig = new ImageIcon("src/istts/pbo/res/sprites/qigong_big.gif");
     ImageIcon spriteTai = new ImageIcon("src/istts/pbo/res/sprites/taijutsu_big.gif");
     int classPicked = 1;
+
+    private Clip clipNameClip;
+    private AudioInputStream clipNameAIS;
+
     public CreationPanel(){
         init();
 
@@ -183,6 +188,29 @@ public class CreationPanel extends JPanel {
                 deskripsi.setIcon(descTai);
                 gambarplayer.setIcon(spriteTai);
                 classPicked = 1;
+                String soundName = "src/istts/pbo/res/audio/Characther_Voices/Kenshiro.wav";
+                AudioInputStream audioInputStream = null;
+                try {
+                    audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+                } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                    unsupportedAudioFileException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                Clip clip = null;
+                try {
+                    clip = AudioSystem.getClip();
+                } catch (LineUnavailableException lineUnavailableException) {
+                    lineUnavailableException.printStackTrace();
+                }
+                try {
+                    clip.open(audioInputStream);
+                } catch (LineUnavailableException lineUnavailableException) {
+                    lineUnavailableException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                clip.start();
             }
         });
 
@@ -192,6 +220,29 @@ public class CreationPanel extends JPanel {
                 deskripsi.setIcon(descNin);
                 gambarplayer.setIcon(spriteNin);
                 classPicked = 2;
+                String soundName = "src/istts/pbo/res/audio/Characther_Voices/Ussop.wav";
+                AudioInputStream audioInputStream = null;
+                try {
+                    audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+                } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                    unsupportedAudioFileException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                Clip clip = null;
+                try {
+                    clip = AudioSystem.getClip();
+                } catch (LineUnavailableException lineUnavailableException) {
+                    lineUnavailableException.printStackTrace();
+                }
+                try {
+                    clip.open(audioInputStream);
+                } catch (LineUnavailableException lineUnavailableException) {
+                    lineUnavailableException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                clip.start();
             }
         });
 
