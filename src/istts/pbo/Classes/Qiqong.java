@@ -1,8 +1,14 @@
 package istts.pbo.Classes;
 
+import istts.pbo.Players.skilltrees.SkillTree;
+import istts.pbo.Players.skilltrees.skills.Skill;
+
 public class Qiqong extends Job {
+    SkillTree<Skill> skilltree = new SkillTree<>();
+
     public Qiqong() {
         super(70,25,15,150,10,1,0,0,"qiqong");
+        skilltree.addDMG("Hadouken",20,0,0,20);
     }
 }
 class Fire extends Qiqong{
@@ -13,7 +19,6 @@ class Fire extends Qiqong{
         this.mana=250;
         this.speed=10;
         this.classname="Fire";
-
     }
 }
 
@@ -25,7 +30,6 @@ class Water extends Qiqong{
         this.mana=200;
         this.speed=10;
         this.classname="Water";
-
     }
 }
 
