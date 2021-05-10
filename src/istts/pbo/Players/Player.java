@@ -5,6 +5,7 @@ import istts.pbo.Players.skilltrees.skills.Skill;
 import java.util.ArrayList;
 
 public class Player {
+    
     private String name;
     private int gold;
     private int level;

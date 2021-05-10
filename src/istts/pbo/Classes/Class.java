@@ -8,6 +8,8 @@ public class Class {
     int speed;
     int lvl;
     int acc;
+    int critrate;
+    String classname;
 
     public Class(int health, int attack, int def, int mana, int speed, int lvl, int acc, int critrate, String classname) {
         this.health = health;
@@ -20,9 +22,6 @@ public class Class {
         this.critrate = critrate;
         this.classname = classname;
     }
-
-    int critrate;
-    String classname;
 
     public int getAcc() {
         return acc;
