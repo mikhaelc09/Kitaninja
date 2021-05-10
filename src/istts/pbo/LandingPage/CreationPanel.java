@@ -261,6 +261,30 @@ public class CreationPanel extends JPanel {
                 deskripsi.setIcon(descQig);
                 gambarplayer.setIcon(spriteQig);
                 classPicked = 3;
+                String soundName = "src/istts/pbo/res/audio/Characther_Voices/Goku.wav";
+                AudioInputStream audioInputStream = null;
+
+                try {
+                    audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+                } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                    unsupportedAudioFileException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                Clip goku = null;
+                try {
+                    goku = AudioSystem.getClip();
+                } catch (LineUnavailableException lineUnavailableException) {
+                    lineUnavailableException.printStackTrace();
+                }
+                try {
+                    goku.open(audioInputStream);
+                } catch (LineUnavailableException lineUnavailableException) {
+                    lineUnavailableException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                goku.start();
             }
         });
 
