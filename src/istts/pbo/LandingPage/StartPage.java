@@ -163,6 +163,12 @@ public class StartPage extends JFrame{
            }
        });
 
+       music.getP().addMouseListener(new MouseAdapter() {
+           @Override
+           public void mouseClicked(MouseEvent e) {
+               music.setVisible(false);
+           }
+       });
 
     }
 

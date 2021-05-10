@@ -15,14 +15,15 @@ public class musicPlayer extends JFrame implements LineListener, ChangeListener,
     FloatControl aud;
     Clip clip;
     float range;
+    JPanel p;
     public musicPlayer() {
-        setLocation(1200,700);
+        setLocationRelativeTo(null);
         setLayout(null);
         setUndecorated(true);
         setSize(new Dimension(300,200));
         setVisible(false);
 
-        JPanel p = new JPanel();
+        p = new JPanel();
         p.setBounds(0,0,400,400);
         p.setBackground(new Color(255,222,70));
         p.setLayout(null);
@@ -109,4 +110,6 @@ public class musicPlayer extends JFrame implements LineListener, ChangeListener,
     public Clip getClip(){
         return clip;
     }
+
+    public JPanel getP(){return p;};
 }
