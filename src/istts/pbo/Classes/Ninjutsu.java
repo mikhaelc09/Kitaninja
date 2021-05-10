@@ -1,15 +1,12 @@
 package istts.pbo.Classes;
 
-public class ninjutsu extends Class{
-    public ninjutsu(int health, int attack, int def, int mana, int speed, int lvl, int acc, int critrate, String classname) {
-        super(health, attack, def, mana, speed, lvl, acc, critrate, classname);
-    }
-    public ninjutsu(){
+public class Ninjutsu extends Job {
+    public Ninjutsu(){
         super(80,25,15,0,30,1,100,0,"ninjutsu");
     }
 }
-class Kenjutsu extends ninjutsu {
-    public Kenjutsu(Class a){
+class Kenjutsu extends Ninjutsu {
+    public Kenjutsu(Job a){
         this.health=80;
         this.attack=25;
         this.def=15;
@@ -20,8 +17,8 @@ class Kenjutsu extends ninjutsu {
     }
 }
 
-class Shurikenjutsu extends ninjutsu{
-    public Shurikenjutsu(Class b){
+class Shurikenjutsu extends Ninjutsu {
+    public Shurikenjutsu(Job b){
         this.health=85;
         this.attack=30;
         this.def=15;
@@ -32,8 +29,8 @@ class Shurikenjutsu extends ninjutsu{
     }
 }
 
-class Kayakujutsu extends ninjutsu{
-    public Kayakujutsu(Class c){
+class Kayakujutsu extends Ninjutsu {
+    public Kayakujutsu(Job c){
         this.health=90;
         this.attack=30;
         this.def=15;
@@ -44,8 +41,8 @@ class Kayakujutsu extends ninjutsu{
     }
 }
 
-class Shinobi extends ninjutsu{
-    public Shinobi(Class d){
+class Shinobi extends Ninjutsu {
+    public Shinobi(Job d){
         this.health=100;
         this.attack=25;
         this.def=15;

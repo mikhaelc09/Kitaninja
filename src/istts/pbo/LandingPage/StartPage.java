@@ -1,6 +1,10 @@
 package istts.pbo.LandingPage;
 
+import istts.pbo.Classes.Ninjutsu;
+import istts.pbo.Classes.Qiqong;
+import istts.pbo.Classes.Taijutsu;
 import istts.pbo.GamePage.TownPage;
+import istts.pbo.Players.Player;
 import istts.pbo.System.CustomExitConfirm;
 import istts.pbo.System.CustomTitlebar;
 import istts.pbo.musicPlayer;
@@ -91,8 +95,16 @@ public class StartPage extends JFrame{
            @Override
            public void mouseClicked(MouseEvent e) {
                super.mouseClicked(e);
+               Player player=null;
                if(create.nama.getText().length()>0) {
-                   confirmCreate();
+                   if (create.classPicked==1){
+                       player = new Player(create.getNama(),0,1,0,new Taijutsu());
+                   }else if (create.classPicked==2){
+                       player = new Player(create.getNama(),0,1,0,new Ninjutsu());
+                   }else if (create.classPicked==3){
+                       player = new Player(create.getNama(),0,1,0,new Qiqong());
+                   }
+                   confirmCreate(player);
                    music.getClip().stop();
                }
            }
@@ -230,8 +242,8 @@ public class StartPage extends JFrame{
         c.dispose();
     }
 
-    private void confirmCreate(){
+    private void confirmCreate(Player player){
         this.dispose();
-        new TownPage();
+        new TownPage(player);
     }
 }

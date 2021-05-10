@@ -1,15 +1,12 @@
 package istts.pbo.Classes;
 
-public class taijutsu extends Class{
-    public taijutsu(int health, int attack, int def, int mana, int speed, int lvl, int acc, int critrate, String classname) {
-        super(health, attack, def, mana, speed, lvl, acc, critrate, classname);
-    }
-    public taijutsu(){
+public class Taijutsu extends Job {
+    public Taijutsu(){
         super(100,30,20,50,15,1,0,0,"Taijutsu");
     }
 }
-class Taekwondo extends taijutsu{
-    public Taekwondo(Class ab){
+class Taekwondo extends Taijutsu {
+    public Taekwondo(Job ab){
         this.health=90;
         this.attack=30;
         this.def=20;
@@ -20,8 +17,8 @@ class Taekwondo extends taijutsu{
     }
 }
 
-class Kungfu extends taijutsu{
-    public Kungfu(Class ac){
+class Kungfu extends Taijutsu {
+    public Kungfu(Job ac){
         this.health=110;
         this.attack=30;
         this.def=15;
@@ -32,8 +29,8 @@ class Kungfu extends taijutsu{
     }
 }
 
-class Aikido extends taijutsu{
-    public Aikido(Class ad){
+class Aikido extends Taijutsu {
+    public Aikido(Job ad){
         this.health=140;
         this.attack=25;
         this.def=35;
@@ -44,8 +41,8 @@ class Aikido extends taijutsu{
     }
 }
 
-class Sumo extends taijutsu{
-    public Sumo(Class ae){
+class Sumo extends Taijutsu {
+    public Sumo(Job ae){
         this.health=180;
         this.attack=15;
         this.def=35;

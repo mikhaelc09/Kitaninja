@@ -1,5 +1,6 @@
 package istts.pbo.GamePage;
 
+import istts.pbo.Players.Player;
 import istts.pbo.System.CustomTitlebar;
 
 import javax.swing.*;
@@ -14,7 +15,9 @@ public class TownPage extends JFrame {
     private int cx, cy;
     CustomTitlebar title;
     TownPanel town;
-    public TownPage(){
+    Player player;
+    public TownPage(Player player){
+        this.player = player;
         init();
     }
 
@@ -41,7 +44,7 @@ public class TownPage extends JFrame {
         title = new CustomTitlebar();
         title.setBounds(0,0,getWidth(),40);
 
-        town = new TownPanel();
+        town = new TownPanel(player);
         town.setBounds(0,40,this.getWidth(),this.getHeight());
 
         parent.add(title);

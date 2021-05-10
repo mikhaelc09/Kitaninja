@@ -1,22 +1,23 @@
 package istts.pbo.Players;
 
+import istts.pbo.Classes.Job;
 import istts.pbo.Players.skilltrees.skills.Skill;
 
 import java.util.ArrayList;
 
 public class Player {
-    
+
     private String name;
     private int gold;
     private int level;
     private int xp;
-    private Class playerClass;
+    private Job playerClass;
     private Equipment equipment;
     private ArrayList<Item> items;
     private ArrayList<Skill> unlockedSkills;
     private ArrayList<Skill> equippedSkills;
 
-    public Player(String name, int gold, int level, int xp, Class playerClass) {
+    public Player(String name, int gold, int level, int xp, Job playerClass) {
         this.name = name;
         this.gold = gold;
         this.level = level;
@@ -60,11 +61,11 @@ public class Player {
         this.xp = xp;
     }
 
-    public Class getPlayerClass() {
+    public Job getPlayerClass() {
         return playerClass;
     }
 
-    public void setPlayerClass(Class playerClass) {
+    public void setPlayerClass(Job playerClass) {
         this.playerClass = playerClass;
     }
 

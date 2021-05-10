@@ -1,6 +1,6 @@
 package istts.pbo.Classes;
 
-public class Class {
+public class Job {
     int health;
     int attack;
     int def;
@@ -11,7 +11,7 @@ public class Class {
     int critrate;
     String classname;
 
-    public Class(int health, int attack, int def, int mana, int speed, int lvl, int acc, int critrate, String classname) {
+    public Job(int health, int attack, int def, int mana, int speed, int lvl, int acc, int critrate, String classname) {
         this.health = health;
         this.attack = attack;
         this.def = def;

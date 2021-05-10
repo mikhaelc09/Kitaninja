@@ -291,6 +291,10 @@ public class CreationPanel extends JPanel {
 
     }
 
+    public String getNama(){
+        return nama.getText();
+    }
+
     class Profile extends JPanel{
         public Profile(){
             this.setLayout(new BorderLayout(0,30));

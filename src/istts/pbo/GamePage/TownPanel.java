@@ -1,5 +1,7 @@
 package istts.pbo.GamePage;
 
+import istts.pbo.Players.Player;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +17,10 @@ public class TownPanel extends JPanel {
     JLabel lbSmith;
     JLabel lbBattle;
     JLabel lbDojo;
-    public TownPanel(){
+    Player player;
+    JLabel profil;
+    public TownPanel(Player player){
+        this.player = player;
         init();
     }
 
@@ -43,10 +48,16 @@ public class TownPanel extends JPanel {
         lbSmith.setIcon(new ImageIcon("src/istts/pbo/res/buttons/Smith.png"));
         lbSmith.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
+        profil = new JLabel(player.getName());
+        profil.setBounds(20,0,200,200);
+        profil.setOpaque(true);
+        profil.setBackground(Color.cyan);
+
         add(lbShop);
         add(lbSmith);
         add(lbDojo);
         add(lbBattle);
+        add(profil);
     }
 
     protected void paintComponent(Graphics g) {
