@@ -49,9 +49,8 @@ public class TownPanel extends JPanel {
         lbSmith.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         profil = new JLabel(player.getName());
-        profil.setBounds(20,0,200,200);
-        profil.setOpaque(true);
-        profil.setBackground(Color.cyan);
+        profil.setBounds(0,0,200,120);
+        profil.setIcon(new ImageIcon("src/istts/pbo/res/papanProfile.png"));
 
         add(lbShop);
         add(lbSmith);
