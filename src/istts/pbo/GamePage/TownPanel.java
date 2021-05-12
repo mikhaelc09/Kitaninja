@@ -1,6 +1,8 @@
 package istts.pbo.GamePage;
 
 import istts.pbo.Players.Player;
+import istts.pbo.musicPlayer;
+import istts.pbo.musicPlayer2;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -8,7 +10,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
+import static istts.pbo.Main.*;
 import static istts.pbo.Main.SHEIGHT;
 import static istts.pbo.Main.SWIDTH;
 
@@ -19,6 +21,7 @@ public class TownPanel extends JPanel {
     JLabel lbDojo;
     Player player;
     JLabel profil;
+    musicPlayer2 music;
     public TownPanel(Player player){
         this.player = player;
         init();
@@ -27,6 +30,7 @@ public class TownPanel extends JPanel {
     private void init(){
         setBackground(Color.BLACK);
         setLayout(null);
+        music = new musicPlayer2();
 
         lbShop = new JLabel();
         lbShop.setBounds(1110,415, 120,120);
