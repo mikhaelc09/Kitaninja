@@ -17,6 +17,7 @@ public class TownPage extends JFrame {
     CustomTitlebar title;
     TownPanel town;
     Player player;
+    ProfilePage profil;
     public TownPage(Player player){
         this.player = player;
         init();
@@ -25,6 +26,14 @@ public class TownPage extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 backMainMenu();
+            }
+        });
+
+        town.profil.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                profil.setVisible(true);
+                town.setVisible(false);
             }
         });
     }
@@ -53,10 +62,15 @@ public class TownPage extends JFrame {
         title.setBounds(0,0,getWidth(),40);
 
         town = new TownPanel(player);
+        profil = new ProfilePage();
         town.setBounds(0,40,this.getWidth(),this.getHeight());
+        profil.setBounds(0,40,this.getWidth(),this.getHeight());
+
 
         parent.add(title);
         parent.add(town);
+        parent.add(profil);
+        profil.setVisible(false);
 
         title.addMouseListener(new MouseAdapter() {
             @Override
