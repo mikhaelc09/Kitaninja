@@ -5,6 +5,7 @@ import istts.pbo.musicPlayer;
 import istts.pbo.musicPlayer2;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -96,6 +97,127 @@ public class TownPanel extends JPanel {
         add(lvl);
         add(exp);
         add(profil);
+
+        lbDojo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                String soundName = "src/istts/pbo/res/audio/sfx/Dojo.wav";
+                AudioInputStream audioInputStream = null;
+
+                try {
+                    audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+                } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                    unsupportedAudioFileException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                Clip dojosound = null;
+                try {
+                    dojosound = AudioSystem.getClip();
+                } catch (LineUnavailableException lineUnavailableException) {
+                    lineUnavailableException.printStackTrace();
+                }
+                try {
+                    dojosound.open(audioInputStream);
+                } catch (LineUnavailableException lineUnavailableException) {
+                    lineUnavailableException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                dojosound.start();
+            }
+        });
+        lbSmith.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                String soundName = "src/istts/pbo/res/audio/sfx/BlacksmithButton.wav";
+                AudioInputStream audioInputStream = null;
+
+                try {
+                    audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+                } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                    unsupportedAudioFileException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                Clip blacksmithsound = null;
+                try {
+                    blacksmithsound = AudioSystem.getClip();
+                } catch (LineUnavailableException lineUnavailableException) {
+                    lineUnavailableException.printStackTrace();
+                }
+                try {
+                    blacksmithsound.open(audioInputStream);
+                } catch (LineUnavailableException lineUnavailableException) {
+                    lineUnavailableException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                blacksmithsound.start();
+            }
+        });
+        lbBattle.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                String soundName = "src/istts/pbo/res/audio/sfx/BattleButton.wav";
+                AudioInputStream audioInputStream = null;
+
+                try {
+                    audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+                } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                    unsupportedAudioFileException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                Clip battlesound= null;
+                try {
+                    battlesound = AudioSystem.getClip();
+                } catch (LineUnavailableException lineUnavailableException) {
+                    lineUnavailableException.printStackTrace();
+                }
+                try {
+                    battlesound.open(audioInputStream);
+                } catch (LineUnavailableException lineUnavailableException) {
+                    lineUnavailableException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                battlesound.start();
+            }
+        });
+        lbShop.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                String soundName = "src/istts/pbo/res/audio/sfx/Welcome.wav";
+                AudioInputStream audioInputStream = null;
+
+                try {
+                    audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+                } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                    unsupportedAudioFileException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                Clip shopsound= null;
+                try {
+                    shopsound = AudioSystem.getClip();
+                } catch (LineUnavailableException lineUnavailableException) {
+                    lineUnavailableException.printStackTrace();
+                }
+                try {
+                    shopsound.open(audioInputStream);
+                } catch (LineUnavailableException lineUnavailableException) {
+                    lineUnavailableException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                shopsound.start();
+            }
+        });
     }
 
     protected void paintComponent(Graphics g) {
