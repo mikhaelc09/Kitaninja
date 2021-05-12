@@ -6,18 +6,16 @@ public class Job {
     int def;
     int mana;
     int speed;
-    int lvl;
     int acc;
     int critrate;
     String classname;
 
-    public Job(int health, int attack, int def, int mana, int speed, int lvl, int acc, int critrate, String classname) {
+    public Job(int health, int attack, int def, int mana, int speed, int acc, int critrate, String classname) {
         this.health = health;
         this.attack = attack;
         this.def = def;
         this.mana = mana;
         this.speed = speed;
-        this.lvl = lvl;
         this.acc = acc;
         this.critrate = critrate;
         this.classname = classname;
@@ -77,14 +75,6 @@ public class Job {
 
     public void setSpeed(int speed) {
         this.speed = speed;
-    }
-
-    public int getLvl() {
-        return lvl;
-    }
-
-    public void setLvl(int lvl) {
-        this.lvl = lvl;
     }
 
     public String getClassname() {

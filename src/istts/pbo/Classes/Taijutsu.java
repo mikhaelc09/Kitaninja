@@ -2,7 +2,7 @@ package istts.pbo.Classes;
 
 public class Taijutsu extends Job {
     public Taijutsu(){
-        super(100,30,20,50,15,1,0,0,"Taijutsu");
+        super(100,30,20,50,15,0,0,"Taijutsu");
     }
 }
 class Taekwondo extends Taijutsu {

@@ -1,5 +1,6 @@
 package istts.pbo.GamePage;
 
+import istts.pbo.LandingPage.StartPage;
 import istts.pbo.Players.Player;
 import istts.pbo.System.CustomTitlebar;
 
@@ -19,6 +20,13 @@ public class TownPage extends JFrame {
     public TownPage(Player player){
         this.player = player;
         init();
+
+        town.back.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                backMainMenu();
+            }
+        });
     }
 
     private void init(){
@@ -75,6 +83,11 @@ public class TownPage extends JFrame {
         this.pack();
     }
 
+    private void backMainMenu(){
+        this.dispose();
+        new StartPage();
+    }
+
     private void exit(){
         System.exit(0);
     }
@@ -87,4 +100,5 @@ public class TownPage extends JFrame {
     private void topMouseDragged(MouseEvent e){
         this.setLocation(e.getXOnScreen()-cx, e.getYOnScreen()-cy);
     }
+
 }

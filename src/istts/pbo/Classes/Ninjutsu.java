@@ -2,7 +2,7 @@ package istts.pbo.Classes;
 
 public class Ninjutsu extends Job {
     public Ninjutsu(){
-        super(80,25,15,0,30,1,100,0,"ninjutsu");
+        super(80,25,15,0,30,100,0,"ninjutsu");
     }
 }
 class Kenjutsu extends Ninjutsu {

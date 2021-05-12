@@ -7,6 +7,8 @@ import istts.pbo.musicPlayer2;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -21,10 +23,21 @@ public class TownPanel extends JPanel {
     JLabel lbDojo;
     Player player;
     JLabel profil;
+    JLabel back;
+    JLabel name;
+    JLabel job;
+    JLabel lvl;
+    JLabel exp;
     musicPlayer2 music;
     public TownPanel(Player player){
         this.player = player;
         init();
+        back.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                music.getClip().stop();
+            }
+        });
     }
 
     private void init(){
@@ -52,7 +65,24 @@ public class TownPanel extends JPanel {
         lbSmith.setIcon(new ImageIcon("src/istts/pbo/res/buttons/Smith.png"));
         lbSmith.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        profil = new JLabel(player.getName());
+        back = new JLabel();
+        back.setBounds(8,658,100,50);
+        back.setIcon(new ImageIcon("src/istts/pbo/res/buttons/Back.png"));
+        back.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        name = new JLabel("Name : "+player.getName());
+        name.setBounds(15,10,120,30);
+
+        job = new JLabel("Job : "+player.getPlayerClass().getClassname());
+        job.setBounds(15,30,120,30);
+
+        lvl = new JLabel("Level : "+player.getLevel());
+        lvl.setBounds(15,50   ,120,30);
+
+        exp = new JLabel("Xp : "+player.getXp());
+        exp.setBounds(15,70,120,30);
+
+        profil = new JLabel();
         profil.setBounds(0,0,200,120);
         profil.setIcon(new ImageIcon("src/istts/pbo/res/papanProfile.png"));
 
@@ -60,6 +90,11 @@ public class TownPanel extends JPanel {
         add(lbSmith);
         add(lbDojo);
         add(lbBattle);
+        add(back);
+        add(name);
+        add(job);
+        add(lvl);
+        add(exp);
         add(profil);
     }
 

@@ -7,7 +7,7 @@ public class Qiqong extends Job {
     SkillTree<Skill> skilltree = new SkillTree<>();
 
     public Qiqong() {
-        super(70,25,15,150,10,1,0,0,"qiqong");
+        super(70,25,15,150,10,0,0,"qiqong");
         skilltree.addDMG("Hadouken",20,0,0,20);
     }
 }
