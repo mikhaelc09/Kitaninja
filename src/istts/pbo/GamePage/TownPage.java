@@ -18,7 +18,8 @@ public class TownPage extends JFrame {
     TownPanel town;
     Player player;
     ProfilePage profil;
-    SkillPage skillpage;
+//    SkillPage skillpage;
+    DojoPanel dojo;
     public TownPage(Player player){
         this.player = player;
         init();
@@ -41,7 +42,7 @@ public class TownPage extends JFrame {
         town.lbDojo.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                skillpage.setVisible(true);
+                dojo.setVisible(true);
                 town.setVisible(false);
             }
         });
@@ -72,17 +73,17 @@ public class TownPage extends JFrame {
 
         town = new TownPanel(player);
         profil = new ProfilePage();
-        skillpage = new SkillPage();
+        dojo = new DojoPanel();
 
 
         town.setBounds(0,40,this.getWidth(),this.getHeight());
         profil.setBounds(0,40,this.getWidth(),this.getHeight());
-        skillpage.setBounds(0,40,this.getWidth(),this.getHeight());
+        dojo.setBounds(0,40,this.getWidth(),this.getHeight());
 
         parent.add(title);
         parent.add(town);
         parent.add(profil);
-        parent.add(skillpage);
+        parent.add(dojo);
         profil.setVisible(false);
 
         title.addMouseListener(new MouseAdapter() {
