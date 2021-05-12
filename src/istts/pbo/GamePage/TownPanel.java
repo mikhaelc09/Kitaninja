@@ -72,20 +72,27 @@ public class TownPanel extends JPanel {
         back.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         name = new JLabel("Name : "+player.getName());
-        name.setBounds(15,10,120,30);
+        name.setBounds(15,10,100,30);
+        name.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         job = new JLabel("Job : "+player.getPlayerClass().getClassname());
-        job.setBounds(15,30,120,30);
+        job.setBounds(15,30,100,30);
+        job.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         lvl = new JLabel("Level : "+player.getLevel());
-        lvl.setBounds(15,50   ,120,30);
+        lvl.setBounds(15,50   ,100,30);
+        lvl.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
 
         exp = new JLabel("Xp : "+player.getXp());
-        exp.setBounds(15,70,120,30);
+        exp.setBounds(15,70,100,30);
+        exp.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         profil = new JLabel();
         profil.setBounds(0,0,200,120);
         profil.setIcon(new ImageIcon("src/istts/pbo/res/papanProfile.png"));
+        profil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
 
         add(lbShop);
         add(lbSmith);

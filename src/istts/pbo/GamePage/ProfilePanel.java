@@ -1,5 +1,10 @@
 package istts.pbo.GamePage;
 
+import istts.pbo.Classes.Ninjutsu;
+import istts.pbo.Classes.Qiqong;
+import istts.pbo.Classes.Taijutsu;
+import istts.pbo.Players.Player;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -10,16 +15,41 @@ import java.io.IOException;
 import static istts.pbo.Main.SHEIGHT;
 import static istts.pbo.Main.SWIDTH;
 
-public class ProfilePage extends JPanel {
-
-    public ProfilePage(){
+public class ProfilePanel extends JPanel {
+    JPanel playerr;
+    JLabel Foto;
+    JLabel statnama;
+    JLabel stat1;
+    JLabel stat2;
+    JLabel stat3;
+    JLabel stat4;
+    JLabel stat5;
+    JLabel back;
+    Player player;
+    public ProfilePanel(Player player){
+        this.player = player;
         init();
     }
     private void init(){
         setSize(new Dimension(SWIDTH,SHEIGHT));
-
         //mainpanel
-        JPanel parent = new JPanel();
+        class Parent extends JPanel{
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                draw(g);
+            }
+
+            private void draw(Graphics g) {
+                try {
+                    BufferedImage bg = ImageIO.read(new File("src/istts/pbo/res/backgrounds/ShopBackground.png"));
+                    g.drawImage(bg, 0, 0, null);
+                } catch (IOException e) {
+                    e.printStackTrace();
+
+                }
+            }
+        }
+        Parent parent = new Parent();
         parent.setBounds(0,0,SWIDTH,SHEIGHT);
         parent.setSize(new Dimension(SWIDTH,SHEIGHT));
         parent.setLayout(null);
@@ -29,23 +59,39 @@ public class ProfilePage extends JPanel {
         this.add(parent);
 
         //panel player
-        JPanel player = new JPanel();
-        player.setBounds(50,100,400,600);
-        player.setBackground(new Color(160,160,200));
-        player.setOpaque(true);
-        player.setLayout(null);
+        class Playerr extends JPanel{
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                draw(g);
+            }
+
+            private void draw(Graphics g) {
+                try {
+                    BufferedImage bg = ImageIO.read(new File("src/istts/pbo/res/Tab/ProfilTab1.png"));
+                    g.drawImage(bg, 0, 0, null);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        Playerr playerr = new Playerr();
+        playerr.setBounds(50,100,400,600);
+        playerr.setLayout(null);
+        playerr.setOpaque(false);
 
         //Foto
-        JLabel Foto = new JLabel("Foto character");
+        Foto = new JLabel();
         Foto.setBounds(100,10,200,250);
-        Foto.setBackground(new Color(10,250,50));
-        Foto.setOpaque(true);
+        if (player.getPlayerClass().getClassname().equalsIgnoreCase("qiqong")){
+            Foto.setIcon(new ImageIcon("src/istts/pbo/res/sprites/qigong_big.gif"));
+        }else if (player.getPlayerClass().getClassname().equalsIgnoreCase("taijutsu")){
+            Foto.setIcon(new ImageIcon("src/istts/pbo/res/sprites/taijutsu_big.gif"));
+        }else if (player.getPlayerClass().getClassname().equalsIgnoreCase("ninjutsu")){
+            Foto.setIcon(new ImageIcon("src/istts/pbo/res/sprites/ninjutsu_big.gif"));
+        }
 
         //Stat
         class Stat extends JPanel{
-            public Stat(){
-
-            }
             //            protected void paintComponent(Graphics g) {
 //                super.paintComponent(g);
 //                draw(g);
@@ -65,53 +111,53 @@ public class ProfilePage extends JPanel {
         Stat stat = new Stat();
         stat.setBounds(10,270,380,320);
         stat.setBackground(new Color(10,10,244));
-        stat.setOpaque(true);
+        stat.setOpaque(false);
         stat.setLayout(null);
 
 
         //nama stat
-        JLabel statnama = new JLabel();
+        statnama = new JLabel(player.getName());
         statnama.setBounds(90,10,200,50);
         statnama.setBackground(Color.cyan);
-        statnama.setOpaque(true);
+        statnama.setOpaque(false);
 
 
         //stat1
-        JLabel stat1 = new JLabel();
+        stat1 = new JLabel("HP : "+player.getPlayerClass().getHealth());
         stat1.setBounds(10,70,350,40);
         stat1.setBackground(Color.cyan);
         stat1.setOpaque(true);
 
         //stat2
-        JLabel stat2 = new JLabel();
+        stat2 = new JLabel("Mana : "+player.getPlayerClass().getMana()+"");
         stat2.setBounds(10,120,350,40);
         stat2.setBackground(Color.cyan);
         stat2.setOpaque(true);
 
         //stat3
-        JLabel stat3 = new JLabel();
+        stat3 = new JLabel("Attack : "+player.getPlayerClass().getAttack());
         stat3.setBounds(10,170,350,40);
         stat3.setBackground(Color.cyan);
         stat3.setOpaque(true);
 
         //stat4
-        JLabel stat4 = new JLabel();
+        stat4 = new JLabel("Def : "+player.getPlayerClass().getDef());
         stat4.setBounds(10,220,350,40);
         stat4.setBackground(Color.cyan);
         stat4.setOpaque(true);
 
         //stat5
-        JLabel stat5 = new JLabel();
+        stat5 = new JLabel("Speed : "+player.getPlayerClass().getSpeed());
         stat5.setBounds(10,270,350,40);
         stat5.setBackground(Color.cyan);
         stat5.setOpaque(true);
 
 
         //back
-        JLabel back = new JLabel("BAAACK");
-        back.setBounds(20,20,50,50);
-        back.setBackground(Color.red);
-        back.setOpaque(true);
+        back = new JLabel();
+        back.setBounds(20,20,100,50);
+        back.setIcon(new ImageIcon("src/istts/pbo/res/buttons/Back.png"));
+        back.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
 
         //kotak profile
@@ -510,10 +556,10 @@ public class ProfilePage extends JPanel {
         //add+visible+revalidate everyshit
         parent.removeAll();
 
-        parent.add(player);
-        player.revalidate();
-        player.repaint();
-        player.setVisible(true);
+        parent.add(playerr);
+        playerr.revalidate();
+        playerr.repaint();
+        playerr.setVisible(true);
 
         parent.add(back);
         back.revalidate();
@@ -527,12 +573,12 @@ public class ProfilePage extends JPanel {
 
 //        player.removeAll();
 
-        player.add(Foto);
+        playerr.add(Foto);
         Foto.revalidate();
         Foto.repaint();
         Foto.setVisible(true);
 
-        player.add(stat);
+        playerr.add(stat);
         stat.revalidate();
         stat.repaint();
         stat.setVisible(true);

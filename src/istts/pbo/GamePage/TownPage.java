@@ -17,7 +17,7 @@ public class TownPage extends JFrame {
     CustomTitlebar title;
     TownPanel town;
     Player player;
-    ProfilePage profil;
+    ProfilePanel profil;
 //    SkillPage skillpage;
     DojoPanel dojo;
     public TownPage(Player player){
@@ -46,6 +46,22 @@ public class TownPage extends JFrame {
                 town.setVisible(false);
             }
         });
+
+        profil.back.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                profil.setVisible(false);
+                town.setVisible(true);
+            }
+        });
+
+        dojo.btBack.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                dojo.setVisible(false);
+                town.setVisible(true);
+            }
+        });
     }
 
     private void init(){
@@ -72,7 +88,7 @@ public class TownPage extends JFrame {
         title.setBounds(0,0,getWidth(),40);
 
         town = new TownPanel(player);
-        profil = new ProfilePage();
+        profil = new ProfilePanel(player);
         dojo = new DojoPanel();
 
 

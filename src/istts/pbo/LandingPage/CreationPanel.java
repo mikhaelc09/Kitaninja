@@ -156,12 +156,11 @@ public class CreationPanel extends JPanel {
         player.setBounds(50,150,500,450);
         player.setLayout(null);
         player.setBackground(new Color(160,160,200));
-        player.setOpaque(true);
+        player.setOpaque(false);
         add(player);
 
         JLabel gambarplayer = new JLabel("");
         gambarplayer.setPreferredSize(new Dimension(250,200));
-        gambarplayer.setBackground(new Color(255,160,200));
         gambarplayer.setBounds(175,30,150,170);
         gambarplayer.setIcon(spriteTai);
         gambarplayer.setOpaque(false);

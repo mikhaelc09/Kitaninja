@@ -47,6 +47,7 @@ public class DojoPanel extends JPanel {
         btBack = new JLabel();
         btBack.setIcon(new ImageIcon("src/istts/pbo/res/buttons/Back.png"));
         btBack.setBounds(10,20,100,50);
+        btBack.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         lbActiveIcon = new JLabel();
         lbActiveIcon.setBackground(Color.GREEN);
