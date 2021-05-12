@@ -16,19 +16,7 @@ public class ProfilePage extends JPanel {
         init();
     }
     private void init(){
-//        int SWIDTH = 1280;
-//        int SHEIGHT = 760;
-//        ImageIcon logo = new ImageIcon("src/istts/pbo/res/Icon.png");
-//        setIconImage(logo.getImage());
         setSize(new Dimension(SWIDTH,SHEIGHT));
-//        setLocationRelativeTo(null);
-//        setLayout(new FlowLayout(FlowLayout.CENTER));
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        setBackground(Color.ORANGE);
-//        setResizable(false);
-//        setUndecorated(true);
-//        setVisible(true);
-//        setTitle("Kitaninja");
 
         //mainpanel
         JPanel parent = new JPanel();
