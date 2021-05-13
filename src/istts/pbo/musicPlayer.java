@@ -29,7 +29,7 @@ public class musicPlayer extends JFrame implements LineListener, ChangeListener,
         p.setLayout(null);
 
         JLabel lbTitle = new JLabel("Volume");
-        lbTitle.setFont(new Font("Arial", Font.BOLD,25));
+        lbTitle.setFont(new Font("Ninja Naruto", Font.PLAIN,25));
         lbTitle.setBounds(25,50,200,50);
 
         slider = new JSlider(JSlider.HORIZONTAL, 0,100,100);
@@ -39,12 +39,12 @@ public class musicPlayer extends JFrame implements LineListener, ChangeListener,
         slider.setPaintTicks(true);
         slider.setMinorTickSpacing(10);
         slider.setMajorTickSpacing(50);
-        slider.setFont(new Font("Arial", Font.BOLD, 25));
+        slider.setFont(new Font("Ninja Naruto", Font.PLAIN, 25));
         slider.addChangeListener(this);
 
         current = new JLabel();
         current.setText(slider.getValue() + "");
-        current.setFont(new Font("Arial", Font.BOLD, 25));
+        current.setFont(new Font("Ninja Naruto", Font.PLAIN, 20));
         current.setBounds(240, 100, 50, 40);
 
         p.add(lbTitle);
@@ -65,7 +65,7 @@ public class musicPlayer extends JFrame implements LineListener, ChangeListener,
             range = -5 - aud.getMinimum();
             aud.setValue(-5);
             clip.loop(2);
-            System.out.println(aud.getMinimum()+" - "+aud.getMaximum()+" -> "+range );
+
         } catch (LineUnavailableException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -77,14 +77,6 @@ public class musicPlayer extends JFrame implements LineListener, ChangeListener,
         @Override
         public void update (LineEvent event){
             LineEvent.Type type = event.getType();
-
-            if(type == LineEvent.Type.START){
-                System.out.println("Start Playback");
-            }
-            else if(type == LineEvent.Type.STOP){
-//            playCompleted = true;
-                System.out.println("Playback Complete");
-            }
         }
 
         @Override
@@ -99,7 +91,7 @@ public class musicPlayer extends JFrame implements LineListener, ChangeListener,
         clip.start();
         while(!playCompleted){
             try {
-                Thread.sleep(1000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
