@@ -3,6 +3,7 @@ package istts.pbo.GamePage;
 import istts.pbo.LandingPage.StartPage;
 import istts.pbo.Players.Player;
 import istts.pbo.System.CustomTitlebar;
+import istts.pbo.musicPlayer2;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,12 +19,13 @@ public class TownPage extends JFrame {
     TownPanel town;
     Player player;
     ProfilePanel profil;
+    musicPlayer2 musictown;
 //    SkillPage skillpage;
     DojoPanel dojo;
     public TownPage(Player player){
         this.player = player;
         init();
-
+        musictown=new musicPlayer2();
         town.back.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -60,6 +62,18 @@ public class TownPage extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 dojo.setVisible(false);
                 town.setVisible(true);
+            }
+        });
+        town.settingsound.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                musictown.setVisible(true);
+            }
+        });
+        musictown.getP().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                musictown.setVisible(false);
             }
         });
     }

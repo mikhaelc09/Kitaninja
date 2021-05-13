@@ -24,27 +24,23 @@ public class TownPanel extends JPanel {
     JLabel lbDojo;
     Player player;
     JLabel profil;
+    JLabel settingsound;
     JLabel back;
     JLabel name;
     JLabel job;
     JLabel lvl;
     JLabel exp;
-    musicPlayer2 music;
+
     public TownPanel(Player player){
         this.player = player;
         init();
-        back.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                music.getClip().stop();
-            }
-        });
+
     }
 
     private void init(){
         setBackground(Color.BLACK);
         setLayout(null);
-        music = new musicPlayer2();
+
 
         lbShop = new JLabel();
         lbShop.setBounds(1110,415, 120,120);
@@ -65,6 +61,11 @@ public class TownPanel extends JPanel {
         lbSmith.setBounds(730,35, 120,350);
         lbSmith.setIcon(new ImageIcon("src/istts/pbo/res/buttons/Smith.png"));
         lbSmith.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        settingsound = new JLabel();
+        settingsound.setBounds(SWIDTH-100,SHEIGHT-150, 100,100);
+        settingsound.setIcon(new ImageIcon("src/istts/pbo/res/buttons/gear4.png"));
+        settingsound.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         back = new JLabel();
         back.setBounds(8,658,100,50);
@@ -103,6 +104,7 @@ public class TownPanel extends JPanel {
         add(job);
         add(lvl);
         add(exp);
+        add(settingsound);
         add(profil);
 
         lbDojo.addMouseListener(new MouseAdapter() {
