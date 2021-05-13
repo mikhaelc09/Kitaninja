@@ -89,7 +89,7 @@ public class TownPage extends JFrame {
 
         town = new TownPanel(player);
         profil = new ProfilePanel(player);
-        dojo = new DojoPanel();
+        dojo = new DojoPanel(player);
 
 
         town.setBounds(0,40,this.getWidth(),this.getHeight());

@@ -1,5 +1,7 @@
 package istts.pbo.GamePage;
 
+import istts.pbo.Players.Player;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -16,11 +18,11 @@ public class DojoPanel extends JPanel {
     JPanel c2;
     Font fontlb = new Font("Ninja Naruto", Font.PLAIN, 30);
     FontMetrics fm = getFontMetrics(fontlb);
-    public DojoPanel() {
-        init();
+    public DojoPanel(Player p) {
+        init(p);
     }
 
-    private void init(){
+    private void init(Player p){
         setBackground(Color.orange);
         setLayout(null);
         setVisible(false);
@@ -37,13 +39,13 @@ public class DojoPanel extends JPanel {
         c2.setLayout(null);
         c2.setOpaque(true);
 
-        initc1();
-        initc2();
+        initc1(p);
+        initc2(p);
         add(c1);
         add(c2);
     }
 
-    private void initc1(){
+    private void initc1(Player p){
         btBack = new JLabel();
         btBack.setIcon(new ImageIcon("src/istts/pbo/res/buttons/Back.png"));
         btBack.setBounds(10,20,100,50);
@@ -84,7 +86,7 @@ public class DojoPanel extends JPanel {
         c1.add(btLearn);
     }
 
-    private void initc2(){
+    private void initc2(Player p){
         lbSkillBox = new JLabel();
         lbSkillBox.setText("Nama Class");
         lbSkillBox.setHorizontalAlignment(SwingConstants.CENTER);
@@ -122,6 +124,7 @@ public class DojoPanel extends JPanel {
         lbSkill.get(13).setBounds(30 + 490,420+75, 100,100);
         lbSkill.get(14).setBounds(30 + 605,420+75, 100,100);
 
+        lbSkill.get(0).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Aikido-Kubishime png.png"));
 
         for (int i = 0; i < 15; i++) {
             c2.add(lbSkill.get(i));
