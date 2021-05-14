@@ -144,6 +144,7 @@ public class TownPage extends JFrame {
     private void backMainMenu(){
         this.dispose();
         new StartPage();
+        musictown.getClip().stop();
     }
 
     private void exit(){

@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class DojoPanel extends JPanel {
-    ArrayList<JLabel> lbSkill =new ArrayList<>();
+    ArrayList<skillLabel> lbSkill =new ArrayList<>();
     JLabel btBack;
     JLabel lbSkillBox;
     JLabel lbActiveIcon;
@@ -35,13 +35,11 @@ public class DojoPanel extends JPanel {
 
         c1 = new JPanel();
         c1.setBounds(0,0,450,720);
-//        c1.setBackground(Color.yellow);
         c1.setLayout(null);
         c1.setOpaque(false);
 
         c2 = new JPanel();
         c2.setBounds(450,0,830,720);
-//        c2.setBackground(Color.MAGENTA);
         c2.setLayout(null);
         c2.setOpaque(false);
 
@@ -60,22 +58,37 @@ public class DojoPanel extends JPanel {
         initc2(p);
 
         if(type == 1){
-            lbSkill.get(0).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Ninjutsu-ShurikenThrow.png"));
-            lbSkill.get(1).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Ninjutsu-Backpack.png"));
-            lbSkill.get(2).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Ninjutsu-Caltrops.png"));
-            lbSkill.get(3).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Kenjutsu-Onigiri.png"));
-            lbSkill.get(4).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Kenjutsu-HekirekiIssen.png"));
-            lbSkill.get(5).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Kenjutsu-StarburstStream.png"));
-            lbSkill.get(6).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Shurikenjutsu-PoisonShuriken.png"));
-            lbSkill.get(7).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Shurikenjutsu-KunaiWithChain.png"));
-            lbSkill.get(8).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Shurikenjutsu-Bloonjitsu.png"));
-            lbSkill.get(9).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Kayakujutsu-SmokeBomb.png"));
-            lbSkill.get(10).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Kayakujutsu-Flare.png"));
-            lbSkill.get(11).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Kayakujutsu-C4.png"));
-            lbSkill.get(12).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Shinobi-KawarimiNoJutsu.png"));
-            lbSkill.get(13).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Shinobi-Chocho.png"));
-            lbSkill.get(14).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Shinobi-Hakke.png"));
-            lbActiveIcon.setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/Ninjutsu-ShurikenThrow.png"));
+            lbSkill.get(0).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Ninjutsu-ShurikenThrow.png",100,100));
+            lbSkill.get(0).setName("Shuriken Throw");
+            lbSkill.get(1).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Ninjutsu-Backpack.png",100,100));
+            lbSkill.get(1).setName("Backpack");
+            lbSkill.get(2).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Ninjutsu-Caltrops.png",100,100));
+            lbSkill.get(2).setName("Caltrops");
+            lbSkill.get(3).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kenjutsu-Onigiri.png",100,100));
+            lbSkill.get(3).setName("Onigiri");
+            lbSkill.get(4).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kenjutsu-HekirekiIssen.png",100,100));
+            lbSkill.get(4).setName("Hekireki Issen");
+            lbSkill.get(5).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kenjutsu-StarburstStream.png",100,100));
+            lbSkill.get(5).setName("Starbusrt Stream");
+            lbSkill.get(6).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Shurikenjutsu-PoisonShuriken.png",100,100));
+            lbSkill.get(6).setName("Poison Shuriken");
+            lbSkill.get(7).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Shurikenjutsu-KunaiWithChain.png",100,100));
+            lbSkill.get(7).setName("Kunai with Chain");
+            lbSkill.get(8).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Shurikenjutsu-Bloonjitsu.png",100,100));
+            lbSkill.get(8).setName("Bloonjitsu");
+            lbSkill.get(9).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kayakujutsu-SmokeBomb.png",100,100));
+            lbSkill.get(9).setName("Smoke Bomb");
+            lbSkill.get(10).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kayakujutsu-Flare.png",100,100));
+            lbSkill.get(10).setName("Flare");
+            lbSkill.get(11).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kayakujutsu-C4.png",100,100));
+            lbSkill.get(11).setName("C4");
+            lbSkill.get(12).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Shinobi-KawarimiNoJutsu.png",100,100));
+            lbSkill.get(12).setName("Kawarimi no Jutsu");
+            lbSkill.get(13).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Shinobi-Chocho.png",100,100));
+            lbSkill.get(13).setName("Chocho");
+            lbSkill.get(14).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Shinobi-Hakke.png",100,100));
+            lbSkill.get(14).setName("Hakke");
+            lbActiveIcon.setIcon(resizeIcon((ImageIcon) lbSkill.get(0).getIcon(),120,120));
             lbActiveName.setText("Shuriken Throw");
             lbSkillBox.setText(pc);
             lbActiveName.setBounds((450-fm.stringWidth(lbActiveName.getText()))/2,
@@ -85,22 +98,37 @@ public class DojoPanel extends JPanel {
         }
 
         if(type == 2){
-            lbSkill.get(0).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Qiqong-Hadouken.png"));
-            lbSkill.get(1).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Qiqong-CalmMind.png"));
-            lbSkill.get(2).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Qiqong-Kamehameha.png"));
-            lbSkill.get(3).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Fire-Hinotama.png"));
-            lbSkill.get(4).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Fire-Heatblast.png"));
-            lbSkill.get(5).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Fire-Explosion.png"));
-            lbSkill.get(6).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Wind-Rasengan.png"));
-            lbSkill.get(7).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Wind-WindOfNature.png"));
-            lbSkill.get(8).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Wind-DivineSandstorm.png"));
-            lbSkill.get(9).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Water-MysticSnake.png"));
-            lbSkill.get(10).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Water-WaterPrison.png"));
-            lbSkill.get(11).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Water-DaigurenHyorinmaru.png"));
-            lbSkill.get(12).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Sand-SandThrow.png"));
-            lbSkill.get(13).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Sand-SummonTwhomp.png"));
-            lbSkill.get(14).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Sand-Harden.png"));
-            lbActiveIcon.setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/Qiqong-Hadouken.png"));
+            lbSkill.get(0).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Qiqong-Hadouken.png",100,100));
+            lbSkill.get(0).setName("Hadouken");
+            lbSkill.get(1).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Qiqong-CalmMind.png",100,100));
+            lbSkill.get(1).setName("Calm Mind");
+            lbSkill.get(2).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Qiqong-Kamehameha.png",100,100));
+            lbSkill.get(2).setName("Kamehameha");
+            lbSkill.get(3).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Fire-Hinotama.png",100,100));
+            lbSkill.get(3).setName("Hinotama");
+            lbSkill.get(4).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Fire-Heatblast.png",100,100));
+            lbSkill.get(4).setName("Heatblast");
+            lbSkill.get(5).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Fire-Explosion.png",100,100));
+            lbSkill.get(5).setName("Explosion");
+            lbSkill.get(6).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Wind-Rasengan.png",100,100));
+            lbSkill.get(6).setName("Rasengan");
+            lbSkill.get(7).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Wind-WindOfNature.png",100,100));
+            lbSkill.get(7).setName("Wind of Nature");
+            lbSkill.get(8).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Wind-DivineSandstorm.png",100,100));
+            lbSkill.get(8).setName("Divine Sandstorm");
+            lbSkill.get(9).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Water-MysticSnake.png",100,100));
+            lbSkill.get(9).setName("Mystic Snake");
+            lbSkill.get(10).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Water-WaterPrison.png",100,100));
+            lbSkill.get(10).setName("Water Prison");
+            lbSkill.get(11).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Water-DaigurenHyorinmaru.png",100,100));
+            lbSkill.get(11).setName("Daiguren Hyoinmaru");
+            lbSkill.get(12).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Sand-SandThrow.png",100,100));
+            lbSkill.get(12).setName("Sand Throw");
+            lbSkill.get(13).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Sand-SummonTwhomp.png",100,100));
+            lbSkill.get(13).setName("Summon Twhomp");
+            lbSkill.get(14).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Sand-Harden.png",100,100));
+            lbSkill.get(14).setName("Harden");
+            lbActiveIcon.setIcon(resizeIcon((ImageIcon) lbSkill.get(0).getIcon(),120,120));
             lbActiveName.setText("Hadouken");
             lbSkillBox.setText(pc);
             lbActiveName.setBounds((450-fm.stringWidth(lbActiveName.getText()))/2,
@@ -110,22 +138,37 @@ public class DojoPanel extends JPanel {
         }
 
         if(type == 3){
-            lbSkill.get(0).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Taijutsu-FalconPunch.png"));
-            lbSkill.get(1).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Taijutsu-FusRoDah.png"));
-            lbSkill.get(2).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Taijutsu-KonohaSenpu.png"));
-            lbSkill.get(3).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Taekwondo-NaryeoChagi.png"));
-            lbSkill.get(4).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Taekwondo-KawiChagi.png"));
-            lbSkill.get(5).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Taekwondo-DollyoChagi.png"));
-            lbSkill.get(6).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Kungfu-FuJowPai.png"));
-            lbSkill.get(7).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Kungfu-OneInchPunch.png"));
-            lbSkill.get(8).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Kungfu-DrunkenStance.png"));
-            lbSkill.get(9).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Aikido-NageWaza.png"));
-            lbSkill.get(10).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Aikido-UkeNagashiIrimi.png"));
-            lbSkill.get(11).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Aikido-Kubishime.png"));
-            lbSkill.get(12).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Sumo-Harite.png"));
-            lbSkill.get(13).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Sumo-Eat.png"));
-            lbSkill.get(14).setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/medium/Sumo-BodySlam.png"));
-            lbActiveIcon.setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/Taijutsu-FalconPunch.png"));
+            lbSkill.get(0).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Taijutsu-FalconPunch.png",100,100));
+            lbSkill.get(0).setName("Falcon Punch");
+            lbSkill.get(1).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Taijutsu-FusRoDah.png",100,100));
+            lbSkill.get(1).setName("Fus Ro Dah");
+            lbSkill.get(2).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Taijutsu-KonohaSenpu.png",100,100));
+            lbSkill.get(2).setName("Konoha Senpu");
+            lbSkill.get(3).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Taekwondo-NaryeoChagi.png",100,100));
+            lbSkill.get(3).setName("Naryeo Chagi");
+            lbSkill.get(4).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Taekwondo-KawiChagi.png",100,100));
+            lbSkill.get(4).setName("Kawi Chagi");
+            lbSkill.get(5).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Taekwondo-DollyoChagi.png",100,100));
+            lbSkill.get(5).setName("Dollyo Chagi");
+            lbSkill.get(6).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kungfu-FuJowPai.png",100,100));
+            lbSkill.get(6).setName("FuJowPai");
+            lbSkill.get(7).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kungfu-OneInchPunch.png",100,100));
+            lbSkill.get(7).setName("One Inch Punch");
+            lbSkill.get(8).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kungfu-DrunkenStance.png",100,100));
+            lbSkill.get(8).setName("Drunken Stance");
+            lbSkill.get(9).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Aikido-NageWaza.png",100,100));
+            lbSkill.get(9).setName("Nage Waza");
+            lbSkill.get(10).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Aikido-UkeNagashiIrimi.png",100,100));
+            lbSkill.get(10).setName("Uke Nagashi Irimi");
+            lbSkill.get(11).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Aikido-Kubishime.png",100,100));
+            lbSkill.get(11).setName("Kubishime");
+            lbSkill.get(12).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Sumo-Harite.png",100,100));
+            lbSkill.get(12).setName("Harite");
+            lbSkill.get(13).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Sumo-Eat.png",100,100));
+            lbSkill.get(13).setName("Eat");
+            lbSkill.get(14).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Sumo-BodySlam.png",100,100));
+            lbSkill.get(14).setName("Body Slam");
+            lbActiveIcon.setIcon(resizeIcon((ImageIcon) lbSkill.get(0).getIcon(),120,120));
             lbActiveName.setText("Falcon Punch");
             lbSkillBox.setText(pc);
             lbActiveName.setBounds((450-fm.stringWidth(lbActiveName.getText()))/2,
@@ -133,21 +176,6 @@ public class DojoPanel extends JPanel {
                     fm.stringWidth(lbActiveName.getText()),
                     fm.getHeight());
         }
-
-        lbSkill.get(0).addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if(type == 1){
-                    
-                }
-                if(type == 2){
-
-                }
-                if(type == 3){
-
-                }
-            }
-        });
 
         add(c1);
         add(c2);
@@ -207,10 +235,23 @@ public class DojoPanel extends JPanel {
         lbSkillBox.setBounds(30,35, 750,650);
 
         for (int i = 0; i < 15; i++) {
-            lbSkill.add(new JLabel());
+            lbSkill.add(new skillLabel());
 //            lbSkill.get(i).setBackground(Color.GREEN);
 //            lbSkill.get(i).setOpaque(true);
             lbSkill.get(i).setText(i+"");
+            lbSkill.get(i).setCursor(new Cursor(Cursor.HAND_CURSOR));
+            JLabel x = lbSkill.get(i);
+            lbSkill.get(i).addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    lbActiveIcon.setIcon(resizeIcon((ImageIcon) x.getIcon(),120,120));
+                    lbActiveName.setText(x.getName());
+                    lbActiveName.setBounds((450-fm.stringWidth(lbActiveName.getText()))/2,
+                            245,
+                            fm.stringWidth(lbActiveName.getText()),
+                            fm.getHeight());
+                }
+            });
         }
 
         lbSkill.get(0).setBounds(30 + 30,330,100,100);
@@ -253,5 +294,33 @@ public class DojoPanel extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public ImageIcon resizeIcon(String im , int w, int h){
+        return new ImageIcon(new ImageIcon(im).getImage().getScaledInstance(w,h,Image.SCALE_DEFAULT));
+    }
+
+    public ImageIcon resizeIcon(ImageIcon im , int w, int h){
+        return new ImageIcon(im.getImage().getScaledInstance(w,h,Image.SCALE_DEFAULT));
+    }
+
+}
+
+class skillLabel extends JLabel{
+    String name;
+    public skillLabel(String name) {
+        this.name = name;
+    }
+
+    public skillLabel(){
+        this.name = "";
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return this.name;
     }
 }
