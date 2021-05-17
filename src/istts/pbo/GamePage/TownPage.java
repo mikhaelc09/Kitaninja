@@ -22,6 +22,7 @@ public class TownPage extends JFrame {
     musicPlayer2 musictown;
 //    SkillPage skillpage;
     DojoPanel dojo;
+    SmithPanel smith;
     public TownPage(Player player){
         this.player = player;
         init();
@@ -48,7 +49,13 @@ public class TownPage extends JFrame {
                 town.setVisible(false);
             }
         });
-
+        town.lbSmith.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                smith.setVisible(true);
+                town.setVisible(false);
+            }
+        });
         profil.back.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -62,6 +69,13 @@ public class TownPage extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 dojo.setVisible(false);
                 town.setVisible(true);
+            }
+        });
+        smith.TombolBack.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                town.setVisible(true);
+                smith.setVisible(false);
             }
         });
         town.settingsound.addMouseListener(new MouseAdapter() {
@@ -104,16 +118,18 @@ public class TownPage extends JFrame {
         town = new TownPanel(player);
         profil = new ProfilePanel(player);
         dojo = new DojoPanel(player);
-
+        smith=new SmithPanel(player);
 
         town.setBounds(0,40,this.getWidth(),this.getHeight());
         profil.setBounds(0,40,this.getWidth(),this.getHeight());
         dojo.setBounds(0,40,this.getWidth(),this.getHeight());
+        smith.setBounds(0,40,this.getWidth(),this.getHeight());
 
         parent.add(title);
         parent.add(town);
         parent.add(profil);
         parent.add(dojo);
+        parent.add(smith);
         profil.setVisible(false);
 
         title.addMouseListener(new MouseAdapter() {
