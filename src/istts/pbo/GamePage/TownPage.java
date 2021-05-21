@@ -23,6 +23,7 @@ public class TownPage extends JFrame {
 //    SkillPage skillpage;
     DojoPanel dojo;
     SmithPanel smith;
+    ShopPanel shop;
     public TownPage(Player player){
         this.player = player;
         init();
@@ -56,6 +57,13 @@ public class TownPage extends JFrame {
                 town.setVisible(false);
             }
         });
+        town.lbShop.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                shop.setVisible(true);
+                town.setVisible(false);
+            }
+        });
         profil.back.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -71,6 +79,14 @@ public class TownPage extends JFrame {
                 town.setVisible(true);
             }
         });
+        shop.shopback.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                shop.setVisible(false);
+                town.setVisible(true);
+            }
+        });
+
         smith.TombolBack.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -118,18 +134,21 @@ public class TownPage extends JFrame {
         town = new TownPanel(player);
         profil = new ProfilePanel(player);
         dojo = new DojoPanel(player);
-        smith=new SmithPanel(player);
+        smith= new SmithPanel(player);
+        shop = new ShopPanel(player);
 
         town.setBounds(0,40,this.getWidth(),this.getHeight());
         profil.setBounds(0,35,this.getWidth(),this.getHeight());
         dojo.setBounds(0,40,this.getWidth(),this.getHeight());
         smith.setBounds(0,40,this.getWidth(),this.getHeight());
+        shop.setBounds(0,30,this.getWidth(),this.getHeight());
 
         parent.add(title);
         parent.add(town);
         parent.add(profil);
         parent.add(dojo);
         parent.add(smith);
+        parent.add(shop);
         profil.setVisible(false);
 
         title.addMouseListener(new MouseAdapter() {

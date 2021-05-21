@@ -112,7 +112,7 @@ public class ProfilePanel extends JPanel {
         Stat stat = new Stat();
         stat.setBounds(10,270,380,320);
         stat.setBackground(new Color(10,10,244));
-        stat.setOpaque(false);
+        stat.setOpaque(true);
         stat.setLayout(null);
 
 
@@ -121,7 +121,7 @@ public class ProfilePanel extends JPanel {
         statnama.setFont(fontlb);
         statnama.setBounds(90,10,200,50);
         statnama.setBackground(Color.cyan);
-        statnama.setOpaque(false);
+        statnama.setOpaque(true);
 
 
         //stat1
