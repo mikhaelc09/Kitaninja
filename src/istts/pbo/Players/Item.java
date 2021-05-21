@@ -3,17 +3,14 @@ package istts.pbo.Players;
 public abstract class Item {
     private String name;
     private int stat;
+    private int cost;
     private String spritePath;
 
-    public Item(String name, int stat, String spritePath) {
+    public Item(String name, int stat, int cost, String spritePath) {
         this.name = name;
         this.stat = stat;
+        this.cost = cost;
         this.spritePath = spritePath;
-    }
-    public Item(String name, int stat) {
-        this.name = name;
-        this.stat = stat;
-        this.spritePath = "";
     }
 
     public String getName() {
@@ -28,6 +25,14 @@ public abstract class Item {
         return stat;
     }
 
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
     public void setStat(int stat) {
         this.stat = stat;
     }
@@ -38,43 +43,5 @@ public abstract class Item {
 
     public void setSpritePath(String spritePath) {
         this.spritePath = spritePath;
-    }
-}
-
-//Inherit
-
-class Head extends Item{
-    public Head(String name, int stat) {
-        super(name, stat);
-    }
-}
-
-class Body extends Item{
-    public Body(String name, int stat) {
-        super(name, stat);
-    }
-}
-
-class Boots extends Item{
-    public Boots(String name, int stat) {
-        super(name, stat);
-    }
-}
-
-class Weapon extends Item{
-    public Weapon(String name, int stat) {
-        super(name, stat);
-    }
-}
-
-class Accesories extends Item{
-    public Accesories(String name, int stat) {
-        super(name, stat);
-    }
-}
-
-class Tools extends Item{
-    public Tools(String name, int stat) {
-        super(name, stat);
     }
 }

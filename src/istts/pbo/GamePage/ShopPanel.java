@@ -1,6 +1,6 @@
 package istts.pbo.GamePage;
 
-import istts.pbo.Players.Player;
+import istts.pbo.Players.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -120,10 +120,20 @@ public class ShopPanel extends JPanel {
      JLabel Next;
      JLabel Prev;
      JLabel CurrentPage;
-    JPanel[][] Halaman = new JPanel[2][5];
-    JLabel[][] Iconclick = new JLabel[5][5];
-    JTextArea[][] Descclick = new JTextArea[5][5];
-
+     JPanel[][] Halaman = new JPanel[2][5];
+     JLabel[][] Iconclick = new JLabel[5][5];
+     JTextArea[][] Descclick = new JTextArea[5][5];
+     Item selected;
+    Weapon banditWeapon;
+    Weapon chainmailWeapon;
+    Helmet banditHelmet;
+    Helmet chainmailHelmet;
+    Body banditArmor;
+    Body chainmailArmor;
+    Boots banditBoots;
+    Boots chainmailBoots;
+    Accesories banditAcc;
+    Accesories chainmailAcc;
 
     class Kanan extends JPanel{
         public Kanan(){}
@@ -370,7 +380,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[0][0].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = banditHelmet;
             }
         });
         this.headiconitem2.addMouseListener(new MouseAdapter() {
@@ -384,7 +394,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[0][1].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = chainmailHelmet;
             }
         });
         this.headiconitem3.addMouseListener(new MouseAdapter() {
@@ -441,7 +451,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[1][0].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = banditWeapon;
             }
         });
         this.weaponiconitem2.addMouseListener(new MouseAdapter() {
@@ -455,7 +465,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[1][1].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = chainmailWeapon;
             }
         });
         this.weaponiconitem3.addMouseListener(new MouseAdapter() {
@@ -512,7 +522,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[2][0].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = banditArmor;
             }
         });
         this.bodyiconitem2.addMouseListener(new MouseAdapter() {
@@ -526,7 +536,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[2][1].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = chainmailArmor;
             }
         });
         this.bodyiconitem3.addMouseListener(new MouseAdapter() {
@@ -583,7 +593,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[3][0].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = banditBoots;
             }
         });
         this.bootsiconitem2.addMouseListener(new MouseAdapter() {
@@ -597,7 +607,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[3][1].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = chainmailBoots;
             }
         });
         this.bootsiconitem3.addMouseListener(new MouseAdapter() {
@@ -654,7 +664,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[4][0].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = banditAcc;
             }
         });
         this.accessoryiconitem2.addMouseListener(new MouseAdapter() {
@@ -668,7 +678,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[4][1].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = chainmailAcc;
             }
         });
         this.accessoryiconitem3.addMouseListener(new MouseAdapter() {
@@ -696,7 +706,6 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[4][3].getText());
                 desc.revalidate();
                 desc.repaint();
-
             }
         });
         this.accessoryiconitem5.addMouseListener(new MouseAdapter() {
@@ -710,7 +719,16 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[4][4].getText());
                 desc.revalidate();
                 desc.repaint();
-
+            }
+        });
+        this.buy.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (p.getGold()>=selected.getCost()){
+                    p.setGold(p.getGold()-selected.getCost());
+                    p.getItems().add(selected);
+                    System.out.println("Beli " + selected.getName() + "   gold : "+p.getGold());
+                }
             }
         });
     }
@@ -718,6 +736,21 @@ public class ShopPanel extends JPanel {
     public void init(Player p) {
         this.setLayout(null);
         this.setVisible(false);
+
+        //inisialisasi item
+        banditWeapon = new Weapon("Bandit Axe",10,5,"src/istts/pbo/res/Item/BanditWeapon.png");
+        banditHelmet = new Helmet("Bandit Helmet",1,1,"src/istts/pbo/res/Item/BanditHelmet.png");
+        banditArmor = new Body("Bandit Armor",6,3,"src/istts/pbo/res/Item/BanditArmor.png");
+        banditBoots = new Boots("Bandit Boots",4,2,"src/istts/pbo/res/Item/BanditBoots.png");
+        banditAcc = new Accesories("Bandit Necklace",8,4,"src/istts/pbo/res/Item/BanditAcc.png");
+        chainmailWeapon = new Weapon("Iron Axe",10,5,"src/istts/pbo/res/Item/ChainmailWeapon.png");
+        chainmailHelmet = new Helmet("Chainmail Helmet",1,1,"src/istts/pbo/res/Item/ChainmailHelmet.png");
+        chainmailArmor = new Body("Chainmail Armor",6,3,"src/istts/pbo/res/Item/ChainmailArmor.png");
+        chainmailBoots = new Boots("Chainmail Boots",4,2,"src/istts/pbo/res/Item/ChainmailBoots.png");
+        chainmailAcc = new Accesories("Iron Necklace",8,4,"src/istts/pbo/res/Item/ChainmailAcc.png");
+
+        selected = banditHelmet;
+
         //mainpanel
         parent = new JPanel();
         parent.setBounds(0,0,SWIDTH,SHEIGHT);
@@ -735,13 +768,14 @@ public class ShopPanel extends JPanel {
         //Gambaritem
         gambar = new JLabel("Gambar item clicked");
         gambar.setBounds(170,145,120,120);
-        gambar.setIcon(new ImageIcon("src/istts/pbo/res/Item/Blank.png"));
+        gambar.setIcon(new ImageIcon(selected.getSpritePath()));
         //descitem
         desc = new JTextArea("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.");
         desc.setBounds(20,275,460,355);
         desc.setLineWrap(true);
         desc.setBackground(Color.PINK);
         desc.setOpaque(true);
+
         //Buy Icon
         buy = new JLabel("buy");
         buy.setBounds(20,650,460,50);
@@ -812,7 +846,7 @@ public class ShopPanel extends JPanel {
         //iconitem1
         headiconitem1 = new JLabel("iconhead1");
         headiconitem1.setPreferredSize(new Dimension(120,120));
-        headiconitem1.setIcon(new ImageIcon("src/istts/pbo/res/Item/BanditHelmet.png"));
+        headiconitem1.setIcon(new ImageIcon(banditHelmet.getSpritePath()));
         //descitem1
         headicondesc1 = new JTextArea("deschead1");
         headicondesc1.setPreferredSize(new Dimension(570,120));
@@ -828,8 +862,8 @@ public class ShopPanel extends JPanel {
         //iconitem2
         headiconitem2 = new JLabel("iconhead2");
         headiconitem2.setPreferredSize(new Dimension(120,120));
-        headiconitem2.setBackground(Color.magenta);
-        headiconitem2.setOpaque(true);
+        headiconitem2.setIcon(new ImageIcon(chainmailHelmet.getSpritePath()));
+
         //descitem2
         headicondesc2 = new JTextArea("deschead2");
         headicondesc2.setPreferredSize(new Dimension(570,120));
@@ -915,7 +949,7 @@ public class ShopPanel extends JPanel {
         //iconitem1
         weaponiconitem1 = new JLabel("iconweapon1");
         weaponiconitem1.setPreferredSize(new Dimension(120,120));
-        weaponiconitem1.setIcon(new ImageIcon("src/istts/pbo/res/Item/BanditWeapon.png"));
+        weaponiconitem1.setIcon(new ImageIcon(banditWeapon.getSpritePath()));
         //descitem1
         weaponicondesc1 = new JTextArea("descweapon1");
         weaponicondesc1.setPreferredSize(new Dimension(570,120));
@@ -931,8 +965,8 @@ public class ShopPanel extends JPanel {
         //iconitem2
         weaponiconitem2 = new JLabel("iconweapon2");
         weaponiconitem2.setPreferredSize(new Dimension(120,120));
-        weaponiconitem2.setBackground(Color.magenta);
-        weaponiconitem2.setOpaque(true);
+        weaponiconitem2.setIcon(new ImageIcon(chainmailWeapon.getSpritePath()));
+
         //descitem2
         weaponicondesc2 = new JTextArea("descweapon2");
         weaponicondesc2.setPreferredSize(new Dimension(570,120));
@@ -1018,7 +1052,7 @@ public class ShopPanel extends JPanel {
         //iconitem1
         bodyiconitem1 = new JLabel("iconbody1");
         bodyiconitem1.setPreferredSize(new Dimension(120,120));
-        bodyiconitem1.setIcon(new ImageIcon("src/istts/pbo/res/Item/BanditArmor.png"));
+        bodyiconitem1.setIcon(new ImageIcon(banditArmor.getSpritePath()));
         //descitem1
         bodyicondesc1 = new JTextArea("descbody1");
         bodyicondesc1.setPreferredSize(new Dimension(570,120));
@@ -1034,8 +1068,7 @@ public class ShopPanel extends JPanel {
         //iconitem2
         bodyiconitem2 = new JLabel("iconbody2");
         bodyiconitem2.setPreferredSize(new Dimension(120,120));
-        bodyiconitem2.setBackground(Color.magenta);
-        bodyiconitem2.setOpaque(true);
+        bodyiconitem2.setIcon(new ImageIcon(chainmailArmor.getSpritePath()));
         //descitem2
         bodyicondesc2 = new JTextArea("descbody2");
         bodyicondesc2.setPreferredSize(new Dimension(570,120));
@@ -1121,7 +1154,7 @@ public class ShopPanel extends JPanel {
         //iconitem1
         bootsiconitem1 = new JLabel("iconboots1");
         bootsiconitem1.setPreferredSize(new Dimension(120,120));
-        bootsiconitem1.setIcon(new ImageIcon("src/istts/pbo/res/Item/BanditBoots.png"));
+        bootsiconitem1.setIcon(new ImageIcon(banditBoots.getSpritePath()));
         //descitem1
         bootsicondesc1 = new JTextArea("descboots1");
         bootsicondesc1.setPreferredSize(new Dimension(570,120));
@@ -1137,8 +1170,8 @@ public class ShopPanel extends JPanel {
         //iconitem2
         bootsiconitem2 = new JLabel("iconboots2");
         bootsiconitem2.setPreferredSize(new Dimension(120,120));
-        bootsiconitem2.setBackground(Color.magenta);
-        bootsiconitem2.setOpaque(true);
+        bootsiconitem2.setIcon(new ImageIcon(chainmailBoots.getSpritePath()));
+
         //descitem2
         bootsicondesc2 = new JTextArea("descboots2");
         bootsicondesc2.setPreferredSize(new Dimension(570,120));
@@ -1224,7 +1257,7 @@ public class ShopPanel extends JPanel {
         //iconitem1
         accessoryiconitem1 = new JLabel("iconaccessory1");
         accessoryiconitem1.setPreferredSize(new Dimension(120,120));
-        accessoryiconitem1.setIcon(new ImageIcon("src/istts/pbo/res/Item/BanditAcc.png"));
+        accessoryiconitem1.setIcon(new ImageIcon(banditAcc.getSpritePath()));
         //descitem1
         accessoryicondesc1 = new JTextArea("descaccessory1");
         accessoryicondesc1.setPreferredSize(new Dimension(570,120));
@@ -1240,8 +1273,8 @@ public class ShopPanel extends JPanel {
         //iconitem2
         accessoryiconitem2 = new JLabel("iconaccessory2");
         accessoryiconitem2.setPreferredSize(new Dimension(120,120));
-        accessoryiconitem2.setBackground(Color.magenta);
-        accessoryiconitem2.setOpaque(true);
+        accessoryiconitem2.setIcon(new ImageIcon(chainmailAcc.getSpritePath()));
+
         //descitem2
         accessoryicondesc2 = new JTextArea("descaccessory2");
         accessoryicondesc2.setPreferredSize(new Dimension(570,120));

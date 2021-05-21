@@ -1,7 +1,7 @@
 package istts.pbo.Players;
 
 public class Equipment {
-    private Head head;
+    private Helmet head;
     private Body body;
     private Boots boots;
     private Weapon weapon;
@@ -15,11 +15,11 @@ public class Equipment {
         this.accesories = null;
     }
 
-    public Head getHead() {
+    public Helmet getHead() {
         return head;
     }
 
-    public void setHead(Head head) {
+    public void setHead(Helmet head) {
         this.head = head;
     }
 
