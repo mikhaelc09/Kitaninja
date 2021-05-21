@@ -363,7 +363,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[0][0].getBackground());
+                gambar.setIcon(Iconclick[0][0].getIcon());
                 gambar.setText(Iconclick[0][0].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -377,7 +377,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[0][1].getBackground());
+                gambar.setIcon(Iconclick[0][1].getIcon());
                 gambar.setText(Iconclick[0][1].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -391,7 +391,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[0][2].getBackground());
+                gambar.setIcon(Iconclick[0][2].getIcon());
                 gambar.setText(Iconclick[0][2].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -405,7 +405,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[0][3].getBackground());
+                gambar.setIcon(Iconclick[0][3].getIcon());
                 gambar.setText(Iconclick[0][3].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -419,7 +419,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[0][4].getBackground());
+                gambar.setIcon(Iconclick[0][4].getIcon());
                 gambar.setText(Iconclick[0][4].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -434,7 +434,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[1][0].getBackground());
+                gambar.setIcon(Iconclick[1][0].getIcon());
                 gambar.setText(Iconclick[1][0].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -448,7 +448,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[1][1].getBackground());
+                gambar.setIcon(Iconclick[1][1].getIcon());
                 gambar.setText(Iconclick[1][1].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -462,7 +462,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[1][2].getBackground());
+                gambar.setIcon(Iconclick[1][2].getIcon());
                 gambar.setText(Iconclick[1][2].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -476,7 +476,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[1][3].getBackground());
+                gambar.setIcon(Iconclick[1][3].getIcon());
                 gambar.setText(Iconclick[1][3].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -490,7 +490,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[1][4].getBackground());
+                gambar.setIcon(Iconclick[1][4].getIcon());
                 gambar.setText(Iconclick[1][4].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -505,7 +505,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[2][0].getBackground());
+                gambar.setIcon(Iconclick[2][0].getIcon());
                 gambar.setText(Iconclick[2][0].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -519,7 +519,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[2][1].getBackground());
+                gambar.setIcon(Iconclick[2][1].getIcon());
                 gambar.setText(Iconclick[2][1].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -533,7 +533,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[2][2].getBackground());
+                gambar.setIcon(Iconclick[2][2].getIcon());
                 gambar.setText(Iconclick[2][2].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -547,7 +547,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[2][3].getBackground());
+                gambar.setIcon(Iconclick[2][3].getIcon());
                 gambar.setText(Iconclick[2][3].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -561,7 +561,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[2][4].getBackground());
+                gambar.setIcon(Iconclick[2][4].getIcon());
                 gambar.setText(Iconclick[2][4].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -576,7 +576,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[3][0].getBackground());
+                gambar.setIcon(Iconclick[3][0].getIcon());
                 gambar.setText(Iconclick[3][0].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -590,7 +590,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[3][1].getBackground());
+                gambar.setIcon(Iconclick[3][1].getIcon());
                 gambar.setText(Iconclick[3][1].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -604,7 +604,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[3][2].getBackground());
+                gambar.setIcon(Iconclick[3][2].getIcon());
                 gambar.setText(Iconclick[3][2].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -618,7 +618,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[3][3].getBackground());
+                gambar.setIcon(Iconclick[3][3].getIcon());
                 gambar.setText(Iconclick[3][3].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -632,7 +632,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[3][4].getBackground());
+                gambar.setIcon(Iconclick[3][4].getIcon());
                 gambar.setText(Iconclick[3][4].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -647,7 +647,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[4][0].getBackground());
+                gambar.setIcon(Iconclick[4][0].getIcon());
                 gambar.setText(Iconclick[4][0].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -661,7 +661,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[4][1].getBackground());
+                gambar.setIcon(Iconclick[4][1].getIcon());
                 gambar.setText(Iconclick[4][1].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -675,7 +675,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[4][2].getBackground());
+                gambar.setIcon(Iconclick[4][2].getIcon());
                 gambar.setText(Iconclick[4][2].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -689,7 +689,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[4][3].getBackground());
+                gambar.setIcon(Iconclick[4][3].getIcon());
                 gambar.setText(Iconclick[4][3].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -703,7 +703,7 @@ public class ShopPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                gambar.setBackground(Iconclick[4][4].getBackground());
+                gambar.setIcon(Iconclick[4][4].getIcon());
                 gambar.setText(Iconclick[4][4].getText());
                 gambar.revalidate();
                 gambar.repaint();
@@ -735,8 +735,7 @@ public class ShopPanel extends JPanel {
         //Gambaritem
         gambar = new JLabel("Gambar item clicked");
         gambar.setBounds(170,145,120,120);
-        gambar.setBackground(Color.YELLOW);
-        gambar.setOpaque(true);
+        gambar.setIcon(new ImageIcon("src/istts/pbo/res/Item/Blank.png"));
         //descitem
         desc = new JTextArea("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.");
         desc.setBounds(20,275,460,355);
@@ -813,8 +812,7 @@ public class ShopPanel extends JPanel {
         //iconitem1
         headiconitem1 = new JLabel("iconhead1");
         headiconitem1.setPreferredSize(new Dimension(120,120));
-        headiconitem1.setBackground(Color.magenta);
-        headiconitem1.setOpaque(true);
+        headiconitem1.setIcon(new ImageIcon("src/istts/pbo/res/Item/BanditHelmet.png"));
         //descitem1
         headicondesc1 = new JTextArea("deschead1");
         headicondesc1.setPreferredSize(new Dimension(570,120));
@@ -917,8 +915,7 @@ public class ShopPanel extends JPanel {
         //iconitem1
         weaponiconitem1 = new JLabel("iconweapon1");
         weaponiconitem1.setPreferredSize(new Dimension(120,120));
-        weaponiconitem1.setBackground(Color.magenta);
-        weaponiconitem1.setOpaque(true);
+        weaponiconitem1.setIcon(new ImageIcon("src/istts/pbo/res/Item/BanditWeapon.png"));
         //descitem1
         weaponicondesc1 = new JTextArea("descweapon1");
         weaponicondesc1.setPreferredSize(new Dimension(570,120));
@@ -1021,8 +1018,7 @@ public class ShopPanel extends JPanel {
         //iconitem1
         bodyiconitem1 = new JLabel("iconbody1");
         bodyiconitem1.setPreferredSize(new Dimension(120,120));
-        bodyiconitem1.setBackground(Color.magenta);
-        bodyiconitem1.setOpaque(true);
+        bodyiconitem1.setIcon(new ImageIcon("src/istts/pbo/res/Item/BanditArmor.png"));
         //descitem1
         bodyicondesc1 = new JTextArea("descbody1");
         bodyicondesc1.setPreferredSize(new Dimension(570,120));
@@ -1125,8 +1121,7 @@ public class ShopPanel extends JPanel {
         //iconitem1
         bootsiconitem1 = new JLabel("iconboots1");
         bootsiconitem1.setPreferredSize(new Dimension(120,120));
-        bootsiconitem1.setBackground(Color.magenta);
-        bootsiconitem1.setOpaque(true);
+        bootsiconitem1.setIcon(new ImageIcon("src/istts/pbo/res/Item/BanditBoots.png"));
         //descitem1
         bootsicondesc1 = new JTextArea("descboots1");
         bootsicondesc1.setPreferredSize(new Dimension(570,120));
@@ -1229,8 +1224,7 @@ public class ShopPanel extends JPanel {
         //iconitem1
         accessoryiconitem1 = new JLabel("iconaccessory1");
         accessoryiconitem1.setPreferredSize(new Dimension(120,120));
-        accessoryiconitem1.setBackground(Color.magenta);
-        accessoryiconitem1.setOpaque(true);
+        accessoryiconitem1.setIcon(new ImageIcon("src/istts/pbo/res/Item/BanditAcc.png"));
         //descitem1
         accessoryicondesc1 = new JTextArea("descaccessory1");
         accessoryicondesc1.setPreferredSize(new Dimension(570,120));
