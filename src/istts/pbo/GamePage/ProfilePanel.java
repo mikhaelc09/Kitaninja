@@ -26,6 +26,7 @@ public class ProfilePanel extends JPanel {
     JLabel stat5;
     JLabel back;
     Player player;
+    Font fontlb = new Font("Ninja Naruto", Font.PLAIN, 30);
     public ProfilePanel(Player player){
         this.player = player;
         init();
@@ -41,7 +42,7 @@ public class ProfilePanel extends JPanel {
 
             private void draw(Graphics g) {
                 try {
-                    BufferedImage bg = ImageIO.read(new File("src/istts/pbo/res/backgrounds/ShopBackground.png"));
+                    BufferedImage bg = ImageIO.read(new File("src/istts/pbo/res/backgrounds/Profile.png"));
                     g.drawImage(bg, 0, 0, null);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -92,14 +93,14 @@ public class ProfilePanel extends JPanel {
 
         //Stat
         class Stat extends JPanel{
-            //            protected void paintComponent(Graphics g) {
+//                        protected void paintComponent(Graphics g) {
 //                super.paintComponent(g);
 //                draw(g);
 //            }
 //
 //            private void draw(Graphics g) {
 //                try {
-//                    BufferedImage bg = ImageIO.read(new File("src/com/company/res/papan.png"));
+//                    BufferedImage bg = ImageIO.read(new File("src/istts/pbo/res/Tab/ProfilTab1.png"));
 //                    g.drawImage(bg, 0, 0, null);
 //                } catch (IOException e) {
 //                    e.printStackTrace();
@@ -116,7 +117,8 @@ public class ProfilePanel extends JPanel {
 
 
         //nama stat
-        statnama = new JLabel(player.getName());
+        statnama = new JLabel("Status");
+        statnama.setFont(fontlb);
         statnama.setBounds(90,10,200,50);
         statnama.setBackground(Color.cyan);
         statnama.setOpaque(false);

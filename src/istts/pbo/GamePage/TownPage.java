@@ -121,7 +121,7 @@ public class TownPage extends JFrame {
         smith=new SmithPanel(player);
 
         town.setBounds(0,40,this.getWidth(),this.getHeight());
-        profil.setBounds(0,40,this.getWidth(),this.getHeight());
+        profil.setBounds(0,35,this.getWidth(),this.getHeight());
         dojo.setBounds(0,40,this.getWidth(),this.getHeight());
         smith.setBounds(0,40,this.getWidth(),this.getHeight());
 
