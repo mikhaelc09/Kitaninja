@@ -20,6 +20,7 @@ public class DojoPanel extends JPanel {
     JLabel lbActiveName;
     JLabel lbActiveDesc;
     JLabel btLearn;
+    JLabel lbClass;
     JPanel c1;
     JPanel c2;
     int type = 0;
@@ -43,7 +44,11 @@ public class DojoPanel extends JPanel {
         c2.setLayout(null);
         c2.setOpaque(false);
 
+
         String pc = p.getPlayerClass().getClassname();
+//        lbClass = new JLabel(pc);
+//        lbClass.setFont(fontlb);
+//        lbClass.setBounds();
         if(pc.equalsIgnoreCase("Ninjutsu") || pc.equalsIgnoreCase("Kenjutsu") || pc.equalsIgnoreCase("Shurikenjustu") || pc.equalsIgnoreCase("Kayakujutsu") || pc.equalsIgnoreCase("Shinobi")){
             type = 1;
         }
@@ -230,9 +235,10 @@ public class DojoPanel extends JPanel {
         lbSkillBox.setVerticalAlignment(SwingConstants.NORTH);
         lbSkillBox.setBackground(Color.blue);
         lbSkillBox.setFont(fontlb);
-        lbSkillBox.setForeground(Color.WHITE);
-        lbSkillBox.setOpaque(true);
+//        lbSkillBox.setForeground(Color.WHITE);
+//        lbSkillBox.setOpaque(true);
         lbSkillBox.setBounds(30,35, 750,650);
+        lbSkillBox.setIcon(resizeIcon("src/istts/pbo/res/papan.png", 755, 650));
 
         for (int i = 0; i < 15; i++) {
             lbSkill.add(new skillLabel());
