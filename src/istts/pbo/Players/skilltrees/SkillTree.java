@@ -7,9 +7,15 @@ import java.util.ArrayList;
 
 public class SkillTree<T> {
     private ArrayList<T> skills;
+    private String baseJob;
 
-    public SkillTree() {
+    public SkillTree(String baseJob) {
+        this.baseJob = baseJob;
         skills = new ArrayList<>();
+    }
+
+    public void addSkill(T skill){
+        skills.add(skill);
     }
 
     public ArrayList<T> getSkills() {
@@ -20,7 +26,11 @@ public class SkillTree<T> {
         this.skills = skills;
     }
 
-    public void addDMG(String nama, int mana, int energy, int tools, int damage){
-        skills.add((T)new DamageOnly(nama,mana,energy,tools,damage));
+    public String getBaseJob() {
+        return baseJob;
+    }
+
+    public void setBaseJob(String baseJob) {
+        this.baseJob = baseJob;
     }
 }

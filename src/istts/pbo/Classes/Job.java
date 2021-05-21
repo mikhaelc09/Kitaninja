@@ -1,80 +1,27 @@
 package istts.pbo.Classes;
 
+import istts.pbo.Players.Stat;
+import istts.pbo.Players.skilltrees.SkillTree;
+
 public class Job {
-    int health;
-    int attack;
-    int def;
-    int mana;
-    int speed;
-    int acc;
-    int critrate;
-    String classname;
+    private String classname;
+    private Stat stats;
+    private SkillTree skillTree;
+    private String spritePath;
 
-    public Job(int health, int attack, int def, int mana, int speed, int acc, int critrate, String classname) {
-        this.health = health;
-        this.attack = attack;
-        this.def = def;
-        this.mana = mana;
-        this.speed = speed;
-        this.acc = acc;
-        this.critrate = critrate;
+    public Job(Stat stats, String classname, String baseJob,  String spritePath) {
+        this.stats = stats;
         this.classname = classname;
+        this.skillTree = new SkillTree(baseJob);
+        this.spritePath = spritePath;
     }
 
-    public int getAcc() {
-        return acc;
+    public Stat getStats() {
+        return stats;
     }
 
-    public void setAcc(int acc) {
-        this.acc = acc;
-    }
-
-    public int getCritrate() {
-        return critrate;
-    }
-
-    public void setCritrate(int critrate) {
-        this.critrate = critrate;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public int getAttack() {
-        return attack;
-    }
-
-    public void setAttack(int attack) {
-        this.attack = attack;
-    }
-
-    public int getDef() {
-        return def;
-    }
-
-    public void setDef(int def) {
-        this.def = def;
-    }
-
-    public int getMana() {
-        return mana;
-    }
-
-    public void setMana(int mana) {
-        this.mana = mana;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
+    public void setStats(Stat stats) {
+        this.stats = stats;
     }
 
     public String getClassname() {
@@ -83,5 +30,21 @@ public class Job {
 
     public void setClassname(String classname) {
         this.classname = classname;
+    }
+
+    public SkillTree getSkillTree() {
+        return skillTree;
+    }
+
+    public void setSkillTree(SkillTree skillTree) {
+        this.skillTree = skillTree;
+    }
+
+    public String getSpritePath() {
+        return spritePath;
+    }
+
+    public void setSpritePath(String spritePath) {
+        this.spritePath = spritePath;
     }
 }

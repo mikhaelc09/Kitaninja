@@ -125,31 +125,31 @@ public class ProfilePanel extends JPanel {
 
 
         //stat1
-        stat1 = new JLabel("HP : "+player.getPlayerClass().getHealth());
+        stat1 = new JLabel("HP : "+player.getPlayerClass().getStats().getHealth());
         stat1.setBounds(10,70,350,40);
         stat1.setBackground(Color.cyan);
         stat1.setOpaque(true);
 
         //stat2
-        stat2 = new JLabel("Mana : "+player.getPlayerClass().getMana()+"");
+        stat2 = new JLabel("Mana : "+player.getPlayerClass().getStats().getMana());
         stat2.setBounds(10,120,350,40);
         stat2.setBackground(Color.cyan);
         stat2.setOpaque(true);
 
         //stat3
-        stat3 = new JLabel("Attack : "+player.getPlayerClass().getAttack());
+        stat3 = new JLabel("Attack : "+player.getPlayerClass().getStats().getAttack());
         stat3.setBounds(10,170,350,40);
         stat3.setBackground(Color.cyan);
         stat3.setOpaque(true);
 
         //stat4
-        stat4 = new JLabel("Def : "+player.getPlayerClass().getDef());
+        stat4 = new JLabel("Def : "+player.getPlayerClass().getStats().getDefense());
         stat4.setBounds(10,220,350,40);
         stat4.setBackground(Color.cyan);
         stat4.setOpaque(true);
 
         //stat5
-        stat5 = new JLabel("Speed : "+player.getPlayerClass().getSpeed());
+        stat5 = new JLabel("Speed : "+player.getPlayerClass().getStats().getSpeed());
         stat5.setBounds(10,270,350,40);
         stat5.setBackground(Color.cyan);
         stat5.setOpaque(true);

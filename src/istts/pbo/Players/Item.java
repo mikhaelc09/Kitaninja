@@ -3,10 +3,17 @@ package istts.pbo.Players;
 public abstract class Item {
     private String name;
     private int stat;
+    private String spritePath;
 
+    public Item(String name, int stat, String spritePath) {
+        this.name = name;
+        this.stat = stat;
+        this.spritePath = spritePath;
+    }
     public Item(String name, int stat) {
         this.name = name;
         this.stat = stat;
+        this.spritePath = "";
     }
 
     public String getName() {
@@ -23,6 +30,14 @@ public abstract class Item {
 
     public void setStat(int stat) {
         this.stat = stat;
+    }
+
+    public String getSpritePath() {
+        return spritePath;
+    }
+
+    public void setSpritePath(String spritePath) {
+        this.spritePath = spritePath;
     }
 }
 

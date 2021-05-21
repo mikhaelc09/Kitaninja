@@ -98,11 +98,11 @@ public class StartPage extends JFrame{
                Player player=null;
                if(create.nama.getText().length()>0) {
                    if (create.classPicked==1){
-                       player = new Player(create.getNama(),0,1,0,new Taijutsu());
+                       player = new Player(create.getNama(),new Taijutsu());
                    }else if (create.classPicked==2){
-                       player = new Player(create.getNama(),0,1,0,new Ninjutsu());
+                       player = new Player(create.getNama(),new Ninjutsu());
                    }else if (create.classPicked==3){
-                       player = new Player(create.getNama(),0,1,0,new Qiqong());
+                       player = new Player(create.getNama(),new Qiqong());
                    }
                    confirmCreate(player);
                    music.getClip().stop();

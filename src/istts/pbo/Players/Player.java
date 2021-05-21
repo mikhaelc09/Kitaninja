@@ -11,22 +11,24 @@ public class Player {
     private int gold;
     private int level;
     private int xp;
+    private int skillPoint;
+    private Stat stats;
     private Job playerClass;
     private Equipment equipment;
     private ArrayList<Item> items;
-    private ArrayList<Skill> unlockedSkills;
     private ArrayList<Skill> equippedSkills;
 
-    public Player(String name, int gold, int level, int xp, Job playerClass) {
+    public Player(String name, Job playerClass) {
         this.name = name;
-        this.gold = gold;
-        this.level = level;
-        this.xp = xp;
+        this.gold = 100;
+        this.level = 1;
+        this.xp = 0;
+        this.skillPoint = 0;
+        this.stats = playerClass.getStats();
         this.playerClass = playerClass;
-        equipment = new Equipment();
-        items = new ArrayList<Item>();
-        unlockedSkills = new ArrayList<Skill>();
-        equippedSkills = new ArrayList<Skill>();
+        this.equipment = new Equipment();
+        this.items = new ArrayList<>();
+        this.equippedSkills = new ArrayList<>();
     }
 
     public String getName() {
@@ -61,6 +63,14 @@ public class Player {
         this.xp = xp;
     }
 
+    public Stat getStats() {
+        return stats;
+    }
+
+    public void setStats(Stat stats) {
+        this.stats = stats;
+    }
+
     public Job getPlayerClass() {
         return playerClass;
     }
@@ -85,19 +95,19 @@ public class Player {
         this.items = items;
     }
 
-    public ArrayList<Skill> getUnlockedSkills() {
-        return unlockedSkills;
-    }
-
-    public void setUnlockedSkills(ArrayList<Skill> unlockedSkills) {
-        this.unlockedSkills = unlockedSkills;
-    }
-
     public ArrayList<Skill> getEquippedSkills() {
         return equippedSkills;
     }
 
     public void setEquippedSkills(ArrayList<Skill> equippedSkills) {
         this.equippedSkills = equippedSkills;
+    }
+
+    public int getSkillPoint() {
+        return skillPoint;
+    }
+
+    public void setSkillPoint(int skillPoint) {
+        this.skillPoint = skillPoint;
     }
 }
