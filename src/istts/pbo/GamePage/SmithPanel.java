@@ -111,4 +111,19 @@ public class SmithPanel extends JPanel{
 
         a2.add(lbItem);
     }
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        drawbg(g);
+    }
+
+    public void drawbg(Graphics g){
+        try {
+            BufferedImage bg = ImageIO.read(new File("src/istts/pbo/res/backgrounds/smith.png"));
+            g.drawImage(bg, 0, 0, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
+
