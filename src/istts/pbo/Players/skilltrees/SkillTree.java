@@ -18,6 +18,10 @@ public class SkillTree<T> {
         skills.add(skill);
     }
 
+    public T getAt(int i){
+        return skills.get(i);
+    }
+
     public ArrayList<T> getSkills() {
         return skills;
     }
