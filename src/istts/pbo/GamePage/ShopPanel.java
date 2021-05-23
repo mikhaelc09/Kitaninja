@@ -20,7 +20,6 @@ public class ShopPanel extends JPanel {
      int page;
      int maxpage;
      int tipe;
-     JPanel parent;
     JLabel shopback;
      JLabel gambar;
      JLabel buy;
@@ -126,14 +125,29 @@ public class ShopPanel extends JPanel {
      Item selected;
     Weapon banditWeapon;
     Weapon chainmailWeapon;
+    Weapon ironWeapon;
+    Weapon steelWeapon;
+    Weapon royalWeapon;
     Helmet banditHelmet;
     Helmet chainmailHelmet;
+    Helmet ironHelmet;
+    Helmet steelHelmet;
+    Helmet royalHelmet;
     Body banditArmor;
     Body chainmailArmor;
+    Body ironArmor;
+    Body steelArmor;
+    Body royalArmor;
     Boots banditBoots;
     Boots chainmailBoots;
+    Boots ironBoots;
+    Boots steelBoots;
+    Boots royalBoots;
     Accesories banditAcc;
     Accesories chainmailAcc;
+    Accesories ironAcc;
+    Accesories steelAcc;
+    Accesories royalAcc;
 
     class Kanan extends JPanel{
         public Kanan(){}
@@ -408,7 +422,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[0][2].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = ironHelmet;
             }
         });
         this.headiconitem4.addMouseListener(new MouseAdapter() {
@@ -422,7 +436,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[0][3].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = steelHelmet;
             }
         });
         this.headiconitem5.addMouseListener(new MouseAdapter() {
@@ -436,7 +450,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[0][4].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = royalHelmet;
             }
         });
         //weapon
@@ -479,7 +493,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[1][2].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = ironWeapon;
             }
         });
         this.weaponiconitem4.addMouseListener(new MouseAdapter() {
@@ -493,7 +507,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[1][3].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = steelWeapon;
             }
         });
         this.weaponiconitem5.addMouseListener(new MouseAdapter() {
@@ -507,7 +521,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[1][4].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = royalWeapon;
             }
         });
         //body
@@ -550,7 +564,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[2][2].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = ironArmor;
             }
         });
         this.bodyiconitem4.addMouseListener(new MouseAdapter() {
@@ -564,7 +578,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[2][3].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = steelArmor;
             }
         });
         this.bodyiconitem5.addMouseListener(new MouseAdapter() {
@@ -578,7 +592,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[2][4].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = royalArmor;
             }
         });
         //boots
@@ -621,7 +635,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[3][2].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = ironBoots;
             }
         });
         this.bootsiconitem4.addMouseListener(new MouseAdapter() {
@@ -635,7 +649,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[3][3].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = steelBoots;
             }
         });
         this.bootsiconitem5.addMouseListener(new MouseAdapter() {
@@ -649,7 +663,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[3][4].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = royalBoots;
             }
         });
         //acc
@@ -692,7 +706,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[4][2].getText());
                 desc.revalidate();
                 desc.repaint();
-
+                selected = ironAcc;
             }
         });
         this.accessoryiconitem4.addMouseListener(new MouseAdapter() {
@@ -706,6 +720,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[4][3].getText());
                 desc.revalidate();
                 desc.repaint();
+                selected = steelAcc;
             }
         });
         this.accessoryiconitem5.addMouseListener(new MouseAdapter() {
@@ -719,6 +734,7 @@ public class ShopPanel extends JPanel {
                 desc.setText(Descclick[4][4].getText());
                 desc.revalidate();
                 desc.repaint();
+                selected = royalAcc;
             }
         });
         this.buy.addMouseListener(new MouseAdapter() {
@@ -738,21 +754,51 @@ public class ShopPanel extends JPanel {
         this.setVisible(false);
 
         //inisialisasi item
-        banditWeapon = new Weapon("Bandit Axe",10,5,"src/istts/pbo/res/Item/BanditWeapon.png");
+        banditWeapon = new Weapon("Bandit Axe",10,1,"src/istts/pbo/res/Item/BanditWeapon.png");
         banditHelmet = new Helmet("Bandit Helmet",1,1,"src/istts/pbo/res/Item/BanditHelmet.png");
-        banditArmor = new Body("Bandit Armor",6,3,"src/istts/pbo/res/Item/BanditArmor.png");
-        banditBoots = new Boots("Bandit Boots",4,2,"src/istts/pbo/res/Item/BanditBoots.png");
-        banditAcc = new Accesories("Bandit Necklace",8,4,"src/istts/pbo/res/Item/BanditAcc.png");
-        chainmailWeapon = new Weapon("Iron Axe",10,5,"src/istts/pbo/res/Item/ChainmailWeapon.png");
-        chainmailHelmet = new Helmet("Chainmail Helmet",1,1,"src/istts/pbo/res/Item/ChainmailHelmet.png");
-        chainmailArmor = new Body("Chainmail Armor",6,3,"src/istts/pbo/res/Item/ChainmailArmor.png");
+        banditArmor = new Body("Bandit Armor",6,1,"src/istts/pbo/res/Item/BanditArmor.png");
+        banditBoots = new Boots("Bandit Boots",4,1,"src/istts/pbo/res/Item/BanditBoots.png");
+        banditAcc = new Accesories("Bandit Necklace",8,1,"src/istts/pbo/res/Item/BanditAcc.png");
+        chainmailWeapon = new Weapon("Iron Axe",10,2,"src/istts/pbo/res/Item/ChainmailWeapon.png");
+        chainmailHelmet = new Helmet("Chainmail Helmet",1,2,"src/istts/pbo/res/Item/ChainmailHelmet.png");
+        chainmailArmor = new Body("Chainmail Armor",6,2,"src/istts/pbo/res/Item/ChainmailArmor.png");
         chainmailBoots = new Boots("Chainmail Boots",4,2,"src/istts/pbo/res/Item/ChainmailBoots.png");
-        chainmailAcc = new Accesories("Iron Necklace",8,4,"src/istts/pbo/res/Item/ChainmailAcc.png");
+        chainmailAcc = new Accesories("Chainmail Necklace",8,2,"src/istts/pbo/res/Item/ChainmailAcc.png");
+        ironWeapon = new Weapon("Iron Sword",10,3,"src/istts/pbo/res/Item/IronWeapon.png");
+        ironHelmet = new Helmet("Iron Helmet",1,3,"src/istts/pbo/res/Item/IronHelmet.png");
+        ironArmor = new Body("Iron Armor",6,3,"src/istts/pbo/res/Item/IronArmor.png");
+        ironBoots = new Boots("Iron Boots",4,3,"src/istts/pbo/res/Item/IronBoots.png");
+        ironAcc = new Accesories("Iron Necklace",8,3,"src/istts/pbo/res/Item/IronAcc.png");
+        steelWeapon = new Weapon("Steel Sword",10,4,"src/istts/pbo/res/Item/SteelWeapon.png");
+        steelHelmet = new Helmet("Steel Helmet",1,4,"src/istts/pbo/res/Item/SteelHelmet.png");
+        steelArmor = new Body("Steel Armor",6,4,"src/istts/pbo/res/Item/SteelArmor.png");
+        steelBoots = new Boots("Steel Boots",4,4,"src/istts/pbo/res/Item/SteelBoots.png");
+        steelAcc = new Accesories("Steel Necklace",8,4,"src/istts/pbo/res/Item/SteelAcc.png");
+        royalWeapon = new Weapon("Royal Sword",10,5,"src/istts/pbo/res/Item/RoyalWeapon.png");
+        royalHelmet = new Helmet("Royal Helmet",1,5,"src/istts/pbo/res/Item/RoyalHelmet.png");
+        royalArmor = new Body("Royal Armor",6,5,"src/istts/pbo/res/Item/RoyalArmor.png");
+        royalBoots = new Boots("Royal Boots",4,5,"src/istts/pbo/res/Item/RoyalBoots.png");
+        royalAcc = new Accesories("Royal Necklace",8,5,"src/istts/pbo/res/Item/RoyalAcc.png");
 
         selected = banditHelmet;
 
         //mainpanel
-        parent = new JPanel();
+        class Parent extends JPanel{
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                draw(g);
+            }
+
+            private void draw(Graphics g) {
+                try {
+                    BufferedImage bg = ImageIO.read(new File("src/istts/pbo/res/backgrounds/Shop.png"));
+                    g.drawImage(bg, 0, 0, null);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        Parent parent = new Parent();
         parent.setBounds(0,0,SWIDTH,SHEIGHT);
         parent.setLayout(null);
         parent.setPreferredSize(new Dimension(SWIDTH,SHEIGHT));
@@ -760,10 +806,10 @@ public class ShopPanel extends JPanel {
         parent.setOpaque(true);
 
         //back
-        shopback = new JLabel("BAAACK");
-        shopback.setBounds(20,20,50,50);
-        shopback.setBackground(Color.red);
-        shopback.setOpaque(true);
+        shopback = new JLabel();
+        shopback.setBounds(20,20,100,50);
+        shopback.setIcon(new ImageIcon("src/istts/pbo/res/buttons/Back.png"));
+        shopback.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         //Gambaritem
         gambar = new JLabel("Gambar item clicked");
@@ -783,6 +829,7 @@ public class ShopPanel extends JPanel {
         buy.setVerticalTextPosition(SwingConstants.CENTER);
         buy.setBackground(Color.GREEN);
         buy.setOpaque(true);
+        buy.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         //Kanan (BUAT BACKGROUND SHOP)
         kanan = new Kanan();
@@ -802,32 +849,30 @@ public class ShopPanel extends JPanel {
         kananatas.setOpaque(true);
 
         //Head
-        Head = new JLabel("Head");
-        Head.setPreferredSize(new Dimension(100,40));
-        Head.setBackground(Color.BLUE);
-        Head.setOpaque(true);
-
+        Head = new JLabel();
+        Head.setPreferredSize(new Dimension(100,50));
+        Head.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        Head.setIcon(new ImageIcon("src/istts/pbo/res/buttons/HelmetShop.png"));
         //Weapon
         Weapon = new JLabel("Weapon");
-        Weapon.setPreferredSize(new Dimension(100,40));
-        Weapon.setBackground(Color.BLUE);
-        Weapon.setOpaque(true);
+        Weapon.setPreferredSize(new Dimension(100,50));
+        Weapon.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        Weapon.setIcon(new ImageIcon("src/istts/pbo/res/buttons/WeaponShop.png"));
         //Body
         Body = new JLabel("Body");
-        Body.setPreferredSize(new Dimension(100,40));
-        Body.setBackground(Color.BLUE);
-        Body.setOpaque(true);
+        Body.setPreferredSize(new Dimension(100,50));
+        Body.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        Body.setIcon(new ImageIcon("src/istts/pbo/res/buttons/ArmorShop.png"));
         //Boots
         Boots = new JLabel("Boots");
-        Boots.setPreferredSize(new Dimension(100,40));
-        Boots.setBackground(Color.BLUE);
-        Boots.setOpaque(true);
+        Boots.setPreferredSize(new Dimension(100,50));
+        Boots.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        Boots.setIcon(new ImageIcon("src/istts/pbo/res/buttons/BootsShop.png"));
         //Accessory
         Accessory = new JLabel("Accessory");
-        Accessory.setPreferredSize(new Dimension(100,40));
-        Accessory.setBackground(Color.BLUE);
-        Accessory.setOpaque(true);
-
+        Accessory.setPreferredSize(new Dimension(100,50));
+        Accessory.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        Accessory.setIcon(new ImageIcon("src/istts/pbo/res/buttons/AccShop.png"));
         //kanantengahhead(page 1)
         kanantengahhead = new JPanel();
         kanantengahhead.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
@@ -847,6 +892,7 @@ public class ShopPanel extends JPanel {
         headiconitem1 = new JLabel("iconhead1");
         headiconitem1.setPreferredSize(new Dimension(120,120));
         headiconitem1.setIcon(new ImageIcon(banditHelmet.getSpritePath()));
+        headiconitem1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
         headicondesc1 = new JTextArea("deschead1");
         headicondesc1.setPreferredSize(new Dimension(570,120));
@@ -863,7 +909,7 @@ public class ShopPanel extends JPanel {
         headiconitem2 = new JLabel("iconhead2");
         headiconitem2.setPreferredSize(new Dimension(120,120));
         headiconitem2.setIcon(new ImageIcon(chainmailHelmet.getSpritePath()));
-
+        headiconitem2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem2
         headicondesc2 = new JTextArea("deschead2");
         headicondesc2.setPreferredSize(new Dimension(570,120));
@@ -879,8 +925,8 @@ public class ShopPanel extends JPanel {
         //iconitem3
         headiconitem3 = new JLabel("iconhead3");
         headiconitem3.setPreferredSize(new Dimension(120,120));
-        headiconitem3.setBackground(Color.magenta);
-        headiconitem3.setOpaque(true);
+        headiconitem3.setIcon(new ImageIcon(ironHelmet.getSpritePath()));
+        headiconitem3.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem3
         headicondesc3 = new JTextArea("deschead3");
         headicondesc3.setPreferredSize(new Dimension(570,120));
@@ -905,8 +951,8 @@ public class ShopPanel extends JPanel {
         //iconitem4
         headiconitem4 = new JLabel("iconhead4");
         headiconitem4.setPreferredSize(new Dimension(120,120));
-        headiconitem4.setBackground(Color.magenta);
-        headiconitem4.setOpaque(true);
+        headiconitem4.setIcon(new ImageIcon(steelHelmet.getSpritePath()));
+        headiconitem4.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
         headicondesc4 = new JTextArea("deschead4");
         headicondesc4.setPreferredSize(new Dimension(570,120));
@@ -922,8 +968,8 @@ public class ShopPanel extends JPanel {
         //iconitem5
         headiconitem5 = new JLabel("iconhead5");
         headiconitem5.setPreferredSize(new Dimension(120,120));
-        headiconitem5.setBackground(Color.magenta);
-        headiconitem5.setOpaque(true);
+        headiconitem5.setIcon(new ImageIcon(royalHelmet.getSpritePath()));
+        headiconitem5.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem5
         headicondesc5 = new JTextArea("deschead5");
         headicondesc5.setPreferredSize(new Dimension(570,120));
@@ -950,6 +996,7 @@ public class ShopPanel extends JPanel {
         weaponiconitem1 = new JLabel("iconweapon1");
         weaponiconitem1.setPreferredSize(new Dimension(120,120));
         weaponiconitem1.setIcon(new ImageIcon(banditWeapon.getSpritePath()));
+        weaponiconitem1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
         weaponicondesc1 = new JTextArea("descweapon1");
         weaponicondesc1.setPreferredSize(new Dimension(570,120));
@@ -966,7 +1013,7 @@ public class ShopPanel extends JPanel {
         weaponiconitem2 = new JLabel("iconweapon2");
         weaponiconitem2.setPreferredSize(new Dimension(120,120));
         weaponiconitem2.setIcon(new ImageIcon(chainmailWeapon.getSpritePath()));
-
+        weaponiconitem2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem2
         weaponicondesc2 = new JTextArea("descweapon2");
         weaponicondesc2.setPreferredSize(new Dimension(570,120));
@@ -982,8 +1029,8 @@ public class ShopPanel extends JPanel {
         //iconitem3
         weaponiconitem3 = new JLabel("iconweapon3");
         weaponiconitem3.setPreferredSize(new Dimension(120,120));
-        weaponiconitem3.setBackground(Color.magenta);
-        weaponiconitem3.setOpaque(true);
+        weaponiconitem3.setIcon(new ImageIcon(ironWeapon.getSpritePath()));
+        weaponiconitem3.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem3
         weaponicondesc3 = new JTextArea("descweapon3");
         weaponicondesc3.setPreferredSize(new Dimension(570,120));
@@ -1008,8 +1055,8 @@ public class ShopPanel extends JPanel {
         //iconitem4
         weaponiconitem4 = new JLabel("iconweapon4");
         weaponiconitem4.setPreferredSize(new Dimension(120,120));
-        weaponiconitem4.setBackground(Color.magenta);
-        weaponiconitem4.setOpaque(true);
+        weaponiconitem4.setIcon(new ImageIcon(steelWeapon.getSpritePath()));
+        weaponiconitem4.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
         weaponicondesc4 = new JTextArea("descweapon4");
         weaponicondesc4.setPreferredSize(new Dimension(570,120));
@@ -1025,8 +1072,8 @@ public class ShopPanel extends JPanel {
         //iconitem5
         weaponiconitem5 = new JLabel("iconweapon5");
         weaponiconitem5.setPreferredSize(new Dimension(120,120));
-        weaponiconitem5.setBackground(Color.magenta);
-        weaponiconitem5.setOpaque(true);
+        weaponiconitem5.setIcon(new ImageIcon(royalWeapon.getSpritePath()));
+        weaponiconitem5.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem5
         weaponicondesc5 = new JTextArea("descweapon5");
         weaponicondesc5.setPreferredSize(new Dimension(570,120));
@@ -1053,6 +1100,7 @@ public class ShopPanel extends JPanel {
         bodyiconitem1 = new JLabel("iconbody1");
         bodyiconitem1.setPreferredSize(new Dimension(120,120));
         bodyiconitem1.setIcon(new ImageIcon(banditArmor.getSpritePath()));
+        bodyiconitem1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
         bodyicondesc1 = new JTextArea("descbody1");
         bodyicondesc1.setPreferredSize(new Dimension(570,120));
@@ -1069,6 +1117,7 @@ public class ShopPanel extends JPanel {
         bodyiconitem2 = new JLabel("iconbody2");
         bodyiconitem2.setPreferredSize(new Dimension(120,120));
         bodyiconitem2.setIcon(new ImageIcon(chainmailArmor.getSpritePath()));
+        bodyiconitem2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem2
         bodyicondesc2 = new JTextArea("descbody2");
         bodyicondesc2.setPreferredSize(new Dimension(570,120));
@@ -1084,8 +1133,8 @@ public class ShopPanel extends JPanel {
         //iconitem3
         bodyiconitem3 = new JLabel("iconbody3");
         bodyiconitem3.setPreferredSize(new Dimension(120,120));
-        bodyiconitem3.setBackground(Color.magenta);
-        bodyiconitem3.setOpaque(true);
+        bodyiconitem3.setIcon(new ImageIcon(ironArmor.getSpritePath()));
+        bodyiconitem3.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem3
         bodyicondesc3 = new JTextArea("descbody3");
         bodyicondesc3.setPreferredSize(new Dimension(570,120));
@@ -1110,8 +1159,8 @@ public class ShopPanel extends JPanel {
         //iconitem4
         bodyiconitem4 = new JLabel("iconbody4");
         bodyiconitem4.setPreferredSize(new Dimension(120,120));
-        bodyiconitem4.setBackground(Color.magenta);
-        bodyiconitem4.setOpaque(true);
+        bodyiconitem4.setIcon(new ImageIcon(steelArmor.getSpritePath()));
+        bodyiconitem4.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
         bodyicondesc4 = new JTextArea("descbody4");
         bodyicondesc4.setPreferredSize(new Dimension(570,120));
@@ -1127,8 +1176,8 @@ public class ShopPanel extends JPanel {
         //iconitem5
         bodyiconitem5 = new JLabel("iconbody5");
         bodyiconitem5.setPreferredSize(new Dimension(120,120));
-        bodyiconitem5.setBackground(Color.magenta);
-        bodyiconitem5.setOpaque(true);
+        bodyiconitem5.setIcon(new ImageIcon(royalArmor.getSpritePath()));
+        bodyiconitem5.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem5
         bodyicondesc5 = new JTextArea("descbody5");
         bodyicondesc5.setPreferredSize(new Dimension(570,120));
@@ -1155,6 +1204,7 @@ public class ShopPanel extends JPanel {
         bootsiconitem1 = new JLabel("iconboots1");
         bootsiconitem1.setPreferredSize(new Dimension(120,120));
         bootsiconitem1.setIcon(new ImageIcon(banditBoots.getSpritePath()));
+        bootsiconitem1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
         bootsicondesc1 = new JTextArea("descboots1");
         bootsicondesc1.setPreferredSize(new Dimension(570,120));
@@ -1171,7 +1221,7 @@ public class ShopPanel extends JPanel {
         bootsiconitem2 = new JLabel("iconboots2");
         bootsiconitem2.setPreferredSize(new Dimension(120,120));
         bootsiconitem2.setIcon(new ImageIcon(chainmailBoots.getSpritePath()));
-
+        bootsiconitem2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem2
         bootsicondesc2 = new JTextArea("descboots2");
         bootsicondesc2.setPreferredSize(new Dimension(570,120));
@@ -1187,8 +1237,8 @@ public class ShopPanel extends JPanel {
         //iconitem3
         bootsiconitem3 = new JLabel("iconboots3");
         bootsiconitem3.setPreferredSize(new Dimension(120,120));
-        bootsiconitem3.setBackground(Color.magenta);
-        bootsiconitem3.setOpaque(true);
+        bootsiconitem3.setIcon(new ImageIcon(ironBoots.getSpritePath()));
+        bootsiconitem3.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem3
         bootsicondesc3 = new JTextArea("descboots3");
         bootsicondesc3.setPreferredSize(new Dimension(570,120));
@@ -1213,8 +1263,8 @@ public class ShopPanel extends JPanel {
         //iconitem4
         bootsiconitem4 = new JLabel("iconboots4");
         bootsiconitem4.setPreferredSize(new Dimension(120,120));
-        bootsiconitem4.setBackground(Color.magenta);
-        bootsiconitem4.setOpaque(true);
+        bootsiconitem4.setIcon(new ImageIcon(steelBoots.getSpritePath()));
+        bootsiconitem4.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
         bootsicondesc4 = new JTextArea("descboots4");
         bootsicondesc4.setPreferredSize(new Dimension(570,120));
@@ -1230,8 +1280,8 @@ public class ShopPanel extends JPanel {
         //iconitem5
         bootsiconitem5 = new JLabel("iconboots5");
         bootsiconitem5.setPreferredSize(new Dimension(120,120));
-        bootsiconitem5.setBackground(Color.magenta);
-        bootsiconitem5.setOpaque(true);
+        bootsiconitem5.setIcon(new ImageIcon(royalBoots.getSpritePath()));
+        bootsiconitem5.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem5
         bootsicondesc5 = new JTextArea("descboots5");
         bootsicondesc5.setPreferredSize(new Dimension(570,120));
@@ -1258,6 +1308,7 @@ public class ShopPanel extends JPanel {
         accessoryiconitem1 = new JLabel("iconaccessory1");
         accessoryiconitem1.setPreferredSize(new Dimension(120,120));
         accessoryiconitem1.setIcon(new ImageIcon(banditAcc.getSpritePath()));
+        accessoryiconitem1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
         accessoryicondesc1 = new JTextArea("descaccessory1");
         accessoryicondesc1.setPreferredSize(new Dimension(570,120));
@@ -1274,7 +1325,7 @@ public class ShopPanel extends JPanel {
         accessoryiconitem2 = new JLabel("iconaccessory2");
         accessoryiconitem2.setPreferredSize(new Dimension(120,120));
         accessoryiconitem2.setIcon(new ImageIcon(chainmailAcc.getSpritePath()));
-
+        accessoryiconitem2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem2
         accessoryicondesc2 = new JTextArea("descaccessory2");
         accessoryicondesc2.setPreferredSize(new Dimension(570,120));
@@ -1290,8 +1341,8 @@ public class ShopPanel extends JPanel {
         //iconitem3
         accessoryiconitem3 = new JLabel("iconaccessory3");
         accessoryiconitem3.setPreferredSize(new Dimension(120,120));
-        accessoryiconitem3.setBackground(Color.magenta);
-        accessoryiconitem3.setOpaque(true);
+        accessoryiconitem3.setIcon(new ImageIcon(ironAcc.getSpritePath()));
+        accessoryiconitem3.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem3
         accessoryicondesc3 = new JTextArea("descaccessory3");
         accessoryicondesc3.setPreferredSize(new Dimension(570,120));
@@ -1316,8 +1367,8 @@ public class ShopPanel extends JPanel {
         //iconitem4
         accessoryiconitem4 = new JLabel("iconaccessory4");
         accessoryiconitem4.setPreferredSize(new Dimension(120,120));
-        accessoryiconitem4.setBackground(Color.magenta);
-        accessoryiconitem4.setOpaque(true);
+        accessoryiconitem4.setIcon(new ImageIcon(steelAcc.getSpritePath()));
+        accessoryiconitem4.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
         accessoryicondesc4 = new JTextArea("descaccessory4");
         accessoryicondesc4.setPreferredSize(new Dimension(570,120));
@@ -1333,8 +1384,8 @@ public class ShopPanel extends JPanel {
         //iconitem5
         accessoryiconitem5 = new JLabel("iconaccessory5");
         accessoryiconitem5.setPreferredSize(new Dimension(120,120));
-        accessoryiconitem5.setBackground(Color.magenta);
-        accessoryiconitem5.setOpaque(true);
+        accessoryiconitem5.setIcon(new ImageIcon(royalAcc.getSpritePath()));
+        accessoryiconitem5.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem5
         accessoryicondesc5 = new JTextArea("descaccessory5");
         accessoryicondesc5.setPreferredSize(new Dimension(570,120));
@@ -1357,15 +1408,15 @@ public class ShopPanel extends JPanel {
         CurrentPage.setBackground(Color.GREEN);
         CurrentPage.setOpaque(true);
         //prevpage
-        Prev = new JLabel("Prev");
-        Prev.setPreferredSize(new Dimension(50,40));
-        Prev.setBackground(Color.GREEN);
-        Prev.setOpaque(true);
+        Prev = new JLabel();
+        Prev.setPreferredSize(new Dimension(80,40));
+        Prev.setIcon(new ImageIcon("src/istts/pbo/res/buttons/backShop.png"));
+        Prev.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //nextpage
-        Next = new JLabel("Next");
-        Next.setPreferredSize(new Dimension(50,40));
-        Next.setBackground(Color.GREEN);
-        Next.setOpaque(true);
+        Next = new JLabel();
+        Next.setPreferredSize(new Dimension(80,40));
+        Next.setIcon(new ImageIcon("src/istts/pbo/res/buttons/nextShop.png"));
+        Next.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //
 
         //Add And Revalidate every shit
