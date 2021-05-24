@@ -148,6 +148,7 @@ public class ShopPanel extends JPanel {
     Accesories ironAcc;
     Accesories steelAcc;
     Accesories royalAcc;
+    Font fontlb = new Font("Arial", Font.PLAIN, 30);
 
     class Kanan extends JPanel{
         public Kanan(){}
@@ -894,11 +895,11 @@ public class ShopPanel extends JPanel {
         headiconitem1.setIcon(new ImageIcon(banditHelmet.getSpritePath()));
         headiconitem1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
-        headicondesc1 = new JTextArea("deschead1");
+        headicondesc1 = new JTextArea("Name : " + banditHelmet.getName() + "\nHealth : "+banditHelmet.getStat() + "\nCost : "+banditHelmet.getCost());
+        headicondesc1.setEditable(false);
+        headicondesc1.setFont(fontlb);
         headicondesc1.setPreferredSize(new Dimension(570,120));
         headicondesc1.setLineWrap(true);
-        headicondesc1.setBackground(new Color(100,100,200));
-        headicondesc1.setOpaque(true);
         //item 2
         kanantengahheaditem2 = new JPanel();
         kanantengahheaditem2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -911,11 +912,11 @@ public class ShopPanel extends JPanel {
         headiconitem2.setIcon(new ImageIcon(chainmailHelmet.getSpritePath()));
         headiconitem2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem2
-        headicondesc2 = new JTextArea("deschead2");
+        headicondesc2 = new JTextArea("Name : " + chainmailHelmet.getName() + "\nHealth : "+chainmailHelmet.getStat() + "\nCost : "+chainmailHelmet.getCost());
+        headicondesc2.setEditable(false);
+        headicondesc2.setFont(fontlb);
         headicondesc2.setPreferredSize(new Dimension(570,120));
         headicondesc2.setLineWrap(true);
-        headicondesc2.setBackground(new Color(100,100,200));
-        headicondesc2.setOpaque(true);
         //item 3
         kanantengahheaditem3 = new JPanel();
         kanantengahheaditem3.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -928,18 +929,17 @@ public class ShopPanel extends JPanel {
         headiconitem3.setIcon(new ImageIcon(ironHelmet.getSpritePath()));
         headiconitem3.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem3
-        headicondesc3 = new JTextArea("deschead3");
+        headicondesc3 = new JTextArea("Name : " + ironHelmet.getName() + "\nHealth : "+ironHelmet.getStat() + "\nCost : "+ironHelmet.getCost());
+        headicondesc3.setEditable(false);
+        headicondesc3.setFont(fontlb);
         headicondesc3.setPreferredSize(new Dimension(570,120));
         headicondesc3.setLineWrap(true);
-        headicondesc3.setBackground(new Color(100,100,200));
-        headicondesc3.setOpaque(true);
 
         //kanantengahhead2(page2)
         kanantengahhead2 = new JPanel();
         kanantengahhead2.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
         kanantengahhead2.setBackground(Color.CYAN);
         kanantengahhead2.setOpaque(true);
-
 
         //item 4
         kanantengahheaditem4 = new JPanel();
@@ -954,11 +954,11 @@ public class ShopPanel extends JPanel {
         headiconitem4.setIcon(new ImageIcon(steelHelmet.getSpritePath()));
         headiconitem4.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
-        headicondesc4 = new JTextArea("deschead4");
+        headicondesc4 = new JTextArea("Name : " + steelHelmet.getName() + "\nHealth : "+steelHelmet.getStat() + "\nCost : "+steelHelmet.getCost());
+        headicondesc4.setEditable(false);
+        headicondesc4.setFont(fontlb);
         headicondesc4.setPreferredSize(new Dimension(570,120));
         headicondesc4.setLineWrap(true);
-        headicondesc4.setBackground(new Color(100,100,200));
-        headicondesc4.setOpaque(true);
         //item 5
         kanantengahheaditem5 = new JPanel();
         kanantengahheaditem5.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -971,11 +971,11 @@ public class ShopPanel extends JPanel {
         headiconitem5.setIcon(new ImageIcon(royalHelmet.getSpritePath()));
         headiconitem5.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem5
-        headicondesc5 = new JTextArea("deschead5");
+        headicondesc5 = new JTextArea("Name : " + royalHelmet.getName() + "\nHealth : "+royalHelmet.getStat() + "\nCost : "+royalHelmet.getCost());
+        headicondesc5.setEditable(false);
+        headicondesc5.setFont(fontlb);
         headicondesc5.setPreferredSize(new Dimension(570,120));
         headicondesc5.setLineWrap(true);
-        headicondesc5.setBackground(new Color(100,100,200));
-        headicondesc5.setOpaque(true);
 
         //kanantengahweapon(page 1)
         kanantengahweapon = new JPanel();
@@ -998,11 +998,11 @@ public class ShopPanel extends JPanel {
         weaponiconitem1.setIcon(new ImageIcon(banditWeapon.getSpritePath()));
         weaponiconitem1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
-        weaponicondesc1 = new JTextArea("descweapon1");
+        weaponicondesc1 = new JTextArea("Name : " + banditWeapon.getName() + "\nAttack : "+banditWeapon.getStat() + "\nCost : "+banditWeapon.getCost());
+        weaponicondesc1.setEditable(false);
+        weaponicondesc1.setFont(fontlb);
         weaponicondesc1.setPreferredSize(new Dimension(570,120));
         weaponicondesc1.setLineWrap(true);
-        weaponicondesc1.setBackground(new Color(100,100,200));
-        weaponicondesc1.setOpaque(true);
         //item 2
         kanantengahweaponitem2 = new JPanel();
         kanantengahweaponitem2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1015,11 +1015,12 @@ public class ShopPanel extends JPanel {
         weaponiconitem2.setIcon(new ImageIcon(chainmailWeapon.getSpritePath()));
         weaponiconitem2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem2
-        weaponicondesc2 = new JTextArea("descweapon2");
+        weaponicondesc2 = new JTextArea("Name : " + chainmailWeapon.getName() + "\nAttack : "+chainmailWeapon.getStat() + "\nCost : "+chainmailWeapon.getCost());
+        weaponicondesc2.setEditable(false);
+        weaponicondesc2.setFont(fontlb);
         weaponicondesc2.setPreferredSize(new Dimension(570,120));
         weaponicondesc2.setLineWrap(true);
-        weaponicondesc2.setBackground(new Color(100,100,200));
-        weaponicondesc2.setOpaque(true);
+
         //item 3
         kanantengahweaponitem3 = new JPanel();
         kanantengahweaponitem3.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1032,11 +1033,11 @@ public class ShopPanel extends JPanel {
         weaponiconitem3.setIcon(new ImageIcon(ironWeapon.getSpritePath()));
         weaponiconitem3.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem3
-        weaponicondesc3 = new JTextArea("descweapon3");
+        weaponicondesc3 = new JTextArea("Name : " + ironWeapon.getName() + "\nAttack : "+ironWeapon.getStat() + "\nCost : "+ironWeapon.getCost());
+        weaponicondesc3.setEditable(false);
+        weaponicondesc3.setFont(fontlb);
         weaponicondesc3.setPreferredSize(new Dimension(570,120));
         weaponicondesc3.setLineWrap(true);
-        weaponicondesc3.setBackground(new Color(100,100,200));
-        weaponicondesc3.setOpaque(true);
 
         //kanantengahweapon2(page2)
         kanantengahweapon2 = new JPanel();
@@ -1058,11 +1059,12 @@ public class ShopPanel extends JPanel {
         weaponiconitem4.setIcon(new ImageIcon(steelWeapon.getSpritePath()));
         weaponiconitem4.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
-        weaponicondesc4 = new JTextArea("descweapon4");
+        weaponicondesc4 = new JTextArea("Name : " + steelWeapon.getName() + "\nAttack : "+steelWeapon.getStat() + "\nCost : "+steelWeapon.getCost());
+        weaponicondesc4.setEditable(false);
+        weaponicondesc4.setFont(fontlb);
         weaponicondesc4.setPreferredSize(new Dimension(570,120));
         weaponicondesc4.setLineWrap(true);
-        weaponicondesc4.setBackground(new Color(100,100,200));
-        weaponicondesc4.setOpaque(true);
+
         //item 5
         kanantengahweaponitem5 = new JPanel();
         kanantengahweaponitem5.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1075,11 +1077,11 @@ public class ShopPanel extends JPanel {
         weaponiconitem5.setIcon(new ImageIcon(royalWeapon.getSpritePath()));
         weaponiconitem5.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem5
-        weaponicondesc5 = new JTextArea("descweapon5");
+        weaponicondesc5 = new JTextArea("Name : " + royalWeapon.getName() + "\nAttack : "+royalWeapon.getStat() + "\nCost : "+royalWeapon.getCost());
+        weaponicondesc5.setEditable(false);
+        weaponicondesc5.setFont(fontlb);
         weaponicondesc5.setPreferredSize(new Dimension(570,120));
         weaponicondesc5.setLineWrap(true);
-        weaponicondesc5.setBackground(new Color(100,100,200));
-        weaponicondesc5.setOpaque(true);
 
         //kanantengahbody(page 1)
         kanantengahbody = new JPanel();
@@ -1102,11 +1104,11 @@ public class ShopPanel extends JPanel {
         bodyiconitem1.setIcon(new ImageIcon(banditArmor.getSpritePath()));
         bodyiconitem1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
-        bodyicondesc1 = new JTextArea("descbody1");
+        bodyicondesc1 = new JTextArea("Name : " + banditArmor.getName() + "\nArmor : "+banditArmor.getStat() + "\nCost : "+banditArmor.getCost());
+        bodyicondesc1.setEditable(false);
+        bodyicondesc1.setFont(fontlb);
         bodyicondesc1.setPreferredSize(new Dimension(570,120));
         bodyicondesc1.setLineWrap(true);
-        bodyicondesc1.setBackground(new Color(100,100,200));
-        bodyicondesc1.setOpaque(true);
         //item 2
         kanantengahbodyitem2 = new JPanel();
         kanantengahbodyitem2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1119,11 +1121,11 @@ public class ShopPanel extends JPanel {
         bodyiconitem2.setIcon(new ImageIcon(chainmailArmor.getSpritePath()));
         bodyiconitem2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem2
-        bodyicondesc2 = new JTextArea("descbody2");
+        bodyicondesc2 = new JTextArea("Name : " + chainmailArmor.getName() + "\nArmor : "+chainmailArmor.getStat() + "\nCost : "+chainmailArmor.getCost());
+        bodyicondesc2.setEditable(false);
+        bodyicondesc2.setFont(fontlb);
         bodyicondesc2.setPreferredSize(new Dimension(570,120));
         bodyicondesc2.setLineWrap(true);
-        bodyicondesc2.setBackground(new Color(100,100,200));
-        bodyicondesc2.setOpaque(true);
         //item 3
         kanantengahbodyitem3 = new JPanel();
         kanantengahbodyitem3.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1136,11 +1138,11 @@ public class ShopPanel extends JPanel {
         bodyiconitem3.setIcon(new ImageIcon(ironArmor.getSpritePath()));
         bodyiconitem3.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem3
-        bodyicondesc3 = new JTextArea("descbody3");
+        bodyicondesc3 = new JTextArea("Name : " + ironArmor.getName() + "\nArmor : "+ironArmor.getStat() + "\nCost : "+ironArmor.getCost());
+        bodyicondesc3.setEditable(false);
+        bodyicondesc3.setFont(fontlb);
         bodyicondesc3.setPreferredSize(new Dimension(570,120));
         bodyicondesc3.setLineWrap(true);
-        bodyicondesc3.setBackground(new Color(100,100,200));
-        bodyicondesc3.setOpaque(true);
 
         //kanantengahbody2(page2)
         kanantengahbody2 = new JPanel();
@@ -1162,11 +1164,12 @@ public class ShopPanel extends JPanel {
         bodyiconitem4.setIcon(new ImageIcon(steelArmor.getSpritePath()));
         bodyiconitem4.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
-        bodyicondesc4 = new JTextArea("descbody4");
+        bodyicondesc4 = new JTextArea("Name : " + steelArmor.getName() + "\nArmor : "+steelArmor.getStat() + "\nCost : "+steelArmor.getCost());
+        bodyicondesc4.setEditable(false);
+        bodyicondesc4.setFont(fontlb);
         bodyicondesc4.setPreferredSize(new Dimension(570,120));
         bodyicondesc4.setLineWrap(true);
-        bodyicondesc4.setBackground(new Color(100,100,200));
-        bodyicondesc4.setOpaque(true);
+
         //item 5
         kanantengahbodyitem5 = new JPanel();
         kanantengahbodyitem5.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1179,11 +1182,11 @@ public class ShopPanel extends JPanel {
         bodyiconitem5.setIcon(new ImageIcon(royalArmor.getSpritePath()));
         bodyiconitem5.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem5
-        bodyicondesc5 = new JTextArea("descbody5");
+        bodyicondesc5 = new JTextArea("Name : " + royalArmor.getName() + "\nArmor : "+royalArmor.getStat() + "\nCost : "+royalArmor.getCost());
+        bodyicondesc5.setEditable(false);
+        bodyicondesc5.setFont(fontlb);
         bodyicondesc5.setPreferredSize(new Dimension(570,120));
         bodyicondesc5.setLineWrap(true);
-        bodyicondesc5.setBackground(new Color(100,100,200));
-        bodyicondesc5.setOpaque(true);
 
         //kanantengahboots(page 1)
         kanantengahboots = new JPanel();
@@ -1206,11 +1209,12 @@ public class ShopPanel extends JPanel {
         bootsiconitem1.setIcon(new ImageIcon(banditBoots.getSpritePath()));
         bootsiconitem1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
-        bootsicondesc1 = new JTextArea("descboots1");
+        bootsicondesc1 = new JTextArea("Name : " + banditBoots.getName() + "\nSpeed : "+banditBoots.getStat() + "\nCost : "+banditBoots.getCost());
+        bootsicondesc1.setEditable(false);
+        bootsicondesc1.setFont(fontlb);
         bootsicondesc1.setPreferredSize(new Dimension(570,120));
         bootsicondesc1.setLineWrap(true);
-        bootsicondesc1.setBackground(new Color(100,100,200));
-        bootsicondesc1.setOpaque(true);
+
         //item 2
         kanantengahbootsitem2 = new JPanel();
         kanantengahbootsitem2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1223,11 +1227,11 @@ public class ShopPanel extends JPanel {
         bootsiconitem2.setIcon(new ImageIcon(chainmailBoots.getSpritePath()));
         bootsiconitem2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem2
-        bootsicondesc2 = new JTextArea("descboots2");
+        bootsicondesc2 = new JTextArea("Name : " + chainmailBoots.getName() + "\nSpeed : "+chainmailBoots.getStat() + "\nCost : "+chainmailBoots.getCost());
+        bootsicondesc2.setEditable(false);
+        bootsicondesc2.setFont(fontlb);
         bootsicondesc2.setPreferredSize(new Dimension(570,120));
         bootsicondesc2.setLineWrap(true);
-        bootsicondesc2.setBackground(new Color(100,100,200));
-        bootsicondesc2.setOpaque(true);
         //item 3
         kanantengahbootsitem3 = new JPanel();
         kanantengahbootsitem3.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1240,11 +1244,11 @@ public class ShopPanel extends JPanel {
         bootsiconitem3.setIcon(new ImageIcon(ironBoots.getSpritePath()));
         bootsiconitem3.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem3
-        bootsicondesc3 = new JTextArea("descboots3");
+        bootsicondesc3 = new JTextArea("Name : " + ironBoots.getName() + "\nSpeed : "+ironBoots.getStat() + "\nCost : "+ironBoots.getCost());
+        bootsicondesc3.setEditable(false);
+        bootsicondesc3.setFont(fontlb);
         bootsicondesc3.setPreferredSize(new Dimension(570,120));
         bootsicondesc3.setLineWrap(true);
-        bootsicondesc3.setBackground(new Color(100,100,200));
-        bootsicondesc3.setOpaque(true);
 
         //kanantengahboots2(page2)
         kanantengahboots2 = new JPanel();
@@ -1266,11 +1270,12 @@ public class ShopPanel extends JPanel {
         bootsiconitem4.setIcon(new ImageIcon(steelBoots.getSpritePath()));
         bootsiconitem4.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
-        bootsicondesc4 = new JTextArea("descboots4");
+        bootsicondesc4 = new JTextArea("Name : " + steelBoots.getName() + "\nSpeed : "+steelBoots.getStat() + "\nCost : "+steelBoots.getCost());
+        bootsicondesc4.setEditable(false);
+        bootsicondesc4.setFont(fontlb);
         bootsicondesc4.setPreferredSize(new Dimension(570,120));
         bootsicondesc4.setLineWrap(true);
-        bootsicondesc4.setBackground(new Color(100,100,200));
-        bootsicondesc4.setOpaque(true);
+
         //item 5
         kanantengahbootsitem5 = new JPanel();
         kanantengahbootsitem5.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1283,11 +1288,11 @@ public class ShopPanel extends JPanel {
         bootsiconitem5.setIcon(new ImageIcon(royalBoots.getSpritePath()));
         bootsiconitem5.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem5
-        bootsicondesc5 = new JTextArea("descboots5");
+        bootsicondesc5 = new JTextArea("Name : " + royalBoots.getName() + "\nSpeed : "+royalBoots.getStat() + "\nCost : "+royalBoots.getCost());
+        bootsicondesc5.setEditable(false);
+        bootsicondesc5.setFont(fontlb);
         bootsicondesc5.setPreferredSize(new Dimension(570,120));
         bootsicondesc5.setLineWrap(true);
-        bootsicondesc5.setBackground(new Color(100,100,200));
-        bootsicondesc5.setOpaque(true);
 
         //kanantengahaccessory(page 1)
         kanantengahaccessory = new JPanel();
@@ -1310,11 +1315,12 @@ public class ShopPanel extends JPanel {
         accessoryiconitem1.setIcon(new ImageIcon(banditAcc.getSpritePath()));
         accessoryiconitem1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
-        accessoryicondesc1 = new JTextArea("descaccessory1");
+        accessoryicondesc1 = new JTextArea("Name : " + banditAcc.getName() + "\nMana : "+banditAcc.getStat() + "\nCost : "+banditAcc.getCost());
+        accessoryicondesc1.setEditable(false);
+        accessoryicondesc1.setFont(fontlb);
         accessoryicondesc1.setPreferredSize(new Dimension(570,120));
         accessoryicondesc1.setLineWrap(true);
-        accessoryicondesc1.setBackground(new Color(100,100,200));
-        accessoryicondesc1.setOpaque(true);
+
         //item 2
         kanantengahaccessoryitem2 = new JPanel();
         kanantengahaccessoryitem2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1327,11 +1333,12 @@ public class ShopPanel extends JPanel {
         accessoryiconitem2.setIcon(new ImageIcon(chainmailAcc.getSpritePath()));
         accessoryiconitem2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem2
-        accessoryicondesc2 = new JTextArea("descaccessory2");
+        accessoryicondesc2 = new JTextArea("Name : " + chainmailAcc.getName() + "\nMana : "+chainmailAcc.getStat() + "\nCost : "+chainmailAcc.getCost());
+        accessoryicondesc2.setEditable(false);
+        accessoryicondesc2.setFont(fontlb);
         accessoryicondesc2.setPreferredSize(new Dimension(570,120));
         accessoryicondesc2.setLineWrap(true);
-        accessoryicondesc2.setBackground(new Color(100,100,200));
-        accessoryicondesc2.setOpaque(true);
+
         //item 3
         kanantengahaccessoryitem3 = new JPanel();
         kanantengahaccessoryitem3.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1344,11 +1351,11 @@ public class ShopPanel extends JPanel {
         accessoryiconitem3.setIcon(new ImageIcon(ironAcc.getSpritePath()));
         accessoryiconitem3.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem3
-        accessoryicondesc3 = new JTextArea("descaccessory3");
+        accessoryicondesc3 = new JTextArea("Name : " + ironAcc.getName() + "\nMana : "+ironAcc.getStat() + "\nCost : "+ironAcc.getCost());
+        accessoryicondesc3.setEditable(false);
+        accessoryicondesc3.setFont(fontlb);
         accessoryicondesc3.setPreferredSize(new Dimension(570,120));
         accessoryicondesc3.setLineWrap(true);
-        accessoryicondesc3.setBackground(new Color(100,100,200));
-        accessoryicondesc3.setOpaque(true);
 
         //kanantengahaccessory2(page2)
         kanantengahaccessory2 = new JPanel();
@@ -1370,11 +1377,12 @@ public class ShopPanel extends JPanel {
         accessoryiconitem4.setIcon(new ImageIcon(steelAcc.getSpritePath()));
         accessoryiconitem4.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem1
-        accessoryicondesc4 = new JTextArea("descaccessory4");
+        accessoryicondesc4 = new JTextArea("Name : " + steelAcc.getName() + "\nMana : "+steelAcc.getStat() + "\nCost : "+steelAcc.getCost());
+        accessoryicondesc4.setEditable(false);
+        accessoryicondesc4.setFont(fontlb);
         accessoryicondesc4.setPreferredSize(new Dimension(570,120));
         accessoryicondesc4.setLineWrap(true);
-        accessoryicondesc4.setBackground(new Color(100,100,200));
-        accessoryicondesc4.setOpaque(true);
+
         //item 5
         kanantengahaccessoryitem5 = new JPanel();
         kanantengahaccessoryitem5.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1387,13 +1395,12 @@ public class ShopPanel extends JPanel {
         accessoryiconitem5.setIcon(new ImageIcon(royalAcc.getSpritePath()));
         accessoryiconitem5.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //descitem5
-        accessoryicondesc5 = new JTextArea("descaccessory5");
+        accessoryicondesc5 = new JTextArea("Name : " + royalAcc.getName() + "\nMana : "+royalAcc.getStat() + "\nCost : "+royalAcc.getCost());
+        accessoryicondesc5.setEditable(false);
+        accessoryicondesc5.setFont(fontlb);
         accessoryicondesc5.setPreferredSize(new Dimension(570,120));
         accessoryicondesc5.setLineWrap(true);
-        accessoryicondesc5.setBackground(new Color(100,100,200));
-        accessoryicondesc5.setOpaque(true);
-
-
+        
         //kananbawah
 
         kananbawah = new JPanel();
