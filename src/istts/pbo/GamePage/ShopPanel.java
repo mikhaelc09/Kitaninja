@@ -23,6 +23,7 @@ public class ShopPanel extends JPanel {
     JLabel shopback;
      JLabel gambar;
      JLabel buy;
+     JPanel backdesc;
      JTextArea desc;
      JPanel kananatas;
      JPanel kanantengahhead;
@@ -116,6 +117,7 @@ public class ShopPanel extends JPanel {
      JTextArea accessoryicondesc3;
      JTextArea accessoryicondesc4;
      JTextArea accessoryicondesc5;
+     JLabel Currgold;
      JLabel Next;
      JLabel Prev;
      JLabel CurrentPage;
@@ -815,9 +817,17 @@ public class ShopPanel extends JPanel {
         gambar = new JLabel("Gambar item clicked");
         gambar.setBounds(170,145,120,120);
         gambar.setIcon(new ImageIcon(selected.getSpritePath()));
+
+        //background desc
+        backdesc = new JPanel();
+        backdesc.setBounds(20,275,460,355);
+        backdesc.setLayout(null);
+        backdesc.setBackground(Color.red);
+        backdesc.setOpaque(true);
+
         //descitem
-        desc = new JTextArea("lorem");
-        desc.setBounds(20,275,460,355);
+        desc = new JTextArea("lorem kontol kuda panjang");
+        desc.setBounds(10,10,440,335);
         desc.setLineWrap(true);
         desc.setBackground(Color.PINK);
         desc.setOpaque(false);
@@ -1425,7 +1435,14 @@ public class ShopPanel extends JPanel {
         Next.setPreferredSize(new Dimension(80,40));
         Next.setIcon(new ImageIcon("src/istts/pbo/res/buttons/nextShop.png"));
         Next.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        //
+
+        //gold sekarang
+        Currgold = new JLabel("Ini tempat gold");
+        Currgold.setPreferredSize(new Dimension(180,40));
+//        Currgold.setIcon(new ImageIcon("src/istts/pbo/res/buttons/nextShop.png"));
+        Currgold.setBackground(Color.yellow);
+        Currgold.setOpaque(true);
+        Currgold.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         //Add And Revalidate every shit
         this.add(parent);
@@ -1443,15 +1460,21 @@ public class ShopPanel extends JPanel {
         gambar.repaint();
         gambar.setVisible(true);
 
+        parent.add(backdesc);
+        backdesc.revalidate();
+        backdesc.repaint();
+        backdesc.setVisible(true);
+
+
+        backdesc.add(desc);
+        desc.revalidate();
+        desc.repaint();
+        desc.setVisible(true);
+
         parent.add(buy);
         buy.revalidate();
         buy.repaint();
         buy.setVisible(true);
-
-        parent.add(desc);
-        desc.revalidate();
-        desc.repaint();
-        desc.setVisible(true);
 
         parent.add(kanan);
         kanan.revalidate();
@@ -1934,6 +1957,11 @@ public class ShopPanel extends JPanel {
         kananbawah.repaint();
         kananbawah.setVisible(true);
 
+        kananbawah.add(Currgold);
+        Currgold.revalidate();
+        Currgold.repaint();
+        Currgold.setVisible(true);
+
         kananbawah.add(CurrentPage);
         CurrentPage.revalidate();
         CurrentPage.repaint();
@@ -1948,6 +1976,7 @@ public class ShopPanel extends JPanel {
         Next.revalidate();
         Next.repaint();
         Next.setVisible(true);
+
 
         //init
         kanan.add(kanantengahhead,BorderLayout.CENTER);
