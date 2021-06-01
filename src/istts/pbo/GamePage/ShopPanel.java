@@ -152,20 +152,20 @@ public class ShopPanel extends JPanel {
 
     class Kanan extends JPanel{
         public Kanan(){}
-//        protected void paintComponent(Graphics g) {
-//            super.paintComponent(g);
-//            draw(g);
-//        }
-//
-//        private void draw(Graphics g) {
-//            try {
-//                BufferedImage bg = ImageIO.read(new File("src/com/company/res/papan.png"));
-//                g.drawImage(bg, 0, 0, null);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//
-//            }
-//        }
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            draw(g);
+        }
+
+        private void draw(Graphics g) {
+            try {
+                BufferedImage bg = ImageIO.read(new File("src/istts/pbo/res/Tab/ShopTab1.png"));
+                g.drawImage(bg, 0, 0, null);
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+        }
     }
 
 
@@ -780,7 +780,6 @@ public class ShopPanel extends JPanel {
         royalArmor = new Body("Royal Armor",6,5,"src/istts/pbo/res/Item/RoyalArmor.png");
         royalBoots = new Boots("Royal Boots",4,5,"src/istts/pbo/res/Item/RoyalBoots.png");
         royalAcc = new Accesories("Royal Necklace",8,5,"src/istts/pbo/res/Item/RoyalAcc.png");
-
         selected = banditHelmet;
 
         //mainpanel
@@ -804,7 +803,7 @@ public class ShopPanel extends JPanel {
         parent.setLayout(null);
         parent.setPreferredSize(new Dimension(SWIDTH,SHEIGHT));
         parent.setBackground(Color.GRAY);
-        parent.setOpaque(true);
+        parent.setOpaque(false);
 
         //back
         shopback = new JLabel();
@@ -817,11 +816,12 @@ public class ShopPanel extends JPanel {
         gambar.setBounds(170,145,120,120);
         gambar.setIcon(new ImageIcon(selected.getSpritePath()));
         //descitem
-        desc = new JTextArea("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.");
+        desc = new JTextArea("lorem");
         desc.setBounds(20,275,460,355);
         desc.setLineWrap(true);
         desc.setBackground(Color.PINK);
-        desc.setOpaque(true);
+        desc.setOpaque(false);
+        desc.setFont(fontlb);
 
         //Buy Icon
         buy = new JLabel("buy");
@@ -837,7 +837,7 @@ public class ShopPanel extends JPanel {
         kanan.setBounds(500,20,750,680);
         kanan.setLayout(new BorderLayout(10,10));
         kanan.setBackground(Color.PINK);
-        kanan.setOpaque(true);
+        kanan.setOpaque(false);
 
         //kananatas
 
@@ -846,8 +846,8 @@ public class ShopPanel extends JPanel {
         kananatas.setLayout(new FlowLayout(FlowLayout.CENTER,40,28));
         kananatas.setAlignmentY(Component.CENTER_ALIGNMENT);
         kananatas.setAlignmentX(Component.CENTER_ALIGNMENT);
-        kananatas.setBackground(Color.RED);
-        kananatas.setOpaque(true);
+//        kananatas.setBackground(Color.RED);
+        kananatas.setOpaque(false);
 
         //Head
         Head = new JLabel();
@@ -877,8 +877,8 @@ public class ShopPanel extends JPanel {
         //kanantengahhead(page 1)
         kanantengahhead = new JPanel();
         kanantengahhead.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-        kanantengahhead.setBackground(Color.CYAN);
-        kanantengahhead.setOpaque(true);
+//        kanantengahhead.setBackground(Color.CYAN);
+        kanantengahhead.setOpaque(false);
 
         //itemlist
 
@@ -887,7 +887,7 @@ public class ShopPanel extends JPanel {
         kanantengahheaditem1.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahheaditem1.setPreferredSize(new Dimension(730,140));
         kanantengahheaditem1.setBackground(Color.ORANGE);
-        kanantengahheaditem1.setOpaque(true);
+        kanantengahheaditem1.setOpaque(false);
 
         //iconitem1
         headiconitem1 = new JLabel("iconhead1");
@@ -905,7 +905,7 @@ public class ShopPanel extends JPanel {
         kanantengahheaditem2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahheaditem2.setPreferredSize(new Dimension(730,140));
         kanantengahheaditem2.setBackground(Color.ORANGE);
-        kanantengahheaditem2.setOpaque(true);
+        kanantengahheaditem2.setOpaque(false);
         //iconitem2
         headiconitem2 = new JLabel("iconhead2");
         headiconitem2.setPreferredSize(new Dimension(120,120));
@@ -922,7 +922,7 @@ public class ShopPanel extends JPanel {
         kanantengahheaditem3.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahheaditem3.setPreferredSize(new Dimension(730,140));
         kanantengahheaditem3.setBackground(Color.ORANGE);
-        kanantengahheaditem3.setOpaque(true);
+        kanantengahheaditem3.setOpaque(false);
         //iconitem3
         headiconitem3 = new JLabel("iconhead3");
         headiconitem3.setPreferredSize(new Dimension(120,120));
@@ -938,15 +938,15 @@ public class ShopPanel extends JPanel {
         //kanantengahhead2(page2)
         kanantengahhead2 = new JPanel();
         kanantengahhead2.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-        kanantengahhead2.setBackground(Color.CYAN);
-        kanantengahhead2.setOpaque(true);
+//        kanantengahhead2.setBackground(Color.CYAN);
+        kanantengahhead2.setOpaque(false);
 
         //item 4
         kanantengahheaditem4 = new JPanel();
         kanantengahheaditem4.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahheaditem4.setPreferredSize(new Dimension(730,140));
         kanantengahheaditem4.setBackground(Color.ORANGE);
-        kanantengahheaditem4.setOpaque(true);
+        kanantengahheaditem4.setOpaque(false);
 
         //iconitem4
         headiconitem4 = new JLabel("iconhead4");
@@ -964,7 +964,7 @@ public class ShopPanel extends JPanel {
         kanantengahheaditem5.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahheaditem5.setPreferredSize(new Dimension(730,140));
         kanantengahheaditem5.setBackground(Color.ORANGE);
-        kanantengahheaditem5.setOpaque(true);
+        kanantengahheaditem5.setOpaque(false);
         //iconitem5
         headiconitem5 = new JLabel("iconhead5");
         headiconitem5.setPreferredSize(new Dimension(120,120));
@@ -980,8 +980,8 @@ public class ShopPanel extends JPanel {
         //kanantengahweapon(page 1)
         kanantengahweapon = new JPanel();
         kanantengahweapon.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-        kanantengahweapon.setBackground(Color.CYAN);
-        kanantengahweapon.setOpaque(true);
+//        kanantengahweapon.setBackground(Color.CYAN);
+        kanantengahweapon.setOpaque(false);
 
         //itemlist
 
@@ -990,7 +990,7 @@ public class ShopPanel extends JPanel {
         kanantengahweaponitem1.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahweaponitem1.setPreferredSize(new Dimension(730,140));
         kanantengahweaponitem1.setBackground(Color.ORANGE);
-        kanantengahweaponitem1.setOpaque(true);
+        kanantengahweaponitem1.setOpaque(false);
 
         //iconitem1
         weaponiconitem1 = new JLabel("iconweapon1");
@@ -1003,12 +1003,13 @@ public class ShopPanel extends JPanel {
         weaponicondesc1.setFont(fontlb);
         weaponicondesc1.setPreferredSize(new Dimension(570,120));
         weaponicondesc1.setLineWrap(true);
+        desc.setText(weaponicondesc1.getText());
         //item 2
         kanantengahweaponitem2 = new JPanel();
         kanantengahweaponitem2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahweaponitem2.setPreferredSize(new Dimension(730,140));
         kanantengahweaponitem2.setBackground(Color.ORANGE);
-        kanantengahweaponitem2.setOpaque(true);
+        kanantengahweaponitem2.setOpaque(false);
         //iconitem2
         weaponiconitem2 = new JLabel("iconweapon2");
         weaponiconitem2.setPreferredSize(new Dimension(120,120));
@@ -1026,7 +1027,7 @@ public class ShopPanel extends JPanel {
         kanantengahweaponitem3.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahweaponitem3.setPreferredSize(new Dimension(730,140));
         kanantengahweaponitem3.setBackground(Color.ORANGE);
-        kanantengahweaponitem3.setOpaque(true);
+        kanantengahweaponitem3.setOpaque(false);
         //iconitem3
         weaponiconitem3 = new JLabel("iconweapon3");
         weaponiconitem3.setPreferredSize(new Dimension(120,120));
@@ -1042,8 +1043,8 @@ public class ShopPanel extends JPanel {
         //kanantengahweapon2(page2)
         kanantengahweapon2 = new JPanel();
         kanantengahweapon2.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-        kanantengahweapon2.setBackground(Color.CYAN);
-        kanantengahweapon2.setOpaque(true);
+//        kanantengahweapon2.setBackground(Color.CYAN);
+        kanantengahweapon2.setOpaque(false);
 
 
         //item 4
@@ -1051,7 +1052,7 @@ public class ShopPanel extends JPanel {
         kanantengahweaponitem4.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahweaponitem4.setPreferredSize(new Dimension(730,140));
         kanantengahweaponitem4.setBackground(Color.ORANGE);
-        kanantengahweaponitem4.setOpaque(true);
+        kanantengahweaponitem4.setOpaque(false);
 
         //iconitem4
         weaponiconitem4 = new JLabel("iconweapon4");
@@ -1070,7 +1071,7 @@ public class ShopPanel extends JPanel {
         kanantengahweaponitem5.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahweaponitem5.setPreferredSize(new Dimension(730,140));
         kanantengahweaponitem5.setBackground(Color.ORANGE);
-        kanantengahweaponitem5.setOpaque(true);
+        kanantengahweaponitem5.setOpaque(false);
         //iconitem5
         weaponiconitem5 = new JLabel("iconweapon5");
         weaponiconitem5.setPreferredSize(new Dimension(120,120));
@@ -1086,8 +1087,8 @@ public class ShopPanel extends JPanel {
         //kanantengahbody(page 1)
         kanantengahbody = new JPanel();
         kanantengahbody.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-        kanantengahbody.setBackground(Color.CYAN);
-        kanantengahbody.setOpaque(true);
+//        kanantengahbody.setBackground(Color.CYAN);
+        kanantengahbody.setOpaque(false);
 
         //itemlist
 
@@ -1096,7 +1097,7 @@ public class ShopPanel extends JPanel {
         kanantengahbodyitem1.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahbodyitem1.setPreferredSize(new Dimension(730,140));
         kanantengahbodyitem1.setBackground(Color.ORANGE);
-        kanantengahbodyitem1.setOpaque(true);
+        kanantengahbodyitem1.setOpaque(false);
 
         //iconitem1
         bodyiconitem1 = new JLabel("iconbody1");
@@ -1114,7 +1115,7 @@ public class ShopPanel extends JPanel {
         kanantengahbodyitem2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahbodyitem2.setPreferredSize(new Dimension(730,140));
         kanantengahbodyitem2.setBackground(Color.ORANGE);
-        kanantengahbodyitem2.setOpaque(true);
+        kanantengahbodyitem2.setOpaque(false);
         //iconitem2
         bodyiconitem2 = new JLabel("iconbody2");
         bodyiconitem2.setPreferredSize(new Dimension(120,120));
@@ -1131,7 +1132,7 @@ public class ShopPanel extends JPanel {
         kanantengahbodyitem3.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahbodyitem3.setPreferredSize(new Dimension(730,140));
         kanantengahbodyitem3.setBackground(Color.ORANGE);
-        kanantengahbodyitem3.setOpaque(true);
+        kanantengahbodyitem3.setOpaque(false);
         //iconitem3
         bodyiconitem3 = new JLabel("iconbody3");
         bodyiconitem3.setPreferredSize(new Dimension(120,120));
@@ -1147,8 +1148,8 @@ public class ShopPanel extends JPanel {
         //kanantengahbody2(page2)
         kanantengahbody2 = new JPanel();
         kanantengahbody2.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-        kanantengahbody2.setBackground(Color.CYAN);
-        kanantengahbody2.setOpaque(true);
+//        kanantengahbody2.setBackground(Color.CYAN);
+        kanantengahbody2.setOpaque(false);
 
 
         //item 4
@@ -1156,7 +1157,7 @@ public class ShopPanel extends JPanel {
         kanantengahbodyitem4.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahbodyitem4.setPreferredSize(new Dimension(730,140));
         kanantengahbodyitem4.setBackground(Color.ORANGE);
-        kanantengahbodyitem4.setOpaque(true);
+        kanantengahbodyitem4.setOpaque(false);
 
         //iconitem4
         bodyiconitem4 = new JLabel("iconbody4");
@@ -1175,7 +1176,7 @@ public class ShopPanel extends JPanel {
         kanantengahbodyitem5.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahbodyitem5.setPreferredSize(new Dimension(730,140));
         kanantengahbodyitem5.setBackground(Color.ORANGE);
-        kanantengahbodyitem5.setOpaque(true);
+        kanantengahbodyitem5.setOpaque(false);
         //iconitem5
         bodyiconitem5 = new JLabel("iconbody5");
         bodyiconitem5.setPreferredSize(new Dimension(120,120));
@@ -1191,8 +1192,8 @@ public class ShopPanel extends JPanel {
         //kanantengahboots(page 1)
         kanantengahboots = new JPanel();
         kanantengahboots.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-        kanantengahboots.setBackground(Color.CYAN);
-        kanantengahboots.setOpaque(true);
+//        kanantengahboots.setBackground(Color.CYAN);
+        kanantengahboots.setOpaque(false);
 
         //itemlist
 
@@ -1201,7 +1202,7 @@ public class ShopPanel extends JPanel {
         kanantengahbootsitem1.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahbootsitem1.setPreferredSize(new Dimension(730,140));
         kanantengahbootsitem1.setBackground(Color.ORANGE);
-        kanantengahbootsitem1.setOpaque(true);
+        kanantengahbootsitem1.setOpaque(false);
 
         //iconitem1
         bootsiconitem1 = new JLabel("iconboots1");
@@ -1220,7 +1221,7 @@ public class ShopPanel extends JPanel {
         kanantengahbootsitem2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahbootsitem2.setPreferredSize(new Dimension(730,140));
         kanantengahbootsitem2.setBackground(Color.ORANGE);
-        kanantengahbootsitem2.setOpaque(true);
+        kanantengahbootsitem2.setOpaque(false);
         //iconitem2
         bootsiconitem2 = new JLabel("iconboots2");
         bootsiconitem2.setPreferredSize(new Dimension(120,120));
@@ -1237,7 +1238,7 @@ public class ShopPanel extends JPanel {
         kanantengahbootsitem3.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahbootsitem3.setPreferredSize(new Dimension(730,140));
         kanantengahbootsitem3.setBackground(Color.ORANGE);
-        kanantengahbootsitem3.setOpaque(true);
+        kanantengahbootsitem3.setOpaque(false);
         //iconitem3
         bootsiconitem3 = new JLabel("iconboots3");
         bootsiconitem3.setPreferredSize(new Dimension(120,120));
@@ -1253,8 +1254,8 @@ public class ShopPanel extends JPanel {
         //kanantengahboots2(page2)
         kanantengahboots2 = new JPanel();
         kanantengahboots2.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-        kanantengahboots2.setBackground(Color.CYAN);
-        kanantengahboots2.setOpaque(true);
+//        kanantengahboots2.setBackground(Color.CYAN);
+        kanantengahboots2.setOpaque(false);
 
 
         //item 4
@@ -1262,7 +1263,7 @@ public class ShopPanel extends JPanel {
         kanantengahbootsitem4.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahbootsitem4.setPreferredSize(new Dimension(730,140));
         kanantengahbootsitem4.setBackground(Color.ORANGE);
-        kanantengahbootsitem4.setOpaque(true);
+        kanantengahbootsitem4.setOpaque(false);
 
         //iconitem4
         bootsiconitem4 = new JLabel("iconboots4");
@@ -1281,7 +1282,7 @@ public class ShopPanel extends JPanel {
         kanantengahbootsitem5.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahbootsitem5.setPreferredSize(new Dimension(730,140));
         kanantengahbootsitem5.setBackground(Color.ORANGE);
-        kanantengahbootsitem5.setOpaque(true);
+        kanantengahbootsitem5.setOpaque(false);
         //iconitem5
         bootsiconitem5 = new JLabel("iconboots5");
         bootsiconitem5.setPreferredSize(new Dimension(120,120));
@@ -1297,8 +1298,8 @@ public class ShopPanel extends JPanel {
         //kanantengahaccessory(page 1)
         kanantengahaccessory = new JPanel();
         kanantengahaccessory.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-        kanantengahaccessory.setBackground(Color.CYAN);
-        kanantengahaccessory.setOpaque(true);
+//        kanantengahaccessory.setBackground(Color.CYAN);
+        kanantengahaccessory.setOpaque(false);
 
         //itemlist
 
@@ -1307,7 +1308,7 @@ public class ShopPanel extends JPanel {
         kanantengahaccessoryitem1.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahaccessoryitem1.setPreferredSize(new Dimension(730,140));
         kanantengahaccessoryitem1.setBackground(Color.ORANGE);
-        kanantengahaccessoryitem1.setOpaque(true);
+        kanantengahaccessoryitem1.setOpaque(false);
 
         //iconitem1
         accessoryiconitem1 = new JLabel("iconaccessory1");
@@ -1326,7 +1327,7 @@ public class ShopPanel extends JPanel {
         kanantengahaccessoryitem2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahaccessoryitem2.setPreferredSize(new Dimension(730,140));
         kanantengahaccessoryitem2.setBackground(Color.ORANGE);
-        kanantengahaccessoryitem2.setOpaque(true);
+        kanantengahaccessoryitem2.setOpaque(false);
         //iconitem2
         accessoryiconitem2 = new JLabel("iconaccessory2");
         accessoryiconitem2.setPreferredSize(new Dimension(120,120));
@@ -1344,7 +1345,7 @@ public class ShopPanel extends JPanel {
         kanantengahaccessoryitem3.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahaccessoryitem3.setPreferredSize(new Dimension(730,140));
         kanantengahaccessoryitem3.setBackground(Color.ORANGE);
-        kanantengahaccessoryitem3.setOpaque(true);
+        kanantengahaccessoryitem3.setOpaque(false);
         //iconitem3
         accessoryiconitem3 = new JLabel("iconaccessory3");
         accessoryiconitem3.setPreferredSize(new Dimension(120,120));
@@ -1360,16 +1361,16 @@ public class ShopPanel extends JPanel {
         //kanantengahaccessory2(page2)
         kanantengahaccessory2 = new JPanel();
         kanantengahaccessory2.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-        kanantengahaccessory2.setBackground(Color.CYAN);
-        kanantengahaccessory2.setOpaque(true);
+//        kanantengahaccessory2.setBackground(Color.CYAN);
+        kanantengahaccessory2.setOpaque(false);
 
 
         //item 4
         kanantengahaccessoryitem4 = new JPanel();
         kanantengahaccessoryitem4.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahaccessoryitem4.setPreferredSize(new Dimension(730,140));
-        kanantengahaccessoryitem4.setBackground(Color.ORANGE);
-        kanantengahaccessoryitem4.setOpaque(true);
+//        kanantengahaccessoryitem4.setBackground(Color.ORANGE);
+        kanantengahaccessoryitem4.setOpaque(false);
 
         //iconitem4
         accessoryiconitem4 = new JLabel("iconaccessory4");
@@ -1388,7 +1389,7 @@ public class ShopPanel extends JPanel {
         kanantengahaccessoryitem5.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
         kanantengahaccessoryitem5.setPreferredSize(new Dimension(730,140));
         kanantengahaccessoryitem5.setBackground(Color.ORANGE);
-        kanantengahaccessoryitem5.setOpaque(true);
+        kanantengahaccessoryitem5.setOpaque(false);
         //iconitem5
         accessoryiconitem5 = new JLabel("iconaccessory5");
         accessoryiconitem5.setPreferredSize(new Dimension(120,120));
@@ -1400,14 +1401,14 @@ public class ShopPanel extends JPanel {
         accessoryicondesc5.setFont(fontlb);
         accessoryicondesc5.setPreferredSize(new Dimension(570,120));
         accessoryicondesc5.setLineWrap(true);
-        
+
         //kananbawah
 
         kananbawah = new JPanel();
         kananbawah.setLayout(new FlowLayout(FlowLayout.RIGHT,40,30));
         kananbawah.setPreferredSize(new Dimension(100,100));
-        kananbawah.setBackground(Color.YELLOW);
-        kananbawah.setOpaque(true);
+//        kananbawah.setBackground(Color.YELLOW);
+        kananbawah.setOpaque(false);
 
         //current page ...
         CurrentPage = new JLabel("Page : "+(page+1)+"/ 2");
