@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static istts.pbo.GamePage.imged.*;
+import static istts.pbo.GamePage.im.*;
 
 public class DojoPanel extends JPanel {
     ArrayList<skillLabel> lbSkill =new ArrayList<>();
@@ -31,6 +31,8 @@ public class DojoPanel extends JPanel {
     String wrapFormat = "<html><body style=\"text-align: justify;  text-justify: inter-word;\">%s</body></html>";
     Font fontlb = new Font("Ninja Naruto", Font.PLAIN, 30);
     FontMetrics fm = getFontMetrics(fontlb);
+
+
     public DojoPanel(Player p) {
 //        p.setSkillPoint(5);
         init(p);
@@ -52,15 +54,6 @@ public class DojoPanel extends JPanel {
 
 
         String pc = p.getPlayerClass().getClassname();
-//        if(pc.equalsIgnoreCase("Ninjutsu") || pc.equalsIgnoreCase("Kenjutsu") || pc.equalsIgnoreCase("Shurikenjustu") || pc.equalsIgnoreCase("Kayakujutsu") || pc.equalsIgnoreCase("Shinobi")){
-//            type = 1;
-//        }
-//        if(pc.equalsIgnoreCase("Qiqong") || pc.equalsIgnoreCase("Fire") || pc.equalsIgnoreCase("Wind") || pc.equalsIgnoreCase("Water") || pc.equalsIgnoreCase("Sand")){
-//            type = 2;
-//        }
-//        if(pc.equalsIgnoreCase("Taijutsu") || pc.equalsIgnoreCase("Taekwondo") || pc.equalsIgnoreCase("Kungfu") || pc.equalsIgnoreCase("Aikido") || pc.equalsIgnoreCase("Sumo")){
-//            type = 3;
-//        }
 
         initc1(p);
         initc2(p);
@@ -76,126 +69,6 @@ public class DojoPanel extends JPanel {
                 245,
                 fm.stringWidth(lbActiveName.getText()),
                 fm.getHeight());
-
-//        if(type == 1){
-//            lbSkill.get(0).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Ninjutsu-ShurikenThrow.png",100,100));
-//            lbSkill.get(0).setName("Shuriken Throw");
-//            lbSkill.get(1).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Ninjutsu-Backpack.png",100,100));
-//            lbSkill.get(1).setName("Backpack");
-//            lbSkill.get(2).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Ninjutsu-Caltrops.png",100,100));
-//            lbSkill.get(2).setName("Caltrops");
-//            lbSkill.get(3).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kenjutsu-Onigiri.png",100,100));
-//            lbSkill.get(3).setName("Onigiri");
-//            lbSkill.get(4).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kenjutsu-HekirekiIssen.png",100,100));
-//            lbSkill.get(4).setName("Hekireki Issen");
-//            lbSkill.get(5).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kenjutsu-StarburstStream.png",100,100));
-//            lbSkill.get(5).setName("Starbusrt Stream");
-//            lbSkill.get(6).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Shurikenjutsu-PoisonShuriken.png",100,100));
-//            lbSkill.get(6).setName("Poison Shuriken");
-//            lbSkill.get(7).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Shurikenjutsu-KunaiWithChain.png",100,100));
-//            lbSkill.get(7).setName("Kunai with Chain");
-//            lbSkill.get(8).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Shurikenjutsu-Bloonjitsu.png",100,100));
-//            lbSkill.get(8).setName("Bloonjitsu");
-//            lbSkill.get(9).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kayakujutsu-SmokeBomb.png",100,100));
-//            lbSkill.get(9).setName("Smoke Bomb");
-//            lbSkill.get(10).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kayakujutsu-Flare.png",100,100));
-//            lbSkill.get(10).setName("Flare");
-//            lbSkill.get(11).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kayakujutsu-C4.png",100,100));
-//            lbSkill.get(11).setName("C4");
-//            lbSkill.get(12).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Shinobi-KawarimiNoJutsu.png",100,100));
-//            lbSkill.get(12).setName("Kawarimi no Jutsu");
-//            lbSkill.get(13).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Shinobi-Chocho.png",100,100));
-//            lbSkill.get(13).setName("Chocho");
-//            lbSkill.get(14).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Shinobi-Hakke.png",100,100));
-//            lbSkill.get(14).setName("Hakke");
-//            lbActiveIcon.setIcon(resizeIcon((ImageIcon) lbSkill.get(0).getIcon(),120,120));
-//            lbActiveName.setText("Shuriken Throw");
-//            lbSkillBox.setText(pc);
-//            lbActiveName.setBounds((450-fm.stringWidth(lbActiveName.getText()))/2,
-//                    245,
-//                    fm.stringWidth(lbActiveName.getText()),
-//                    fm.getHeight());
-//        }
-//
-//        if(type == 2){
-//            lbSkill.get(0).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Qiqong-Hadouken.png",100,100));
-//            lbSkill.get(0).setName("Hadouken");
-//            lbSkill.get(1).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Qiqong-CalmMind.png",100,100));
-//            lbSkill.get(1).setName("Calm Mind");
-//            lbSkill.get(2).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Qiqong-Kamehameha.png",100,100));
-//            lbSkill.get(2).setName("Kamehameha");
-//            lbSkill.get(3).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Fire-Hinotama.png",100,100));
-//            lbSkill.get(3).setName("Hinotama");
-//            lbSkill.get(4).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Fire-Heatblast.png",100,100));
-//            lbSkill.get(4).setName("Heatblast");
-//            lbSkill.get(5).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Fire-Explosion.png",100,100));
-//            lbSkill.get(5).setName("Explosion");
-//            lbSkill.get(6).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Wind-Rasengan.png",100,100));
-//            lbSkill.get(6).setName("Rasengan");
-//            lbSkill.get(7).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Wind-WindOfNature.png",100,100));
-//            lbSkill.get(7).setName("Wind of Nature");
-//            lbSkill.get(8).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Wind-DivineSandstorm.png",100,100));
-//            lbSkill.get(8).setName("Divine Sandstorm");
-//            lbSkill.get(9).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Water-MysticSnake.png",100,100));
-//            lbSkill.get(9).setName("Mystic Snake");
-//            lbSkill.get(10).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Water-WaterPrison.png",100,100));
-//            lbSkill.get(10).setName("Water Prison");
-//            lbSkill.get(11).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Water-DaigurenHyorinmaru.png",100,100));
-//            lbSkill.get(11).setName("Daiguren Hyoinmaru");
-//            lbSkill.get(12).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Sand-SandThrow.png",100,100));
-//            lbSkill.get(12).setName("Sand Throw");
-//            lbSkill.get(13).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Sand-SummonTwhomp.png",100,100));
-//            lbSkill.get(13).setName("Summon Twhomp");
-//            lbSkill.get(14).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Sand-Harden.png",100,100));
-//            lbSkill.get(14).setName("Harden");
-//            lbActiveIcon.setIcon(resizeIcon((ImageIcon) lbSkill.get(0).getIcon(),120,120));
-//            lbActiveName.setText("Hadouken");
-//            lbSkillBox.setText(pc);
-//            lbActiveName.setBounds((450-fm.stringWidth(lbActiveName.getText()))/2,
-//                    245,
-//                    fm.stringWidth(lbActiveName.getText()),
-//                    fm.getHeight());
-//        }
-//
-//        if(type == 3){
-//            lbSkill.get(0).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Taijutsu-FalconPunch.png",100,100));
-//            lbSkill.get(0).setName("Falcon Punch");
-//            lbSkill.get(1).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Taijutsu-FusRoDah.png",100,100));
-//            lbSkill.get(1).setName("Fus Ro Dah");
-//            lbSkill.get(2).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Taijutsu-KonohaSenpu.png",100,100));
-//            lbSkill.get(2).setName("Konoha Senpu");
-//            lbSkill.get(3).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Taekwondo-NaryeoChagi.png",100,100));
-//            lbSkill.get(3).setName("Naryeo Chagi");
-//            lbSkill.get(4).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Taekwondo-KawiChagi.png",100,100));
-//            lbSkill.get(4).setName("Kawi Chagi");
-//            lbSkill.get(5).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Taekwondo-DollyoChagi.png",100,100));
-//            lbSkill.get(5).setName("Dollyo Chagi");
-//            lbSkill.get(6).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kungfu-FuJowPai.png",100,100));
-//            lbSkill.get(6).setName("FuJowPai");
-//            lbSkill.get(7).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kungfu-OneInchPunch.png",100,100));
-//            lbSkill.get(7).setName("One Inch Punch");
-//            lbSkill.get(8).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Kungfu-DrunkenStance.png",100,100));
-//            lbSkill.get(8).setName("Drunken Stance");
-//            lbSkill.get(9).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Aikido-NageWaza.png",100,100));
-//            lbSkill.get(9).setName("Nage Waza");
-//            lbSkill.get(10).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Aikido-UkeNagashiIrimi.png",100,100));
-//            lbSkill.get(10).setName("Uke Nagashi Irimi");
-//            lbSkill.get(11).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Aikido-Kubishime.png",100,100));
-//            lbSkill.get(11).setName("Kubishime");
-//            lbSkill.get(12).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Sumo-Harite.png",100,100));
-//            lbSkill.get(12).setName("Harite");
-//            lbSkill.get(13).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Sumo-Eat.png",100,100));
-//            lbSkill.get(13).setName("Eat");
-//            lbSkill.get(14).setIcon(resizeIcon("src/istts/pbo/res/IconSkill/Sumo-BodySlam.png",100,100));
-//            lbSkill.get(14).setName("Body Slam");
-//            lbActiveIcon.setIcon(resizeIcon((ImageIcon) lbSkill.get(0).getIcon(),120,120));
-//            lbActiveName.setText("Falcon Punch");
-//            lbSkillBox.setText(pc);
-//            lbActiveName.setBounds((450-fm.stringWidth(lbActiveName.getText()))/2,
-//                    245,
-//                    fm.stringWidth(lbActiveName.getText()),
-//                    fm.getHeight());
-//        }
 
 //        lbClass = new JLabel(pc);
 //        lbClass.setFont(fontlb);
