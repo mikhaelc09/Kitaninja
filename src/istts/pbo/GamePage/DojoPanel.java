@@ -14,6 +14,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static istts.pbo.GamePage.imged.*;
+
 public class DojoPanel extends JPanel {
     ArrayList<skillLabel> lbSkill =new ArrayList<>();
     JLabel btBack;
@@ -392,14 +394,6 @@ public class DojoPanel extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public ImageIcon resizeIcon(String im , int w, int h){
-        return new ImageIcon(new ImageIcon(im).getImage().getScaledInstance(w,h,Image.SCALE_DEFAULT));
-    }
-
-    public ImageIcon resizeIcon(ImageIcon im , int w, int h){
-        return new ImageIcon(im.getImage().getScaledInstance(w,h,Image.SCALE_DEFAULT));
     }
 
 }
