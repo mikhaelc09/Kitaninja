@@ -746,6 +746,7 @@ public class ShopPanel extends JPanel {
                 if (p.getGold()>=selected.getCost()){
                     p.setGold(p.getGold()-selected.getCost());
                     p.getItems().add(selected);
+                    Currgold.setText("   Gold : "+p.getGold()+"");
                     System.out.println("Beli " + selected.getName() + "   gold : "+p.getGold());
                 }
             }
@@ -819,27 +820,43 @@ public class ShopPanel extends JPanel {
         gambar.setIcon(new ImageIcon(selected.getSpritePath()));
 
         //background desc
-        backdesc = new JPanel();
+        class Backdesc extends JPanel{
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                draw(g);
+            }
+
+            private void draw(Graphics g) {
+                try {
+                    BufferedImage bg = ImageIO.read(new File("src/istts/pbo/res/Tab/ShopTab2.png"));
+                    g.drawImage(bg, 0, 0, null);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        backdesc = new Backdesc();
         backdesc.setBounds(20,275,460,355);
         backdesc.setLayout(null);
-        backdesc.setBackground(Color.red);
-        backdesc.setOpaque(true);
+        backdesc.setOpaque(false);
 
         //descitem
-        desc = new JTextArea("lorem kontol kuda panjang");
+        desc = new JTextArea("lorem ");
         desc.setBounds(10,10,440,335);
         desc.setLineWrap(true);
         desc.setBackground(Color.PINK);
         desc.setOpaque(false);
         desc.setFont(fontlb);
+        desc.setForeground(Color.white);
 
         //Buy Icon
-        buy = new JLabel("buy");
+        buy = new JLabel();
         buy.setBounds(20,650,460,50);
         buy.setHorizontalTextPosition(SwingConstants.CENTER);
         buy.setVerticalTextPosition(SwingConstants.CENTER);
         buy.setBackground(Color.GREEN);
-        buy.setOpaque(true);
+        buy.setOpaque(false);
+        buy.setIcon(new ImageIcon("src/istts/pbo/res/Tab/ShopTab4.png"));
         buy.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         //Kanan (BUAT BACKGROUND SHOP)
@@ -910,6 +927,9 @@ public class ShopPanel extends JPanel {
         headicondesc1.setFont(fontlb);
         headicondesc1.setPreferredSize(new Dimension(570,120));
         headicondesc1.setLineWrap(true);
+        headicondesc1.setForeground(Color.white);
+        headicondesc1.setOpaque(false);
+        desc.setText(headicondesc1.getText());
         //item 2
         kanantengahheaditem2 = new JPanel();
         kanantengahheaditem2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -927,6 +947,8 @@ public class ShopPanel extends JPanel {
         headicondesc2.setFont(fontlb);
         headicondesc2.setPreferredSize(new Dimension(570,120));
         headicondesc2.setLineWrap(true);
+        headicondesc2.setForeground(Color.white);
+        headicondesc2.setOpaque(false);
         //item 3
         kanantengahheaditem3 = new JPanel();
         kanantengahheaditem3.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -944,7 +966,8 @@ public class ShopPanel extends JPanel {
         headicondesc3.setFont(fontlb);
         headicondesc3.setPreferredSize(new Dimension(570,120));
         headicondesc3.setLineWrap(true);
-
+        headicondesc3.setForeground(Color.white);
+        headicondesc3.setOpaque(false);
         //kanantengahhead2(page2)
         kanantengahhead2 = new JPanel();
         kanantengahhead2.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
@@ -969,6 +992,8 @@ public class ShopPanel extends JPanel {
         headicondesc4.setFont(fontlb);
         headicondesc4.setPreferredSize(new Dimension(570,120));
         headicondesc4.setLineWrap(true);
+        headicondesc4.setForeground(Color.white);
+        headicondesc4.setOpaque(false);
         //item 5
         kanantengahheaditem5 = new JPanel();
         kanantengahheaditem5.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -986,6 +1011,8 @@ public class ShopPanel extends JPanel {
         headicondesc5.setFont(fontlb);
         headicondesc5.setPreferredSize(new Dimension(570,120));
         headicondesc5.setLineWrap(true);
+        headicondesc5.setForeground(Color.white);
+        headicondesc5.setOpaque(false);
 
         //kanantengahweapon(page 1)
         kanantengahweapon = new JPanel();
@@ -1013,7 +1040,8 @@ public class ShopPanel extends JPanel {
         weaponicondesc1.setFont(fontlb);
         weaponicondesc1.setPreferredSize(new Dimension(570,120));
         weaponicondesc1.setLineWrap(true);
-        desc.setText(weaponicondesc1.getText());
+        weaponicondesc1.setOpaque(false);
+        weaponicondesc1.setForeground(Color.white);
         //item 2
         kanantengahweaponitem2 = new JPanel();
         kanantengahweaponitem2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1031,7 +1059,8 @@ public class ShopPanel extends JPanel {
         weaponicondesc2.setFont(fontlb);
         weaponicondesc2.setPreferredSize(new Dimension(570,120));
         weaponicondesc2.setLineWrap(true);
-
+        weaponicondesc2.setOpaque(false);
+        weaponicondesc2.setForeground(Color.white);
         //item 3
         kanantengahweaponitem3 = new JPanel();
         kanantengahweaponitem3.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1049,6 +1078,8 @@ public class ShopPanel extends JPanel {
         weaponicondesc3.setFont(fontlb);
         weaponicondesc3.setPreferredSize(new Dimension(570,120));
         weaponicondesc3.setLineWrap(true);
+        weaponicondesc3.setOpaque(false);
+        weaponicondesc3.setForeground(Color.white);
 
         //kanantengahweapon2(page2)
         kanantengahweapon2 = new JPanel();
@@ -1075,7 +1106,8 @@ public class ShopPanel extends JPanel {
         weaponicondesc4.setFont(fontlb);
         weaponicondesc4.setPreferredSize(new Dimension(570,120));
         weaponicondesc4.setLineWrap(true);
-
+        weaponicondesc4.setOpaque(false);
+        weaponicondesc4.setForeground(Color.white);
         //item 5
         kanantengahweaponitem5 = new JPanel();
         kanantengahweaponitem5.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1093,6 +1125,8 @@ public class ShopPanel extends JPanel {
         weaponicondesc5.setFont(fontlb);
         weaponicondesc5.setPreferredSize(new Dimension(570,120));
         weaponicondesc5.setLineWrap(true);
+        weaponicondesc5.setOpaque(false);
+        weaponicondesc5.setForeground(Color.white);
 
         //kanantengahbody(page 1)
         kanantengahbody = new JPanel();
@@ -1120,6 +1154,8 @@ public class ShopPanel extends JPanel {
         bodyicondesc1.setFont(fontlb);
         bodyicondesc1.setPreferredSize(new Dimension(570,120));
         bodyicondesc1.setLineWrap(true);
+        bodyicondesc1.setOpaque(false);
+        bodyicondesc1.setForeground(Color.white);
         //item 2
         kanantengahbodyitem2 = new JPanel();
         kanantengahbodyitem2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1137,6 +1173,9 @@ public class ShopPanel extends JPanel {
         bodyicondesc2.setFont(fontlb);
         bodyicondesc2.setPreferredSize(new Dimension(570,120));
         bodyicondesc2.setLineWrap(true);
+        bodyicondesc2.setOpaque(false);
+        bodyicondesc2.setForeground(Color.white);
+
         //item 3
         kanantengahbodyitem3 = new JPanel();
         kanantengahbodyitem3.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1154,6 +1193,8 @@ public class ShopPanel extends JPanel {
         bodyicondesc3.setFont(fontlb);
         bodyicondesc3.setPreferredSize(new Dimension(570,120));
         bodyicondesc3.setLineWrap(true);
+        bodyicondesc3.setOpaque(false);
+        bodyicondesc3.setForeground(Color.white);
 
         //kanantengahbody2(page2)
         kanantengahbody2 = new JPanel();
@@ -1180,6 +1221,8 @@ public class ShopPanel extends JPanel {
         bodyicondesc4.setFont(fontlb);
         bodyicondesc4.setPreferredSize(new Dimension(570,120));
         bodyicondesc4.setLineWrap(true);
+        bodyicondesc4.setOpaque(false);
+        bodyicondesc4.setForeground(Color.white);
 
         //item 5
         kanantengahbodyitem5 = new JPanel();
@@ -1198,6 +1241,8 @@ public class ShopPanel extends JPanel {
         bodyicondesc5.setFont(fontlb);
         bodyicondesc5.setPreferredSize(new Dimension(570,120));
         bodyicondesc5.setLineWrap(true);
+        bodyicondesc5.setOpaque(false);
+        bodyicondesc5.setForeground(Color.white);
 
         //kanantengahboots(page 1)
         kanantengahboots = new JPanel();
@@ -1225,6 +1270,8 @@ public class ShopPanel extends JPanel {
         bootsicondesc1.setFont(fontlb);
         bootsicondesc1.setPreferredSize(new Dimension(570,120));
         bootsicondesc1.setLineWrap(true);
+        bootsicondesc1.setOpaque(false);
+        bootsicondesc1.setForeground(Color.white);
 
         //item 2
         kanantengahbootsitem2 = new JPanel();
@@ -1243,6 +1290,8 @@ public class ShopPanel extends JPanel {
         bootsicondesc2.setFont(fontlb);
         bootsicondesc2.setPreferredSize(new Dimension(570,120));
         bootsicondesc2.setLineWrap(true);
+        bootsicondesc2.setOpaque(false);
+        bootsicondesc2.setForeground(Color.white);
         //item 3
         kanantengahbootsitem3 = new JPanel();
         kanantengahbootsitem3.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1260,7 +1309,8 @@ public class ShopPanel extends JPanel {
         bootsicondesc3.setFont(fontlb);
         bootsicondesc3.setPreferredSize(new Dimension(570,120));
         bootsicondesc3.setLineWrap(true);
-
+        bootsicondesc3.setOpaque(false);
+        bootsicondesc3.setForeground(Color.white);
         //kanantengahboots2(page2)
         kanantengahboots2 = new JPanel();
         kanantengahboots2.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
@@ -1286,7 +1336,8 @@ public class ShopPanel extends JPanel {
         bootsicondesc4.setFont(fontlb);
         bootsicondesc4.setPreferredSize(new Dimension(570,120));
         bootsicondesc4.setLineWrap(true);
-
+        bootsicondesc4.setOpaque(false);
+        bootsicondesc4.setForeground(Color.white);
         //item 5
         kanantengahbootsitem5 = new JPanel();
         kanantengahbootsitem5.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1304,6 +1355,8 @@ public class ShopPanel extends JPanel {
         bootsicondesc5.setFont(fontlb);
         bootsicondesc5.setPreferredSize(new Dimension(570,120));
         bootsicondesc5.setLineWrap(true);
+        bootsicondesc5.setOpaque(false);
+        bootsicondesc5.setForeground(Color.white);
 
         //kanantengahaccessory(page 1)
         kanantengahaccessory = new JPanel();
@@ -1331,7 +1384,8 @@ public class ShopPanel extends JPanel {
         accessoryicondesc1.setFont(fontlb);
         accessoryicondesc1.setPreferredSize(new Dimension(570,120));
         accessoryicondesc1.setLineWrap(true);
-
+        accessoryicondesc1.setOpaque(false);
+        accessoryicondesc1.setForeground(Color.white);
         //item 2
         kanantengahaccessoryitem2 = new JPanel();
         kanantengahaccessoryitem2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1349,7 +1403,8 @@ public class ShopPanel extends JPanel {
         accessoryicondesc2.setFont(fontlb);
         accessoryicondesc2.setPreferredSize(new Dimension(570,120));
         accessoryicondesc2.setLineWrap(true);
-
+        accessoryicondesc2.setOpaque(false);
+        accessoryicondesc2.setForeground(Color.white);
         //item 3
         kanantengahaccessoryitem3 = new JPanel();
         kanantengahaccessoryitem3.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1367,7 +1422,8 @@ public class ShopPanel extends JPanel {
         accessoryicondesc3.setFont(fontlb);
         accessoryicondesc3.setPreferredSize(new Dimension(570,120));
         accessoryicondesc3.setLineWrap(true);
-
+        accessoryicondesc3.setOpaque(false);
+        accessoryicondesc3.setForeground(Color.white);
         //kanantengahaccessory2(page2)
         kanantengahaccessory2 = new JPanel();
         kanantengahaccessory2.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
@@ -1393,7 +1449,8 @@ public class ShopPanel extends JPanel {
         accessoryicondesc4.setFont(fontlb);
         accessoryicondesc4.setPreferredSize(new Dimension(570,120));
         accessoryicondesc4.setLineWrap(true);
-
+        accessoryicondesc4.setOpaque(false);
+        accessoryicondesc4.setForeground(Color.white);
         //item 5
         kanantengahaccessoryitem5 = new JPanel();
         kanantengahaccessoryitem5.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -1411,7 +1468,8 @@ public class ShopPanel extends JPanel {
         accessoryicondesc5.setFont(fontlb);
         accessoryicondesc5.setPreferredSize(new Dimension(570,120));
         accessoryicondesc5.setLineWrap(true);
-
+        accessoryicondesc5.setOpaque(false);
+        accessoryicondesc5.setForeground(Color.white);
         //kananbawah
 
         kananbawah = new JPanel();
@@ -1424,7 +1482,9 @@ public class ShopPanel extends JPanel {
         CurrentPage = new JLabel("Page : "+(page+1)+"/ 2");
         CurrentPage.setPreferredSize(new Dimension(200,40));
         CurrentPage.setBackground(Color.GREEN);
-        CurrentPage.setOpaque(true);
+        CurrentPage.setOpaque(false);
+        CurrentPage.setForeground(Color.white);
+        CurrentPage.setFont(new Font("Arial",Font.PLAIN,25));
         //prevpage
         Prev = new JLabel();
         Prev.setPreferredSize(new Dimension(80,40));
@@ -1437,12 +1497,34 @@ public class ShopPanel extends JPanel {
         Next.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         //gold sekarang
-        Currgold = new JLabel("Ini tempat gold");
-        Currgold.setPreferredSize(new Dimension(180,40));
-//        Currgold.setIcon(new ImageIcon("src/istts/pbo/res/buttons/nextShop.png"));
+        class Currgoldbg extends JPanel{
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                draw(g);
+            }
+
+            private void draw(Graphics g) {
+                try {
+                    BufferedImage bg = ImageIO.read(new File("src/istts/pbo/res/Tab/ShopTab3.png"));
+                    g.drawImage(bg, 0, 0, null);
+                } catch (IOException e) {
+                    e.printStackTrace();
+
+                }
+            }
+        }
+
+        Currgold = new JLabel("   Gold : "+p.getGold()+"");
+        Currgold.setBounds(25,0,180,40);
         Currgold.setBackground(Color.yellow);
-        Currgold.setOpaque(true);
-        Currgold.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        Currgold.setOpaque(false);
+        Currgold.setFont(new Font("Arial", Font.PLAIN,20));
+
+        Currgoldbg currgoldbg = new Currgoldbg();
+        currgoldbg.setBounds(550,630,180,40);
+        currgoldbg.setOpaque(true);
+        currgoldbg.setLayout(null);
+        parent.add(currgoldbg);
 
         //Add And Revalidate every shit
         this.add(parent);
@@ -1957,10 +2039,10 @@ public class ShopPanel extends JPanel {
         kananbawah.repaint();
         kananbawah.setVisible(true);
 
-        kananbawah.add(Currgold);
-        Currgold.revalidate();
-        Currgold.repaint();
-        Currgold.setVisible(true);
+        currgoldbg.add(Currgold);
+        currgoldbg.revalidate();
+        currgoldbg.repaint();
+        currgoldbg.setVisible(true);
 
         kananbawah.add(CurrentPage);
         CurrentPage.revalidate();
