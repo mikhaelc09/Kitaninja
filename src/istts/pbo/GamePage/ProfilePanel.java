@@ -93,67 +93,70 @@ public class ProfilePanel extends JPanel {
 
         //Stat
         class Stat extends JPanel{
-//                        protected void paintComponent(Graphics g) {
-//                super.paintComponent(g);
-//                draw(g);
-//            }
-//
-//            private void draw(Graphics g) {
-//                try {
-//                    BufferedImage bg = ImageIO.read(new File("src/istts/pbo/res/Tab/ProfilTab1.png"));
-//                    g.drawImage(bg, 0, 0, null);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//
-//                }
-//            }
+                        protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                draw(g);
+            }
 
+            private void draw(Graphics g) {
+                try {
+                    BufferedImage bg = ImageIO.read(new File("src/istts/pbo/res/Tab/ProfilTab2.png"));
+                    g.drawImage(bg, 0, 0, null);
+                } catch (IOException e) {
+                    e.printStackTrace();
+
+                }
+            }
         }
         Stat stat = new Stat();
         stat.setBounds(10,270,380,320);
         stat.setBackground(new Color(10,10,244));
-        stat.setOpaque(true);
+        stat.setOpaque(false);
         stat.setLayout(null);
 
 
         //nama stat
         statnama = new JLabel("Status");
         statnama.setFont(fontlb);
-        statnama.setBounds(90,10,200,50);
+        statnama.setBounds(120,10,200,50);
         statnama.setBackground(Color.cyan);
-        statnama.setOpaque(true);
+        statnama.setOpaque(false);
 
 
         //stat1
         stat1 = new JLabel("HP : "+player.getPlayerClass().getStats().getHealth());
-        stat1.setBounds(10,70,350,40);
+        stat1.setBounds(30,60,350,40);
         stat1.setBackground(Color.cyan);
-        stat1.setOpaque(true);
+        stat1.setOpaque(false);
+        stat1.setFont(new Font("Ninja Naruto",Font.PLAIN,25));
 
         //stat2
         stat2 = new JLabel("Mana : "+player.getPlayerClass().getStats().getMana());
-        stat2.setBounds(10,120,350,40);
+        stat2.setBounds(30,110,350,40);
         stat2.setBackground(Color.cyan);
-        stat2.setOpaque(true);
+        stat2.setOpaque(false);
+        stat2.setFont(new Font("Ninja Naruto",Font.PLAIN,25));
 
         //stat3
         stat3 = new JLabel("Attack : "+player.getPlayerClass().getStats().getAttack());
-        stat3.setBounds(10,170,350,40);
+        stat3.setBounds(30,160,350,40);
         stat3.setBackground(Color.cyan);
-        stat3.setOpaque(true);
+        stat3.setOpaque(false);
+        stat3.setFont(new Font("Ninja Naruto",Font.PLAIN,25));
 
         //stat4
         stat4 = new JLabel("Def : "+player.getPlayerClass().getStats().getDefense());
-        stat4.setBounds(10,220,350,40);
+        stat4.setBounds(30,210,350,40);
         stat4.setBackground(Color.cyan);
-        stat4.setOpaque(true);
+        stat4.setOpaque(false);
+        stat4.setFont(new Font("Ninja Naruto",Font.PLAIN,25));
 
         //stat5
         stat5 = new JLabel("Speed : "+player.getPlayerClass().getStats().getSpeed());
-        stat5.setBounds(10,270,350,40);
+        stat5.setBounds(30,260,350,40);
         stat5.setBackground(Color.cyan);
-        stat5.setOpaque(true);
-
+        stat5.setOpaque(false);
+        stat5.setFont(new Font("Ninja Naruto",Font.PLAIN,25));
 
         //back
         back = new JLabel();
@@ -167,27 +170,27 @@ public class ProfilePanel extends JPanel {
             public Kotakprofile() {
                 this.setLayout(null);
             }
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                draw(g);
+            }
 
-//            protected void paintComponent(Graphics g) {
-//                super.paintComponent(g);
-//                draw(g);
-//            }
-//
-//            private void draw(Graphics g) {
-//                try {
-//                    BufferedImage bg = ImageIO.read(new File("src/com/company/res/papan.png"));
+            private void draw(Graphics g) {
+                try {
+                    BufferedImage bg = ImageIO.read(new File("src/istts/pbo/res/papan.png"));
 //                    g.drawImage(bg, 0, 0, null);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//
-//                }
-//            }
+                    g.drawImage(bg.getScaledInstance(770,620,Image.SCALE_DEFAULT), 0, 0, null);
+                } catch (IOException e) {
+                    e.printStackTrace();
+
+                }
+            }
         }
         Kotakprofile kprofile = new Kotakprofile();
-        kprofile.setBounds(500,100,750,600);
+        kprofile.setBounds(500,70,770,620);
         kprofile.setLayout(null);
         //setopaquefalse dan comment
-        kprofile.setOpaque(true);
+        kprofile.setOpaque(false);
         kprofile.setBackground(new Color(0,100,0));
         //
 
@@ -212,68 +215,84 @@ public class ProfilePanel extends JPanel {
         }
         Pkiriatas pkiriatas = new Pkiriatas();
         pkiriatas.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-        pkiriatas.setBounds(10,10,485,300);
+        pkiriatas.setBounds(20,40,485,200);
         //
         pkiriatas.setBackground(new Color(255,51,201));
-        pkiriatas.setOpaque(true);
+        pkiriatas.setOpaque(false);
         //
 
         //kiri
         JPanel kiriataskiri = new JPanel();
-        kiriataskiri.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-        kiriataskiri.setPreferredSize(new Dimension(150,280));
+        kiriataskiri.setLayout(new FlowLayout(FlowLayout.CENTER,10,0));
+        kiriataskiri.setPreferredSize(new Dimension(150,250));
         //
         kiriataskiri.setBackground(new Color(150,200,0));
-        kiriataskiri.setOpaque(true);
+        kiriataskiri.setOpaque(false);
         //
 
         //icon class
         JLabel iconclass = new JLabel();
-        iconclass.setPreferredSize(new Dimension(140,200));
+        iconclass.setPreferredSize(new Dimension(120,120));
         //
         iconclass.setBackground(new Color(150,100,0));
         iconclass.setOpaque(true);
+        String iconSprite = "";
+        if (player.getPlayerClass().getClassname().equalsIgnoreCase("taijutsu")){
+            iconSprite="src/istts/pbo/res/IconSkill/Taijutsu-FalconPunch.png";
+        }else if (player.getPlayerClass().getClassname().equalsIgnoreCase("qiqong")){
+            iconSprite="src/istts/pbo/res/IconSkill/Qiqong-Kamehameha.png";
+        }else if (player.getPlayerClass().getClassname().equalsIgnoreCase("ninjutsu")){
+            iconSprite="src/istts/pbo/res/IconSkill/Ninjutsu-ShurikenThrow.png";
+        }
+        iconclass.setIcon(new ImageIcon(iconSprite));
         //
 
         //nama class
-        JLabel namaclass = new JLabel("Isi Kelas");
-        namaclass.setPreferredSize(new Dimension(140,40));
+        JLabel namaclass = new JLabel(player.getPlayerClass().getClassname());
+        namaclass.setPreferredSize(new Dimension(140,80));
+        namaclass.setFont(new Font("Ninja Naruto",Font.PLAIN,25));
+        namaclass.setHorizontalTextPosition(SwingConstants.CENTER);
         //
         namaclass.setBackground(new Color(150,120,20));
-        namaclass.setOpaque(true);
+        namaclass.setOpaque(false);
         //
 
         //kanan
         JPanel kiriataskanan = new JPanel();
-        kiriataskanan.setLayout(new FlowLayout(FlowLayout.CENTER,10,14));
+        kiriataskanan.setLayout(new FlowLayout(FlowLayout.CENTER,10,15));
         kiriataskanan.setPreferredSize(new Dimension(295,280));
         //
         kiriataskanan.setBackground(new Color(150,200,0));
-        kiriataskanan.setOpaque(true);
+        kiriataskanan.setOpaque(false);
         //
 
         //Nama
-        JLabel nama = new JLabel("Isi Nama :");
-        nama.setPreferredSize(new Dimension(275,73));
+        JLabel nama = new JLabel("Nama : "+player.getName());
+        nama.setPreferredSize(new Dimension(275,30));
+        nama.setFont(new Font("Arial",Font.BOLD,30));
         //
         nama.setBackground(new Color(150,120,120));
-        nama.setOpaque(true);
+        nama.setOpaque(false);
         //
 
         //Gold
-        JLabel gold = new JLabel("Gold :");
-        gold.setPreferredSize(new Dimension(275,73));
+        JLabel gold = new JLabel("Gold : " + player.getGold());
+        gold.setPreferredSize(new Dimension(275,30));
+        gold.setFont(new Font("Arial",Font.BOLD,30));
         //
         gold.setBackground(Color.YELLOW);
-        gold.setOpaque(true);
+        gold.setOpaque(false);
+
         //
 
         //Exp
-        JLabel exp = new JLabel("Exp");
-        exp.setPreferredSize(new Dimension(275,73));
+        JLabel exp = new JLabel("Exp : "+ player.getXp());
+        exp.setPreferredSize(new Dimension(275,30));
+        exp.setFont(new Font("Arial",Font.BOLD,30));
+
         //
         exp.setBackground(Color.green);
-        exp.setOpaque(true);
+        exp.setOpaque(false);
         //
 
         //Panel kiribawah1
@@ -296,91 +315,97 @@ public class ProfilePanel extends JPanel {
         }
         Pkiribawah1 pkiribawah1 = new Pkiribawah1();
         pkiribawah1.setLayout(new FlowLayout(FlowLayout.CENTER,10,8));
-        pkiribawah1.setBounds(10,320,485,270);
+        pkiribawah1.setBounds(30,245,480,320);
         //
         pkiribawah1.setBackground(new Color(200,51,201));
-        pkiribawah1.setOpaque(true);
+        pkiribawah1.setOpaque(false);
+        pkiribawah1.setBorder(BorderFactory.createLineBorder(Color.RED,5,true));
+
         //
 
         //isipanel
         //nama
-        JLabel skill = new JLabel("Skill");
-        skill.setPreferredSize(new Dimension(475,30));
+        JLabel skill = new JLabel();
+        skill.setFont(new Font("Ninja Naruto",Font.PLAIN,30));
+        skill.setPreferredSize(new Dimension(475,0));
         skill.setHorizontalTextPosition(SwingConstants.CENTER);
         skill.setVerticalAlignment(SwingConstants.CENTER);
         //
         skill.setBackground(new Color(80,60,150));
-        skill.setOpaque(true);
+        skill.setOpaque(false);
         //
         //panel1kiribawah
         JPanel kiribawahpanel1 = new JPanel();
         kiribawahpanel1.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
-        kiribawahpanel1.setPreferredSize(new Dimension(475,65));
+        kiribawahpanel1.setPreferredSize(new Dimension(475,90));
         //
         kiribawahpanel1.setBackground(new Color(30,80,200));
-        kiribawahpanel1.setOpaque(true);
+        kiribawahpanel1.setOpaque(false);
         //
 
         //namaskill1
         JLabel namaskill1 = new JLabel("Isi nama skill 1");
-        namaskill1.setPreferredSize(new Dimension(400,55));
+        namaskill1.setPreferredSize(new Dimension(375,80));
         //
         namaskill1.setBackground(new Color(250,200,50));
-        namaskill1.setOpaque(true);
+        namaskill1.setOpaque(false);
         //
         //iconskill1
         JLabel iconskill1 = new JLabel("Icon S1");
-        iconskill1.setPreferredSize(new Dimension(55,55));
+        iconskill1.setPreferredSize(new Dimension(80,80));
         //
         iconskill1.setBackground(new Color(150,255,100));
-        iconskill1.setOpaque(true);
+        iconskill1.setIcon(im.getSIcon(new ImageIcon("src/istts/pbo/res/Item/Blank.png")));
+        iconskill1.setOpaque(false);
         //
 
 
         //panel2kiribawah
         JPanel kiribawahpanel2 = new JPanel();
         kiribawahpanel2.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
-        kiribawahpanel2.setPreferredSize(new Dimension(475,65));
+        kiribawahpanel2.setPreferredSize(new Dimension(475,90));
         //
         kiribawahpanel2.setBackground(new Color(30,80,200));
-        kiribawahpanel2.setOpaque(true);
+        kiribawahpanel2.setOpaque(false);
 
         //namaskill2
         JLabel namaskill2 = new JLabel("Isi nama skill 2");
-        namaskill2.setPreferredSize(new Dimension(400,55));
+        namaskill2.setPreferredSize(new Dimension(375,80));
         //
         namaskill2.setBackground(new Color(250,200,50));
-        namaskill2.setOpaque(true);
+        namaskill2.setOpaque(false);
         //
         //iconskill2
         JLabel iconskill2 = new JLabel("Icon S2");
-        iconskill2.setPreferredSize(new Dimension(55,55));
+        iconskill2.setPreferredSize(new Dimension(80,80));
         //
         iconskill2.setBackground(new Color(150,255,100));
-        iconskill2.setOpaque(true);
+        iconskill2.setIcon(im.getSIcon(new ImageIcon("src/istts/pbo/res/Item/Blank.png")));
+        iconskill2.setOpaque(false);
         //
 
         //panel3kiribawah
         JPanel kiribawahpanel3 = new JPanel();
         kiribawahpanel3.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
-        kiribawahpanel3.setPreferredSize(new Dimension(475,65));
+        kiribawahpanel3.setPreferredSize(new Dimension(475,90));
         //
         kiribawahpanel3.setBackground(new Color(30,80,200));
-        kiribawahpanel3.setOpaque(true);
+        kiribawahpanel3.setOpaque(false);
 
         //namaskill3
         JLabel namaskill3 = new JLabel("Isi nama skill 3");
-        namaskill3.setPreferredSize(new Dimension(400,55));
+        namaskill3.setPreferredSize(new Dimension(375,80));
         //
         namaskill3.setBackground(new Color(250,200,50));
-        namaskill3.setOpaque(true);
+        namaskill3.setOpaque(false);
         //
         //iconskill3
         JLabel iconskill3 = new JLabel("Icon S3");
-        iconskill3.setPreferredSize(new Dimension(55,55));
+        iconskill3.setPreferredSize(new Dimension(80,80));
         //
         iconskill3.setBackground(new Color(150,255,100));
-        iconskill3.setOpaque(true);
+        iconskill3.setIcon(im.getSIcon(new ImageIcon("src/istts/pbo/res/Item/Blank.png")));
+        iconskill3.setOpaque(false);
         //
 
         //Panel kanan
@@ -403,28 +428,29 @@ public class ProfilePanel extends JPanel {
         }
         Pkanan pkanan = new Pkanan();
 
-        pkanan.setBounds(510,10,230,580);
+        pkanan.setBounds(520,47,230,517);
         //
         pkanan.setBackground(new Color(255,153,51));
-        pkanan.setOpaque(true);
+        pkanan.setOpaque(false);
+        pkanan.setBorder(BorderFactory.createLineBorder(Color.cyan,5,true));
         pkanan.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
 
         //label judul
-        JLabel equipment  = new JLabel("Equipment");
-        equipment.setPreferredSize(new Dimension(210,30));
-        equipment.setHorizontalTextPosition(SwingConstants.CENTER);
-        equipment.setVerticalAlignment(SwingConstants.CENTER);
+//        JLabel equipment  = new JLabel("Equipment");
+//        equipment.setPreferredSize(new Dimension(210,30));
+//        equipment.setHorizontalTextPosition(SwingConstants.CENTER);
+//        equipment.setVerticalAlignment(SwingConstants.CENTER);
         //
-        equipment.setBackground(new Color(150,130,190));
-        equipment.setOpaque(true);
+//        equipment.setBackground(new Color(150,130,190));
+//        equipment.setOpaque(true);
 
         //Panel item item
         JPanel Equipall = new JPanel();
-        Equipall.setPreferredSize(new Dimension(230,530));
-        Equipall.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
+        Equipall.setPreferredSize(new Dimension(230,510));
+        Equipall.setLayout(new FlowLayout(FlowLayout.CENTER,10,4));
         //
         Equipall.setBackground(new Color(255,70,10));
-        Equipall.setOpaque(true);
+        Equipall.setOpaque(false);
         //
 
         //Panel Equip 1
@@ -433,7 +459,7 @@ public class ProfilePanel extends JPanel {
         Equip1.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
         //
         Equip1.setBackground(new Color(0,255,100));
-        Equip1.setOpaque(true);
+        Equip1.setOpaque(false);
         //
 
         //Equip1Gambar
@@ -441,7 +467,9 @@ public class ProfilePanel extends JPanel {
         Gambarequip1.setPreferredSize(new Dimension(83,83));
         //
         Gambarequip1.setBackground(new Color(30,80,200));
-        Gambarequip1.setOpaque(true);
+        Gambarequip1.setOpaque(false);
+        Gambarequip1.setIcon(im.getSIcon(new ImageIcon("src/istts/pbo/res/Item/Blank.png")));
+
         //
 
         //Equip1Nama
@@ -449,7 +477,7 @@ public class ProfilePanel extends JPanel {
         Namaequip1.setPreferredSize(new Dimension(124,83));
         //
         Namaequip1.setBackground(new Color(100,120,250));
-        Namaequip1.setOpaque(true);
+        Namaequip1.setOpaque(false);
         //
 
         //Equip1Logo
@@ -460,14 +488,16 @@ public class ProfilePanel extends JPanel {
         Equip2.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
         //
         Equip2.setBackground(new Color(0,255,100));
-        Equip2.setOpaque(true);
+        Equip2.setOpaque(false);
         //
         //Equip2Gambar
         JLabel Gambarequip2 = new JLabel("Equip 2");
         Gambarequip2.setPreferredSize(new Dimension(83,83));
         //
         Gambarequip2.setBackground(new Color(30,80,200));
-        Gambarequip2.setOpaque(true);
+        Gambarequip2.setOpaque(false);
+        Gambarequip2.setIcon(im.getSIcon(new ImageIcon("src/istts/pbo/res/Item/Blank.png")));
+
         //
 
         //Equip2Nama
@@ -475,7 +505,7 @@ public class ProfilePanel extends JPanel {
         Namaequip2.setPreferredSize(new Dimension(124,83));
         //
         Namaequip2.setBackground(new Color(100,120,250));
-        Namaequip2.setOpaque(true);
+        Namaequip2.setOpaque(false);
 
         //Panel Equip 3
         JPanel Equip3 = new JPanel();
@@ -483,7 +513,7 @@ public class ProfilePanel extends JPanel {
         Equip3.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
         //
         Equip3.setBackground(new Color(0,255,100));
-        Equip3.setOpaque(true);
+        Equip3.setOpaque(false);
         //
 
         //Equip3Gambar
@@ -491,7 +521,9 @@ public class ProfilePanel extends JPanel {
         Gambarequip3.setPreferredSize(new Dimension(83,83));
         //
         Gambarequip3.setBackground(new Color(30,80,200));
-        Gambarequip3.setOpaque(true);
+        Gambarequip3.setOpaque(false);
+        Gambarequip3.setIcon(im.getSIcon(new ImageIcon("src/istts/pbo/res/Item/Blank.png")));
+
         //
 
         //Equip3Nama
@@ -499,7 +531,7 @@ public class ProfilePanel extends JPanel {
         Namaequip3.setPreferredSize(new Dimension(124,83));
         //
         Namaequip3.setBackground(new Color(100,120,250));
-        Namaequip3.setOpaque(true);
+        Namaequip3.setOpaque(false);
 
 
         //Panel Equip 4
@@ -508,7 +540,7 @@ public class ProfilePanel extends JPanel {
         Equip4.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
         //
         Equip4.setBackground(new Color(0,255,100));
-        Equip4.setOpaque(true);
+        Equip4.setOpaque(false);
         //
 
         //Equip4Gambar
@@ -516,7 +548,9 @@ public class ProfilePanel extends JPanel {
         Gambarequip4.setPreferredSize(new Dimension(83,83));
         //
         Gambarequip4.setBackground(new Color(30,80,200));
-        Gambarequip4.setOpaque(true);
+        Gambarequip4.setOpaque(false);
+        Gambarequip4.setIcon(im.getSIcon(new ImageIcon("src/istts/pbo/res/Item/Blank.png")));
+
         //
 
         //Equip4Nama
@@ -524,7 +558,7 @@ public class ProfilePanel extends JPanel {
         Namaequip4.setPreferredSize(new Dimension(124,83));
         //
         Namaequip4.setBackground(new Color(100,120,250));
-        Namaequip4.setOpaque(true);
+        Namaequip4.setOpaque(false);
 
         //Panel Equip 5
         JPanel Equip5 = new JPanel();
@@ -532,7 +566,7 @@ public class ProfilePanel extends JPanel {
         Equip5.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
         //
         Equip5.setBackground(new Color(0,255,100));
-        Equip5.setOpaque(true);
+        Equip5.setOpaque(false);
         //
 
         //Equip5Gambar
@@ -540,7 +574,9 @@ public class ProfilePanel extends JPanel {
         Gambarequip5.setPreferredSize(new Dimension(83,83));
         //
         Gambarequip5.setBackground(new Color(30,80,200));
-        Gambarequip5.setOpaque(true);
+        Gambarequip5.setOpaque(false);
+        Gambarequip5.setIcon(im.getSIcon(new ImageIcon("src/istts/pbo/res/Item/Blank.png")));
+
         //
 
         //Equip5Nama
@@ -548,7 +584,7 @@ public class ProfilePanel extends JPanel {
         Namaequip5.setPreferredSize(new Dimension(124,83));
         //
         Namaequip5.setBackground(new Color(100,120,250));
-        Namaequip5.setOpaque(true);
+        Namaequip5.setOpaque(false);
 
         //
 //        kprofile.add(pkanan);
@@ -664,11 +700,11 @@ public class ProfilePanel extends JPanel {
         pkanan.revalidate();
         pkanan.repaint();
         pkanan.setVisible(true);
-
-        pkanan.add(equipment);
-        equipment.revalidate();
-        equipment.repaint();
-        equipment.setVisible(true);
+//
+//        pkanan.add(equipment);
+//        equipment.revalidate();
+//        equipment.repaint();
+//        equipment.setVisible(true);
 
         pkanan.add(Equipall);
         Equipall.revalidate();
