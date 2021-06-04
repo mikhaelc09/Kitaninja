@@ -743,14 +743,26 @@ public class ShopPanel extends JPanel {
         this.buy.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (p.getGold()>=selected.getCost()){
-                    p.setGold(p.getGold()-selected.getCost());
-                    p.getItems().add(selected);
-                    Currgold.setText("   Gold : "+p.getGold()+"");
-                    System.out.println("Beli " + selected.getName() + "   gold : "+p.getGold());
+                int sett=cekInven(p);
+                if (sett!=-1) {
+                    if (p.getGold() >= selected.getCost()) {
+                        p.setGold(p.getGold() - selected.getCost());
+                        p.getItems().set(sett,selected);
+                        Currgold.setText("   Gold : " + p.getGold() + "");
+                        System.out.println("Beli " + selected.getName() + "   gold : " + p.getGold());
+                    }
                 }
             }
         });
+    }
+
+    public int cekInven(Player p){
+        for (int i = 0; i < 25; i++) {
+            if (p.getItems().get(i).getName().equalsIgnoreCase("-")){
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void init(Player p) {

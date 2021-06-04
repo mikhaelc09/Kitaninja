@@ -69,7 +69,7 @@ public class SkillSelection extends JFrame {
         for (int i = 0; i < 15; i++) {
             Skill temp = (Skill) p.getPlayerClass().getSkillTree().getAt(i);
             skillIcons.add(new JLabel());
-            skillIcons.get(i).setIcon();
+//            skillIcons.get(i).setIcon();
         }
     }
 

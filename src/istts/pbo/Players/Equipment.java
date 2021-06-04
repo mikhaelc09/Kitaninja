@@ -8,11 +8,11 @@ public class Equipment {
     private Accesories accesories;
 
     public Equipment() {
-        this.head = null;
-        this.body = null;
-        this.boots = null;
-        this.weapon = null;
-        this.accesories = null;
+        this.head = new Helmet("-",0,0,"src/istts/pbo/res/Item/Blank.png");
+        this.body = new Body("-",0,0,"src/istts/pbo/res/Item/Blank.png");
+        this.boots = new Boots("-",0,0,"src/istts/pbo/res/Item/Blank.png");
+        this.weapon = new Weapon("-",0,0,"src/istts/pbo/res/Item/Blank.png");
+        this.accesories = new Accesories("-",0,0,"src/istts/pbo/res/Item/Blank.png");
     }
 
     public Helmet getHead() {

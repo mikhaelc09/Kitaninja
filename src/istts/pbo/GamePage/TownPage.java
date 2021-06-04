@@ -53,6 +53,9 @@ public class TownPage extends JFrame {
         town.lbSmith.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                for (int i = 0; i < 25; i++) {
+                    smith.lbItemUpgrade.get(i).setIcon(new ImageIcon(player.getItems().get(i).getSpritePath()));
+                }
                 smith.setVisible(true);
                 town.setVisible(false);
             }

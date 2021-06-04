@@ -29,6 +29,10 @@ public class Player {
         this.equipment = new Equipment();
         this.items = new ArrayList<>();
         this.equippedSkills = new ArrayList<>();
+        this.items.add(new Tools("Tools",0,1,"src/istts/pbo/res/Item/Tools.png"));
+        for (int i = 0; i < 24; i++) {
+            this.items.add(new Weapon("-",0,0,"src/istts/pbo/res/Item/Blank.png"));
+        }
     }
 
     public String getName() {

@@ -68,7 +68,7 @@ public class SmithPanel extends JPanel{
      //icon item
         lbIconItemSmith = new JLabel();
         lbIconItemSmith.setBackground(Color.blue);
-        lbIconItemSmith.setOpaque(true);
+        lbIconItemSmith.setOpaque(false);
         lbIconItemSmith.setBounds(125, 150, 200, 200);
 
         btUp = new JLabel("Upgrade");
@@ -107,11 +107,11 @@ public class SmithPanel extends JPanel{
         lbItem.setText("Equipment List");
         lbItem.setHorizontalAlignment(SwingConstants.CENTER);
         lbItem.setVerticalAlignment(SwingConstants.NORTH);
-        lbItem.setBackground(Color.white);
+        lbItem.setIcon(new ImageIcon("src/istts/pbo/res/Tab/SmithTab1.png"));
         lbItem.setFont(fontlb);
         lbItem.setForeground(Color.WHITE);
-        lbItem.setOpaque(true);
-        lbItem.setBounds(30,35, 750,650);
+        lbItem.setOpaque(false);
+        lbItem.setBounds(55,27, 700,680);
         for (int i = 0; i < 25; i++) {
             lbItemUpgrade.add(new upgradelabel());
             lbItemUpgrade.get(i).setText(i+"");
@@ -121,45 +121,49 @@ public class SmithPanel extends JPanel{
             lbItemUpgrade.get(i).addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    lbIconItemSmith.setIcon(resizeIcon((ImageIcon) x.getIcon(),120,120));
-                    lbIconItemSmith.setBounds((450-fm.stringWidth(lbIconItemSmith.getText()))/2,
-                            245,
-                            fm.stringWidth(lbIconItemSmith.getText()),
-                            fm.getHeight());
+//                    lbIconItemSmith.setIcon(resizeIcon((ImageIcon) x.getIcon(),120,120));
+//                    lbIconItemSmith.setBounds((450-fm.stringWidth(lbIconItemSmith.getText()))/2,
+//                            245,
+//                            fm.stringWidth(lbIconItemSmith.getText()),
+//                            fm.getHeight());
+                    lbIconItemSmith.setIcon(im.resizeIcon(p.getItems().get(sel).getSpritePath(),200,200));
                 }
             });
         }
-        lbItemUpgrade.get(0).setBounds(30 + 45,70+65,100,100);
-        lbItemUpgrade.get(1).setBounds(30 + 195, 70+65, 100, 100);
-        lbItemUpgrade.get(2).setBounds(30 + 345, 70+65, 100, 100);
-        lbItemUpgrade.get(3).setBounds(30 + 495, 70+65, 100,100);
-        lbItemUpgrade.get(4).setBounds(30 + 645,70+65, 100,100);
+        lbItemUpgrade.get(0).setBounds(80,45,120,120);
+        lbItemUpgrade.get(1).setBounds(210, 45, 120, 120);
+        lbItemUpgrade.get(2).setBounds(340, 45, 120, 120);
+        lbItemUpgrade.get(3).setBounds(470 , 45, 120,120);
+        lbItemUpgrade.get(4).setBounds(600 ,45, 120,120);
 
-        lbItemUpgrade.get(5).setBounds(30 + 45,180+65, 100,100);
-        lbItemUpgrade.get(6).setBounds(30 + 195, 180+65, 100,100);
-        lbItemUpgrade.get(7).setBounds(30 + 345,180+65, 100,100);
-        lbItemUpgrade.get(8).setBounds(30 + 495,180+65, 100,100);
-        lbItemUpgrade.get(9).setBounds(30 + 645, 180+65, 100,100);
+        lbItemUpgrade.get(5).setBounds(80,175, 120,120);
+        lbItemUpgrade.get(6).setBounds(210, 175, 120,120);
+        lbItemUpgrade.get(7).setBounds(340,175, 120,120);
+        lbItemUpgrade.get(8).setBounds(470,175, 120,120);
+        lbItemUpgrade.get(9).setBounds( 600, 175, 120,120);
 
-        lbItemUpgrade.get(10).setBounds(30 + 45,290+65, 100,100);
-        lbItemUpgrade.get(11).setBounds(30 + 195,290+65, 100,100);
-        lbItemUpgrade.get(12).setBounds(30 + 345, 290+65, 100,100);
-        lbItemUpgrade.get(13).setBounds(30 + 495,290+65, 100,100);
-        lbItemUpgrade.get(14).setBounds(30 + 645,290+65, 100,100);
+        lbItemUpgrade.get(10).setBounds(80,305, 120,120);
+        lbItemUpgrade.get(11).setBounds(210,305, 120,120);
+        lbItemUpgrade.get(12).setBounds(340, 305, 120,120);
+        lbItemUpgrade.get(13).setBounds(470 ,305, 120,120);
+        lbItemUpgrade.get(14).setBounds( 600,305, 120,120);
 
-        lbItemUpgrade.get(15).setBounds(30 + 45,400+65, 100,100);
-        lbItemUpgrade.get(16).setBounds(30 + 195,400+65, 100,100);
-        lbItemUpgrade.get(17).setBounds(30 + 345,400+65, 100,100);
-        lbItemUpgrade.get(18).setBounds(30 + 495,400+65, 100,100);
-        lbItemUpgrade.get(19).setBounds(30 + 645,400+65, 100,100);
+        lbItemUpgrade.get(15).setBounds(80,435, 120,120);
+        lbItemUpgrade.get(16).setBounds(210,435, 120,120);
+        lbItemUpgrade.get(17).setBounds(340,435, 120,120);
+        lbItemUpgrade.get(18).setBounds(470,435, 120,120);
+        lbItemUpgrade.get(19).setBounds(600,435, 120,120);
 
-        lbItemUpgrade.get(20).setBounds(30 + 45,510+65, 100,100);
-        lbItemUpgrade.get(21).setBounds(30 + 195,510+65, 100,100);
-        lbItemUpgrade.get(22).setBounds(30 + 345,510+65, 100,100);
-        lbItemUpgrade.get(23).setBounds(30 + 495,510+65, 100,100);
-        lbItemUpgrade.get(24).setBounds(30 + 645,510+65, 100,100);
+        lbItemUpgrade.get(20).setBounds(80,565, 120,120);
+        lbItemUpgrade.get(21).setBounds(210,565, 120,120);
+        lbItemUpgrade.get(22).setBounds(340,565, 120,120);
+        lbItemUpgrade.get(23).setBounds(470,565, 120,120);
+        lbItemUpgrade.get(24).setBounds(600,565, 120,120);
 
         for (int i = 0; i < 25; i++) {
+            lbItemUpgrade.get(i).setOpaque(false);
+            lbItemUpgrade.get(i).setBackground(Color.red);
+            lbItemUpgrade.get(i).setIcon(new ImageIcon(p.getItems().get(i).getSpritePath()));
             a2.add(lbItemUpgrade.get(i));
         }
         a2.add(lbItem);
