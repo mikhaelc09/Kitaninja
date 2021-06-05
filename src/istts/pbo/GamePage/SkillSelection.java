@@ -17,6 +17,8 @@ public class SkillSelection extends JFrame {
     JPanel parent;
     ArrayList<JLabel> skillIcons = new ArrayList<>();
     JLabel chosen;
+    JLabel chosenIcon;
+    JLabel chosenName;
     private int screenwidth = 700;
     private int screenheight = 270;
 
@@ -30,10 +32,12 @@ public class SkillSelection extends JFrame {
 
     }
 
-    public SkillSelection(Player p, Skill selected, int index) {
+    public SkillSelection(Player p, Skill selected, int index, JLabel chosenIcon, JLabel chosenName) {
         this.p = p;
         this.selected = selected;
         this.index = index;
+        this.chosenIcon = chosenIcon;
+        this.chosenName = chosenName;
 
         init();
     }
@@ -77,14 +81,18 @@ public class SkillSelection extends JFrame {
         activeIcon.setBounds(65,30,120,120);
         activeIcon.setBackground(Color.orange);
         activeIcon.setOpaque(false);
-        activeIcon.setIcon(im.getLIcon(selected.getIconPath()));
+        if(selected != null) {
+            activeIcon.setIcon(im.getLIcon(selected.getIconPath()));
+        }
 
         JLabel activeName = new JLabel("Nama Skill");
         activeName.setFont(new Font("Arial",  Font.BOLD,25));
         FontMetrics fm = getFontMetrics(activeName.getFont());
         activeName.setOpaque(false);
         activeName.setForeground(Color.white);
-        activeName.setText(selected.getName());
+        if(selected != null) {
+            activeName.setText(selected.getName());
+        }
         activeName.setBounds((250-fm.stringWidth(activeName.getText()))/2,160,fm.stringWidth(activeName.getText()),fm.getHeight());
 //        activeName.setBackground(Color.blue);
 
@@ -106,10 +114,28 @@ public class SkillSelection extends JFrame {
         btConfirm.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                p.getEquippedSkills().set(index,selected);
-                System.out.println(selected);
-                System.out.println(p.getEquippedSkills().get(index));
-                exit();
+//                p.getEquippedSkills()[index] = selected;
+                for (int i = 0; i < p.getPlayerClass().getSkillTree().getSkills().size(); i++) {
+                    Skill t = (Skill) p.getPlayerClass().getSkillTree().getAt(i);
+                    if(t.getName().equalsIgnoreCase(activeName.getText())){
+                        boolean cek = true;
+                        for (int j = 0; j < 3; j++) {
+                            if(p.getEquippedSkills()[j]==t){
+                                cek = false;
+                            }
+                        }
+                        if(cek) {
+                            p.getEquippedSkills()[index] = t;
+                            chosenIcon.setIcon(im.getSIcon((ImageIcon) activeIcon.getIcon()));
+                            chosenName.setText(activeName.getText());
+                            exit();
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "Skill Already Equipped!");
+                        }
+                        break;
+                    }
+                }
             }
         });
 
@@ -145,17 +171,24 @@ public class SkillSelection extends JFrame {
             skillIcons.get(i).setBackground(Color.orange);
             skillIcons.get(i).setOpaque(true);
             skillIcons.get(i).setIcon(im.resizeIcon(new ImageIcon(temp.getIconPath()),80,80));
-            skillIcons.get(i).addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    chosen.setBorder(null);
-                    chosen = (JLabel) e.getSource();
-                    chosen.setBorder(BorderFactory.createLineBorder(Color.orange,5));
-                    activeIcon.setIcon(im.getLIcon((ImageIcon) chosen.getIcon()));
-                    activeName.setText(((Skill)p.getPlayerClass().getSkillTree().getSkills().get(skillIcons.indexOf(chosen))).getName());
-                    activeName.setBounds((250-fm.stringWidth(activeName.getText()))/2,160,fm.stringWidth(activeName.getText()),fm.getHeight());
-                }
-            });
+            if(!((Skill)p.getPlayerClass().getSkillTree().getSkills().get(i)).isUnlocked()){
+                skillIcons.get(i).setIcon(im.grayscaleIcon((ImageIcon) skillIcons.get(i).getIcon()));
+            }
+            else {
+                skillIcons.get(i).addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        if(chosen!= null) {
+                            chosen.setBorder(null);
+                        }
+                        chosen = (JLabel) e.getSource();
+                        chosen.setBorder(BorderFactory.createLineBorder(Color.orange, 5));
+                        activeIcon.setIcon(im.getLIcon((ImageIcon) chosen.getIcon()));
+                        activeName.setText(((Skill) p.getPlayerClass().getSkillTree().getSkills().get(skillIcons.indexOf(chosen))).getName());
+                        activeName.setBounds((250 - fm.stringWidth(activeName.getText())) / 2, 160, fm.stringWidth(activeName.getText()), fm.getHeight());
+                    }
+                });
+            }
             SkillBoxPane.add(skillIcons.get(i));
 //            System.out.println(skillIcons.get(i));
             if(temp == selected){

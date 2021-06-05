@@ -8,6 +8,8 @@ import istts.pbo.Players.Player;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -359,6 +361,30 @@ public class ProfilePanel extends JPanel {
         iconskill1.setOpaque(false);
         //
 
+        kiribawahpanel1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                skillChange(player, 0, iconskill1,namaskill1);
+            }
+        });
+
+        namaskill1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                skillChange(player,0, iconskill1,namaskill1);
+            }
+        });
+
+        iconskill1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                skillChange(player,0, iconskill1,namaskill1);
+            }
+        });
+
+        kiribawahpanel1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        namaskill1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        iconskill1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         //panel2kiribawah
         JPanel kiribawahpanel2 = new JPanel();
@@ -384,6 +410,31 @@ public class ProfilePanel extends JPanel {
         iconskill2.setOpaque(false);
         //
 
+        kiribawahpanel2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                skillChange(player,1, iconskill2,namaskill2);
+            }
+        });
+
+        namaskill2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                skillChange(player,1, iconskill2,namaskill2);
+            }
+        });
+
+        iconskill2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                skillChange(player,1, iconskill2,namaskill2);
+            }
+        });
+
+        kiribawahpanel2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        namaskill2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        iconskill2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
         //panel3kiribawah
         JPanel kiribawahpanel3 = new JPanel();
         kiribawahpanel3.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
@@ -407,6 +458,31 @@ public class ProfilePanel extends JPanel {
         iconskill3.setIcon(im.getSIcon(new ImageIcon("src/istts/pbo/res/Item/Blank.png")));
         iconskill3.setOpaque(false);
         //
+
+        kiribawahpanel3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                skillChange(player,2, iconskill3,namaskill3);
+            }
+        });
+
+        namaskill3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                skillChange(player,2, iconskill3,namaskill3);
+            }
+        });
+
+        namaskill3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                skillChange(player,2, iconskill3,namaskill3);
+            }
+        });
+
+        kiribawahpanel3.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        namaskill3.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        iconskill3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         //Panel kanan
         class Pkanan extends JPanel{
@@ -845,11 +921,10 @@ public class ProfilePanel extends JPanel {
         namaskill3.setVisible(true);
 
 
+    }
 
-
-
-
-
+    public void skillChange(Player p, int index, JLabel chosenIcon, JLabel chosenName) {
+        new SkillSelection(p,p.getEquippedSkills()[index], index,chosenIcon,chosenName);
 
     }
 }

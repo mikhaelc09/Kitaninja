@@ -16,7 +16,7 @@ public class Player {
     private Job playerClass;
     private Equipment equipment;
     private ArrayList<Item> items;
-    private ArrayList<Skill> equippedSkills;
+    private Skill[] equippedSkills;
 
     public Player(String name, Job playerClass) {
         this.name = name;
@@ -28,7 +28,10 @@ public class Player {
         this.playerClass = playerClass;
         this.equipment = new Equipment();
         this.items = new ArrayList<>();
-        this.equippedSkills = new ArrayList<>();
+        this.equippedSkills = new Skill[3];
+        equippedSkills[0] = null;
+        equippedSkills[1] = null;
+        equippedSkills[2] = null;
         this.items.add(new Tools("Tools",0,1,"src/istts/pbo/res/Item/Tools.png"));
         for (int i = 0; i < 24; i++) {
             this.items.add(new Weapon("-",0,0,"src/istts/pbo/res/Item/Blank.png"));
@@ -99,11 +102,11 @@ public class Player {
         this.items = items;
     }
 
-    public ArrayList<Skill> getEquippedSkills() {
+    public Skill[] getEquippedSkills() {
         return equippedSkills;
     }
 
-    public void setEquippedSkills(ArrayList<Skill> equippedSkills) {
+    public void setEquippedSkills(Skill[] equippedSkills) {
         this.equippedSkills = equippedSkills;
     }
 
