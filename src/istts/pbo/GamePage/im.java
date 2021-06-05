@@ -1,7 +1,11 @@
 package istts.pbo.GamePage;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class im {
     public static int SIZE_L = 120;
@@ -56,4 +60,64 @@ public class im {
     public static ImageIcon grayscaleIcon(ImageIcon im){
         return new ImageIcon(GrayFilter.createDisabledImage(im.getImage()));
     }
+    public static ImageIcon colorFillGreen(String path){
+        BufferedImage img;
+        try {
+            img = ImageIO.read(new File("src/istts/pbo/res/PlayerEnemy.png"));
+            for (int i = 0; i < img.getWidth(); i++) {
+                for (int j = 0; j < img.getHeight(); j++) {
+                    Color c = new Color(img.getRGB(j,i),true);
+                    if(c.getAlpha()>0) {
+                        System.out.println(c + "-" + c.getAlpha());
+                        img.setRGB(j,i,new Color(0,255,0).getRGB());
+                    }
+                }
+            }
+            return new ImageIcon(img);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static ImageIcon colorFillBlue(String path){
+        BufferedImage img;
+        try {
+            img = ImageIO.read(new File("src/istts/pbo/res/PlayerEnemy.png"));
+            for (int i = 0; i < img.getWidth(); i++) {
+                for (int j = 0; j < img.getHeight(); j++) {
+                    Color c = new Color(img.getRGB(j,i),true);
+                    if(c.getAlpha()>0) {
+                        System.out.println(c + "-" + c.getAlpha());
+                        img.setRGB(j,i,new Color(0,0,255).getRGB());
+                    }
+                }
+            }
+            return new ImageIcon(img);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static ImageIcon colorFillRed(String path){
+        BufferedImage img;
+        try {
+            img = ImageIO.read(new File("src/istts/pbo/res/PlayerEnemy.png"));
+            for (int i = 0; i < img.getWidth(); i++) {
+                for (int j = 0; j < img.getHeight(); j++) {
+                    Color c = new Color(img.getRGB(j,i),true);
+                    if(c.getAlpha()>0) {
+                        System.out.println(c + "-" + c.getAlpha());
+                        img.setRGB(j,i,new Color(255,0,0).getRGB());
+                    }
+                }
+            }
+            return new ImageIcon(img);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
