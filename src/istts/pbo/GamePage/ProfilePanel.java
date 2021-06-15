@@ -3,6 +3,7 @@ package istts.pbo.GamePage;
 import istts.pbo.Classes.Ninjutsu;
 import istts.pbo.Classes.Qiqong;
 import istts.pbo.Classes.Taijutsu;
+import istts.pbo.Players.Item;
 import istts.pbo.Players.Player;
 
 import javax.imageio.ImageIO;
@@ -27,6 +28,7 @@ public class ProfilePanel extends JPanel {
     JLabel stat4;
     JLabel stat5;
     JLabel back;
+    JLabel gold;
     Player player;
     Font fontlb = new Font("Ninja Naruto", Font.PLAIN, 30);
     public ProfilePanel(Player player){
@@ -278,7 +280,7 @@ public class ProfilePanel extends JPanel {
         //
 
         //Gold
-        JLabel gold = new JLabel("Gold : " + player.getGold());
+        gold = new JLabel("Gold : " + player.getGold());
         gold.setPreferredSize(new Dimension(275,30));
         gold.setFont(new Font("Arial",Font.BOLD,30));
         //
@@ -545,16 +547,24 @@ public class ProfilePanel extends JPanel {
         Gambarequip1.setBackground(new Color(30,80,200));
         Gambarequip1.setOpaque(false);
         Gambarequip1.setIcon(im.getSIcon(new ImageIcon("src/istts/pbo/res/Item/Blank.png")));
+        Gambarequip1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         //
 
         //Equip1Nama
-        JLabel Namaequip1 = new JLabel("Nama Equip 1");
+        JLabel Namaequip1 = new JLabel("Helmet");
         Namaequip1.setPreferredSize(new Dimension(124,83));
         //
         Namaequip1.setBackground(new Color(100,120,250));
         Namaequip1.setOpaque(false);
         //
+
+        Gambarequip1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                equipSelection(player,1,Gambarequip1,stat1,Namaequip1);
+            }
+        });
 
         //Equip1Logo
 
@@ -567,21 +577,29 @@ public class ProfilePanel extends JPanel {
         Equip2.setOpaque(false);
         //
         //Equip2Gambar
-        JLabel Gambarequip2 = new JLabel("Equip 2");
+        JLabel Gambarequip2 = new JLabel("item 2");
         Gambarequip2.setPreferredSize(new Dimension(83,83));
         //
         Gambarequip2.setBackground(new Color(30,80,200));
         Gambarequip2.setOpaque(false);
         Gambarequip2.setIcon(im.getSIcon(new ImageIcon("src/istts/pbo/res/Item/Blank.png")));
-
+        Gambarequip2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //
 
         //Equip2Nama
-        JLabel Namaequip2 = new JLabel("Nama Equip 2");
+        JLabel Namaequip2 = new JLabel("Weapon");
         Namaequip2.setPreferredSize(new Dimension(124,83));
         //
         Namaequip2.setBackground(new Color(100,120,250));
         Namaequip2.setOpaque(false);
+
+        Gambarequip2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                equipSelection(player,2,Gambarequip2,stat3,Namaequip2);
+            }
+        });
+
 
         //Panel Equip 3
         JPanel Equip3 = new JPanel();
@@ -599,16 +617,24 @@ public class ProfilePanel extends JPanel {
         Gambarequip3.setBackground(new Color(30,80,200));
         Gambarequip3.setOpaque(false);
         Gambarequip3.setIcon(im.getSIcon(new ImageIcon("src/istts/pbo/res/Item/Blank.png")));
+        Gambarequip3.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
 
         //
 
         //Equip3Nama
-        JLabel Namaequip3 = new JLabel("Nama Equip 3");
+        JLabel Namaequip3 = new JLabel("Body");
         Namaequip3.setPreferredSize(new Dimension(124,83));
         //
         Namaequip3.setBackground(new Color(100,120,250));
         Namaequip3.setOpaque(false);
 
+        Gambarequip3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                equipSelection(player,3,Gambarequip3,stat4,Namaequip3);
+            }
+        });
 
         //Panel Equip 4
         JPanel Equip4 = new JPanel();
@@ -626,15 +652,24 @@ public class ProfilePanel extends JPanel {
         Gambarequip4.setBackground(new Color(30,80,200));
         Gambarequip4.setOpaque(false);
         Gambarequip4.setIcon(im.getSIcon(new ImageIcon("src/istts/pbo/res/Item/Blank.png")));
+        Gambarequip4.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
 
         //
 
         //Equip4Nama
-        JLabel Namaequip4 = new JLabel("Nama Equip 4");
+        JLabel Namaequip4 = new JLabel("Boots");
         Namaequip4.setPreferredSize(new Dimension(124,83));
         //
         Namaequip4.setBackground(new Color(100,120,250));
         Namaequip4.setOpaque(false);
+
+        Gambarequip4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                equipSelection(player,4,Gambarequip4,stat5,Namaequip4);
+            }
+        });
 
         //Panel Equip 5
         JPanel Equip5 = new JPanel();
@@ -652,15 +687,23 @@ public class ProfilePanel extends JPanel {
         Gambarequip5.setBackground(new Color(30,80,200));
         Gambarequip5.setOpaque(false);
         Gambarequip5.setIcon(im.getSIcon(new ImageIcon("src/istts/pbo/res/Item/Blank.png")));
-
+        Gambarequip5.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //
 
         //Equip5Nama
-        JLabel Namaequip5 = new JLabel("Nama Equip 5");
+        JLabel Namaequip5 = new JLabel("Accesories");
         Namaequip5.setPreferredSize(new Dimension(124,83));
         //
         Namaequip5.setBackground(new Color(100,120,250));
         Namaequip5.setOpaque(false);
+
+        Gambarequip5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                equipSelection(player,5,Gambarequip5,stat2,Namaequip5);
+            }
+        });
+
 
         //
 //        kprofile.add(pkanan);
@@ -925,7 +968,10 @@ public class ProfilePanel extends JPanel {
 
     public void skillChange(Player p, int index, JLabel chosenIcon, JLabel chosenName) {
         new SkillSelection(p,p.getEquippedSkills()[index], index,chosenIcon,chosenName);
+    }
 
+    public void equipSelection(Player p, int tipe, JLabel gambarEquip,JLabel stat, JLabel nama){
+        new EquipSelection(p,tipe,gambarEquip,stat,nama);
     }
 }
 

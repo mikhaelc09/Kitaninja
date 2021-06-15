@@ -38,6 +38,7 @@ public class TownPage extends JFrame {
         town.profil.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                profil.gold.setText("Gold : "+player.getGold());
                 profil.setVisible(true);
                 town.setVisible(false);
             }
@@ -50,6 +51,7 @@ public class TownPage extends JFrame {
                 town.setVisible(false);
             }
         });
+
         town.lbSmith.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -60,6 +62,7 @@ public class TownPage extends JFrame {
                 town.setVisible(false);
             }
         });
+        
         town.lbShop.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
