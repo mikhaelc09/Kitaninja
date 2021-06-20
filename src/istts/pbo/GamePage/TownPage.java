@@ -24,6 +24,7 @@ public class TownPage extends JFrame {
     DojoPanel dojo;
     SmithPanel smith;
     ShopPanel shop;
+    BattleGUI battle;
     public TownPage(Player player){
         this.player = player;
         init();
@@ -43,6 +44,14 @@ public class TownPage extends JFrame {
                 town.setVisible(false);
             }
         });
+        town.lbBattle.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                battle.setVisible(true);
+                town.setVisible(false);
+            }
+        });
+
 
         town.lbDojo.addMouseListener(new MouseAdapter() {
             @Override
@@ -142,12 +151,14 @@ public class TownPage extends JFrame {
         dojo = new DojoPanel(player);
         smith= new SmithPanel(player);
         shop = new ShopPanel(player);
+        battle = new BattleGUI(player);
 
         town.setBounds(0,40,this.getWidth(),this.getHeight());
         profil.setBounds(0,35,this.getWidth(),this.getHeight());
         dojo.setBounds(0,40,this.getWidth(),this.getHeight());
         smith.setBounds(0,40,this.getWidth(),this.getHeight());
         shop.setBounds(0,30,this.getWidth(),this.getHeight());
+        battle.setBounds(0,30,this.getWidth(),this.getHeight());
 
         parent.add(title);
         parent.add(town);
@@ -155,6 +166,7 @@ public class TownPage extends JFrame {
         parent.add(dojo);
         parent.add(smith);
         parent.add(shop);
+        parent.add(battle);
         profil.setVisible(false);
 
         title.addMouseListener(new MouseAdapter() {
