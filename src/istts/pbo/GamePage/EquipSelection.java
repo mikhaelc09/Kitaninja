@@ -113,7 +113,7 @@ public class EquipSelection extends JFrame {
             }
         }
         for (int i = N; i < 25; i++) {
-            item.add(new Weapon("-",0,0,"src/istts/pbo/res/Item/Blank.png"));
+            item.add(new Weapon("-",0,0,"src/istts/pbo/res/Item/Blank.png",0));
         }
         for (int i = 0; i < 25; i++) {
             jitem.get(i).setIcon(new ImageIcon(item.get(i).getSpritePath()));

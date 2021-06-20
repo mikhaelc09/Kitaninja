@@ -5,12 +5,15 @@ public abstract class Item {
     private int stat;
     private int cost;
     private String spritePath;
+    private int upgradecost;
 
-    public Item(String name, int stat, int cost, String spritePath) {
+
+    public Item(String name, int stat, int cost, String spritePath, int upgradecost) {
         this.name = name;
         this.stat = stat;
         this.cost = cost;
         this.spritePath = spritePath;
+        this.upgradecost=upgradecost;
     }
 
     public String getName() {
@@ -43,5 +46,13 @@ public abstract class Item {
 
     public void setSpritePath(String spritePath) {
         this.spritePath = spritePath;
+    }
+
+    public int getUpgradecost() {
+        return upgradecost;
+    }
+
+    public void setUpgradecost(int upgradecost) {
+        this.upgradecost = upgradecost;
     }
 }

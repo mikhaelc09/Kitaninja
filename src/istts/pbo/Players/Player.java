@@ -32,9 +32,9 @@ public class Player {
         equippedSkills[0] = null;
         equippedSkills[1] = null;
         equippedSkills[2] = null;
-        this.items.add(new Tools("Tools",0,1,"src/istts/pbo/res/Item/Tools.png"));
+        this.items.add(new Tools("Tools",0,1,"src/istts/pbo/res/Item/Tools.png",0));
         for (int i = 0; i < 24; i++) {
-            this.items.add(new Weapon("-",0,0,"src/istts/pbo/res/Item/Blank.png"));
+            this.items.add(new Weapon("-",0,0,"src/istts/pbo/res/Item/Blank.png",0));
         }
     }
 

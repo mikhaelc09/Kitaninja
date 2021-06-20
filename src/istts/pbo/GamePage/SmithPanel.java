@@ -23,7 +23,7 @@ public class SmithPanel extends JPanel {
     int uang = 0;
     JLabel lbIconItemSmith;
     JLabel btUp;
-    JLabel Gold;
+    JLabel upgradeitem;
     JLabel Uangmu;
     JPanel a1;
     JPanel a2;
@@ -80,7 +80,7 @@ public class SmithPanel extends JPanel {
         btUp.setHorizontalAlignment(SwingConstants.CENTER);
         btUp.setVerticalAlignment(SwingConstants.CENTER);
 
-        Uangmu = new JLabel("Gold " + uang);
+        Uangmu = new JLabel("Gold " + p.getGold());
         Uangmu.setBounds(125, 500, 200, 50);
         Uangmu.setBackground(Color.orange);
         Uangmu.setOpaque(true);
@@ -88,18 +88,18 @@ public class SmithPanel extends JPanel {
         Uangmu.setHorizontalAlignment(SwingConstants.CENTER);
         Uangmu.setVerticalAlignment(SwingConstants.CENTER);
 
-        Gold = new JLabel("Cost " + uang);
-        Gold.setBounds(125, 400, 200, 50);
-        Gold.setBackground(Color.orange);
-        Gold.setOpaque(true);
-        Gold.setFont(fontlb);
-        Gold.setHorizontalAlignment(SwingConstants.CENTER);
-        Gold.setVerticalAlignment(SwingConstants.CENTER);
+        upgradeitem = new JLabel("Cost " +0);
+        upgradeitem.setBounds(125, 400, 200, 50);
+        upgradeitem.setBackground(Color.orange);
+        upgradeitem.setOpaque(true);
+        upgradeitem.setFont(fontlb);
+        upgradeitem.setHorizontalAlignment(SwingConstants.CENTER);
+        upgradeitem.setVerticalAlignment(SwingConstants.CENTER);
 
         a1.add(TombolBack);
         a1.add(btUp);
         a1.add(Uangmu);
-        a1.add(Gold);
+        a1.add(upgradeitem);
         a1.add(lbIconItemSmith);
     }
 
@@ -127,6 +127,7 @@ public class SmithPanel extends JPanel {
 //                            fm.stringWidth(lbIconItemSmith.getText()),
 //                            fm.getHeight());
                     lbIconItemSmith.setIcon(im.resizeIcon(p.getItems().get(sel).getSpritePath(), 200, 200));
+                    upgradeitem.setText("Cost " + p.getItems().get(sel).getUpgradecost());
                 }
             });
         }
