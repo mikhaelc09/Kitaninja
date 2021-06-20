@@ -30,6 +30,7 @@ public class StartPage extends JFrame{
 
     MenuPanel menu;
     CreationPanel create;
+    LoadPanel load;
     CustomTitlebar title;
     CustomExitConfirm exitConfirm;
     musicPlayer music;
@@ -107,6 +108,22 @@ public class StartPage extends JFrame{
                    confirmCreate(player);
                    music.getClip().stop();
                }
+           }
+       });
+
+       menu.lbLoadGame.addMouseListener(new MouseAdapter() {
+           @Override
+           public void mouseClicked(MouseEvent e) {
+               menu.setVisible(false);
+               load.setVisible(true);
+           }
+       });
+
+       load.back.addMouseListener(new MouseAdapter() {
+           @Override
+           public void mouseClicked(MouseEvent e) {
+               menu.setVisible(true);
+               load.setVisible(false);
            }
        });
 
@@ -199,12 +216,17 @@ public class StartPage extends JFrame{
         create.setBounds(0,40,this.getWidth(),this.getHeight());
         create.setVisible(false);
 
+        load = new LoadPanel();
+        load.setBounds(0,40,this.getWidth(),this.getHeight());
+        load.setVisible(false);
+
         title = new CustomTitlebar();
         title.setBounds(0,0,getWidth(),40);
 
         parent.add(create);
         parent.add(menu);
         parent.add(title);
+        parent.add(load);
 
         title.addMouseListener(new MouseAdapter() {
             @Override
