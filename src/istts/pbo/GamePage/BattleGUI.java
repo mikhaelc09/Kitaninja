@@ -8,7 +8,29 @@ import java.util.ArrayList;
 
 public class BattleGUI extends JPanel {
 
+    class Timerdanstage extends JPanel {
 
+        public Timerdanstage() {
+
+        }
+        //            protected void paintComponent(Graphics g) {
+//                super.paintComponent(g);
+//                draw(g);
+//            }
+//
+//            private void draw(Graphics g) {
+//                try {
+//                    BufferedImage bg = ImageIO.read(new File("src/com/company/res/papan.png"));
+//                    g.drawImage(bg, 0, 0, null);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//
+//                }
+//            }
+
+    }
+
+    Timerdanstage timerdanstage;
     private String namaplayer;
     private String skill1name;
     private String skill2name;
@@ -88,18 +110,18 @@ public class BattleGUI extends JPanel {
 
     public BattleGUI(Player p) {
         debufflist = new ArrayList<>();
-        init();
+        init(p);
     }
 
-    private void init() {
+    private void init(Player p) {
         int SWIDTH = 1280;
         int SHEIGHT = 760;
         //beragam get yang harus dirubah
-        namaplayer = "isinamaplayer";
-        playerHP = 75;
-        playermaksHP = 100;
-        playerMP = 75;
-        playermaksMP = 100;
+        namaplayer = p.getName();
+        playerHP = p.getStats().getHealth();
+        playermaksHP = p.getStats().getHealth();
+        playerMP = p.getStats().getMana();
+        playermaksMP = p.getStats().getMana();
         namaenemy = "isinamaenemy";
         enemyHP = 100;
         enemymaksHP = 100;
@@ -113,9 +135,22 @@ public class BattleGUI extends JPanel {
 
         //beragam image yang harus di get;
 
-        gambarskill1 = new ImageIcon("src/com/company/res/gear.png");
-        gambarskill2 = new ImageIcon("src/com/company/res/gear.png");
-        gambarskill3 = new ImageIcon("src/com/company/res/gear.png");
+        if(p.getEquippedSkills()[0]!=null) {
+            gambarskill1 = new ImageIcon(p.getEquippedSkills()[0].getIconPath());
+        }else{
+            gambarskill1 = new ImageIcon("src/istts/pbo/res/Item/Tools.png");
+        }
+        if(p.getEquippedSkills()[1]!=null) {
+            gambarskill2 = new ImageIcon(p.getEquippedSkills()[1].getIconPath());
+        }else{
+            gambarskill1 = new ImageIcon("src/istts/pbo/res/Item/Tools.png");
+        }
+        if(p.getEquippedSkills()[2]!=null) {
+            gambarskill3 = new ImageIcon(p.getEquippedSkills()[2].getIconPath());
+        }else{
+            gambarskill1 = new ImageIcon("src/istts/pbo/res/Item/Tools.png");
+        }
+
 
 
         //mainpanel
@@ -132,36 +167,14 @@ public class BattleGUI extends JPanel {
         menu = new JLabel();
         menu.setBounds(20, 20, 100, 50);
         menu.setBackground(new Color(100, 50, 0));
+        menu.setIcon(new ImageIcon("src/istts/pbo/res/buttons/Back.png"));
         menu.setText("Menu");
         menu.setOpaque(true);
 
         //Timer + stage panel
 
         //gambar timer + stage panel
-
-        class Timerdanstage extends JPanel {
-            public Timerdanstage() {
-
-            }
-            //            protected void paintComponent(Graphics g) {
-//                super.paintComponent(g);
-//                draw(g);
-//            }
-//
-//            private void draw(Graphics g) {
-//                try {
-//                    BufferedImage bg = ImageIO.read(new File("src/com/company/res/papan.png"));
-//                    g.drawImage(bg, 0, 0, null);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//
-//                }
-//            }
-
-        }
-
-
-        Timerdanstage timerdanstage = new Timerdanstage();
+        timerdanstage = new Timerdanstage();
         timerdanstage.setBounds(SWIDTH - 20 - 500, 20, 500, 50);
         timerdanstage.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
         timerdanstage.setBackground(new Color(120, 0, 0));
@@ -417,6 +430,7 @@ public class BattleGUI extends JPanel {
         //skill 1
         skill1 = new JLabel("Skill1");
         skill1.setPreferredSize(new Dimension(120, 120));
+
         skill1.setIcon(gambarskill1);
 
         //skill 2
@@ -430,7 +444,7 @@ public class BattleGUI extends JPanel {
         //attack
         attack = new JLabel("Attack");
         attack.setPreferredSize(new Dimension(120, 120));
-        attack.setBackground(Color.yellow);
+        attack.setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/Attack.png"));
         attack.setOpaque(true);
 
         //Infopanel
@@ -645,6 +659,237 @@ public class BattleGUI extends JPanel {
 
 
 
+    }
+    public void revalidateeverycomp(Player p){
+        //seteveryshit
+        if(p.getEquippedSkills()[0]!=null) {
+            gambarskill1 = new ImageIcon(p.getEquippedSkills()[0].getIconPath());
+        }else{
+            gambarskill1 = new ImageIcon("src/istts/pbo/res/Item/Tools.png");
+        }
+        if(p.getEquippedSkills()[1]!=null) {
+            gambarskill2 = new ImageIcon(p.getEquippedSkills()[1].getIconPath());
+        }else{
+            gambarskill2= new ImageIcon("src/istts/pbo/res/Item/Tools.png");
+        }
+        if(p.getEquippedSkills()[2]!=null) {
+            gambarskill3 = new ImageIcon(p.getEquippedSkills()[2].getIconPath());
+        }else{
+            gambarskill3 = new ImageIcon("src/istts/pbo/res/Item/Tools.png");
+        }
+
+        skill1.setIcon(gambarskill1);
+        skill2.setIcon(gambarskill2);
+        skill3.setIcon(gambarskill3);
+
+
+
+
+
+
+        parent.add(menu);
+        menu.revalidate();
+        menu.repaint();
+        menu.setVisible(true);
+
+        //panel stage + timer
+
+        parent.add(timerdanstage);
+        timerdanstage.revalidate();
+        timerdanstage.repaint();
+        timerdanstage.setVisible(true);
+
+        timerdanstage.add(timer);
+        timer.revalidate();
+        timer.repaint();
+        timer.setVisible(true);
+
+        timerdanstage.add(stage);
+        stage.revalidate();
+        stage.repaint();
+        stage.setVisible(true);
+
+        //end
+
+        //papan turn
+
+        parent.add(papanturn);
+        papanturn.revalidate();
+        papanturn.repaint();
+        papanturn.setVisible(true);
+
+        parent.add(turnplayer);
+        turnplayer.revalidate();
+        turnplayer.repaint();
+        turnplayer.setVisible(true);
+
+        parent.add(turnenemy);
+        turnenemy.revalidate();
+        turnenemy.repaint();
+        turnenemy.setVisible(true);
+
+        parent.add(turncount);
+        turncount.revalidate();
+        turncount.repaint();
+        turncount.setVisible(true);
+
+
+        parent.add(displayskillname);
+        displayskillname.revalidate();
+        displayskillname.repaint();
+        displayskillname.setVisible(true);
+
+        //end
+
+        parent.add(nameplayer);
+        nameplayer.revalidate();
+        nameplayer.repaint();
+        nameplayer.setVisible(true);
+
+        parent.add(spriteplayer);
+        spriteplayer.revalidate();
+        spriteplayer.repaint();
+        spriteplayer.setVisible(true);
+
+        parent.add(debuffplayer);
+        debuffplayer.revalidate();
+        debuffplayer.repaint();
+        debuffplayer.setVisible(true);
+
+        parent.add(statplayer);
+        statplayer.revalidate();
+        statplayer.repaint();
+        statplayer.setVisible(true);
+
+        //statplayer
+        statplayer.add(gambarplayer);
+        gambarplayer.revalidate();
+        gambarplayer.repaint();
+        gambarplayer.setVisible(true);
+
+        statplayer.add(panelHPMPplayer);
+        panelHPMPplayer.revalidate();
+        panelHPMPplayer.repaint();
+        panelHPMPplayer.setVisible(true);
+
+        panelHPMPplayer.add(labelHPplayer);
+        labelHPplayer.revalidate();
+        labelHPplayer.repaint();
+        labelHPplayer.setVisible(true);
+
+        panelHPMPplayer.add(HPBARplayerback);
+        HPBARplayerback.revalidate();
+        HPBARplayerback.repaint();
+        HPBARplayerback.setVisible(true);
+
+        HPBARplayerback.add(HPBARplayerfront);
+        HPBARplayerfront.revalidate();
+        HPBARplayerfront.repaint();
+        HPBARplayerfront.setVisible(true);
+
+        panelHPMPplayer.add(labelMPplayer);
+        labelMPplayer.revalidate();
+        labelMPplayer.repaint();
+        labelMPplayer.setVisible(true);
+
+        panelHPMPplayer.add(ManaBARplayerback);
+        ManaBARplayerback.revalidate();
+        ManaBARplayerback.repaint();
+        ManaBARplayerback.setVisible(true);
+
+        ManaBARplayerback.add(ManaBARplayerfront);
+        ManaBARplayerfront.revalidate();
+        ManaBARplayerfront.repaint();
+        ManaBARplayerfront.setVisible(true);
+
+
+        //enemy
+        parent.add(nameenemy);
+        nameenemy.revalidate();
+        nameenemy.repaint();
+        nameenemy.setVisible(true);
+
+        parent.add(spriteenemy);
+        spriteenemy.revalidate();
+        spriteenemy.repaint();
+        spriteenemy.setVisible(true);
+
+        parent.add(debuffenemy);
+        debuffenemy.revalidate();
+        debuffenemy.repaint();
+        debuffenemy.setVisible(true);
+
+        parent.add(statenemy);
+        statenemy.revalidate();
+        statenemy.repaint();
+        statenemy.setVisible(true);
+
+
+        //statenemy
+        statenemy.add(gambarenemy);
+        gambarenemy.revalidate();
+        gambarenemy.repaint();
+        gambarenemy.setVisible(true);
+
+        statenemy.add(panelHPMPenemy);
+        panelHPMPenemy.revalidate();
+        panelHPMPenemy.repaint();
+        panelHPMPenemy.setVisible(true);
+
+        panelHPMPenemy.add(labelHPenemy);
+        labelHPenemy.revalidate();
+        labelHPenemy.repaint();
+        labelHPenemy.setVisible(true);
+
+        panelHPMPenemy.add(HPBARenemyback);
+        HPBARenemyback.revalidate();
+        HPBARenemyback.repaint();
+        HPBARenemyback.setVisible(true);
+
+        HPBARenemyback.add(HPBARenemyfront);
+        HPBARenemyfront.revalidate();
+        HPBARenemyfront.repaint();
+        HPBARenemyfront.setVisible(true);
+
+        panelHPMPenemy.add(labelMPenemy);
+        labelMPenemy.revalidate();
+        labelMPenemy.repaint();
+        labelMPenemy.setVisible(true);
+
+        panelHPMPenemy.add(ManaBARenemyback);
+        ManaBARenemyback.revalidate();
+        ManaBARenemyback.repaint();
+        ManaBARenemyback.setVisible(true);
+
+        ManaBARenemyback.add(ManaBARenemyfront);
+        ManaBARenemyfront.revalidate();
+        ManaBARenemyfront.repaint();
+        ManaBARenemyfront.setVisible(true);
+
+        parent.add(panelskill);
+        panelskill.revalidate();
+        panelskill.repaint();
+        panelskill.setVisible(true);
+
+        panelskill.add(skill1);
+        skill1.revalidate();
+        skill1.repaint();
+        skill1.setVisible(true);
+
+        panelskill.add(skill2);
+        skill2.revalidate();
+        skill2.repaint();
+        skill2.setVisible(true);
+
+        panelskill.add(skill3);
+        skill3.revalidate();
+        skill3.repaint();
+        skill3.setVisible(true);
+
+        panelskill.add(attack);
+        attack.revalidate();
+        attack.repaint();
+        attack.setVisible(true);
     }
 
     private void repaintturn() {

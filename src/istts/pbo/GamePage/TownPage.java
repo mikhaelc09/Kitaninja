@@ -47,8 +47,10 @@ public class TownPage extends JFrame {
         town.lbBattle.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                battle.revalidateeverycomp(player);
                 battle.setVisible(true);
                 town.setVisible(false);
+
             }
         });
 
@@ -83,6 +85,14 @@ public class TownPage extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 profil.setVisible(false);
+                town.setVisible(true);
+            }
+        });
+
+        battle.menu.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                battle.setVisible(false);
                 town.setVisible(true);
             }
         });
