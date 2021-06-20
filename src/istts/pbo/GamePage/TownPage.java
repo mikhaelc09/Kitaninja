@@ -71,6 +71,7 @@ public class TownPage extends JFrame {
                 }
                 smith.setVisible(true);
                 town.setVisible(false);
+                smith.Uangmu.setText("Gold " + player.getGold());
             }
         });
         
