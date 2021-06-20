@@ -2,8 +2,14 @@ package istts.pbo.GamePage;
 
 import istts.pbo.Players.Player;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class BattleGUI extends JPanel {
@@ -13,20 +19,15 @@ public class BattleGUI extends JPanel {
         public Timerdanstage() {
 
         }
-        //            protected void paintComponent(Graphics g) {
-//                super.paintComponent(g);
-//                draw(g);
-//            }
-//
-//            private void draw(Graphics g) {
-//                try {
-//                    BufferedImage bg = ImageIO.read(new File("src/com/company/res/papan.png"));
-//                    g.drawImage(bg, 0, 0, null);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//
-//                }
-//            }
+                    protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                draw(g);
+            }
+
+            private void draw(Graphics g) {
+                    ImageIcon sementara1 = im.resizeIcon("src/istts/pbo/res/papanProfile.png",500,80);
+                    g.drawImage(sementara1.getImage(), 0, 0, null);
+            }
 
     }
 
@@ -49,23 +50,18 @@ public class BattleGUI extends JPanel {
     private int currentstage;
     private int currentturn;
 
-    //timer var...
-    private int elapsedTime = 0;
-    private int seconds =0;
-    private int minutes =0;
-    private int hours =0;
-    private boolean started = false;
-    String seconds_string = String.format("%02d", seconds);
-    String minutes_string = String.format("%02d", minutes);
-    String hours_string = String.format("%02d", hours);
-    //
+    //timer
+    Timer timergame;
+    int startPos;
 
     ImageIcon gambarskill1;
     ImageIcon gambarskill2;
     ImageIcon gambarskill3;
+    ImageIcon gambarplayerbesar;
+    ImageIcon gambarplayerkecil;
+    ImageIcon gambarenemybesar;
+    ImageIcon gambarenemykecil;
 
-    Timer timerturn;
-    Timer timergame;
 
     ArrayList<String> debufflist;
     JPanel parent;
@@ -110,7 +106,9 @@ public class BattleGUI extends JPanel {
 
     public BattleGUI(Player p) {
         debufflist = new ArrayList<>();
-        init(p);
+                init(p);
+        startPos = turnplayer.getX();
+
     }
 
     private void init(Player p) {
@@ -122,15 +120,15 @@ public class BattleGUI extends JPanel {
         playermaksHP = p.getStats().getHealth();
         playerMP = p.getStats().getMana();
         playermaksMP = p.getStats().getMana();
+        playerspeed = 50/10;
         namaenemy = "isinamaenemy";
         enemyHP = 100;
         enemymaksHP = 100;
         enemyMP = 100;
         enemymaksMP = 100;
+        enemyspeed = 100/10;
         currentstage = 1;
         currentturn = 1;
-        timergame = new Timer(50,null);
-        timergame.start();
 
 
         //beragam image yang harus di get;
@@ -175,21 +173,21 @@ public class BattleGUI extends JPanel {
 
         //gambar timer + stage panel
         timerdanstage = new Timerdanstage();
-        timerdanstage.setBounds(SWIDTH - 20 - 500, 20, 500, 50);
-        timerdanstage.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+        timerdanstage.setBounds(SWIDTH - 20 - 500, 15, 500, 80);
+        timerdanstage.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
         timerdanstage.setBackground(new Color(120, 0, 0));
         timerdanstage.setOpaque(true);
 
         //timer
         timer = new JLabel();
-        timer.setPreferredSize(new Dimension(235, 40));
-        timer.setBackground(Color.white);
+        timer.setPreferredSize(new Dimension(200, 40));
+        timer.setBackground(Color.yellow);
         timer.setOpaque(true);
 
         //stage
         stage = new JLabel("stage : " + currentstage);
-        stage.setPreferredSize(new Dimension(235, 40));
-        stage.setBackground(Color.white);
+        stage.setPreferredSize(new Dimension(200, 40));
+        stage.setBackground(Color.yellow);
         stage.setOpaque(true);
 
         //papan turn
@@ -240,6 +238,7 @@ public class BattleGUI extends JPanel {
         //spriteplayer
         spriteplayer = new JLabel("gambar player");
         spriteplayer.setBounds(75, 200, 200, 200);
+        spriteplayer.setIcon(gambarplayerbesar);
         spriteplayer.setBackground(Color.green);
         spriteplayer.setOpaque(true);
 
@@ -264,6 +263,7 @@ public class BattleGUI extends JPanel {
         gambarplayer = new JLabel("gambar player");
         gambarplayer.setPreferredSize(new Dimension(120, 120));
         gambarplayer.setBackground(Color.green);
+        gambarplayer.setIcon(gambarplayerkecil);
         gambarplayer.setOpaque(true);
 
         //Tampungan HP MP player
@@ -449,6 +449,37 @@ public class BattleGUI extends JPanel {
 
         //Infopanel
 
+        //
+        timergame = new Timer(100, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                turnplayer.setBounds(turnplayer.getX()+playerspeed,
+                        turnplayer.getY(),
+                        turnplayer.getWidth(),
+                        turnplayer.getHeight());
+                turnenemy.setBounds(turnenemy.getX()+enemyspeed,
+                        turnenemy.getY(),
+                        turnenemy.getWidth(),
+                        turnenemy.getHeight());
+                if(turnplayer.getX()+turnplayer.getWidth()>=papanturn.getX()+papanturn.getWidth()){
+                    timergame.stop();
+                    /*
+                   Process
+                     */
+                    try {
+                        Thread.sleep(10000);
+                    } catch (InterruptedException interruptedException) {
+                        interruptedException.printStackTrace();
+                    }
+                    timergame.start();
+                    turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
+                }
+                if(turnenemy.getX()+turnenemy.getWidth()>=papanturn.getX()+papanturn.getWidth()){
+                    turnenemy.setBounds(startPos, turnenemy.getY(),turnenemy.getWidth(),turnenemy.getHeight());
+                }
+            }
+        });
+
 
         //add and revalidate everyshit
         parent.add(menu);
@@ -566,7 +597,6 @@ public class BattleGUI extends JPanel {
         ManaBARplayerfront.repaint();
         ManaBARplayerfront.setVisible(true);
 
-
         //enemy
         parent.add(nameenemy);
         nameenemy.revalidate();
@@ -587,7 +617,6 @@ public class BattleGUI extends JPanel {
         statenemy.revalidate();
         statenemy.repaint();
         statenemy.setVisible(true);
-
 
         //statenemy
         statenemy.add(gambarenemy);
@@ -661,6 +690,7 @@ public class BattleGUI extends JPanel {
 
     }
     public void revalidateeverycomp(Player p){
+        timergame.start();
         //seteveryshit
         if(p.getEquippedSkills()[0]!=null) {
             gambarskill1 = new ImageIcon(p.getEquippedSkills()[0].getIconPath());
@@ -677,15 +707,14 @@ public class BattleGUI extends JPanel {
         }else{
             gambarskill3 = new ImageIcon("src/istts/pbo/res/Item/Tools.png");
         }
+        gambarplayerbesar = im.resizeIcon(p.getPlayerClass().getSpritePath(),200,200);
+        gambarplayerkecil = im.resizeIcon(p.getPlayerClass().getSpritePath(),120,120);
 
+        spriteplayer.setIcon(gambarplayerbesar);
+        gambarplayer.setIcon(gambarplayerkecil);
         skill1.setIcon(gambarskill1);
         skill2.setIcon(gambarskill2);
         skill3.setIcon(gambarskill3);
-
-
-
-
-
 
         parent.add(menu);
         menu.revalidate();
