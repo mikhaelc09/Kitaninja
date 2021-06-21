@@ -19,17 +19,85 @@ public class BattleGUI extends JPanel {
         public Timerdanstage() {
 
         }
-                    protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                draw(g);
-            }
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            draw(g);
+        }
 
-            private void draw(Graphics g) {
-                    ImageIcon sementara1 = im.resizeIcon("src/istts/pbo/res/papanProfile.png",500,80);
-                    g.drawImage(sementara1.getImage(), 0, 0, null);
-            }
+        private void draw(Graphics g) {
+            ImageIcon sementara1 = im.resizeIcon("src/istts/pbo/res/papantimer.png",500,80);
+            g.drawImage(sementara1.getImage(), 0, 0, null);
+        }
 
     }
+    class StatPlayer extends JPanel {
+
+        public StatPlayer() {
+
+        }
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            draw(g);
+        }
+
+        private void draw(Graphics g) {
+            ImageIcon sementara1 = im.resizeIcon("src/istts/pbo/res/papanstat (1).png",300,150);
+            g.drawImage(sementara1.getImage(), 0, 0, null);
+        }
+
+    }
+    class StatEnemy extends JPanel {
+
+        public StatEnemy() {
+
+        }
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            draw(g);
+        }
+
+        private void draw(Graphics g) {
+            ImageIcon sementara1 = im.resizeIcon("src/istts/pbo/res/papanstat (1).png",300,150);
+            g.drawImage(sementara1.getImage(), 0, 0, null);
+        }
+
+    }
+    class PanelSkill extends JPanel {
+
+        public PanelSkill() {
+
+        }
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            draw(g);
+        }
+
+        private void draw(Graphics g) {
+            ImageIcon sementara1 = im.resizeIcon("src/istts/pbo/res/papan skill.jpg",555,150);
+            g.drawImage(sementara1.getImage(), 0, 0, null);
+        }
+
+    }
+    class Parent extends JPanel {
+
+        public Parent() {
+
+        }
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            draw(g);
+        }
+
+        private void draw(Graphics g) {
+            ImageIcon sementara1 = new ImageIcon("src/istts/pbo/res/backgrounds/backgroundbattle.png");
+            g.drawImage(sementara1.getImage(), 0, 0, null);
+        }
+
+    }
+    PanelSkill panelskill = new PanelSkill();
+    StatPlayer statplayer = new StatPlayer();
+    StatEnemy statenemy = new StatEnemy();
+    Parent parent = new Parent();
 
     Timerdanstage timerdanstage;
     private String namaplayer;
@@ -64,7 +132,6 @@ public class BattleGUI extends JPanel {
 
 
     ArrayList<String> debufflist;
-    JPanel parent;
     JLabel menu;
     JLabel timer;
     JLabel stage;
@@ -76,12 +143,11 @@ public class BattleGUI extends JPanel {
     JLabel displayskillname;
     JLabel spriteplayer;
     JPanel debuffplayer;
-    JPanel statplayer;
+
     JLabel nameenemy;
     JLabel spriteenemy;
     JPanel debuffenemy;
-    JPanel statenemy;
-    JPanel panelskill;
+
     JLabel skill1;
     JLabel skill2;
     JLabel skill3;
@@ -106,7 +172,7 @@ public class BattleGUI extends JPanel {
 
     public BattleGUI(Player p) {
         debufflist = new ArrayList<>();
-                init(p);
+        init(p);
         startPos = turnplayer.getX();
 
     }
@@ -152,7 +218,6 @@ public class BattleGUI extends JPanel {
 
 
         //mainpanel
-        parent = new JPanel();
         parent.setBounds(0, 0, SWIDTH, SHEIGHT);
         parent.setSize(new Dimension(SWIDTH, SHEIGHT));
         parent.setLayout(null);
@@ -175,8 +240,8 @@ public class BattleGUI extends JPanel {
         timerdanstage = new Timerdanstage();
         timerdanstage.setBounds(SWIDTH - 20 - 500, 15, 500, 80);
         timerdanstage.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
-        timerdanstage.setBackground(new Color(120, 0, 0));
-        timerdanstage.setOpaque(true);
+        timerdanstage.setBackground(null);
+        timerdanstage.setOpaque(false);
 
         //timer
         timer = new JLabel();
@@ -193,21 +258,22 @@ public class BattleGUI extends JPanel {
         //papan turn
         papanturn = new JLabel();
         papanturn.setBounds(400, 150, 480, 50);
-        papanturn.setBackground(new Color(135, 0, 20));
-        papanturn.setText("papanturn");
-        papanturn.setOpaque(true);
+        papanturn.setIcon(new ImageIcon("src/istts/pbo/res/attackbar.png"));
         //turnplayer
         turnplayer = new JLabel();
         turnplayer.setBounds(400, 100, 50, 50);
         turnplayer.setBackground(new Color(200, 50, 200));
         turnplayer.setText("S");
-        turnplayer.setOpaque(true);
+        turnplayer.setIcon(im.resizeIcon("src/istts/pbo/res/PlayerEnemy.png",50,50));
+
+        turnplayer.setOpaque(false);
         //turnenemy
         turnenemy = new JLabel();
         turnenemy.setBounds(400, 100, 50, 50);
         turnenemy.setBackground(new Color(150, 10, 255));
         turnenemy.setText("E");
-        turnenemy.setOpaque(true);
+        turnenemy.setIcon(im.resizeIcon(im.colorFillRed("src/istts/pbo/res/PlayerEnemy.png"),50,50));
+        turnenemy.setOpaque(false);
 
         //turncount
 
@@ -215,7 +281,8 @@ public class BattleGUI extends JPanel {
         turncount.setBounds(520, 225, 240, 50);
         turncount.setBackground(new Color(70, 200, 70));
         turncount.setText("turn : " + currentturn);
-        turncount.setOpaque(true);
+        turncount.setIcon(new ImageIcon("src/istts/pbo/res/papanob.png"));
+        turncount.setOpaque(false);
         turncount.setHorizontalTextPosition(SwingConstants.CENTER);
 
         //displayskillname
@@ -228,19 +295,21 @@ public class BattleGUI extends JPanel {
         displayskillname.setHorizontalTextPosition(SwingConstants.CENTER);
 
         //nameplayer
-        nameplayer = new JLabel(namaplayer);
+        nameplayer = new JLabel();
         nameplayer.setBounds(75, 150, 200, 40);
         nameplayer.setHorizontalTextPosition(SwingConstants.CENTER);
         nameplayer.setVerticalTextPosition(SwingConstants.CENTER);
-        nameplayer.setBackground(Color.YELLOW);
-        nameplayer.setOpaque(true);
+        nameplayer.setForeground(Color.white);
+        nameplayer.setText(namaplayer);
+        nameplayer.setFont(new Font("Ninja Naruto",Font.BOLD,15));
+
 
         //spriteplayer
         spriteplayer = new JLabel("gambar player");
         spriteplayer.setBounds(75, 200, 200, 200);
         spriteplayer.setIcon(gambarplayerbesar);
         spriteplayer.setBackground(Color.green);
-        spriteplayer.setOpaque(true);
+        spriteplayer.setOpaque(false);
 
         //Debuffplayer
 
@@ -252,11 +321,10 @@ public class BattleGUI extends JPanel {
 
         //Statplayer
 
-        statplayer = new JPanel();
         statplayer.setBounds(20, 560, 300, 150);
-        statplayer.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        statplayer.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 12));
         statplayer.setBackground(Color.orange);
-        statplayer.setOpaque(true);
+        statplayer.setOpaque(false);
 
         //Gambarplayer
 
@@ -264,21 +332,22 @@ public class BattleGUI extends JPanel {
         gambarplayer.setPreferredSize(new Dimension(120, 120));
         gambarplayer.setBackground(Color.green);
         gambarplayer.setIcon(gambarplayerkecil);
-        gambarplayer.setOpaque(true);
+        gambarplayer.setOpaque(false);
 
         //Tampungan HP MP player
         panelHPMPplayer = new JPanel();
-        panelHPMPplayer.setLayout(new FlowLayout(FlowLayout.CENTER));
+        panelHPMPplayer.setLayout(new FlowLayout(FlowLayout.CENTER,0,3));
         panelHPMPplayer.setPreferredSize(new Dimension(140, 120));
         panelHPMPplayer.setBackground(Color.gray);
-        panelHPMPplayer.setOpaque(true);
+        panelHPMPplayer.setOpaque(false);
 
         //labelHPplayer
 
         labelHPplayer = new JLabel("HP : " + playerHP + " / " + playermaksHP);
         labelHPplayer.setPreferredSize(new Dimension(120, 20));
         labelHPplayer.setBackground(Color.cyan);
-        labelHPplayer.setOpaque(true);
+        labelHPplayer.setOpaque(false);
+        labelHPplayer.setFont(new Font("Arial",Font.BOLD,15));
 
         //Player HPBAR back
 
@@ -304,7 +373,8 @@ public class BattleGUI extends JPanel {
         labelMPplayer = new JLabel("MP : " + playerMP + " / " + playermaksMP);
         labelMPplayer.setPreferredSize(new Dimension(120, 20));
         labelMPplayer.setBackground(Color.cyan);
-        labelMPplayer.setOpaque(true);
+        labelMPplayer.setOpaque(false);
+        labelMPplayer.setFont(new Font("Arial",Font.BOLD,15));
 
         //Player MANABAR back
 
@@ -329,8 +399,8 @@ public class BattleGUI extends JPanel {
         nameenemy.setBounds(SWIDTH - 75 - 200, 150, 200, 40);
         nameenemy.setHorizontalTextPosition(SwingConstants.CENTER);
         nameenemy.setVerticalTextPosition(SwingConstants.CENTER);
-        nameenemy.setBackground(Color.YELLOW);
-        nameenemy.setOpaque(true);
+        nameenemy.setForeground(Color.WHITE);
+        nameenemy.setFont(new Font("Ninja Naruto",Font.BOLD,15));
 
         //spriteenemy
         spriteenemy = new JLabel("gambar enemy");
@@ -342,17 +412,16 @@ public class BattleGUI extends JPanel {
 
         debuffenemy = new JPanel();
         debuffenemy.setBounds(SWIDTH - 20 - 400, 500, 400, 50);
-        debuffenemy.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        debuffenemy.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 12));
         debuffenemy.setBackground(Color.cyan);
         debuffenemy.setOpaque(true);
 
         //Statenemy
 
-        statenemy = new JPanel();
         statenemy.setBounds(SWIDTH - 20 - 300, 560, 300, 150);
         statenemy.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
         statenemy.setBackground(Color.orange);
-        statenemy.setOpaque(true);
+        statenemy.setOpaque(false);
 
 
         //Gambarenemy
@@ -364,17 +433,18 @@ public class BattleGUI extends JPanel {
 
         //Tampungan HP MP enemy
         panelHPMPenemy = new JPanel();
-        panelHPMPenemy.setLayout(new FlowLayout(FlowLayout.CENTER));
+        panelHPMPenemy.setLayout(new FlowLayout(FlowLayout.CENTER,0,3));
         panelHPMPenemy.setPreferredSize(new Dimension(140, 120));
         panelHPMPenemy.setBackground(Color.gray);
-        panelHPMPenemy.setOpaque(true);
+        panelHPMPenemy.setOpaque(false);
 
         //labelHPenemy
 
         labelHPenemy = new JLabel("HP : " + enemyHP + " / " + enemymaksHP);
         labelHPenemy.setPreferredSize(new Dimension(120, 20));
         labelHPenemy.setBackground(Color.cyan);
-        labelHPenemy.setOpaque(true);
+        labelHPenemy.setOpaque(false);
+        labelHPenemy.setFont(new Font("Arial",Font.BOLD,15));
 
         //enemy HPBAR back
 
@@ -400,7 +470,8 @@ public class BattleGUI extends JPanel {
         labelMPenemy = new JLabel("MP : " + enemyMP + " / " + enemymaksMP);
         labelMPenemy.setPreferredSize(new Dimension(120, 20));
         labelMPenemy.setBackground(Color.cyan);
-        labelMPenemy.setOpaque(true);
+        labelMPenemy.setOpaque(false);
+        labelMPenemy.setFont(new Font("Arial",Font.BOLD,15));
 
         //enemy MANABAR back
 
@@ -421,11 +492,10 @@ public class BattleGUI extends JPanel {
 
 
         //Skillpanel
-        panelskill = new JPanel();
         panelskill.setBounds(365, 560, 555, 150);
         panelskill.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 15));
         panelskill.setBackground(Color.red);
-        panelskill.setOpaque(true);
+        panelskill.setOpaque(false);
 
         //skill 1
         skill1 = new JLabel("Skill1");
@@ -445,7 +515,7 @@ public class BattleGUI extends JPanel {
         attack = new JLabel("Attack");
         attack.setPreferredSize(new Dimension(120, 120));
         attack.setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/Attack.png"));
-        attack.setOpaque(true);
+        attack.setOpaque(false);
 
         //Infopanel
 
@@ -466,11 +536,11 @@ public class BattleGUI extends JPanel {
                     /*
                    Process
                      */
-                    try {
-                        Thread.sleep(10000);
-                    } catch (InterruptedException interruptedException) {
-                        interruptedException.printStackTrace();
-                    }
+//                    try {
+//                        Thread.sleep(0);
+//                    } catch (InterruptedException interruptedException) {
+//                        interruptedException.printStackTrace();
+//                    }
                     timergame.start();
                     turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
                 }
@@ -691,6 +761,23 @@ public class BattleGUI extends JPanel {
     }
     public void revalidateeverycomp(Player p){
         timergame.start();
+
+        //beragam get yang harus dirubah
+        namaplayer = p.getName();
+        playerHP = p.getPlayerClass().getStats().getHealth();
+        playermaksHP = p.getPlayerClass().getStats().getHealth();
+        playerMP = p.getPlayerClass().getStats().getMana();
+        playermaksMP = p.getPlayerClass().getStats().getMana();
+        playerspeed = p.getPlayerClass().getStats().getSpeed();
+        namaenemy = "isinamaenemy";
+        enemyHP = 100;
+        enemymaksHP = 100;
+        enemyMP = 100;
+        enemymaksMP = 100;
+        enemyspeed = 100/10;
+        currentstage = 1;
+        currentturn = 1;
+
         //seteveryshit
         if(p.getEquippedSkills()[0]!=null) {
             gambarskill1 = new ImageIcon(p.getEquippedSkills()[0].getIconPath());
@@ -720,6 +807,13 @@ public class BattleGUI extends JPanel {
         menu.revalidate();
         menu.repaint();
         menu.setVisible(true);
+
+        labelHPplayer.setText("HP : " + playerHP + " / " + playermaksHP);
+        labelMPplayer.setText("HP : " + playerMP + " / " + playermaksMP);
+        labelHPenemy.setText("HP : " + enemyHP + " / " + enemymaksHP);
+        labelMPenemy.setText("HP : " + enemyMP + " / " + enemymaksMP);
+
+
 
         //panel stage + timer
 
