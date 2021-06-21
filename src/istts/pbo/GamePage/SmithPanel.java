@@ -21,6 +21,7 @@ public class SmithPanel extends JPanel {
     JLabel listitem;
     JLabel Equipment;
     int uang = 0;
+    int upgradecounter;
     JLabel lbIconItemSmith;
     JLabel btUp;
     JLabel upgradeitem;
@@ -79,6 +80,18 @@ public class SmithPanel extends JPanel {
         btUp.setFont(fontlb);
         btUp.setHorizontalAlignment(SwingConstants.CENTER);
         btUp.setVerticalAlignment(SwingConstants.CENTER);
+        btUp.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        this.btUp.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(p.getGold()>=p.getItems().get(upgradecounter).getUpgradecost()){
+                    p.setGold(p.getGold()-p.getItems().get(upgradecounter).getUpgradecost());
+                    Uangmu.setText("Gold "+p.getGold());
+                    p.getItems().get(upgradecounter).setStat(p.getItems().get(upgradecounter).getStat() + p.getItems().get(upgradecounter).getStat()*10/100);
+                }
+            }
+        });
 
         Uangmu = new JLabel("Gold " + p.getGold());
         Uangmu.setBounds(125, 500, 200, 50);
@@ -97,13 +110,14 @@ public class SmithPanel extends JPanel {
         upgradeitem.setVerticalAlignment(SwingConstants.CENTER);
 
         a1.add(TombolBack);
-        a1.add(btUp);
         a1.add(Uangmu);
+        a1.add(btUp);
         a1.add(upgradeitem);
         a1.add(lbIconItemSmith);
     }
 
     private void initc2(Player p) {
+
         lbItem = new JLabel();
         lbItem.setHorizontalAlignment(SwingConstants.CENTER);
         lbItem.setVerticalAlignment(SwingConstants.NORTH);
@@ -128,6 +142,7 @@ public class SmithPanel extends JPanel {
 //                            fm.getHeight());
                     lbIconItemSmith.setIcon(im.resizeIcon(p.getItems().get(sel).getSpritePath(), 200, 200));
                     upgradeitem.setText("Cost " + p.getItems().get(sel).getUpgradecost());
+                    upgradecounter=sel;
                 }
             });
         }
