@@ -1,6 +1,6 @@
 package istts.pbo.Players.skilltrees.skills;
 
-public abstract class Skill {
+public abstract class Skill implements java.io.Serializable{
     protected String name;
     protected String iconPath;
     protected boolean unlocked;

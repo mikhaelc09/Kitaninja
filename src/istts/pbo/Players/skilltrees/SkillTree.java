@@ -5,7 +5,7 @@ import istts.pbo.Players.skilltrees.skills.Skill;
 
 import java.util.ArrayList;
 
-public class SkillTree<T> {
+public class SkillTree<T> implements java.io.Serializable{
     private ArrayList<T> skills;
     private String baseJob;
 

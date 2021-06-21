@@ -5,7 +5,7 @@ import istts.pbo.Players.skilltrees.skills.Skill;
 
 import java.util.ArrayList;
 
-public class Player {
+public class Player implements java.io.Serializable{
 
     private String name;
     private int gold;

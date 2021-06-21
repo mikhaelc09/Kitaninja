@@ -1,6 +1,6 @@
 package istts.pbo.Players;
 
-public abstract class Item {
+public abstract class Item implements java.io.Serializable{
     private String name;
     private int stat;
     private int cost;

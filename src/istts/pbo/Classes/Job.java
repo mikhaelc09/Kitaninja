@@ -3,7 +3,9 @@ package istts.pbo.Classes;
 import istts.pbo.Players.Stat;
 import istts.pbo.Players.skilltrees.SkillTree;
 
-public class Job {
+import java.io.Serializable;
+
+public class Job implements java.io.Serializable {
     private String classname;
     private Stat stats;
     private SkillTree skillTree;

@@ -1,6 +1,6 @@
 package istts.pbo.Players;
 
-public class Stat {
+public class Stat implements java.io.Serializable{
     private int health;
     private int mana;
     private int tools;

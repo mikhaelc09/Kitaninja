@@ -1,6 +1,6 @@
 package istts.pbo.Players;
 
-public class Equipment {
+public class Equipment implements java.io.Serializable{
     private Helmet head;
     private Body body;
     private Boots boots;
