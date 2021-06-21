@@ -1,5 +1,6 @@
 package istts.pbo.LandingPage;
 
+import istts.pbo.GamePage.im;
 import istts.pbo.System.CustomExitConfirm;
 
 import javax.imageio.ImageIO;
@@ -20,6 +21,7 @@ public class MenuPanel extends JPanel {
     JLabel lbAbout;
     JLabel lbExit;
     JLabel lbAboutText;
+    JLabel lbClearData;
 
     public MenuPanel() {
         init();
@@ -84,12 +86,19 @@ public class MenuPanel extends JPanel {
         lbAboutText.setIcon(new ImageIcon("src/istts/pbo/res/about.png"));
         lbAboutText.setVisible(false);
 
+        lbClearData = new JLabel();
+        lbClearData.setBounds(20,SHEIGHT-150,120,120);
+        lbClearData.setIcon(im.getXSIcon("src/istts/pbo/res/buttons/clear.png"));
+        lbClearData.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        lbClearData.setVisible(true);
+
         add(lbAboutText);
         add(lbNewGame);
         add(lbSetting);
         add(lbLoadGame);
         add(lbAbout);
         add(lbExit);
+        add(lbClearData);
     }
 
     protected void paintComponent(Graphics g) {

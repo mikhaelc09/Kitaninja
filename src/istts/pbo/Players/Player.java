@@ -38,6 +38,19 @@ public class Player implements java.io.Serializable{
         }
     }
 
+    public Player(){
+        this.name = "Blank";
+        this.gold = 0;
+        this.level = 0;
+        this.xp = 0;
+        this.skillPoint = 0;
+        this.stats = null;
+        this.playerClass = null;
+        this.equipment = null;
+        this.items = null;
+        this.equippedSkills = null;
+    }
+
     public String getName() {
         return name;
     }

@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.*;
 
 import static istts.pbo.Main.SHEIGHT;
 import static istts.pbo.Main.SWIDTH;
@@ -25,8 +26,10 @@ public class TownPage extends JFrame {
     SmithPanel smith;
     ShopPanel shop;
     BattleGUI battle;
-    public TownPage(Player player){
+    int index;
+    public TownPage(Player player, int index){
         this.player = player;
+        this.index = index;
         init();
         musictown=new musicPlayer2();
         town.back.addMouseListener(new MouseAdapter() {
@@ -207,12 +210,28 @@ public class TownPage extends JFrame {
 
     private void backMainMenu(){
         this.dispose();
+        saveFile();
         new StartPage();
         musictown.getClip().stop();
     }
 
     private void exit(){
+        saveFile();
         System.exit(0);
+    }
+
+    private void saveFile(){
+        try {
+            FileOutputStream f = new FileOutputStream("src/istts/pbo/System/saves/"+(index+1)+".ser");
+            ObjectOutputStream o  = new ObjectOutputStream(f);
+            o.writeObject(player);
+            o.close();
+            f.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void topMousePressed(MouseEvent e){

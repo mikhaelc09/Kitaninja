@@ -1,6 +1,5 @@
 package istts.pbo.LandingPage;
 
-import istts.pbo.Classes.Ninjutsu;
 import istts.pbo.Classes.Qiqong;
 import istts.pbo.Classes.Taijutsu;
 import istts.pbo.GamePage.im;
@@ -9,15 +8,16 @@ import istts.pbo.Players.Player;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static istts.pbo.Main.SWIDTH;
-
-public class LoadPanel extends JPanel {
+public class ChooseData extends JPanel {
     JLabel back;
+
     JLabel[] kotakLoad = new JLabel[3];
     JLabel[] sprite = new JLabel[3];
     JLabel[] nama = new JLabel[3];
@@ -25,7 +25,7 @@ public class LoadPanel extends JPanel {
     Font fontlb = new Font("Ninja Naruto",Font.BOLD,50);
     ArrayList<Player> player = new ArrayList<>();
 
-    public LoadPanel(ArrayList<Player> p) {
+    public ChooseData(ArrayList<Player> p) {
         for (int i = 0; i < 3; i++) {
             player.add(p.get(i));
         }
@@ -33,7 +33,7 @@ public class LoadPanel extends JPanel {
     }
 
     private void init(){
-        setBackground(Color.BLACK);
+        setBackground(Color.RED);
         setLayout(null);
 
         back = new JLabel();
@@ -41,9 +41,8 @@ public class LoadPanel extends JPanel {
         back.setOpaque(false);
         back.setIcon(new ImageIcon("src/istts/pbo/res/buttons/Back.png"));
         back.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
+        
         initState();
-
         for (int i = 0; i < 3; i++) {
             kotakLoad[i].add(sprite[i]);
             kotakLoad[i].add(nama[i]);
@@ -74,16 +73,16 @@ public class LoadPanel extends JPanel {
             kotakLoad[i].setBounds(20,100+200*i,1240,175);
             kotakLoad[i].setOpaque(false);
             kotakLoad[i].setIcon(im.resizeIcon("src/istts/pbo/res/papan.png",1240,175));
+            kotakLoad[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
             sprite[i] = new JLabel();
             sprite[i].setBounds(50,0,175,175);
+            sprite[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
             nama[i] = new JLabel();
             nama[i].setBounds(270,175/4,600,100);
             nama[i].setBackground(Color.black);
             nama[i].setFont(fontlb);
             nama[i].setOpaque(false);
             nama[i].setText(player.get(i).getName());
-            kotakLoad[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
-            sprite[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
             nama[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
             if(!player.get(i).getName().equalsIgnoreCase("Blank")){
                 sprite[i].setIcon(im.resizeIcon(player.get(i).getPlayerClass().getSpritePath(),170,170));
@@ -93,5 +92,4 @@ public class LoadPanel extends JPanel {
             }
         }
     }
-
 }
