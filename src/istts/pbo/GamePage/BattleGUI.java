@@ -290,9 +290,11 @@ public class BattleGUI extends JPanel {
         displayskillname = new JLabel();
         displayskillname.setBounds(400, 400, 480, 50);
         displayskillname.setBackground(new Color(0, 255, 150));
-        //displayskillname.setText("cuma ngecek tombol");
-        displayskillname.setOpaque(true);
+        displayskillname.setText("cuma ngecek tombol");
+        displayskillname.setOpaque(false);
+        displayskillname.setIcon(im.resizeIcon("src/istts/pbo/res/papan.png",480,50));
         displayskillname.setHorizontalTextPosition(SwingConstants.CENTER);
+        displayskillname.setVerticalTextPosition(SwingConstants.CENTER);
 
         //nameplayer
         nameplayer = new JLabel();
