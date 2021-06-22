@@ -230,7 +230,7 @@ public class StartPage extends JFrame{
                super.mouseClicked(e);
                String[] opt = new String[]{"No","Yes"};
                int conf = JOptionPane.showOptionDialog(null,
-                       "Are you sure you want to clear data?",
+                       "Are you sure you want to clear data? (The data will be cleared after you close the game)",
                        "Clear Data",
                        JOptionPane.YES_NO_OPTION,
                        JOptionPane.WARNING_MESSAGE,
@@ -424,7 +424,6 @@ public class StartPage extends JFrame{
                 FileInputStream f = new FileInputStream("src/istts/pbo/System/saves/"+filename);
                 ObjectInputStream o = new ObjectInputStream(f);
                 saveset.add((Player) o.readObject());
-                System.out.println(saveset.get(i)+" "+saveset.get(i).getName());
                 o.close();
                 f.close();
             } catch (FileNotFoundException e) {

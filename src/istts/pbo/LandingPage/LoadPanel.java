@@ -26,9 +26,7 @@ public class LoadPanel extends JPanel {
     ArrayList<Player> player = new ArrayList<>();
 
     public LoadPanel(ArrayList<Player> p) {
-        for (int i = 0; i < 3; i++) {
-            player.add(p.get(i));
-        }
+        player = p;
         init();
     }
 

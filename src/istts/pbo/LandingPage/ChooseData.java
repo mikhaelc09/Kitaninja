@@ -26,9 +26,7 @@ public class ChooseData extends JPanel {
     ArrayList<Player> player = new ArrayList<>();
 
     public ChooseData(ArrayList<Player> p) {
-        for (int i = 0; i < 3; i++) {
-            player.add(p.get(i));
-        }
+        player = p;
         init();
     }
 
@@ -41,7 +39,7 @@ public class ChooseData extends JPanel {
         back.setOpaque(false);
         back.setIcon(new ImageIcon("src/istts/pbo/res/buttons/Back.png"));
         back.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        
+
         initState();
         for (int i = 0; i < 3; i++) {
             kotakLoad[i].add(sprite[i]);
@@ -69,6 +67,7 @@ public class ChooseData extends JPanel {
 
     public void initState(){
         for (int i = 0; i < 3; i++) {
+            System.out.println(player.get(i).getName());
             kotakLoad[i] = new JLabel();
             kotakLoad[i].setBounds(20,100+200*i,1240,175);
             kotakLoad[i].setOpaque(false);
