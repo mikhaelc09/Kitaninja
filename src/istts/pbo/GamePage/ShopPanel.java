@@ -770,31 +770,31 @@ public class ShopPanel extends JPanel {
         this.setVisible(false);
 
         //inisialisasi item
-        banditWeapon = new Weapon("Bandit Axe",10,1,"src/istts/pbo/res/Item/BanditWeapon.png",5);
-        banditHelmet = new Helmet("Bandit Helmet",1,1,"src/istts/pbo/res/Item/BanditHelmet.png",5);
-        banditArmor = new Body("Bandit Armor",6,1,"src/istts/pbo/res/Item/BanditArmor.png",5);
-        banditBoots = new Boots("Bandit Boots",4,1,"src/istts/pbo/res/Item/BanditBoots.png",5);
-        banditAcc = new Accesories("Bandit Necklace",8,1,"src/istts/pbo/res/Item/BanditAcc.png",5);
-        chainmailWeapon = new Weapon("Iron Axe",10,2,"src/istts/pbo/res/Item/ChainmailWeapon.png",10);
-        chainmailHelmet = new Helmet("Chainmail Helmet",1,2,"src/istts/pbo/res/Item/ChainmailHelmet.png",10);
-        chainmailArmor = new Body("Chainmail Armor",6,2,"src/istts/pbo/res/Item/ChainmailArmor.png",10);
-        chainmailBoots = new Boots("Chainmail Boots",4,2,"src/istts/pbo/res/Item/ChainmailBoots.png",10);
-        chainmailAcc = new Accesories("Chainmail Necklace",8,2,"src/istts/pbo/res/Item/ChainmailAcc.png",10);
-        ironWeapon = new Weapon("Iron Sword",10,3,"src/istts/pbo/res/Item/IronWeapon.png",15);
-        ironHelmet = new Helmet("Iron Helmet",1,3,"src/istts/pbo/res/Item/IronHelmet.png",15);
-        ironArmor = new Body("Iron Armor",6,3,"src/istts/pbo/res/Item/IronArmor.png",15);
-        ironBoots = new Boots("Iron Boots",4,3,"src/istts/pbo/res/Item/IronBoots.png",15);
-        ironAcc = new Accesories("Iron Necklace",8,3,"src/istts/pbo/res/Item/IronAcc.png",15);
-        steelWeapon = new Weapon("Steel Sword",10,4,"src/istts/pbo/res/Item/SteelWeapon.png",20);
-        steelHelmet = new Helmet("Steel Helmet",1,4,"src/istts/pbo/res/Item/SteelHelmet.png",20);
-        steelArmor = new Body("Steel Armor",6,4,"src/istts/pbo/res/Item/SteelArmor.png",20);
-        steelBoots = new Boots("Steel Boots",4,4,"src/istts/pbo/res/Item/SteelBoots.png",20);
-        steelAcc = new Accesories("Steel Necklace",8,4,"src/istts/pbo/res/Item/SteelAcc.png",20);
-        royalWeapon = new Weapon("Royal Sword",10,5,"src/istts/pbo/res/Item/RoyalWeapon.png",25);
-        royalHelmet = new Helmet("Royal Helmet",1,5,"src/istts/pbo/res/Item/RoyalHelmet.png",25);
-        royalArmor = new Body("Royal Armor",6,5,"src/istts/pbo/res/Item/RoyalArmor.png",25);
-        royalBoots = new Boots("Royal Boots",4,5,"src/istts/pbo/res/Item/RoyalBoots.png",25);
-        royalAcc = new Accesories("Royal Necklace",8,5,"src/istts/pbo/res/Item/RoyalAcc.png",25);
+        banditWeapon = new Weapon("Bandit Axe",10,10,"src/istts/pbo/res/Item/BanditWeapon.png",5);
+        banditHelmet = new Helmet("Bandit Helmet",20,10,"src/istts/pbo/res/Item/BanditHelmet.png",5);
+        banditArmor = new Body("Bandit Armor",3,10,"src/istts/pbo/res/Item/BanditArmor.png",5);
+        banditBoots = new Boots("Bandit Boots",5,10,"src/istts/pbo/res/Item/BanditBoots.png",5);
+        banditAcc = new Accesories("Bandit Necklace",20,10,"src/istts/pbo/res/Item/BanditAcc.png",5);
+        chainmailWeapon = new Weapon("Iron Axe",15,20,"src/istts/pbo/res/Item/ChainmailWeapon.png",10);
+        chainmailHelmet = new Helmet("Chainmail Helmet",30,20,"src/istts/pbo/res/Item/ChainmailHelmet.png",10);
+        chainmailArmor = new Body("Chainmail Armor",6,20,"src/istts/pbo/res/Item/ChainmailArmor.png",10);
+        chainmailBoots = new Boots("Chainmail Boots",8,20,"src/istts/pbo/res/Item/ChainmailBoots.png",10);
+        chainmailAcc = new Accesories("Chainmail Necklace",35,20,"src/istts/pbo/res/Item/ChainmailAcc.png",10);
+        ironWeapon = new Weapon("Iron Sword",23,30,"src/istts/pbo/res/Item/IronWeapon.png",15);
+        ironHelmet = new Helmet("Iron Helmet",45,30,"src/istts/pbo/res/Item/IronHelmet.png",15);
+        ironArmor = new Body("Iron Armor",8,30,"src/istts/pbo/res/Item/IronArmor.png",15);
+        ironBoots = new Boots("Iron Boots",12,30,"src/istts/pbo/res/Item/IronBoots.png",15);
+        ironAcc = new Accesories("Iron Necklace",45,30,"src/istts/pbo/res/Item/IronAcc.png",15);
+        steelWeapon = new Weapon("Steel Sword",10,40,"src/istts/pbo/res/Item/SteelWeapon.png",20);
+        steelHelmet = new Helmet("Steel Helmet",55,40,"src/istts/pbo/res/Item/SteelHelmet.png",20);
+        steelArmor = new Body("Steel Armor",13,40,"src/istts/pbo/res/Item/SteelArmor.png",20);
+        steelBoots = new Boots("Steel Boots",14,40,"src/istts/pbo/res/Item/SteelBoots.png",20);
+        steelAcc = new Accesories("Steel Necklace",60,40,"src/istts/pbo/res/Item/SteelAcc.png",20);
+        royalWeapon = new Weapon("Royal Sword",40,50,"src/istts/pbo/res/Item/RoyalWeapon.png",25);
+        royalHelmet = new Helmet("Royal Helmet",70,50,"src/istts/pbo/res/Item/RoyalHelmet.png",25);
+        royalArmor = new Body("Royal Armor",17,50,"src/istts/pbo/res/Item/RoyalArmor.png",25);
+        royalBoots = new Boots("Royal Boots",20,50,"src/istts/pbo/res/Item/RoyalBoots.png",25);
+        royalAcc = new Accesories("Royal Necklace",85,50,"src/istts/pbo/res/Item/RoyalAcc.png",25);
         selected = banditHelmet;
 
         //mainpanel

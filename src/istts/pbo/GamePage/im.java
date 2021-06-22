@@ -68,7 +68,7 @@ public class im {
                 for (int j = 0; j < img.getHeight(); j++) {
                     Color c = new Color(img.getRGB(j,i),true);
                     if(c.getAlpha()>0) {
-                        System.out.println(c + "-" + c.getAlpha());
+//                        System.out.println(c + "-" + c.getAlpha());
                         img.setRGB(j,i,new Color(0,255,0).getRGB());
                     }
                 }
@@ -88,7 +88,7 @@ public class im {
                 for (int j = 0; j < img.getHeight(); j++) {
                     Color c = new Color(img.getRGB(j,i),true);
                     if(c.getAlpha()>0) {
-                        System.out.println(c + "-" + c.getAlpha());
+//                        System.out.println(c + "-" + c.getAlpha());
                         img.setRGB(j,i,new Color(0,0,255).getRGB());
                     }
                 }
@@ -108,7 +108,7 @@ public class im {
                 for (int j = 0; j < img.getHeight(); j++) {
                     Color c = new Color(img.getRGB(j,i),true);
                     if(c.getAlpha()>0) {
-                        System.out.println(c + "-" + c.getAlpha());
+//                        System.out.println(c + "-" + c.getAlpha());
                         img.setRGB(j,i,new Color(255,0,0).getRGB());
                     }
                 }

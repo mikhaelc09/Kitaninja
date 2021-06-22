@@ -1,6 +1,6 @@
 package istts.pbo.GamePage;
 
-import istts.pbo.Players.Player;
+import istts.pbo.Players.*;
 import istts.pbo.Players.skilltrees.skills.Skill;
 
 import javax.swing.*;
@@ -20,6 +20,7 @@ public class SmithPanel extends JPanel {
     JLabel lbItem;
     JLabel listitem;
     JLabel Equipment;
+    JLabel stat;
     int uang = 0;
     int upgradecounter;
     JLabel lbIconItemSmith;
@@ -71,7 +72,7 @@ public class SmithPanel extends JPanel {
         lbIconItemSmith = new JLabel();
         lbIconItemSmith.setBackground(Color.blue);
         lbIconItemSmith.setOpaque(false);
-        lbIconItemSmith.setBounds(125, 150, 200, 200);
+        lbIconItemSmith.setBounds(125, 50, 200, 200);
 
         btUp = new JLabel("Upgrade");
         btUp.setBounds(125, 600, 200, 50);
@@ -88,7 +89,18 @@ public class SmithPanel extends JPanel {
                 if(p.getGold()>=p.getItems().get(upgradecounter).getUpgradecost()){
                     p.setGold(p.getGold()-p.getItems().get(upgradecounter).getUpgradecost());
                     Uangmu.setText("Gold "+p.getGold());
-                    p.getItems().get(upgradecounter).setStat(p.getItems().get(upgradecounter).getStat() + p.getItems().get(upgradecounter).getStat()*10/100);
+                    p.getItems().get(upgradecounter).setStat(p.getItems().get(upgradecounter).getStat() + p.getItems().get(upgradecounter).getStat()*30/100);
+                    if (p.getItems().get(upgradecounter) instanceof Weapon){
+                        stat.setText("Attack "+p.getItems().get(upgradecounter).getStat());
+                    }else if (p.getItems().get(upgradecounter) instanceof Helmet){
+                        stat.setText("HP "+p.getItems().get(upgradecounter).getStat());
+                    }else if (p.getItems().get(upgradecounter) instanceof Body){
+                        stat.setText("Def "+p.getItems().get(upgradecounter).getStat());
+                    }else if (p.getItems().get(upgradecounter) instanceof Boots){
+                        stat.setText("Speed "+p.getItems().get(upgradecounter).getStat());
+                    }else if (p.getItems().get(upgradecounter) instanceof Accesories){
+                        stat.setText("Mana "+p.getItems().get(upgradecounter).getStat());
+                    }
                 }
             }
         });
@@ -109,11 +121,21 @@ public class SmithPanel extends JPanel {
         upgradeitem.setHorizontalAlignment(SwingConstants.CENTER);
         upgradeitem.setVerticalAlignment(SwingConstants.CENTER);
 
+        stat = new JLabel("Stat 0");
+        stat.setBounds(125, 300, 200, 50);
+        stat.setBackground(Color.orange);
+        stat.setOpaque(true);
+        stat.setFont(fontlb);
+        stat.setHorizontalAlignment(SwingConstants.CENTER);
+        stat.setVerticalAlignment(SwingConstants.CENTER);
+
+
         a1.add(TombolBack);
         a1.add(Uangmu);
         a1.add(btUp);
         a1.add(upgradeitem);
         a1.add(lbIconItemSmith);
+        a1.add(stat);
     }
 
     private void initc2(Player p) {
@@ -143,6 +165,17 @@ public class SmithPanel extends JPanel {
                     lbIconItemSmith.setIcon(im.resizeIcon(p.getItems().get(sel).getSpritePath(), 200, 200));
                     upgradeitem.setText("Cost " + p.getItems().get(sel).getUpgradecost());
                     upgradecounter=sel;
+                    if (p.getItems().get(sel) instanceof Weapon){
+                        stat.setText("Attack "+p.getItems().get(sel).getStat());
+                    }else if (p.getItems().get(sel) instanceof Helmet){
+                        stat.setText("HP "+p.getItems().get(sel).getStat());
+                    }else if (p.getItems().get(sel) instanceof Body){
+                        stat.setText("Def "+p.getItems().get(sel).getStat());
+                    }else if (p.getItems().get(sel) instanceof Boots){
+                        stat.setText("Speed "+p.getItems().get(sel).getStat());
+                    }else if (p.getItems().get(sel) instanceof Accesories){
+                        stat.setText("Mana "+p.getItems().get(sel).getStat());
+                    }
                 }
             });
         }
