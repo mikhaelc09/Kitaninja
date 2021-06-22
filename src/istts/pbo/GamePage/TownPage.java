@@ -99,6 +99,7 @@ public class TownPage extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 battle.setVisible(false);
                 town.setVisible(true);
+                battle.timergame.stop();
             }
         });
 

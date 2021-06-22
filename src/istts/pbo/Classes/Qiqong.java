@@ -9,7 +9,7 @@ import istts.pbo.Players.skilltrees.skills.Skill;
 public class Qiqong extends Job {
     @SuppressWarnings("unchecked")
     public Qiqong() {
-        super(new Stat(70,25,15,150,10,0,0,10),
+        super(new Stat(70,25,15,150,10,6,0,10),
                 "Qiqong", "Qiqong", "src/istts/pbo/res/sprites/qigong.gif");
         this.getSkillTree().addSkill(new DamageOnly("Hadouken", "Qiqong", "src/istts/pbo/res/IconSkill/Qiqong-Hadouken.png","Melempar sebuah bola energi"));
         this.getSkillTree().addSkill(new Buff("Calm Mind",  "Qiqong", "src/istts/pbo/res/IconSkill/Qiqong-CalmMind.png","Menambah Mana"));

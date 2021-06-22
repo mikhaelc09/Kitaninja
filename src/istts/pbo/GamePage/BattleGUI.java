@@ -1,5 +1,9 @@
 package istts.pbo.GamePage;
 
+import istts.pbo.Enemy.Enemy1;
+import istts.pbo.Enemy.Enemy2;
+import istts.pbo.Enemy.Enemy3;
+import istts.pbo.Enemy.StatEnemy;
 import istts.pbo.Players.Player;
 
 import javax.imageio.ImageIO;
@@ -7,10 +11,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class BattleGUI extends JPanel {
 
@@ -98,7 +105,9 @@ public class BattleGUI extends JPanel {
     StatPlayer statplayer = new StatPlayer();
     StatEnemy statenemy = new StatEnemy();
     Parent parent = new Parent();
+    Random r = new Random();
 
+    int rand;
     Timerdanstage timerdanstage;
     private String namaplayer;
     private String skill1name;
@@ -115,8 +124,13 @@ public class BattleGUI extends JPanel {
     private int enemymaksMP;
     private int playerspeed;
     private int enemyspeed;
+    private int playerAttack;
+    private int playerDef;
+    private int enemyDef;
+    private int enemyAttack;
     private int currentstage;
     private int currentturn;
+    private boolean isPlayerTurn=false;
 
     //timer
     Timer timergame;
@@ -168,31 +182,42 @@ public class BattleGUI extends JPanel {
     JPanel HPBARenemyback;
     JLabel ManaBARenemyfront;
     JPanel ManaBARenemyback;
+    istts.pbo.Enemy.StatEnemy currentEnemy;
 
+    ArrayList<istts.pbo.Enemy.StatEnemy> enemy = new ArrayList<>();
 
     public BattleGUI(Player p) {
         debufflist = new ArrayList<>();
         init(p);
         startPos = turnplayer.getX();
-
     }
 
     private void init(Player p) {
         int SWIDTH = 1280;
         int SHEIGHT = 760;
         //beragam get yang harus dirubah
+        enemy.add(new Enemy1());
+        enemy.add(new Enemy2());
+        enemy.add(new Enemy3());
+        rand = r.nextInt(3);
+        currentEnemy = enemy.get(rand);
+
         namaplayer = p.getName();
         playerHP = p.getStats().getHealth();
         playermaksHP = p.getStats().getHealth();
         playerMP = p.getStats().getMana();
         playermaksMP = p.getStats().getMana();
-        playerspeed = 50/10;
+        playerspeed = p.getStats().getSpeed();
+        playerAttack = p.getStats().getAttack();
+        playerDef = p.getStats().getDefense();
         namaenemy = "isinamaenemy";
-        enemyHP = 100;
-        enemymaksHP = 100;
-        enemyMP = 100;
-        enemymaksMP = 100;
-        enemyspeed = 100/10;
+        enemyHP = currentEnemy.getEnemyhealth();
+        enemymaksHP = currentEnemy.getEnemyhealth();
+        enemyMP = currentEnemy.getEnemymana();
+        enemymaksMP = currentEnemy.getEnemymana();
+        enemyspeed = currentEnemy.getEnemyspeed()/10;
+        enemyDef = currentEnemy.getEnemydef();
+        enemyAttack = currentEnemy.getEnemyatt();
         currentstage = 1;
         currentturn = 1;
 
@@ -408,7 +433,8 @@ public class BattleGUI extends JPanel {
         spriteenemy = new JLabel("gambar enemy");
         spriteenemy.setBounds(SWIDTH - 75 - 200, 200, 200, 200);
         spriteenemy.setBackground(Color.green);
-        spriteenemy.setOpaque(true);
+        spriteenemy.setOpaque(false);
+
 
         //Debuffenemy
 
@@ -431,7 +457,7 @@ public class BattleGUI extends JPanel {
         gambarenemy = new JLabel("gambar enemy");
         gambarenemy.setPreferredSize(new Dimension(120, 120));
         gambarenemy.setBackground(Color.green);
-        gambarenemy.setOpaque(true);
+        gambarenemy.setOpaque(false);
 
         //Tampungan HP MP enemy
         panelHPMPenemy = new JPanel();
@@ -502,24 +528,102 @@ public class BattleGUI extends JPanel {
         //skill 1
         skill1 = new JLabel("Skill1");
         skill1.setPreferredSize(new Dimension(120, 120));
-
         skill1.setIcon(gambarskill1);
+        skill1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (isPlayerTurn){
+                    timergame.start();
+                    isPlayerTurn=false;
+                    turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
+
+                    attack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    skill1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    skill2.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    skill3.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                }
+            }
+        });
 
         //skill 2
         skill2 = new JLabel("Skill2");
         skill2.setPreferredSize(new Dimension(120, 120));
         skill2.setIcon(gambarskill2);
+        skill2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (isPlayerTurn){
+                    timergame.start();
+                    isPlayerTurn=false;
+                    turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
+
+                    attack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    skill1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    skill2.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    skill3.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                }
+            }
+        });
+
         //skill 3
         skill3 = new JLabel("Skill3");
         skill3.setPreferredSize(new Dimension(120, 120));
         skill3.setIcon(gambarskill3);
+        skill3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (isPlayerTurn){
+                    timergame.start();
+                    isPlayerTurn=false;
+                    turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
+
+                    attack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    skill1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    skill2.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    skill3.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                }
+            }
+        });
+
         //attack
         attack = new JLabel("Attack");
         attack.setPreferredSize(new Dimension(120, 120));
         attack.setIcon(new ImageIcon("src/istts/pbo/res/IconSkill/Attack.png"));
         attack.setOpaque(false);
 
+        attack.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (isPlayerTurn){
+                    timergame.start();
+                    isPlayerTurn=false;
+                    turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
+                    int damage = playerAttack - (playerAttack *  enemyDef / 100);
+
+                    enemyHP = enemyHP - damage;
+                    labelHPenemy.setText("HP : " + enemyHP + " / " + enemymaksHP);
+
+                    double tes = 110 * (enemyHP * 1.0 / enemymaksHP);
+                    int tes1 = (int) Math.round(tes);
+
+                    HPBARenemyfront.setBounds(5, 5, tes1, 20);
+                    HPBARenemyfront.setBackground(new Color(255, 0, 0));
+                    HPBARenemyfront.setOpaque(true);
+                    HPBARenemyfront.repaint();
+                    HPBARenemyfront.revalidate();
+
+                    displayskillname.setText(p.getName()+" Basic Attack ("+damage+")");
+
+                    attack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    skill1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    skill2.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    skill3.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                }
+            }
+        });
+
         //Infopanel
+
 
         //
         timergame = new Timer(100, new ActionListener() {
@@ -535,6 +639,11 @@ public class BattleGUI extends JPanel {
                         turnenemy.getHeight());
                 if(turnplayer.getX()+turnplayer.getWidth()>=papanturn.getX()+papanturn.getWidth()){
                     timergame.stop();
+                    isPlayerTurn=true;
+                    attack.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                    skill1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                    skill2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                    skill3.setCursor(new Cursor(Cursor.HAND_CURSOR));
                     /*
                    Process
                      */
@@ -543,14 +652,47 @@ public class BattleGUI extends JPanel {
 //                    } catch (InterruptedException interruptedException) {
 //                        interruptedException.printStackTrace();
 //                    }
-                    timergame.start();
-                    turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
+//                    timergame.start();
+//                    turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
                 }
                 if(turnenemy.getX()+turnenemy.getWidth()>=papanturn.getX()+papanturn.getWidth()){
                     turnenemy.setBounds(startPos, turnenemy.getY(),turnenemy.getWidth(),turnenemy.getHeight());
                 }
+                if (enemyHP<=0){
+                    rand = r.nextInt(3);
+                    System.out.println(rand);
+                    currentEnemy = enemy.get(rand);
+                    namaenemy = "isinamaenemy";
+                    enemyHP = currentEnemy.getEnemyhealth();
+                    enemymaksHP = currentEnemy.getEnemyhealth();
+                    enemyMP = currentEnemy.getEnemymana();
+                    enemyDef = currentEnemy.getEnemydef();
+                    enemyAttack = currentEnemy.getEnemyatt();
+                    enemymaksMP = currentEnemy.getEnemymana();
+                    enemyspeed = currentEnemy.getEnemyspeed();
+                    labelHPenemy.setText("HP : " + enemyHP + " / " + enemymaksHP);
+                    labelMPenemy.setText("MP : " + enemyMP + " / " + enemymaksMP);
+                    turnenemy.setBounds(startPos, turnenemy.getY(),turnenemy.getWidth(),turnenemy.getHeight());
+                    spriteenemy.setIcon(new ImageIcon(currentEnemy.getEnemysprite()));
+                    gambarenemy.setIcon(new ImageIcon(currentEnemy.getEnemysprite()));
+
+                    HPBARenemyfront.setBounds(5, 5, 110, 20);
+                    HPBARenemyfront.setBackground(new Color(255, 0, 0));
+                    HPBARenemyfront.setOpaque(true);
+                    HPBARenemyfront.revalidate();
+                    HPBARenemyfront.repaint();
+
+                    currentstage++;
+
+                    stage.setText("Stage : "+currentstage);
+                }
+                if (playerHP<=0){
+                    System.out.println("KALAH");
+                    timergame.stop();
+                }
             }
         });
+
 
 
         //add and revalidate everyshit
@@ -770,15 +912,24 @@ public class BattleGUI extends JPanel {
         playermaksHP = p.getPlayerClass().getStats().getHealth();
         playerMP = p.getPlayerClass().getStats().getMana();
         playermaksMP = p.getPlayerClass().getStats().getMana();
+        playerAttack = p.getStats().getAttack();
+        playerDef = p.getStats().getDefense();
         playerspeed = p.getPlayerClass().getStats().getSpeed();
         namaenemy = "isinamaenemy";
-        enemyHP = 100;
-        enemymaksHP = 100;
-        enemyMP = 100;
-        enemymaksMP = 100;
-        enemyspeed = 100/10;
+        enemyHP = currentEnemy.getEnemyhealth();
+        enemyDef = currentEnemy.getEnemydef();
+        enemyAttack = currentEnemy.getEnemyatt();
+        enemymaksHP = currentEnemy.getEnemyhealth();
+        enemyMP = currentEnemy.getEnemymana();
+        enemymaksMP = currentEnemy.getEnemymana();
+        gambarenemy.setIcon(im.resizeIcon(currentEnemy.getEnemysprite(),120,120));
+        enemyspeed = currentEnemy.getEnemyspeed();
+        spriteenemy.setIcon(new ImageIcon(currentEnemy.getEnemysprite()));
         currentstage = 1;
         currentturn = 1;
+        turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
+        turnenemy.setBounds(startPos,turnenemy.getY(),turnenemy.getWidth(),turnenemy.getHeight());
+        spriteenemy.setIcon(new ImageIcon(currentEnemy.getEnemysprite()));
 
         //seteveryshit
         if(p.getEquippedSkills()[0]!=null) {
@@ -805,15 +956,17 @@ public class BattleGUI extends JPanel {
         skill2.setIcon(gambarskill2);
         skill3.setIcon(gambarskill3);
 
+        //lalalala
+
         parent.add(menu);
         menu.revalidate();
         menu.repaint();
         menu.setVisible(true);
 
         labelHPplayer.setText("HP : " + playerHP + " / " + playermaksHP);
-        labelMPplayer.setText("HP : " + playerMP + " / " + playermaksMP);
+        labelMPplayer.setText("MP : " + playerMP + " / " + playermaksMP);
         labelHPenemy.setText("HP : " + enemyHP + " / " + enemymaksHP);
-        labelMPenemy.setText("HP : " + enemyMP + " / " + enemymaksMP);
+        labelMPenemy.setText("MP : " + enemyMP + " / " + enemymaksMP);
 
 
 

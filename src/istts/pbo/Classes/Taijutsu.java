@@ -8,7 +8,7 @@ import istts.pbo.Players.skilltrees.skills.Skill;
 public class Taijutsu extends Job {
     @SuppressWarnings("unchecked")
     public Taijutsu(){
-        super(new Stat(100,30,20,50,15,0,0,10),
+        super(new Stat(100,30,20,50,15,6,0,10),
                 "Taijutsu", "Taijutsu", "src/istts/pbo/res/sprites/taijutsu.gif");
         this.getSkillTree().addSkill(new DamageOnly("Falcon Punch", "Taijutsu", "src/istts/pbo/res/IconSkill/Taijutsu-FalconPunch.png","Memukul dengan kecepatan Elang"));
         this.getSkillTree().addSkill(new DamageOnly("Fus Ro Dah", "Taijutsu", "src/istts/pbo/res/IconSkill/Taijutsu-FusRoDah.png", "Berteriak keras untuk menyerang musuh"));

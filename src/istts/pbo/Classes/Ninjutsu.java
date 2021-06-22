@@ -8,7 +8,7 @@ import istts.pbo.Players.skilltrees.skills.Skill;
 public class Ninjutsu extends Job {
     @SuppressWarnings("unchecked")
     public Ninjutsu(){
-        super(new Stat(80,25,15,0,30,100,0,10),
+        super(new Stat(80,25,15,20,30,6,0,10),
                 "Ninjutsu", "Ninjutsu", "src/istts/pbo/res/sprites/ninjutsu.gif");
         this.getSkillTree().addSkill(new DamageOnly("Shuriken Throw", "Ninjutsu", "src/istts/pbo/res/IconSkill/Ninjutsu-ShurikenThrow.png","Melempar sebuah shuriken untuk menyakiti musuh"));
         this.getSkillTree().addSkill(new Buff("Backpack", "Ninjutsu", "src/istts/pbo/res/IconSkill/Ninjutsu-Backpack.png","Menambah kapasitas ransel untuk menambah weapon"));

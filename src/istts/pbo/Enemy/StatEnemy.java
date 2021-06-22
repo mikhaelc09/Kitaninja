@@ -9,9 +9,6 @@ public class StatEnemy {
     private int enemyacc;
     private int enemycrit;
     private String enemysprite;
-    public StatEnemy(StatEnemy statEnemy) {
-
-    }
 
     public String getEnemysprite() {
         return enemysprite;
