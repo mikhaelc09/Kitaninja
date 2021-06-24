@@ -348,7 +348,7 @@ public class ProfilePanel extends JPanel {
         //
 
         //namaskill1
-        JLabel namaskill1 = new JLabel("Isi nama skill 1");
+        JLabel namaskill1 = new JLabel("Skill 1");
         namaskill1.setPreferredSize(new Dimension(375,80));
         //
         namaskill1.setBackground(new Color(250,200,50));
@@ -388,6 +388,11 @@ public class ProfilePanel extends JPanel {
         namaskill1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         iconskill1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
+        if(player.getEquippedSkills()[0] != null){
+            iconskill1.setIcon(im.getSIcon(player.getEquippedSkills()[0].getIconPath()));
+            namaskill1.setText(player.getEquippedSkills()[0].getName());
+        }
+
         //panel2kiribawah
         JPanel kiribawahpanel2 = new JPanel();
         kiribawahpanel2.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
@@ -397,7 +402,7 @@ public class ProfilePanel extends JPanel {
         kiribawahpanel2.setOpaque(false);
 
         //namaskill2
-        JLabel namaskill2 = new JLabel("Isi nama skill 2");
+        JLabel namaskill2 = new JLabel("Skill 2");
         namaskill2.setPreferredSize(new Dimension(375,80));
         //
         namaskill2.setBackground(new Color(250,200,50));
@@ -437,6 +442,11 @@ public class ProfilePanel extends JPanel {
         namaskill2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         iconskill2.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
+        if(player.getEquippedSkills()[1] != null){
+            iconskill2.setIcon(im.getSIcon(player.getEquippedSkills()[1].getIconPath()));
+            namaskill2.setText(player.getEquippedSkills()[1].getName());
+        }
+
         //panel3kiribawah
         JPanel kiribawahpanel3 = new JPanel();
         kiribawahpanel3.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
@@ -446,7 +456,7 @@ public class ProfilePanel extends JPanel {
         kiribawahpanel3.setOpaque(false);
 
         //namaskill3
-        JLabel namaskill3 = new JLabel("Isi nama skill 3");
+        JLabel namaskill3 = new JLabel("Skill 3");
         namaskill3.setPreferredSize(new Dimension(375,80));
         //
         namaskill3.setBackground(new Color(250,200,50));
@@ -485,6 +495,11 @@ public class ProfilePanel extends JPanel {
         kiribawahpanel3.setCursor(new Cursor(Cursor.HAND_CURSOR));
         namaskill3.setCursor(new Cursor(Cursor.HAND_CURSOR));
         iconskill3.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        if(player.getEquippedSkills()[2] != null){
+            iconskill3.setIcon(im.getSIcon(player.getEquippedSkills()[2].getIconPath()));
+            namaskill3.setText(player.getEquippedSkills()[2].getName());
+        }
 
         //Panel kanan
         class Pkanan extends JPanel{
@@ -566,6 +581,11 @@ public class ProfilePanel extends JPanel {
             }
         });
 
+        if(player.getEquipment().getHead()!=null){
+            Namaequip1.setText(player.getEquipment().getHead().getName());
+            Gambarequip1.setIcon(im.getSIcon(player.getEquipment().getHead().getSpritePath()));
+        }
+
         //Equip1Logo
 
         //Panel Equip 2
@@ -599,6 +619,11 @@ public class ProfilePanel extends JPanel {
                 equipSelection(player,2,Gambarequip2,stat3,Namaequip2);
             }
         });
+
+        if(player.getEquipment().getWeapon()!=null){
+            Namaequip2.setText(player.getEquipment().getWeapon().getName());
+            Gambarequip2.setIcon(im.getSIcon(player.getEquipment().getWeapon().getSpritePath()));
+        }
 
 
         //Panel Equip 3
@@ -636,6 +661,11 @@ public class ProfilePanel extends JPanel {
             }
         });
 
+        if(player.getEquipment().getBody()!=null){
+            Namaequip3.setText(player.getEquipment().getBody().getName());
+            Gambarequip3.setIcon(im.getSIcon(player.getEquipment().getBody().getSpritePath()));
+        }
+
         //Panel Equip 4
         JPanel Equip4 = new JPanel();
         Equip4.setPreferredSize(new Dimension(225,93));
@@ -671,6 +701,11 @@ public class ProfilePanel extends JPanel {
             }
         });
 
+        if(player.getEquipment().getBoots()!=null){
+            Namaequip4.setText(player.getEquipment().getBoots().getName());
+            Gambarequip4.setIcon(im.getSIcon(player.getEquipment().getBoots().getSpritePath()));
+        }
+
         //Panel Equip 5
         JPanel Equip5 = new JPanel();
         Equip5.setPreferredSize(new Dimension(225,93));
@@ -703,6 +738,11 @@ public class ProfilePanel extends JPanel {
                 equipSelection(player,5,Gambarequip5,stat2,Namaequip5);
             }
         });
+
+        if(player.getEquipment().getAccesories()!=null){
+            Namaequip5.setText(player.getEquipment().getAccesories().getName());
+            Gambarequip5.setIcon(im.getSIcon(player.getEquipment().getAccesories().getSpritePath()));
+        }
 
 
         //
