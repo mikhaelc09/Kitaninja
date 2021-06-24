@@ -2,6 +2,6 @@ package istts.pbo.Enemy;
 
 public class Enemy2 extends StatEnemy{
     public Enemy2() {
-        super(50,50,5,5,5,5,5,"src/istts/pbo/Enemy/e2.gif");
+        super(500,200,20,15,10,10,0,"src/istts/pbo/res/sprites/enemy2.gif");
     }
 }
