@@ -9,6 +9,16 @@ public class StatEnemy {
     private int enemyacc;
     private int enemycrit;
     private String enemysprite;
+    private String name;
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getEnemysprite() {
         return enemysprite;
@@ -74,7 +84,7 @@ public class StatEnemy {
         this.enemycrit = enemycrit;
     }
 
-    public StatEnemy(int enemyhealth, int enemymana, int enemyatt, int enemydef, int enemyspeed, int enemyacc, int enemycrit,String enemysprite) {
+    public StatEnemy(int enemyhealth, int enemymana, int enemyatt, int enemydef, int enemyspeed, int enemyacc, int enemycrit,String enemysprite, String name) {
         this.enemyhealth = enemyhealth;
         this.enemymana = enemymana;
         this.enemyatt = enemyatt;
@@ -83,5 +93,6 @@ public class StatEnemy {
         this.enemyacc = enemyacc;
         this.enemycrit = enemycrit;
         this.enemysprite=enemysprite;
+        this.name = name;
     }
 }

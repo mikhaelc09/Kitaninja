@@ -5,9 +5,7 @@ import istts.pbo.Enemy.Enemy2;
 import istts.pbo.Enemy.Enemy3;
 import istts.pbo.Enemy.StatEnemy;
 import istts.pbo.Players.Player;
-import istts.pbo.Players.skilltrees.skills.Buff;
-import istts.pbo.Players.skilltrees.skills.DamageOnly;
-import istts.pbo.Players.skilltrees.skills.StatusEffect;
+import istts.pbo.Players.skilltrees.skills.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -134,6 +132,10 @@ public class BattleGUI extends JPanel {
     private int currentstage;
     private int currentturn;
     private boolean isPlayerTurn=false;
+    private ArrayList<int[]> enemyBuff = new ArrayList<>();
+    private ArrayList<int[]> enemyDebuff = new ArrayList<>();
+    private ArrayList<int[]> playerBuff = new ArrayList<>();
+    private ArrayList<int[]> playerDebuff = new ArrayList<>();
 
     //timer
     Timer timergame;
@@ -536,42 +538,17 @@ public class BattleGUI extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (isPlayerTurn){
-                    timergame.start();
-                    isPlayerTurn=false;
-                    turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
-                    if(p.getEquippedSkills()[0] instanceof DamageOnly){
-                        int[] values = ((DamageOnly) p.getEquippedSkills()[0]).useSkill();
-                        enemyHP = enemyHP-values[0];
-                        playerMP = playerMP-values[1];
-                        labelHPenemy.setText("HP : "+enemyHP + " / " + enemymaksHP);
-                        labelMPplayer.setText("MP : "+playerMP+" / "+playermaksMP);
+                    boolean temp = useskil(0,p);
+                    if(temp){
+                        timergame.start();
+                        isPlayerTurn=false;
+                        turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
 
-                        int scaledEnemyHP =(int) Math.round(110 * (enemyHP*1.0/enemymaksHP));
-
-                        HPBARenemyfront.setBounds(5,5,scaledEnemyHP,20);
-                        HPBARenemyfront.revalidate();
-                        HPBARenemyfront.repaint();
-
-                        int scaledPlayerMP = (int) Math.round(110 * (playerMP*1.0/playermaksMP));
-
-                        ManaBARplayerfront.setBounds(5,5,scaledPlayerMP,20);
-                        ManaBARplayerfront.revalidate();
-                        ManaBARplayerfront.repaint();
-
-                        displayskillname.setText(p.getName()+" use "+p.getEquippedSkills()[0].getName()+"("+values[0]+")");
-
+                        attack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                        skill1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                        skill2.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                        skill3.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                     }
-                    else if(p.getEquippedSkills()[0] instanceof Buff){
-
-                    }
-                    else if(p.getEquippedSkills()[0] instanceof StatusEffect){
-
-                    }
-
-                    attack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-                    skill1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-                    skill2.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-                    skill3.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                 }
             }
         });
@@ -584,14 +561,17 @@ public class BattleGUI extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (isPlayerTurn){
-                    timergame.start();
-                    isPlayerTurn=false;
-                    turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
+                    boolean temp = useskil(1,p);
+                    if(temp){
+                        timergame.start();
+                        isPlayerTurn=false;
+                        turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
 
-                    attack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-                    skill1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-                    skill2.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-                    skill3.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                        attack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                        skill1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                        skill2.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                        skill3.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    }
                 }
             }
         });
@@ -604,14 +584,17 @@ public class BattleGUI extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (isPlayerTurn){
-                    timergame.start();
-                    isPlayerTurn=false;
-                    turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
+                    boolean temp = useskil(2,p);
+                    if(temp){
+                        timergame.start();
+                        isPlayerTurn=false;
+                        turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
 
-                    attack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-                    skill1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-                    skill2.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-                    skill3.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                        attack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                        skill1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                        skill2.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                        skill3.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    }
                 }
             }
         });
@@ -694,7 +677,22 @@ public class BattleGUI extends JPanel {
 //                    turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
                 }
                 if(turnenemy.getX()+turnenemy.getWidth()>=papanturn.getX()+papanturn.getWidth()){
+                    timergame.stop();
+                    int damage = currentEnemy.getEnemyatt() - (currentEnemy.getEnemyatt() * playerDef / 100);
+                    playerHP = playerHP - damage;
+                    labelHPplayer.setText("HP : " + playerHP + " / " + playermaksHP);
+
+                    double tes = 110 * (playerHP * 1.0 / playermaksHP);
+                    int tes1 = (int) Math.round(tes);
+
+                    HPBARplayerfront.setBounds(5, 5, tes1, 20);
+                    HPBARplayerfront.repaint();
+                    HPBARplayerfront.revalidate();
+
+                    displayskillname.setText(currentEnemy.getName()+" Basic Attack ("+damage+")");
+
                     turnenemy.setBounds(startPos, turnenemy.getY(),turnenemy.getWidth(),turnenemy.getHeight());
+                    timergame.start();
                 }
                 if (enemyHP<=0){
                     rand = r.nextInt(3);
@@ -725,7 +723,7 @@ public class BattleGUI extends JPanel {
                     stage.setText("Stage : "+currentstage);
                 }
                 if (playerHP<=0){
-                    System.out.println("KALAH");
+                    JOptionPane.showMessageDialog(null,"Kalah sayang!");
                     timergame.stop();
                 }
             }
@@ -969,6 +967,9 @@ public class BattleGUI extends JPanel {
         turnenemy.setBounds(startPos,turnenemy.getY(),turnenemy.getWidth(),turnenemy.getHeight());
         spriteenemy.setIcon(new ImageIcon(currentEnemy.getEnemysprite()));
 
+        ManaBARplayerfront.setBounds(5,5,110,20);
+        HPBARplayerfront.setBounds(5,5,110,20);
+
         //seteveryshit
         if(p.getEquippedSkills()[0]!=null) {
             gambarskill1 = new ImageIcon(p.getEquippedSkills()[0].getIconPath());
@@ -1206,6 +1207,136 @@ public class BattleGUI extends JPanel {
         attack.revalidate();
         attack.repaint();
         attack.setVisible(true);
+    }
+
+    private boolean useskil(int index, Player p){
+        if(p.getEquippedSkills()[index] instanceof DamageOnly){
+            int[] values = ((DamageOnly) p.getEquippedSkills()[index]).useSkill();
+            if (playerMP>=values[1]){
+                enemyHP = enemyHP-values[0];
+                playerMP = playerMP-values[1];
+                labelHPenemy.setText("HP : "+enemyHP + " / " + enemymaksHP);
+                labelMPplayer.setText("MP : "+playerMP+" / "+playermaksMP);
+
+                int scaledEnemyHP =(int) Math.round(110 * (enemyHP*1.0/enemymaksHP));
+
+                HPBARenemyfront.setBounds(5,5,scaledEnemyHP,20);
+                HPBARenemyfront.revalidate();
+                HPBARenemyfront.repaint();
+
+                int scaledPlayerMP = (int) Math.round(110 * (playerMP*1.0/playermaksMP));
+
+                ManaBARplayerfront.setBounds(5,5,scaledPlayerMP,20);
+                ManaBARplayerfront.revalidate();
+                ManaBARplayerfront.repaint();
+
+                displayskillname.setText(p.getName()+" use "+p.getEquippedSkills()[index].getName()+"("+values[0]+")");
+
+                return true;
+            }else {
+                JOptionPane.showMessageDialog(null,"Mana tidak cukup");
+                return false;
+            }
+        }
+        else if(p.getEquippedSkills()[index] instanceof Buff){
+            int[] values = ((Buff) p.getEquippedSkills()[index]).useskill();
+            if (playerMP>=values[3]){
+                playerBuff.add(values);
+
+                playerMP-=values[3];
+
+                labelMPplayer.setText("MP : "+playerMP+" / "+playermaksMP);
+
+                int scaledPlayerMP = (int) Math.round(110 * (playerMP*1.0/playermaksMP));
+
+                displayskillname.setText(p.getName()+" use "+p.getEquippedSkills()[index].getName());
+
+                ManaBARplayerfront.setBounds(5,5,scaledPlayerMP,20);
+                ManaBARplayerfront.revalidate();
+                ManaBARplayerfront.repaint();
+
+                return true;
+            }else{
+                JOptionPane.showMessageDialog(null,"Mana tidak cukup");
+                return false;
+            }
+        }
+        else if(p.getEquippedSkills()[index] instanceof StatusEffect){
+            int[] values = ((StatusEffect) p.getEquippedSkills()[index]).useskill();
+            if (playerMP>=values[3]){
+                enemyDebuff.add(values);
+                playerMP-=values[3];
+
+                labelMPplayer.setText("MP : "+playerMP+" / "+playermaksMP);
+
+                int scaledPlayerMP = (int) Math.round(110 * (playerMP*1.0/playermaksMP));
+
+                displayskillname.setText(p.getName()+" use "+p.getEquippedSkills()[index].getName());
+
+                ManaBARplayerfront.setBounds(5,5,scaledPlayerMP,20);
+                ManaBARplayerfront.revalidate();
+                ManaBARplayerfront.repaint();
+
+                return true;
+
+            }else {
+                JOptionPane.showMessageDialog(null,"Mana tidak cukup");
+                return false;
+            }
+        }else if (p.getEquippedSkills()[index] instanceof Heal){
+            int[] values = ((Heal) p.getEquippedSkills()[index]).useSkill();
+            if (playerMP>=values[1]){
+
+                int recover = playermaksHP * values[0] / 100;
+                playerMP-=values[1];
+                if (playermaksHP-playerHP<recover){
+                    playerHP=playermaksHP;
+                }else {
+                    playerHP= playerHP + recover;
+                }
+
+                labelHPplayer.setText("HP : "+playerHP + " / " + playermaksHP);
+                labelMPplayer.setText("MP : "+playerMP+" / "+playermaksMP);
+
+                displayskillname.setText(p.getName()+" use "+p.getEquippedSkills()[index].getName()+" heal ("+recover+") hp");
+
+                int scaledEnemyHP =(int) Math.round(110 * (playerHP*1.0/playermaksHP));
+
+                HPBARplayerfront.setBounds(5,5,scaledEnemyHP,20);
+                HPBARplayerfront.revalidate();
+                HPBARplayerfront.repaint();
+
+                int scaledPlayerMP = (int) Math.round(110 * (playerMP*1.0/playermaksMP));
+
+                ManaBARplayerfront.setBounds(5,5,scaledPlayerMP,20);
+                ManaBARplayerfront.revalidate();
+                ManaBARplayerfront.repaint();
+
+                return true;
+            }else {
+                JOptionPane.showMessageDialog(null,"Mana tidak cukup");
+                return false;
+            }
+        }else if (p.getEquippedSkills()[index] instanceof Mana){
+            int recover = ((Mana) p.getEquippedSkills()[index]).useSkill();
+            if (playermaksMP-playerMP<recover){
+                playerMP=playermaksMP;
+            }else {
+                playerMP= playerMP + recover;
+            }
+            int scaledPlayerMP = (int) Math.round(110 * (playerMP*1.0/playermaksMP));
+
+            ManaBARplayerfront.setBounds(5,5,scaledPlayerMP,20);
+            ManaBARplayerfront.revalidate();
+            ManaBARplayerfront.repaint();
+
+            labelMPplayer.setText("MP : "+playerMP+" / "+playermaksMP);
+
+            displayskillname.setText(p.getName()+" use "+p.getEquippedSkills()[index].getName()+" recover ("+recover+") mana");
+
+            return true;
+        }
+        return false;
     }
 
     private void repaintturn() {

@@ -23,7 +23,7 @@ public class Player implements java.io.Serializable{
         this.gold = 100;
         this.level = 1;
         this.xp = 0;
-        this.skillPoint = 0;
+        this.skillPoint = 16;
         this.stats = playerClass.getStats();
         this.playerClass = playerClass;
         this.equipment = new Equipment();
