@@ -14,7 +14,7 @@ public class Qiqong extends Job {
         this.getSkillTree().addSkill(new DamageOnly("Kamehameha", "Qiqong", "src/istts/pbo/res/IconSkill/Qiqong-Kamehameha.png","Mengumpulkan Mana untuk menyerang musuh dengan bom ki",60,40));
 
         this.getSkillTree().addSkill(new DamageOnly("Hinotama", "Fire", "src/istts/pbo/res/IconSkill/Fire-Hinotama.png","Melemparkan sebuah bola api besar",50,20));
-        this.getSkillTree().addSkill(new Buff("Heatblast Form",  "Fire", "src/istts/pbo/res/IconSkill/Fire-Heatblast.png","Menyatukan wujud api dengan diri untuk menambah kekuatan",2,30,3,50));
+        this.getSkillTree().addSkill(new Buff("Heatblast Form",  "Fire", "src/istts/pbo/res/IconSkill/Fire-Heatblast.png","Menyatukan wujud api dengan diri untuk menambah kekuatan",2,30,4,50));
         this.getSkillTree().addSkill(new DamageOnly("Explosion","Fire","src/istts/pbo/res/IconSkill/Fire-Explosion.png","Mengeluarkan ledakan besar dengan seluruh mana",getStats().getMana(),getStats().getMana()));
 
         this.getSkillTree().addSkill(new DamageOnly("Rasengan", "Wind", "src/istts/pbo/res/IconSkill/Wind-Rasengan.png","Membuat pusaran angin di telapak tangan untuk menyakiti musuh",30,20));
@@ -27,7 +27,7 @@ public class Qiqong extends Job {
 
         this.getSkillTree().addSkill(new StatusEffect("Sand Attack", "Earth", "src/istts/pbo/res/IconSkill/Sand-SandThrow.png","Melemparkan pasir untuk membutakan musuh",1,50,1,20));
         this.getSkillTree().addSkill(new StatusEffect("Summon Thwomp", "Earth", "src/istts/pbo/res/IconSkill/Sand-SummonTwhomp.png","Mensummon batu berduri yang bisa stun musuh",3,100,1,20));
-        this.getSkillTree().addSkill(new Buff("Harden", "Earth", "src/istts/pbo/res/IconSkill/Sand-Harden.png","Memperkeras diri untuk meningkatkan defense",4,50,100,30));
+        this.getSkillTree().addSkill(new Buff("Harden", "Earth", "src/istts/pbo/res/IconSkill/Sand-Harden.png","Memperkeras diri untuk meningkatkan defense",4,50,4,30));
 
         ((Skill)this.getSkillTree().getAt(0)).setUnlocked(true);
     }

@@ -25,7 +25,7 @@ public class Ninjutsu extends Job {
         this.getSkillTree().addSkill(new DamageOnly("C4", "Kayakujutsu", "src/istts/pbo/res/IconSkill/Kayakujutsu-C4.png","Menanam bom yang akan meledak setelah 3 turn",50+5* getStats().getAttack(),5));
 
         this.getSkillTree().addSkill(new StatusEffect("Kawarimi no Jutsu", "Shinobi", "src/istts/pbo/res/IconSkill/Shinobi-KawarimiNoJutsu.png","Menukar diri dengan benda lain apabila terkena damage",4,1,1,3));
-        this.getSkillTree().addSkill(new Buff("Chocho", "Shinobi", "src/istts/pbo/res/IconSkill/Shinobi-Chocho.png","Mengintai musuh untuk mengetahui serangan musuh berikutnya",2,100,2,3));
+        this.getSkillTree().addSkill(new Buff("Chocho", "Shinobi", "src/istts/pbo/res/IconSkill/Shinobi-Chocho.png","Mengintai musuh untuk mengetahui serangan musuh berikutnya",2,100,3,3));
         this.getSkillTree().addSkill(new DamageOnly("Hakke", "Shinobi", "src/istts/pbo/res/IconSkill/Shinobi-Hakke.png","Menyerang titik lemah musuh",2* getStats().getAttack(),7));
 
         ((Skill)this.getSkillTree().getAt(0)).setUnlocked(true);

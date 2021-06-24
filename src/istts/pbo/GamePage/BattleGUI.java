@@ -3,20 +3,15 @@ package istts.pbo.GamePage;
 import istts.pbo.Enemy.Enemy1;
 import istts.pbo.Enemy.Enemy2;
 import istts.pbo.Enemy.Enemy3;
-import istts.pbo.Enemy.StatEnemy;
 import istts.pbo.Players.Player;
 import istts.pbo.Players.skilltrees.skills.*;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -543,6 +538,7 @@ public class BattleGUI extends JPanel {
                         timergame.start();
                         isPlayerTurn=false;
                         turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
+                        statBuffcek(p);
 
                         attack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                         skill1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
@@ -566,6 +562,7 @@ public class BattleGUI extends JPanel {
                         timergame.start();
                         isPlayerTurn=false;
                         turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
+                        statBuffcek(p);
 
                         attack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                         skill1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
@@ -589,6 +586,7 @@ public class BattleGUI extends JPanel {
                         timergame.start();
                         isPlayerTurn=false;
                         turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
+                        statBuffcek(p);
 
                         attack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                         skill1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
@@ -612,6 +610,8 @@ public class BattleGUI extends JPanel {
                     timergame.start();
                     isPlayerTurn=false;
                     turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
+                    statBuffcek(p);
+
                     /*
                      * Attack Process
                      */
@@ -711,6 +711,7 @@ public class BattleGUI extends JPanel {
                     turnenemy.setBounds(startPos, turnenemy.getY(),turnenemy.getWidth(),turnenemy.getHeight());
                     spriteenemy.setIcon(new ImageIcon(currentEnemy.getEnemysprite()));
                     gambarenemy.setIcon(new ImageIcon(currentEnemy.getEnemysprite()));
+                    nameenemy.setText(currentEnemy.getName());
 
                     HPBARenemyfront.setBounds(5, 5, 110, 20);
                     HPBARenemyfront.setBackground(new Color(255, 0, 0));
@@ -963,13 +964,15 @@ public class BattleGUI extends JPanel {
         spriteenemy.setIcon(new ImageIcon(currentEnemy.getEnemysprite()));
         currentstage = 1;
         currentturn = 1;
+        nameenemy.setText(currentEnemy.getName());
         turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
         turnenemy.setBounds(startPos,turnenemy.getY(),turnenemy.getWidth(),turnenemy.getHeight());
         spriteenemy.setIcon(new ImageIcon(currentEnemy.getEnemysprite()));
 
         ManaBARplayerfront.setBounds(5,5,110,20);
         HPBARplayerfront.setBounds(5,5,110,20);
-
+        ManaBARenemyfront.setBounds(5,5,110,20);
+        HPBARenemyfront.setBounds(5,5,110,20);
         //seteveryshit
         if(p.getEquippedSkills()[0]!=null) {
             gambarskill1 = new ImageIcon(p.getEquippedSkills()[0].getIconPath());
@@ -1338,6 +1341,44 @@ public class BattleGUI extends JPanel {
         }
         return false;
     }
+
+    private void statBuffcek(Player p){
+        for (int i = 0; i < playerBuff.size(); i++) {
+            if (playerBuff.get(i)[0]==3){
+                if (playerBuff.get(i)[2]>=1){
+                    playerspeed = p.getStats().getSpeed() + playerBuff.get(i)[1];
+                    playerBuff.get(i)[2]=playerBuff.get(i)[2] - 1;
+                }else {
+                    playerspeed = p.getStats().getSpeed();
+                }
+            }
+            else if (playerBuff.get(i)[0]==2){
+                if (playerBuff.get(i)[2]>=1) {
+                    playerAttack = p.getStats().getAttack() + (p.getStats().getAttack() * playerBuff.get(i)[1] / 100);
+                    playerBuff.get(i)[2]=playerBuff.get(i)[2] - 1;
+                }else {
+                    playerAttack = p.getStats().getAttack();
+                }
+            }
+            else if (playerBuff.get(i)[0]==4){
+                if (playerBuff.get(i)[2]>=1) {
+                    playerDef = p.getStats().getDefense() + (p.getStats().getDefense() * playerBuff.get(i)[1] / 100);
+                    playerBuff.get(i)[2]=playerBuff.get(i)[2] - 1;
+                }else {
+                    playerDef = p.getStats().getDefense();
+                }
+            }
+            else if (playerBuff.get(i)[0]==5){
+                if (playerBuff.get(i)[2]>=1) {
+                    playerAttack = p.getStats().getAttack() + p.getStats().getAttack();
+                    playerBuff.get(i)[2]=playerBuff.get(i)[2] - 1;
+                }else {
+                    playerAttack = p.getStats().getAttack();
+                }
+            }
+        }
+    }
+
 
     private void repaintturn() {
 
