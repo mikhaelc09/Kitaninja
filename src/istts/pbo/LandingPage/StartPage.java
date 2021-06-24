@@ -44,7 +44,8 @@ public class StartPage extends JFrame{
 
     public StartPage() {
         saveset = new ArrayList<>();
-        updateSaves();
+//        updateSaves();
+        initFiles();
        init();
        exitConfirm = new CustomExitConfirm();
        music = new musicPlayer();
@@ -414,6 +415,7 @@ public class StartPage extends JFrame{
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            saveset.add(new Player());
         }
     }
 

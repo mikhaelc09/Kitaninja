@@ -5,6 +5,9 @@ import istts.pbo.Enemy.Enemy2;
 import istts.pbo.Enemy.Enemy3;
 import istts.pbo.Enemy.StatEnemy;
 import istts.pbo.Players.Player;
+import istts.pbo.Players.skilltrees.skills.Buff;
+import istts.pbo.Players.skilltrees.skills.DamageOnly;
+import istts.pbo.Players.skilltrees.skills.StatusEffect;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -536,6 +539,34 @@ public class BattleGUI extends JPanel {
                     timergame.start();
                     isPlayerTurn=false;
                     turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
+                    if(p.getEquippedSkills()[0] instanceof DamageOnly){
+                        int[] values = ((DamageOnly) p.getEquippedSkills()[0]).useSkill();
+                        enemyHP = enemyHP-values[0];
+                        playerMP = playerMP-values[1];
+                        labelHPenemy.setText("HP : "+enemyHP + " / " + enemymaksHP);
+                        labelMPplayer.setText("MP : "+playerMP+" / "+playermaksMP);
+
+                        int scaledEnemyHP =(int) Math.round(110 * (enemyHP*1.0/enemymaksHP));
+
+                        HPBARenemyfront.setBounds(5,5,scaledEnemyHP,20);
+                        HPBARenemyfront.revalidate();
+                        HPBARenemyfront.repaint();
+
+                        int scaledPlayerMP = (int) Math.round(110 * (playerMP*1.0/playermaksMP));
+
+                        ManaBARplayerfront.setBounds(5,5,scaledPlayerMP,20);
+                        ManaBARplayerfront.revalidate();
+                        ManaBARplayerfront.repaint();
+
+                        displayskillname.setText(p.getName()+" use "+p.getEquippedSkills()[0].getName()+"("+values[0]+")");
+
+                    }
+                    else if(p.getEquippedSkills()[0] instanceof Buff){
+
+                    }
+                    else if(p.getEquippedSkills()[0] instanceof StatusEffect){
+
+                    }
 
                     attack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                     skill1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
@@ -598,6 +629,9 @@ public class BattleGUI extends JPanel {
                     timergame.start();
                     isPlayerTurn=false;
                     turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
+                    /*
+                     * Attack Process
+                     */
                     int damage = playerAttack - (playerAttack *  enemyDef / 100);
 
                     enemyHP = enemyHP - damage;
@@ -613,6 +647,10 @@ public class BattleGUI extends JPanel {
                     HPBARenemyfront.revalidate();
 
                     displayskillname.setText(p.getName()+" Basic Attack ("+damage+")");
+
+                    /*
+                     * end Attack Process
+                     */
 
                     attack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                     skill1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
