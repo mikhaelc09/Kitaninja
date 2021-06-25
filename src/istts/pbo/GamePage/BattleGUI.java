@@ -97,6 +97,82 @@ public class BattleGUI extends JPanel {
         }
 
     }
+    class LabelBuff extends JLabel {
+        JLabel labelbuff;
+        int turn;
+        int tipe;
+
+        public LabelBuff(String text,int turn,int tipe) {
+            this.turn = turn;
+            this.labelbuff = new JLabel();
+            this.tipe = tipe;
+            labelbuff.setText(text+" x"+turn);
+            labelbuff.setPreferredSize(new Dimension(150,40));
+            labelbuff.setIcon(im.resizeIcon("src/istts/pbo/res/BUFF.png",150,40));
+            labelbuff.setFont(new Font("TimesRoman",Font.BOLD,20));
+            labelbuff.setVerticalTextPosition(SwingConstants.CENTER);
+            labelbuff.setHorizontalTextPosition(SwingConstants.CENTER);
+            labelbuff.setForeground(Color.white);
+            debuffplayer.add(labelbuff);
+            labelbuff.repaint();
+            labelbuff.revalidate();
+            labelbuff.setVisible(true);
+        }
+
+        public int getTipe() {
+            return tipe;
+        }
+
+        public void setTipe(int tipe) {
+            this.tipe = tipe;
+        }
+
+        public int getTurn() {
+            return turn;
+        }
+
+        public void setTurn(int turn) {
+            this.turn = turn;
+        }
+    }
+    class LabelDebuff extends JLabel {
+        JLabel labeldebuff;
+        int turn;
+        int tipe;
+
+        public LabelDebuff(String text,int turn,int tipe) {
+            this.tipe = tipe;
+            this.turn = turn;
+            labeldebuff = new JLabel();
+            labeldebuff.setText(text+" x"+turn);
+            labeldebuff.setPreferredSize(new Dimension(150,40));
+            labeldebuff.setIcon(im.resizeIcon("src/istts/pbo/res/DEBUFF.png",150,40));
+            labeldebuff.setFont(new Font("TimesRoman",Font.BOLD,20));
+            labeldebuff.setForeground(Color.white);
+            labeldebuff.setVerticalTextPosition(SwingConstants.CENTER);
+            labeldebuff.setHorizontalTextPosition(SwingConstants.CENTER);
+            debuffenemy.add(labeldebuff);
+            labeldebuff.setVisible(true);
+            labeldebuff.repaint();
+            labeldebuff.revalidate();
+        }
+
+        public int getTurn() {
+            return turn;
+        }
+
+        public void setTurn(int turn) {
+            this.turn = turn;
+        }
+        public int getTipe() {
+            return tipe;
+        }
+
+        public void setTipe(int tipe) {
+            this.tipe = tipe;
+        }
+    }
+
     PanelSkill panelskill = new PanelSkill();
     StatPlayer statplayer = new StatPlayer();
     StatEnemy statenemy = new StatEnemy();
@@ -183,6 +259,11 @@ public class BattleGUI extends JPanel {
     JLabel ManaBARenemyfront;
     JPanel ManaBARenemyback;
     istts.pbo.Enemy.StatEnemy currentEnemy;
+
+    //arraydebuff/buff
+    ArrayList<LabelBuff> arraybuff = new ArrayList<>();
+    ArrayList<LabelDebuff> arraydebuff = new ArrayList<>();
+    //
 
     ArrayList<istts.pbo.Enemy.StatEnemy> enemy = new ArrayList<>();
 
@@ -315,7 +396,7 @@ public class BattleGUI extends JPanel {
         displayskillname = new JLabel();
         displayskillname.setBounds(400, 400, 480, 50);
         displayskillname.setBackground(new Color(0, 255, 150));
-        displayskillname.setText("cuma ngecek tombol");
+        displayskillname.setText("");
         displayskillname.setOpaque(false);
         displayskillname.setIcon(im.resizeIcon("src/istts/pbo/res/papan.png",480,50));
         displayskillname.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -330,7 +411,6 @@ public class BattleGUI extends JPanel {
         nameplayer.setText(namaplayer);
         nameplayer.setFont(new Font("Ninja Naruto",Font.BOLD,15));
 
-
         //spriteplayer
         spriteplayer = new JLabel("gambar player");
         spriteplayer.setBounds(75, 200, 200, 200);
@@ -341,10 +421,10 @@ public class BattleGUI extends JPanel {
         //Debuffplayer
 
         debuffplayer = new JPanel();
-        debuffplayer.setBounds(20, 500, 400, 50);
-        debuffplayer.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        debuffplayer.setBounds(20, 500, 500, 50);
+        debuffplayer.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
         debuffplayer.setBackground(Color.cyan);
-        debuffplayer.setOpaque(true);
+        debuffplayer.setOpaque(false);
 
         //Statplayer
 
@@ -430,7 +510,7 @@ public class BattleGUI extends JPanel {
         nameenemy.setFont(new Font("Ninja Naruto",Font.BOLD,15));
 
         //spriteenemy
-        spriteenemy = new JLabel("gambar enemy");
+        spriteenemy = new JLabel();
         spriteenemy.setBounds(SWIDTH - 75 - 200, 200, 200, 200);
         spriteenemy.setBackground(Color.green);
         spriteenemy.setOpaque(false);
@@ -439,10 +519,10 @@ public class BattleGUI extends JPanel {
         //Debuffenemy
 
         debuffenemy = new JPanel();
-        debuffenemy.setBounds(SWIDTH - 20 - 400, 500, 400, 50);
-        debuffenemy.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 12));
+        debuffenemy.setBounds(SWIDTH - 20 - 400, 500, 500, 50);
+        debuffenemy.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 12));
         debuffenemy.setBackground(Color.cyan);
-        debuffenemy.setOpaque(true);
+        debuffenemy.setOpaque(false);
 
         //Statenemy
 
@@ -454,7 +534,7 @@ public class BattleGUI extends JPanel {
 
         //Gambarenemy
 
-        gambarenemy = new JLabel("gambar enemy");
+        gambarenemy = new JLabel();
         gambarenemy.setPreferredSize(new Dimension(120, 120));
         gambarenemy.setBackground(Color.green);
         gambarenemy.setOpaque(false);
@@ -661,6 +741,7 @@ public class BattleGUI extends JPanel {
                 if(turnplayer.getX()+turnplayer.getWidth()>=papanturn.getX()+papanturn.getWidth()){
                     timergame.stop();
                     isPlayerTurn=true;
+                    buffturnminus();
                     attack.setCursor(new Cursor(Cursor.HAND_CURSOR));
                     skill1.setCursor(new Cursor(Cursor.HAND_CURSOR));
                     skill2.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -668,6 +749,7 @@ public class BattleGUI extends JPanel {
                 }
                 if(turnenemy.getX()+turnenemy.getWidth()>=papanturn.getX()+papanturn.getWidth()){
                     timergame.stop();
+                    debuffturnminus();
                     int[] fx = enemyDebuffCheck(currentEnemy);
                     boolean succeed;
                     int atkSuccess = r.nextInt(101);
@@ -954,6 +1036,12 @@ public class BattleGUI extends JPanel {
     }
     public void revalidateeverycomp(Player p){
         timergame.start();
+        debuffenemy.removeAll();
+        debuffplayer.removeAll();
+        enemyDebuff = new ArrayList<>();
+        playerBuff = new ArrayList<>();
+
+
 
         //beragam get yang harus dirubah
         namaplayer = p.getName();
@@ -1255,7 +1343,14 @@ public class BattleGUI extends JPanel {
         }
         else if(p.getEquippedSkills()[index] instanceof Buff){
             int[] values = ((Buff) p.getEquippedSkills()[index]).useskill();
+
             if (playerMP>=values[3]){
+                for (int i = 0; i < playerBuff.size(); i++) {
+                    if(values[0]==playerBuff.get(i)[0]){
+                        playerBuff.remove(i);
+                        break;
+                    }
+                }
                 playerBuff.add(values);
 
                 playerMP-=values[3];
@@ -1270,6 +1365,7 @@ public class BattleGUI extends JPanel {
                 ManaBARplayerfront.revalidate();
                 ManaBARplayerfront.repaint();
 
+                cekadabuff(playerBuff.get(playerBuff.size()-1)[2] - 1);
                 return true;
             }else{
                 JOptionPane.showMessageDialog(null,"Mana tidak cukup");
@@ -1291,6 +1387,9 @@ public class BattleGUI extends JPanel {
                 ManaBARplayerfront.setBounds(5,5,scaledPlayerMP,20);
                 ManaBARplayerfront.revalidate();
                 ManaBARplayerfront.repaint();
+
+
+                cekadadebuff(enemyDebuff.get(enemyDebuff.size()-1)[2]);
 
                 return true;
 
@@ -1367,7 +1466,7 @@ public class BattleGUI extends JPanel {
                     if(enemyspeed<=0) enemyspeed = 1;
                     enemyDebuff.get(i)[2] = enemyDebuff.get(i)[2]-1;
                 }
-                else{
+                if(playerBuff.get(i)[2]==0) {
                     enemyspeed = e.getEnemyspeed();
                 }
             }
@@ -1393,17 +1492,31 @@ public class BattleGUI extends JPanel {
                 }
             }
         }
+        for (int i = 0; i < enemyDebuff.size(); i++) {
+            if(enemyDebuff.get(i)[2]==0){
+                enemyDebuff.remove(i);
+                i--;
+            }
+        }
         return fx;
     }
 
     private void statBuffcek(Player p){
+        for (int i = 0; i < playerBuff.size(); i++) {
+            if(playerBuff.get(i)[2]==0){
+                playerBuff.remove(i);
+                i--;
+            }
+        }
         for (int i = 0; i < playerBuff.size(); i++) {
             if (playerBuff.get(i)[0]==3){
                 //Speed Buff
                 if (playerBuff.get(i)[2]>=1){
                     playerspeed = p.getStats().getSpeed() + playerBuff.get(i)[1];
                     playerBuff.get(i)[2]=playerBuff.get(i)[2] - 1;
-                }else {
+
+                }
+                if(playerBuff.get(i)[2]==0) {
                     playerspeed = p.getStats().getSpeed();
                 }
             }
@@ -1412,7 +1525,8 @@ public class BattleGUI extends JPanel {
                     //Attack Buff
                     playerAttack = p.getStats().getAttack() + (p.getStats().getAttack() * playerBuff.get(i)[1] / 100);
                     playerBuff.get(i)[2]=playerBuff.get(i)[2] - 1;
-                }else {
+                }
+                if(playerBuff.get(i)[2]==0) {
                     playerAttack = p.getStats().getAttack();
                 }
             }
@@ -1421,7 +1535,8 @@ public class BattleGUI extends JPanel {
                     //Defense Buff
                     playerDef = p.getStats().getDefense() + (p.getStats().getDefense() * playerBuff.get(i)[1] / 100);
                     playerBuff.get(i)[2]=playerBuff.get(i)[2] - 1;
-                }else {
+                }
+                if(playerBuff.get(i)[2]==0) {
                     playerDef = p.getStats().getDefense();
                 }
             }
@@ -1430,7 +1545,8 @@ public class BattleGUI extends JPanel {
                     //Critical Hit
                     playerAttack = p.getStats().getAttack() + p.getStats().getAttack();
                     playerBuff.get(i)[2]=playerBuff.get(i)[2] - 1;
-                }else {
+                }
+                if(playerBuff.get(i)[2]==0) {
                     playerAttack = p.getStats().getAttack();
                 }
             }
@@ -1438,11 +1554,127 @@ public class BattleGUI extends JPanel {
     }
 
 
-    private void repaintturn() {
+    private void buffturnminus() {
+        currentturn++;
+        turncount.setText("turn : " + currentturn);
+        turncount.revalidate();
+        turncount.repaint();
+        for (int i = 0; i < arraybuff.size() ; i++) {
+            arraybuff.get(i).setTurn(arraybuff.get(i).getTurn()-1);
+            if(arraybuff.get(i).getTipe()==1){
+                arraybuff.get(i).labelbuff.setText("INVUL x"+arraybuff.get(i).getTurn());
+            }else if(arraybuff.get(i).getTipe()==2){
+                arraybuff.get(i).labelbuff.setText("ATK+ x"+arraybuff.get(i).getTurn());
+            }else if(arraybuff.get(i).getTipe()==3){
+                arraybuff.get(i).labelbuff.setText("SPD+ x"+arraybuff.get(i).getTurn());
+            }else if(arraybuff.get(i).getTipe()==4){
+                arraybuff.get(i).labelbuff.setText("DEF+ x"+arraybuff.get(i).getTurn());
+            }else if(arraybuff.get(i).getTipe()==5){
+                arraybuff.get(i).labelbuff.setText("CRI+ x"+arraybuff.get(i).getTurn());
+            }
+            if(arraybuff.get(i).turn<=0){
+                debuffplayer.remove(arraybuff.get(i).labelbuff);
+                arraybuff.remove(arraybuff.get(i));
+            }
+            debuffplayer.repaint();
+            debuffplayer.revalidate();
+        }
 
     }
-
-    private void repaintdebuff() {
+    private void debuffturnminus(){
+        for (int i = 0; i < arraydebuff.size() ; i++) {
+            arraydebuff.get(i).setTurn(arraydebuff.get(i).getTurn()-1);
+            if(arraydebuff.get(i).getTipe()==1){
+                arraydebuff.get(i).labeldebuff.setText("INVUL x"+arraydebuff.get(i).getTurn());
+            }else if(arraydebuff.get(i).getTipe()==2){
+                arraydebuff.get(i).labeldebuff.setText("ATK+ x"+arraydebuff.get(i).getTurn());
+            }else if(arraydebuff.get(i).getTipe()==3){
+                arraydebuff.get(i).labeldebuff.setText("SPD+ x"+arraydebuff.get(i).getTurn());
+            }else if(arraydebuff.get(i).getTipe()==4){
+                arraydebuff.get(i).labeldebuff.setText("DEF+ x"+arraydebuff.get(i).getTurn());
+            }else if(arraydebuff.get(i).getTipe()==5){
+                arraydebuff.get(i).labeldebuff.setText("CRI+ x"+arraydebuff.get(i).getTurn());
+            }
+            if(arraydebuff.get(i).turn<=0){
+                debuffenemy.remove(arraydebuff.get(i).labeldebuff);
+                arraydebuff.remove(arraydebuff.get(i));
+            }
+            debuffenemy.repaint();
+            debuffenemy.revalidate();
+        }
+    }
+    private void cekadabuff(int tipe){
+        boolean stop = false;
+        for (int i = 0; i < arraybuff.size(); i++) {
+            if(arraybuff.get(i).getTipe()==tipe){
+                if(playerBuff.get(i)[2]>=1&&playerBuff.get(playerBuff.size()-1)[0]==1) {
+                    arraybuff.get(i).labelbuff.setText("INVUL x"+(playerBuff.get(playerBuff.size()-1)[2] - 1));
+                }else if(playerBuff.get(i)[2]>=1&&playerBuff.get(playerBuff.size()-1)[0]==2){
+                    arraybuff.get(i).labelbuff.setText("ATK+ x"+(playerBuff.get(playerBuff.size()-1)[2] - 1));
+                }else if(playerBuff.get(i)[2]>=1&&playerBuff.get(playerBuff.size()-1)[0]==3){
+                    arraybuff.get(i).labelbuff.setText("SPD+ x"+(playerBuff.get(playerBuff.size()-1)[2] - 1));
+                }else if(playerBuff.get(i)[2]>=1&&playerBuff.get(playerBuff.size()-1)[0]==4){
+                    arraybuff.get(i).labelbuff.setText("DEF+ x"+(playerBuff.get(playerBuff.size()-1)[2] - 1));
+                }else if(playerBuff.get(i)[2]>=1&&playerBuff.get(playerBuff.size()-1)[0]==5){
+                    arraybuff.get(i).labelbuff.setText("CRI+ x"+(playerBuff.get(playerBuff.size()-1)[2] - 1));
+                }
+                arraybuff.get(i).setTurn(4);
+                stop = true;
+            }
+        }
+        if(!stop) {
+            if (playerBuff.get(playerBuff.size() - 1)[2] >= 1 && playerBuff.get(playerBuff.size() - 1)[0] == 1) {
+                arraybuff.add(new LabelBuff("INVUL", playerBuff.get(playerBuff.size() - 1)[2] - 1, 1));
+            } else if (playerBuff.get(playerBuff.size() - 1)[2] >= 1 && playerBuff.get(playerBuff.size() - 1)[0] == 2) {
+                arraybuff.add(new LabelBuff("ATK+", playerBuff.get(playerBuff.size() - 1)[2] - 1, 2));
+            } else if (playerBuff.get(playerBuff.size() - 1)[2] >= 1 && playerBuff.get(playerBuff.size() - 1)[0] == 3) {
+                arraybuff.add(new LabelBuff("SPD+", playerBuff.get(playerBuff.size() - 1)[2] - 1, 3));
+            } else if (playerBuff.get(playerBuff.size() - 1)[2] >= 1 && playerBuff.get(playerBuff.size() - 1)[0] == 4) {
+                arraybuff.add(new LabelBuff("DEF+", playerBuff.get(playerBuff.size() - 1)[2] - 1, 4));
+            } else if (playerBuff.get(playerBuff.size() - 1)[2] >= 1 && playerBuff.get(playerBuff.size() - 1)[0] == 5) {
+                arraybuff.add(new LabelBuff("CRI+", playerBuff.get(playerBuff.size() - 1)[2] - 1, 5));
+            }
+        }
 
     }
+    private void cekadadebuff(int tipe){
+        boolean stop = false;
+        for (int i = 0; i < arraydebuff.size() ; i++) {
+            if(arraydebuff.get(i).getTipe()==tipe){
+                if(enemyDebuff.get(i)[2]>=1&&enemyDebuff.get(enemyDebuff.size()-1)[0]==1) {
+                    arraydebuff.get(i).labeldebuff.setText("SPD- x"+enemyDebuff.get(enemyDebuff.size()-1)[2]);
+                }else if(enemyDebuff.get(i)[2]>=1&&enemyDebuff.get(enemyDebuff.size()-1)[0]==2){
+                    arraydebuff.get(i).labeldebuff.setText("BLIND x"+enemyDebuff.get(enemyDebuff.size()-1)[2]);
+                }else if(enemyDebuff.get(i)[2]>=1&&enemyDebuff.get(enemyDebuff.size()-1)[0]==3){
+                    arraydebuff.get(i).labeldebuff.setText("STUN"+enemyDebuff.get(enemyDebuff.size()-1)[2]);
+                }else if(enemyDebuff.get(i)[2]>=1&&enemyDebuff.get(enemyDebuff.size()-1)[0]==4){
+                    arraydebuff.get(i).labeldebuff.setText("MISS"+enemyDebuff.get(enemyDebuff.size()-1)[2]);
+                }
+                arraydebuff.get(i).setTurn(4);
+                stop = true;
+            }
+        }
+        if(!stop) {
+            if (enemyDebuff.get(enemyDebuff.size() - 1)[2] >= 1 && enemyDebuff.get(enemyDebuff.size() - 1)[0] == 1) {
+                arraydebuff.add(new LabelDebuff("SPD-", enemyDebuff.get(enemyDebuff.size() - 1)[2], 1));
+            } else if (enemyDebuff.get(enemyDebuff.size() - 1)[2] >= 1 && enemyDebuff.get(enemyDebuff.size() - 1)[0] == 2) {
+                arraydebuff.add(new LabelDebuff("BLIND", enemyDebuff.get(enemyDebuff.size() - 1)[2], 2));
+            } else if (enemyDebuff.get(enemyDebuff.size() - 1)[2] >= 1 && enemyDebuff.get(enemyDebuff.size() - 1)[0] == 3) {
+                arraydebuff.add(new LabelDebuff("STUN", enemyDebuff.get(enemyDebuff.size() - 1)[2], 3));
+            } else if (enemyDebuff.get(enemyDebuff.size() - 1)[2] >= 1 && enemyDebuff.get(enemyDebuff.size() - 1)[0] == 4) {
+                arraydebuff.add(new LabelDebuff("MISS", enemyDebuff.get(enemyDebuff.size() - 1)[2], 4));
+            }
+        }
+    }
+
+//    private void repaintbuff() {
+//        for (int i = 0; i < playerBuff.size(); i++) {
+//
+//        }
+//    }
+//    private void repaintdebuff(){
+//        for (int i = 0; i < enemyDebuff.size(); i++) {
+//
+//        }
+//    }
 }
