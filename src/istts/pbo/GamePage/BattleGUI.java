@@ -127,10 +127,10 @@ public class BattleGUI extends JPanel {
     private int currentstage;
     private int currentturn;
     private boolean isPlayerTurn=false;
-    private ArrayList<int[]> enemyBuff = new ArrayList<>();
+//    private ArrayList<int[]> enemyBuff = new ArrayList<>();
     private ArrayList<int[]> enemyDebuff = new ArrayList<>();
     private ArrayList<int[]> playerBuff = new ArrayList<>();
-    private ArrayList<int[]> playerDebuff = new ArrayList<>();
+//    private ArrayList<int[]> playerDebuff = new ArrayList<>();
 
     //timer
     Timer timergame;
@@ -665,31 +665,43 @@ public class BattleGUI extends JPanel {
                     skill1.setCursor(new Cursor(Cursor.HAND_CURSOR));
                     skill2.setCursor(new Cursor(Cursor.HAND_CURSOR));
                     skill3.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                    /*
-                   Process
-                     */
-//                    try {
-//                        Thread.sleep(0);
-//                    } catch (InterruptedException interruptedException) {
-//                        interruptedException.printStackTrace();
-//                    }
-//                    timergame.start();
-//                    turnplayer.setBounds(startPos,turnplayer.getY(),turnplayer.getWidth(),turnplayer.getHeight());
                 }
                 if(turnenemy.getX()+turnenemy.getWidth()>=papanturn.getX()+papanturn.getWidth()){
                     timergame.stop();
-                    int damage = currentEnemy.getEnemyatt() - (currentEnemy.getEnemyatt() * playerDef / 100);
-                    playerHP = playerHP - damage;
-                    labelHPplayer.setText("HP : " + playerHP + " / " + playermaksHP);
+                    int[] fx = enemyDebuffCheck(currentEnemy);
+                    boolean succeed;
+                    int atkSuccess = r.nextInt(101);
+                    succeed = atkSuccess > fx[0];
+                    if(!succeed){
+                        displayskillname.setText(currentEnemy.getName() + " missed");
+                    }
+                    succeed = succeed && fx[1]==0;
+                    if(!succeed && fx[1]!=0){
+                        if(fx[1]==1){
+                            displayskillname.setText(currentEnemy.getName() + " is frozen");
+                        }
+                        else{
+                            displayskillname.setText(currentEnemy.getName() + " is stunned");
+                        }
+                    }
+                    succeed = succeed && fx[2]==0;
+                    if(!succeed && fx[2]!=0){
+                        displayskillname.setText(currentEnemy.getName() + "'s attack is blocked");
+                    }
+                    if(succeed) {
+                        int damage = currentEnemy.getEnemyatt() - (currentEnemy.getEnemyatt() * playerDef / 100);
+                        playerHP = playerHP - damage;
+                        labelHPplayer.setText("HP : " + playerHP + " / " + playermaksHP);
 
-                    double tes = 110 * (playerHP * 1.0 / playermaksHP);
-                    int tes1 = (int) Math.round(tes);
+                        double tes = 110 * (playerHP * 1.0 / playermaksHP);
+                        int tes1 = (int) Math.round(tes);
 
-                    HPBARplayerfront.setBounds(5, 5, tes1, 20);
-                    HPBARplayerfront.repaint();
-                    HPBARplayerfront.revalidate();
+                        HPBARplayerfront.setBounds(5, 5, tes1, 20);
+                        HPBARplayerfront.repaint();
+                        HPBARplayerfront.revalidate();
 
-                    displayskillname.setText(currentEnemy.getName()+" Basic Attack ("+damage+")");
+                        displayskillname.setText(currentEnemy.getName() + " Basic Attack (" + damage + ")");
+                    }
 
                     turnenemy.setBounds(startPos, turnenemy.getY(),turnenemy.getWidth(),turnenemy.getHeight());
                     timergame.start();
@@ -1342,9 +1354,52 @@ public class BattleGUI extends JPanel {
         return false;
     }
 
+    private int[] enemyDebuffCheck(istts.pbo.Enemy.StatEnemy e){
+        int[] fx = new int[3];
+        fx[0] = 0;
+        fx[1] = 0;
+        fx[2] = 0;
+        for (int i = 0; i < enemyDebuff.size(); i++) {
+            if(enemyDebuff.get(i)[0]==1){
+                //Slow
+                if(enemyDebuff.get(i)[2]>=1){
+                    enemyspeed = e.getEnemyspeed() - enemyDebuff.get(i)[1]*e.getEnemyspeed()/100;
+                    if(enemyspeed<=0) enemyspeed = 1;
+                    enemyDebuff.get(i)[2] = enemyDebuff.get(i)[2]-1;
+                }
+                else{
+                    enemyspeed = e.getEnemyspeed();
+                }
+            }
+            if(enemyDebuff.get(i)[0]==2){
+                //Blind
+                if(enemyDebuff.get(i)[2]>=1){
+                    fx[0] = enemyDebuff.get(i)[1];
+                    enemyDebuff.get(i)[2] = enemyDebuff.get(i)[2]-1;
+                }
+            }
+            if(enemyDebuff.get(i)[0]==3){
+                //Stun
+                if(enemyDebuff.get(i)[2]>=1){
+                    fx[1] = enemyDebuff.get(i)[1];
+                    enemyDebuff.get(i)[2] = enemyDebuff.get(i)[2]-1;
+                }
+            }
+            if(enemyDebuff.get(i)[0]==4){
+                //Damage Block
+                if(enemyDebuff.get(i)[2]>=1){
+                    fx[2] = enemyDebuff.get(i)[1];
+                    enemyDebuff.get(i)[2] = enemyDebuff.get(i)[2]-1;
+                }
+            }
+        }
+        return fx;
+    }
+
     private void statBuffcek(Player p){
         for (int i = 0; i < playerBuff.size(); i++) {
             if (playerBuff.get(i)[0]==3){
+                //Speed Buff
                 if (playerBuff.get(i)[2]>=1){
                     playerspeed = p.getStats().getSpeed() + playerBuff.get(i)[1];
                     playerBuff.get(i)[2]=playerBuff.get(i)[2] - 1;
@@ -1354,6 +1409,7 @@ public class BattleGUI extends JPanel {
             }
             else if (playerBuff.get(i)[0]==2){
                 if (playerBuff.get(i)[2]>=1) {
+                    //Attack Buff
                     playerAttack = p.getStats().getAttack() + (p.getStats().getAttack() * playerBuff.get(i)[1] / 100);
                     playerBuff.get(i)[2]=playerBuff.get(i)[2] - 1;
                 }else {
@@ -1362,6 +1418,7 @@ public class BattleGUI extends JPanel {
             }
             else if (playerBuff.get(i)[0]==4){
                 if (playerBuff.get(i)[2]>=1) {
+                    //Defense Buff
                     playerDef = p.getStats().getDefense() + (p.getStats().getDefense() * playerBuff.get(i)[1] / 100);
                     playerBuff.get(i)[2]=playerBuff.get(i)[2] - 1;
                 }else {
@@ -1370,6 +1427,7 @@ public class BattleGUI extends JPanel {
             }
             else if (playerBuff.get(i)[0]==5){
                 if (playerBuff.get(i)[2]>=1) {
+                    //Critical Hit
                     playerAttack = p.getStats().getAttack() + p.getStats().getAttack();
                     playerBuff.get(i)[2]=playerBuff.get(i)[2] - 1;
                 }else {
