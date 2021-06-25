@@ -1,7 +1,13 @@
 package istts.pbo.System;
 
+import istts.pbo.GamePage.im;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class CustomExitConfirm extends JFrame {
     private JPanel p;
@@ -22,10 +28,11 @@ public class CustomExitConfirm extends JFrame {
         setUndecorated(true);
         setVisible(false);
 
-        p = new JPanel();
+        p = new myPanel();
         p.setBounds(0,0,400,300);
         p.setLayout(null);
         p.setBackground(new Color(255,222,70));
+        p.setOpaque(false);
 
         Font f = new Font("Arial", Font.BOLD, 40);
         FontMetrics fm = getFontMetrics(f);
@@ -77,5 +84,17 @@ public class CustomExitConfirm extends JFrame {
 
     public void setLbNo(JLabel lbNo) {
         this.lbNo = lbNo;
+    }
+
+    static class myPanel extends JPanel{
+        protected void paintComponent(Graphics g) {
+            super.paintComponents(g);
+            draw(g);
+        }
+
+        private void draw(Graphics g){
+            ImageIcon bg = im.resizeIcon("src/istts/pbo/res/papan.png",400,300);
+            g.drawImage(bg.getImage(),0,0,null);
+        }
     }
 }
