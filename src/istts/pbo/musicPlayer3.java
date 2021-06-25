@@ -55,7 +55,7 @@ public class musicPlayer3 extends JFrame implements LineListener, ChangeListener
         add(p3);
         setContentPane(p3);
 
-        File a = new File("src/istts/pbo/res/audio/Soundtrack/Peta.wav");
+        File a = new File("src/istts/pbo/res/audio/Soundtrack/BattleBGM.wav");
         try {
             AudioInputStream stream = AudioSystem.getAudioInputStream(a);
             AudioFormat format = stream.getFormat();
