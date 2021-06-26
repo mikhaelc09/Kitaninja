@@ -152,6 +152,8 @@ public class StartPage extends JFrame{
                         super.mouseClicked(e);
                         selected = index;
                         confirmCreate(saveset.get(index));
+                        music.setVisible(false);
+                        music.getClip().stop();
                     }
                 });
                 load.sprite[i].addMouseListener(new MouseAdapter() {
@@ -160,6 +162,8 @@ public class StartPage extends JFrame{
                         super.mouseClicked(e);
                         selected = index;
                         confirmCreate(saveset.get(index));
+                        music.setVisible(false);
+                        music.getClip().stop();
                     }
                 });
                 load.nama[i].addMouseListener(new MouseAdapter() {
@@ -168,6 +172,8 @@ public class StartPage extends JFrame{
                         super.mouseClicked(e);
                         selected = index;
                         confirmCreate(saveset.get(index));
+                        music.setVisible(false);
+                        music.getClip().stop();
                     }
                 });
             }
