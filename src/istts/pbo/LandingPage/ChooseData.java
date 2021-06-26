@@ -67,7 +67,7 @@ public class ChooseData extends JPanel {
 
     public void initState(){
         for (int i = 0; i < 3; i++) {
-            System.out.println(player.get(i).getName());
+//            System.out.println(player.get(i).getName());
             kotakLoad[i] = new JLabel();
             kotakLoad[i].setBounds(20,100+200*i,1240,175);
             kotakLoad[i].setOpaque(false);

@@ -749,7 +749,7 @@ public class ShopPanel extends JPanel {
                         p.setGold(p.getGold() - selected.getCost());
                         p.getItems().set(sett,selected);
                         Currgold.setText("   Gold : " + p.getGold() + "");
-                        System.out.println("Beli " + selected.getName() + "   gold : " + p.getGold());
+//                        System.out.println("Beli " + selected.getName() + "   gold : " + p.getGold());
                     }
                 }
             }
