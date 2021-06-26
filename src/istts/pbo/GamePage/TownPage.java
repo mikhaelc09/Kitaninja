@@ -105,18 +105,28 @@ public class TownPage extends JFrame {
                 battle.setVisible(false);
                 town.setVisible(true);
                 int stageFinished = battle.getCurrentstage();
-                int xpGain = 20*stageFinished;
                 if(battle.getEnemyHP()>0){
                     stageFinished--;
                 }
+                int xpGain = 20*stageFinished;
+                int goldGain = 5*stageFinished;
                 int levelGain = (xpGain+player.getXp())/100;
                 int xpModed = (xpGain+player.getXp())%100;
-                JOptionPane.showMessageDialog(null,"Kamu sudah menyelesaikan "+stageFinished+" stage, kamu mendapat "+xpGain+" XP");
+                JOptionPane.showMessageDialog(null,"Kamu sudah menyelesaikan "+stageFinished+" stage, kamu mendapat "+xpGain+" XP dan "+goldGain+" Gold!");
                 for (int i = 0; i < levelGain; i++) {
                     JOptionPane.showMessageDialog(null, "Level Up!");
                 }
                 player.setLevel(player.getLevel()+levelGain);
                 player.setXp(xpModed);
+                player.setGold(player.getGold()+goldGain);
+                player.setSkillPoint(player.getSkillPoint()+levelGain);
+                town.exp.setText("Xp : "+player.getXp());
+                town.lvl.setText("Level : "+player.getLevel());
+                profil.gold.setText("Gold : " + player.getGold());
+                profil.exp.setText("Exp : "+ player.getXp());
+                shop.Currgold.setText("   Gold : " + player.getGold() + "");
+                smith.Uangmu.setText("Gold " + player.getGold());
+                dojo.lbSkillPoint.setText("Skill Point : "+player.getSkillPoint());
                 battle.timergame.stop();
                 musictown.getClip().start();
                 musicbattle.getClip().stop();

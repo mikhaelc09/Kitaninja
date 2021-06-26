@@ -30,6 +30,7 @@ public class ProfilePanel extends JPanel {
     JLabel back;
     JLabel gold;
     Player player;
+    JLabel exp;
     Font fontlb = new Font("Ninja Naruto", Font.PLAIN, 30);
     public ProfilePanel(Player player){
         this.player = player;
@@ -290,7 +291,7 @@ public class ProfilePanel extends JPanel {
         //
 
         //Exp
-        JLabel exp = new JLabel("Exp : "+ player.getXp());
+        exp = new JLabel("Exp : "+ player.getXp());
         exp.setPreferredSize(new Dimension(275,30));
         exp.setFont(new Font("Arial",Font.BOLD,30));
 
