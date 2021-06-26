@@ -824,7 +824,7 @@ public class BattleGUI extends JPanel {
                     stage.setText("Stage : "+currentstage);
                 }
                 if (playerHP<=0){
-                    JOptionPane.showMessageDialog(null,"Kalah sayang!");
+                    JOptionPane.showMessageDialog(null,"Kamu kalah!");
                     timergame.stop();
                 }
             }
@@ -1679,7 +1679,15 @@ public class BattleGUI extends JPanel {
         }
     }
 
-//    private void repaintbuff() {
+    public int getCurrentstage() {
+        return currentstage;
+    }
+
+    public int getEnemyHP() {
+        return enemyHP;
+    }
+
+    //    private void repaintbuff() {
 //        for (int i = 0; i < playerBuff.size(); i++) {
 //
 //        }

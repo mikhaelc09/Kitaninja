@@ -104,6 +104,19 @@ public class TownPage extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 battle.setVisible(false);
                 town.setVisible(true);
+                int stageFinished = battle.getCurrentstage();
+                int xpGain = 20*stageFinished;
+                if(battle.getEnemyHP()>0){
+                    stageFinished--;
+                }
+                int levelGain = (xpGain+player.getXp())/100;
+                int xpModed = (xpGain+player.getXp())%100;
+                JOptionPane.showMessageDialog(null,"Kamu sudah menyelesaikan "+stageFinished+" stage, kamu mendapat "+xpGain+" XP");
+                for (int i = 0; i < levelGain; i++) {
+                    JOptionPane.showMessageDialog(null, "Level Up!");
+                }
+                player.setLevel(player.getLevel()+levelGain);
+                player.setXp(xpModed);
                 battle.timergame.stop();
                 musictown.getClip().start();
                 musicbattle.getClip().stop();
