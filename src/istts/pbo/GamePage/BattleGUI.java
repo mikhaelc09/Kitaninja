@@ -359,7 +359,13 @@ public class BattleGUI extends JPanel {
         stage = new JLabel("stage : " + currentstage);
         stage.setPreferredSize(new Dimension(200, 40));
         stage.setBackground(Color.yellow);
-        stage.setOpaque(true);
+        stage.setForeground(Color.black);
+        stage.setHorizontalTextPosition(SwingConstants.CENTER);
+        stage.setVerticalTextPosition(SwingConstants.CENTER);
+        stage.setFont(new Font("Ninja Naruto",Font.BOLD,30));
+        stage.setOpaque(false);
+
+
 
         //papan turn
         papanturn = new JLabel();
@@ -839,10 +845,10 @@ public class BattleGUI extends JPanel {
         timerdanstage.repaint();
         timerdanstage.setVisible(true);
 
-        timerdanstage.add(timer);
-        timer.revalidate();
-        timer.repaint();
-        timer.setVisible(true);
+//        timerdanstage.add(timer);
+//        timer.revalidate();
+//        timer.repaint();
+//        timer.setVisible(true);
 
         timerdanstage.add(stage);
         stage.revalidate();
@@ -1038,6 +1044,8 @@ public class BattleGUI extends JPanel {
         timergame.start();
         debuffenemy.removeAll();
         debuffplayer.removeAll();
+        arraybuff = new ArrayList<>();
+        arraydebuff = new ArrayList<>();
         enemyDebuff = new ArrayList<>();
         playerBuff = new ArrayList<>();
 
@@ -1111,6 +1119,10 @@ public class BattleGUI extends JPanel {
         labelMPenemy.setText("MP : " + enemyMP + " / " + enemymaksMP);
 
 
+        //lululu
+        stage.setHorizontalTextPosition(SwingConstants.CENTER);
+        stage.setVerticalTextPosition(SwingConstants.CENTER);
+
 
         //panel stage + timer
 
@@ -1119,10 +1131,10 @@ public class BattleGUI extends JPanel {
         timerdanstage.repaint();
         timerdanstage.setVisible(true);
 
-        timerdanstage.add(timer);
-        timer.revalidate();
-        timer.repaint();
-        timer.setVisible(true);
+//        timerdanstage.add(timer);
+//        timer.revalidate();
+//        timer.repaint();
+//        timer.setVisible(true);
 
         timerdanstage.add(stage);
         stage.revalidate();
@@ -1365,7 +1377,7 @@ public class BattleGUI extends JPanel {
                 ManaBARplayerfront.revalidate();
                 ManaBARplayerfront.repaint();
 
-                cekadabuff(playerBuff.get(playerBuff.size()-1)[2] - 1);
+                cekadabuff(playerBuff.get(playerBuff.size()-1)[0]);
                 return true;
             }else{
                 JOptionPane.showMessageDialog(null,"Mana tidak cukup");
@@ -1618,7 +1630,7 @@ public class BattleGUI extends JPanel {
                 }else if(playerBuff.get(i)[2]>=1&&playerBuff.get(playerBuff.size()-1)[0]==5){
                     arraybuff.get(i).labelbuff.setText("CRI+ x"+(playerBuff.get(playerBuff.size()-1)[2] - 1));
                 }
-                arraybuff.get(i).setTurn(4);
+                arraybuff.get(i).setTurn(playerBuff.get(playerBuff.size()-1)[2] - 1);
                 stop = true;
             }
         }
