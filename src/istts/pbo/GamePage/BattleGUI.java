@@ -203,7 +203,7 @@ public class BattleGUI extends JPanel {
     private int currentstage;
     private int currentturn;
     private boolean isPlayerTurn=false;
-//    private ArrayList<int[]> enemyBuff = new ArrayList<>();
+    //    private ArrayList<int[]> enemyBuff = new ArrayList<>();
     private ArrayList<int[]> enemyDebuff = new ArrayList<>();
     private ArrayList<int[]> playerBuff = new ArrayList<>();
 //    private ArrayList<int[]> playerDebuff = new ArrayList<>();
@@ -795,10 +795,12 @@ public class BattleGUI extends JPanel {
                     timergame.start();
                 }
                 if (enemyHP<=0){
+                    arraydebuff = new ArrayList<>();
+                    enemyDebuff = new ArrayList<>();
+                    debuffenemy.removeAll();
                     rand = r.nextInt(3);
                     System.out.println(rand);
                     currentEnemy = enemy.get(rand);
-                    namaenemy = "isinamaenemy";
                     enemyHP = currentEnemy.getEnemyhealth();
                     enemymaksHP = currentEnemy.getEnemyhealth();
                     enemyMP = currentEnemy.getEnemymana();
@@ -1042,12 +1044,12 @@ public class BattleGUI extends JPanel {
     }
     public void revalidateeverycomp(Player p){
         timergame.start();
-        debuffenemy.removeAll();
         debuffplayer.removeAll();
         arraybuff = new ArrayList<>();
+        playerBuff = new ArrayList<>();
         arraydebuff = new ArrayList<>();
         enemyDebuff = new ArrayList<>();
-        playerBuff = new ArrayList<>();
+        debuffenemy.removeAll();
 
 
 
@@ -1387,6 +1389,12 @@ public class BattleGUI extends JPanel {
         else if(p.getEquippedSkills()[index] instanceof StatusEffect){
             int[] values = ((StatusEffect) p.getEquippedSkills()[index]).useskill();
             if (playerMP>=values[3]){
+                for (int i = 0; i < enemyDebuff.size(); i++) {
+                    if(values[0]==enemyDebuff.get(i)[0]){
+                        enemyDebuff.remove(i);
+                        break;
+                    }
+                }
                 enemyDebuff.add(values);
                 playerMP-=values[3];
 
@@ -1401,7 +1409,7 @@ public class BattleGUI extends JPanel {
                 ManaBARplayerfront.repaint();
 
 
-                cekadadebuff(enemyDebuff.get(enemyDebuff.size()-1)[2]);
+                cekadadebuff(enemyDebuff.get(enemyDebuff.size()-1)[0]);
 
                 return true;
 
@@ -1478,7 +1486,7 @@ public class BattleGUI extends JPanel {
                     if(enemyspeed<=0) enemyspeed = 1;
                     enemyDebuff.get(i)[2] = enemyDebuff.get(i)[2]-1;
                 }
-                if(playerBuff.get(i)[2]==0) {
+                if(enemyDebuff.get(i)[2]==0) {
                     enemyspeed = e.getEnemyspeed();
                 }
             }
@@ -1587,6 +1595,10 @@ public class BattleGUI extends JPanel {
             if(arraybuff.get(i).turn<=0){
                 debuffplayer.remove(arraybuff.get(i).labelbuff);
                 arraybuff.remove(arraybuff.get(i));
+                for (int j = 0; j <arraybuff.size() ; j++) {
+                    debuffplayer.remove(arraybuff.get(i).labelbuff);
+                    arraybuff.remove(arraybuff.get(i));
+                }
             }
             debuffplayer.repaint();
             debuffplayer.revalidate();
@@ -1597,19 +1609,23 @@ public class BattleGUI extends JPanel {
         for (int i = 0; i < arraydebuff.size() ; i++) {
             arraydebuff.get(i).setTurn(arraydebuff.get(i).getTurn()-1);
             if(arraydebuff.get(i).getTipe()==1){
-                arraydebuff.get(i).labeldebuff.setText("INVUL x"+arraydebuff.get(i).getTurn());
+                arraydebuff.get(i).labeldebuff.setText("SPD -x"+arraydebuff.get(i).getTurn());
             }else if(arraydebuff.get(i).getTipe()==2){
-                arraydebuff.get(i).labeldebuff.setText("ATK+ x"+arraydebuff.get(i).getTurn());
+                arraydebuff.get(i).labeldebuff.setText("BLIND x"+arraydebuff.get(i).getTurn());
             }else if(arraydebuff.get(i).getTipe()==3){
-                arraydebuff.get(i).labeldebuff.setText("SPD+ x"+arraydebuff.get(i).getTurn());
+                arraydebuff.get(i).labeldebuff.setText("STUN x"+arraydebuff.get(i).getTurn());
             }else if(arraydebuff.get(i).getTipe()==4){
-                arraydebuff.get(i).labeldebuff.setText("DEF+ x"+arraydebuff.get(i).getTurn());
+                arraydebuff.get(i).labeldebuff.setText("MISS x"+arraydebuff.get(i).getTurn());
             }else if(arraydebuff.get(i).getTipe()==5){
                 arraydebuff.get(i).labeldebuff.setText("CRI+ x"+arraydebuff.get(i).getTurn());
             }
             if(arraydebuff.get(i).turn<=0){
                 debuffenemy.remove(arraydebuff.get(i).labeldebuff);
                 arraydebuff.remove(arraydebuff.get(i));
+                for (int j = 0; j < arraydebuff.size(); j++) {
+                    debuffenemy.remove(arraydebuff.get(i).labeldebuff);
+                    arraydebuff.remove(arraydebuff.get(i));
+                }
             }
             debuffenemy.repaint();
             debuffenemy.revalidate();
@@ -1658,14 +1674,15 @@ public class BattleGUI extends JPanel {
                 }else if(enemyDebuff.get(i)[2]>=1&&enemyDebuff.get(enemyDebuff.size()-1)[0]==2){
                     arraydebuff.get(i).labeldebuff.setText("BLIND x"+enemyDebuff.get(enemyDebuff.size()-1)[2]);
                 }else if(enemyDebuff.get(i)[2]>=1&&enemyDebuff.get(enemyDebuff.size()-1)[0]==3){
-                    arraydebuff.get(i).labeldebuff.setText("STUN"+enemyDebuff.get(enemyDebuff.size()-1)[2]);
+                    arraydebuff.get(i).labeldebuff.setText("STUN x"+enemyDebuff.get(enemyDebuff.size()-1)[2]);
                 }else if(enemyDebuff.get(i)[2]>=1&&enemyDebuff.get(enemyDebuff.size()-1)[0]==4){
-                    arraydebuff.get(i).labeldebuff.setText("MISS"+enemyDebuff.get(enemyDebuff.size()-1)[2]);
+                    arraydebuff.get(i).labeldebuff.setText("MISS x"+enemyDebuff.get(enemyDebuff.size()-1)[2]);
                 }
-                arraydebuff.get(i).setTurn(4);
+                arraydebuff.get(i).setTurn(enemyDebuff.get(enemyDebuff.size()-1)[2]);
                 stop = true;
             }
         }
+
         if(!stop) {
             if (enemyDebuff.get(enemyDebuff.size() - 1)[2] >= 1 && enemyDebuff.get(enemyDebuff.size() - 1)[0] == 1) {
                 arraydebuff.add(new LabelDebuff("SPD-", enemyDebuff.get(enemyDebuff.size() - 1)[2], 1));
