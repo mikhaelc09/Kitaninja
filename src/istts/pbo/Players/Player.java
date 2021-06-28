@@ -20,10 +20,10 @@ public class Player implements java.io.Serializable{
 
     public Player(String name, Job playerClass) {
         this.name = name;
-        this.gold = 100;
+        this.gold = 0;
         this.level = 1;
         this.xp = 0;
-        this.skillPoint = 16;
+        this.skillPoint = 0;
         this.stats = playerClass.getStats();
         this.playerClass = playerClass;
         this.equipment = new Equipment();
